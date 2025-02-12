@@ -1,0 +1,132 @@
+/* General Sidebar Styles */
+#sidebar {
+    background-color: #E4E4E4;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+   
+
+ }
+
+ h2{
+        color :darkblue;
+ }
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+/* Logo inside the Sidebar */
+.sidebar-header img {
+    max-height: 50px;  
+    margin-bottom: 25px; 
+    margin-top: 10px; 
+    transition: transform 0.3s ease;
+}
+
+.sidebar-header img:hover {
+    transform: scale(1.08);
+}
+
+
+
+/* Sidebar Links Container */
+.nav-items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Increased gap for more spacing between items */
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* Sidebar Links */
+.nav-item {
+    margin-bottom: 15px; /* Added margin for more space between items */
+}
+
+.nav-item a {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    padding: 12px 20px; /* Increased padding for larger clickable area */
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect for Sidebar Links */
+.nav-item a:hover {
+    color: #CE171F;
+    transform: translateY(-2px);
+}
+
+/* Active Link Styling */
+.nav-item .nav-link.active {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #670000;
+    border-radius: 5px;
+}
+
+/* Logout Button (Yellow) */
+.nav-item .logout-btn {
+    color: #CE171F;
+    font-weight: bold;
+    padding: 12px 20px; /* Same padding as other links for consistency */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-item .logout-btn:hover {
+     transform: translateY(-2px);
+}
+
+/* Sidebar Toggle Button */
+#menu-toggle {
+    display: none;
+}
+
+#sidebar.toggled {
+    margin-left: -250px; /* Hide sidebar */
+}
+
+/* Content Wrapper */
+#content-wrapper {
+    margin-left: 250px;
+    transition: margin 0.3s ease;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991px) {
+    #sidebar {
+        width: 100%;
+        position: absolute;
+        z-index: 1000;
+    }
+
+    #content-wrapper {
+        margin-left: 0;
+    }
+
+    #menu-toggle {
+        display: block;
+    }
+
+    #sidebar.toggled {
+        margin-left: -100%;
+    }
+}
+
+
+

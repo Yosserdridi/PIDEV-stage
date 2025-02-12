@@ -14,6 +14,10 @@ import { ForgotPasswordComponent } from './components/User/forgot-password/forgo
 import { HeaderComponent } from './components/header/header.component';
 import { BackNavbarComponent } from './components/back-navbar/back-navbar.component';
 import { ProfileComponent } from './components/User/profile/profile.component';
+import { BackEntrepriseComponent } from './components/back-entreprise/back-entreprise.component';
+
+
+
 // Define your routes here
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,8 +29,7 @@ const routes: Routes = [
   { path: 'back', component: BackNavbarComponent },
   { path: 'header', component: HeaderComponent },
   { path: 'profile', component: ProfileComponent },
-  
-  
+  {path : 'entreprise', component: BackEntrepriseComponent},
   { path: '**', redirectTo: 'home' }
 ];
 
@@ -41,7 +44,8 @@ const routes: Routes = [
     ForgotPasswordComponent,
      HeaderComponent,
      BackNavbarComponent,
-     ProfileComponent
+     ProfileComponent,
+     BackEntrepriseComponent
 
    ],
   imports: [
