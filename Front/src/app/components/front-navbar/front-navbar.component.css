@@ -1,0 +1,92 @@
+/* General Navbar styles */
+.navbar {
+    background-color: #E4E4E4;
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+
+}
+
+/* Container holding the logo and navbar links */
+.container-fluid {
+    display: flex;
+    align-items: center; /* Ensures the logo and links are vertically aligned */
+    justify-content: space-between; /* Ensures logo is left, links are right */
+}
+
+/* Navbar Brand (Logo) */
+.navbar-brand {
+    display: flex;
+    align-items: center; /* Center logo vertically */
+    margin-right: 30px; /* Space between logo and links */
+}
+
+.navbar-brand img {
+    max-height: 50px; /* Ensure logo size is consistent */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.08);
+}
+
+/* Navbar Links */
+.navbar-nav {
+    display: flex;
+    gap: 25px;  /* Space between navbar items */
+    list-style-type: none;
+    padding-left: 0;
+    align-items: center; /* Vertically align the menu items */
+ }
+
+/* Navbar Item Links */
+.nav-item a {
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-item a:hover {
+    color: #CE171F;
+    transform: translateY(-2px);
+}
+
+/* Active Link Styling */
+.nav-item .nav-link.active {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #7e7979;
+    border-radius: 5px;
+}
+
+ 
+/* Navbar Toggle Button */
+.navbar-toggler {
+    border-color: transparent;
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* Mobile & Tablet Responsive Adjustments */
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .navbar-collapse {
+        padding-top: 1rem;
+    }
+}
