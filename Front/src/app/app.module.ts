@@ -1,59 +1,56 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; 
+
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
- import { FrontFooterComponent } from './components/front-footer/front-footer.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/User/login/login.component';
-import { RegisterComponent } from './components/User/register/register.component';
-import { ForgotPasswordComponent } from './components/User/forgot-password/forgot-password.component';
- import { FrontNavbarComponent } from './components/front-navbar/front-navbar.component';
-import { HeaderComponent } from './components/header/header.component';
-import { BackNavbarComponent } from './components/back-navbar/back-navbar.component';
-import { ProfileComponent } from './components/User/profile/profile.component';
-import { BackEntrepriseComponent } from './components/back-entreprise/back-entreprise.component';
-
-
-
-// Define your routes here
-const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'forgot', component: ForgotPasswordComponent },
-  { path: 'front', component: FrontNavbarComponent },  
-  { path: 'back', component: BackNavbarComponent },
-  { path: 'header', component: HeaderComponent },
-  { path: 'profile', component: ProfileComponent },
-  {path : 'entreprise', component: BackEntrepriseComponent},
-  { path: '**', redirectTo: 'home' }
-];
+import { HomeComponent } from './componment/front/home/home.component';
+import { SubjectsComponent } from './componment/front/subjects/subjects.component';
+import { PostulationsComponent } from './componment/front/postulations/postulations.component';
+import { PfeIntershipsComponent } from './componment/front/pfe-interships/pfe-interships.component';
+import { SummerIntershipsComponent } from './componment/front/summer-interships/summer-interships.component';
+import { ForumComponent } from './componment/front/forum/forum.component';
+import { ComplaintsComponent } from './componment/front/complaints/complaints.component';
+import { LoginComponent } from './componment/front/login/login.component';
+import { NavbarComponent } from './componment/front/navbar/navbar.component';
+import { AdminComponent } from './componment/back/admin/admin.component';
+import { NabradminComponent } from './componment/back/nabradmin/nabradmin.component';
+import { SubjectsAdminComponent } from './componment/back/subjects-admin/subjects-admin.component';
+import { PfeAdminComponent } from './componment/back/pfe-admin/pfe-admin.component';
+import { PostulationAdminComponent } from './componment/back/postulation-admin/postulation-admin.component';
+import { SummerAdminComponent } from './componment/back/summer-admin/summer-admin.component';
+import { ForumAdminComponent } from './componment/back/forum-admin/forum-admin.component';
+import { ComplaintsAdminComponent } from './componment/back/complaints-admin/complaints-admin.component';
+import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FrontNavbarComponent,
-    FrontFooterComponent,
     HomeComponent,
+    SubjectsComponent,
+    PostulationsComponent,
+    PfeIntershipsComponent,
+    SummerIntershipsComponent,
+    ForumComponent,
+    ComplaintsComponent,
     LoginComponent,
-    RegisterComponent,
-    ForgotPasswordComponent,
-     HeaderComponent,
-     BackNavbarComponent,
-     ProfileComponent,
-     BackEntrepriseComponent
+    NavbarComponent,
+    NabradminComponent,
+    SubjectsAdminComponent,
+    PostulationAdminComponent,
+    PfeAdminComponent,
+    SummerAdminComponent,
+    ForumAdminComponent,
+    ComplaintsAdminComponent,
+    LoginAdminComponent,
+    AdminComponent,
+    
+    
+    
 
-   ],
+  ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    CommonModule, 
-    RouterModule.forRoot(routes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
