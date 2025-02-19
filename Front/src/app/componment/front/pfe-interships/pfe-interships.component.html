@@ -1,1 +1,24 @@
-<p>pfe-interships works!</p>
+<p>pfe-internships works!</p>
+<h2>Add Internship Convention</h2>
+<form (ngSubmit)="addInternship()">
+  <label>Company Name:</label>
+  <input type="text" [(ngModel)]="internship.companyName" name="companyName" required />
+
+  <label>Start Date:</label>
+  <input type="date" [(ngModel)]="internship.startDate" name="startDate" required />
+
+  <label>End Date:</label>
+  <input type="date" [(ngModel)]="internship.endDate" name="endDate" required />
+
+  <label>Company Address:</label>
+  <input type="text" [(ngModel)]="internship.companyAddress" name="companyAddress" required />
+
+  <label>Company Contact:</label>
+  <input type="text" [(ngModel)]="internship.companyContact" name="companyContact" required />
+
+  <label>Type of Internship:</label>
+  <select [(ngModel)]="internship.typeInternship" name="typeInternship" required>
+    <option *ngFor="let type of typeInternshipEnum" [value]="type">{{ type }}</option>
+  </select>
+  <button type="submit">Add Internship</button>
+</form>

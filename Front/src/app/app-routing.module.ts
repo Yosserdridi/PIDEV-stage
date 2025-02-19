@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'summer', component: SummerIntershipsComponent },
   { path: 'login', component: LoginComponent },
   
-  { path: 'complaintsadmin', component: ComplaintsAdminComponent },
+  {path: 'complaintsadmin', component: ComplaintsAdminComponent },
   {path: 'forumadmin', component: ForumAdminComponent},
   {path: 'pfeadmin', component: PfeAdminComponent},
   {path: 'postulationsadmin', component: PostulationAdminComponent},
