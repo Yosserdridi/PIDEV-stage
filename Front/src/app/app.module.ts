@@ -21,6 +21,8 @@ import { SummerAdminComponent } from './componment/back/summer-admin/summer-admi
 import { ForumAdminComponent } from './componment/back/forum-admin/forum-admin.component';
 import { ComplaintsAdminComponent } from './componment/back/complaints-admin/complaints-admin.component';
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { LoginAdminComponent } from './componment/back/login-admin/login-admin.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
