@@ -1,0 +1,23 @@
+<h2>List of Complaints</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let complaint of complaints">
+        <td>{{ complaint.title }}</td>
+        <td>{{ complaint.content }}</td>
+        <td>{{ complaint.dateComplaint }}</td>
+        <td>{{ complaint.typeC }}</td>
+        <td>
+            <button (click)="deleteComplaint(complaint.id)">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>

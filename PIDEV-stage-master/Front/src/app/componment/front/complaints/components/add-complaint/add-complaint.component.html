@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Ajouter une plainte</h2>
+
+    <form (ngSubmit)="submitForm()" #complaintForm="ngForm">
+        <!-- Champ Titre -->
+        <div class="mb-3">
+            <label for="title">Titre</label>
+            <input type="text" id="title" class="form-control" [(ngModel)]="complaint.title" name="title" required>
+        </div>
+
+        <!-- Champ Contenu -->
+        <div class="mb-3">
+            <label for="content">Contenu</label>
+            <textarea id="content" class="form-control" [(ngModel)]="complaint.content" name="content" required></textarea>
+        </div>
+
+        <!-- Champ Date -->
+        <div class="mb-3">
+            <label for="date">Date</label>
+            <input type="date" id="date" class="form-control" [(ngModel)]="complaint.dateComplaint" name="dateComplaint" required>
+        </div>
+
+        <!-- Champ Statut -->
+        <div class="mb-3">
+            <label for="status">Statut</label>
+            <select id="status" class="form-control" [(ngModel)]="complaint.status" name="status" required>
+                <option value="Ouvert">Ouvert</option>
+                <option value="En cours">En cours</option>
+                <option value="Fermé">Fermé</option>
+            </select>
+        </div>
+
+        <!-- Bouton de soumission -->
+        <button type="submit" class="btn btn-success" [disabled]="complaintForm.invalid">
+            Sauvegarder
+        </button>
+    </form>
+</div>

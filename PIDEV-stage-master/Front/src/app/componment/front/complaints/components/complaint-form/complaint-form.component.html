@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>{{ isEdit ? 'Modifier' : 'Ajouter' }} complaint</h2>
+
+    <form (ngSubmit)="submitForm()">
+        <!-- Champ ID (si en mode édition) -->
+        <div class="mb-3" *ngIf="isEdit">
+            <label for="id">ID</label>
+            <input type="text" id="id" class="form-control" [(ngModel)]="complaint.id" name="id" readonly>
+        </div>
+
+        <!-- Champ Titre -->
+        <div class="mb-3">
+            <label for="title">Titre</label>
+            <input type="text" id="title" class="form-control" [(ngModel)]="complaint.title" name="title" required>
+        </div>
+
+        <!-- Champ Contenu -->
+        <div class="mb-3">
+            <label for="content">Contenu</label>
+            <textarea id="content" class="form-control" [(ngModel)]="complaint.content" name="content" required></textarea>
+        </div>
+
+        <!-- Champ Date -->
+        <div class="mb-3">
+            <label for="date">Date</label>
+            <input type="date" id="date" class="form-control" [(ngModel)]="complaint.dateComplaint" name="date" required>
+        </div>
+
+        <!-- Champ Statut -->
+        <div class="mb-3">
+            <label for="status">Statut</label>
+            <select id="status" class="form-control" [(ngModel)]="complaint.status" name="status" required>
+                <option value="Ouvert">Pending</option>
+                <option value="En cours">Approved</option>
+                <option value="Fermé">Rejected</option>
+            </select>
+        </div>
+
+        <!-- Bouton de soumission -->
+        <button type="submit" class="btn btn-success">Add</button>
+    </form>
+</div>

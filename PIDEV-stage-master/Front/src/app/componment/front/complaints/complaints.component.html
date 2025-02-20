@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>List of complaints</h2>
+    <button routerLink="/add-complaint" class="btn btn-primary">Add a complaint
+    </button>
+
+    <table class="table mt-3">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Contenu</th>
+            <th>Date</th>
+            <th>Statut</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let complaint of complaints">
+            <td>{{ complaint.id }}</td>
+            <td>{{ complaint.title }}</td>
+            <td>{{ complaint.content }}</td>
+            <td>{{ complaint.dateComplaint | date:'short' }}</td>
+            <td>{{ complaint.status }}</td>
+            <td>
+                <!-- Vérifier que complaint.id existe avant d'appeler routerLink -->
+                <button class="btn btn-warning"
+                        *ngIf="complaint.id !== undefined"
+                        [routerLink]="['/edit-complaint', complaint.id]">
+                    Modifier
+                </button>
+
+                <!-- Vérifier que complaint.id existe avant d'appeler deleteComplaint -->
+                <button class="btn btn-danger"
+                        *ngIf="complaint.id !== undefined"
+                        (click)="deleteComplaint(complaint.id!)">
+                    Supprimer
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
