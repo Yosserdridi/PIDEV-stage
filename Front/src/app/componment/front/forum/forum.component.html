@@ -1,23 +1,90 @@
-<form (ngSubmit)="addPost()">
-    <div class="form-group">
-      <label for="subject">Sujet :</label>
-      <input type="text" id="subject" [(ngModel)]="post.subject" name="subject" required />
+<!-- Formulaire d'ajout de post -->
+<form (ngSubmit)="addPost()" #postForm="ngForm">
+  <!-- Champ Sujet -->
+  <div class="form-group">
+    <label for="subject">Sujet :</label>
+    <input 
+      type="text" 
+      id="subject" 
+      [(ngModel)]="post.subject" 
+      name="subject" 
+      required
+      minlength="3"
+      #subject="ngModel"
+    />
+    <div class="error-message" *ngIf="subject.invalid && subject.touched">
+      <p *ngIf="subject.errors?.['required']">Le sujet est requis.</p>
+      <p *ngIf="subject.errors?.['minlength']">Le sujet doit contenir au moins 3 caractères.</p>
     </div>
-  
-    <div class="form-group">
-      <label for="content">Contenu :</label>
-      <textarea id="content" [(ngModel)]="post.content" name="content" required></textarea>
-    </div>
-  
-    <div class="form-group">
-      <label>
-        <input type="checkbox" [(ngModel)]="post.isAnonymous" name="isAnonymous" />
-        Publier en anonyme
-      </label>
-    </div>
-  
+  </div>
 
-  
-    <button type="submit">Ajouter</button>
-  </form>
-  
+  <!-- Champ Contenu -->
+  <div class="form-group">
+    <label for="content">Contenu :</label>
+    <textarea 
+      id="content" 
+      [(ngModel)]="post.content" 
+      name="content" 
+      required
+      minlength="5"
+      #content="ngModel"
+    ></textarea>
+    <div class="error-message" *ngIf="content.invalid && content.touched">
+      <p *ngIf="content.errors?.['required']">Le contenu est requis.</p>
+      <p *ngIf="content.errors?.['minlength']">Le contenu doit contenir au moins 5 caractères.</p>
+    </div>
+  </div>
+
+  <!-- Option Anonyme -->
+  <div class="form-group">
+    <label>
+      <input type="checkbox" [(ngModel)]="post.isAnonymous" name="isAnonymous" />
+      Publier en anonyme
+    </label>
+  </div>
+
+  <!-- Bouton Ajouter désactivé si formulaire invalide -->
+  <button type="submit" [disabled]="postForm.invalid">Ajouter</button>
+</form>
+
+
+<!-- Titre de la section des posts -->
+<h2 class="post-list-title">Liste des posts</h2>
+
+<!-- Liste des posts -->
+<div *ngIf="posts.length > 0; else noPosts">
+  <div *ngFor="let post of posts" class="post-card">
+    <h3 class="post-title">{{ post.subject }}</h3>
+    <p class="post-content">{{ post.content }}</p>
+    <p class="post-date"><strong>Date:</strong> {{ post.datePost | date:'short' }}</p>
+
+    <!-- Liste des commentaires -->
+    <div class="comments-section">
+      <h4>Commentaires :</h4>
+      <div *ngIf="post.comments.length > 0; else noComments">
+        <div *ngFor="let comment of post.comments" class="comment">
+          <p>{{ comment.description }}</p>
+        </div>
+      </div>
+      <ng-template #noComments>
+        <p>Aucun commentaire pour ce post.</p>
+      </ng-template>
+    </div>
+
+    <!-- Formulaire d'ajout de commentaire -->
+    <div class="add-comment-form">
+      <input 
+        type="text" 
+        [(ngModel)]="newComment[post.id!]" 
+        placeholder="Ajouter un commentaire"
+        *ngIf="post.id !== undefined"
+      />
+      <button (click)="addComment(post.id)">Commenter</button>
+    </div>
+  </div>
+</div>
+
+<!-- Message si aucun post n'est disponible -->
+<ng-template #noPosts>
+  <p class="no-posts-message">Aucun post pour le moment.</p>
+</ng-template>

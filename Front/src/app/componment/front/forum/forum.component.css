@@ -1,57 +1,198 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #3b1c1c; /* Softer dark red */
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+/* Centering the main container */
+.forum-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Form Styling */
 form {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
+  width: 90%;
+  max-width: 800px;
+  padding: 25px;
+  background: linear-gradient(145deg, #ee6b6e, #d95a5d); /* New red gradient */
+  border-radius: 12px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+/* Form Labels */
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+  color: #fff;
+  text-align: left;
+  width: 100%;
+}
+
+/* Input Fields */
+input[type="text"],
+textarea {
+  width: 100%;
+  max-width: 750px;
+  padding: 12px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  background: #fff;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Inputs Focus Effect */
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 8px rgba(238, 107, 110, 0.5); /* New soft red glow */
+}
+
+/* Button */
+button {
+  width: 100%;
+  max-width: 750px;
+  padding: 12px;
+  margin-top: 15px;
+  background: #ee6b6e; /* Primary button color */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 2px 10px rgba(238, 107, 110, 0.3);
+}
+
+button:hover {
+  background: #cc5658; /* Slightly darker version */
+  transform: scale(1.05);
+}
+
+button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+/* Error Messages */
+.error-message {
+  color: #ffb3b3; /* Softer pinkish red */
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Post Card Styling */
+.post-card {
+  width: 90%;
+  max-width: 800px;
+  background: linear-gradient(145deg, #ee6b6e, #d95a5d); /* New gradient */
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+  color: white;
+  text-align: left;
+  margin: 20px auto;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Fancy Post Title */
+.post-list-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  width: 100%;
+  color: black; /* Set to black */
+  text-transform: uppercase; /* Make it stand out */
+  letter-spacing: 2px; /* Add spacing for elegance */
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+  padding-bottom: 5px; /* Space under the text */
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  label {
-    font-weight: bold;
-    margin-top: 10px;
-    display: block;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  input[type="text"],
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  textarea {
-    min-height: 120px;
-    resize: vertical;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 15px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  button:hover {
-    background: #0056b3;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  input[type="file"] {
-    display: block;
-    margin-top: 5px;
-  }
-  
+}
+
+/* No Posts Message */
+.no-posts-message {
+  text-align: center;
+  font-size: 18px;
+  color: #e28b8b;
+}
+
+/* Post Content */
+.post-content {
+  font-size: 16px;
+  color: #ffd1d1;
+  margin-bottom: 15px;
+}
+
+/* Post Meta */
+.post-date,
+.post-likes {
+  font-size: 14px;
+  color: #ffbfbf;
+}
+
+/* Flexbox Centering */
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.search-bar {
+  margin-bottom: 15px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+

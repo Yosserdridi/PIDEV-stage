@@ -24,7 +24,7 @@ public class PostController {
     public void delete(@PathVariable Long id) {
       iPostService.delete(id);
     }
-    @GetMapping
+    @GetMapping("/getAll")
     public List<Post> getposts(){
         return iPostService.getAll();
     }
