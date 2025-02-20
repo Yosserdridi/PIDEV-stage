@@ -24,18 +24,15 @@ public class SummerInternship {
 
     private int duration;
 
-    private Date startDate;
+    private String internship_Certifcate;
 
-    private Date endDate;
 
     private String stauts;
-
-
 
 
     @OneToOne
     private InternshipConvention internshipConvention;
 
-    @OneToOne
-    Journal journal;
+  @OneToOne
+    private Files file;
 }

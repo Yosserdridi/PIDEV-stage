@@ -1,10 +1,9 @@
 package com.example.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.springframework.jmx.export.annotation.ManagedNotification;
 
 import javax.security.auth.Subject;
@@ -15,6 +14,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class InternshipConvention {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,12 +29,13 @@ public class InternshipConvention {
     private TypeInternship typeInternship;
     private Boolean isValid;
 
+
     @ManyToOne
-    Student student;
+    private  Student student;
 
     @OneToOne(mappedBy="internshipConvention")
-    SummerInternship summerInternship;
+    private  SummerInternship summerInternship;
 
     @OneToOne(mappedBy = "internshipConvention")
-    InternshipPFE internshipPFE;
+    private InternshipPFE internshipPFE;
 }
