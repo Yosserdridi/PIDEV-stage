@@ -19,8 +19,7 @@ import java.util.Set;
 public class Teacher extends User{
     private String registrationNumber;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Journal> journals;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="teacher")
     private Set<InternshipPFE> internshipPFEs;
@@ -30,4 +29,10 @@ public class Teacher extends User{
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Soutenance> soutenances;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Files> files;
+
+
+
 }
