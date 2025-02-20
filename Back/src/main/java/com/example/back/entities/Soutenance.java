@@ -28,4 +28,44 @@ public class Soutenance {
 
     private  int salleNumber;
     private String bloc;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getDateSoutenace() {
+        return dateSoutenace;
+    }
+
+    public void setDateSoutenace(Date dateSoutenace) {
+        this.dateSoutenace = dateSoutenace;
+    }
+
+    public LocalTime getHourSoutence() {
+        return hourSoutence;
+    }
+
+    public void setHourSoutence(LocalTime hourSoutence) {
+        this.hourSoutence = hourSoutence;
+    }
+
+    public int getSalleNumber() {
+        return salleNumber;
+    }
+
+    public void setSalleNumber(int salleNumber) {
+        this.salleNumber = salleNumber;
+    }
+
+    public String getBloc() {
+        return bloc;
+    }
+
+    public void setBloc(String bloc) {
+        this.bloc = bloc;
+    }
 }
