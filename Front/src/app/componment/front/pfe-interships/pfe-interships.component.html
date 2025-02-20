@@ -1,24 +1,112 @@
-<p>pfe-internships works!</p>
-<h2>Add Internship Convention</h2>
-<form (ngSubmit)="addInternship()">
-  <label>Company Name:</label>
-  <input type="text" [(ngModel)]="internship.companyName" name="companyName" required />
 
-  <label>Start Date:</label>
-  <input type="date" [(ngModel)]="internship.startDate" name="startDate" required />
+<h2>Internship Convention Request</h2>
+<form (ngSubmit)="addInternship()" #internshipForm="ngForm">
 
-  <label>End Date:</label>
-  <input type="date" [(ngModel)]="internship.endDate" name="endDate" required />
+  <!-- Company Name Field -->
+  <div class="form-group">
+    <label for="companyName">Company Name:</label>
+    <input 
+      type="text" 
+      id="companyName" 
+      [(ngModel)]="internship.companyName" 
+      name="companyName" 
+      required
+      minlength="3"
+      
+      #companyName="ngModel"
+    />
+    <div class="error-message" *ngIf="companyName.invalid && companyName.touched">
+      <p *ngIf="companyName.errors?.['required']">Le nom de l'entreprise est requis.</p>
+      <p *ngIf="companyName.errors?.['minlength']">le company name doit contenir au moins 3 caracteres.</p>
+    </div>
+  </div>
 
-  <label>Company Address:</label>
-  <input type="text" [(ngModel)]="internship.companyAddress" name="companyAddress" required />
+  <!-- Start Date Field -->
+  <div class="form-group">
+    <label for="startDate">Start Date:</label>
+    <input 
+      type="date" 
+      id="startDate" 
+      [(ngModel)]="internship.startDate" 
+      name="startDate" 
+      required
+      #startDate="ngModel"
+    />
+    <div class="error-message" *ngIf="startDate.invalid && startDate.touched">
+      <p *ngIf="startDate.errors?.['required']">La date de début est requise.</p>
+    </div>
+  </div>
 
-  <label>Company Contact:</label>
-  <input type="text" [(ngModel)]="internship.companyContact" name="companyContact" required />
+  <!-- End Date Field -->
+  <div class="form-group">
+    <label for="endDate">End Date:</label>
+    <input 
+      type="date" 
+      id="endDate" 
+      [(ngModel)]="internship.endDate" 
+      name="endDate" 
+      required
+      #endDate="ngModel"
+    />
+    <div class="error-message" *ngIf="endDate.invalid && endDate.touched">
+      <p *ngIf="endDate.errors?.['required']">La date de fin est requise.</p>
+    </div>
+  </div>
 
-  <label>Type of Internship:</label>
-  <select [(ngModel)]="internship.typeInternship" name="typeInternship" required>
-    <option *ngFor="let type of typeInternshipEnum" [value]="type">{{ type }}</option>
-  </select>
-  <button type="submit">Add Internship</button>
+  <!-- Company Address Field -->
+  <div class="form-group">
+    <label for="companyAddress">Company Address:</label>
+    <input 
+      type="text" 
+      id="companyAddress" 
+      [(ngModel)]="internship.companyAddress" 
+      name="companyAddress" 
+      required
+      minlength="10"
+      #companyAddress="ngModel"
+    />
+    <div class="error-message" *ngIf="companyAddress.invalid && companyAddress.touched">
+      <p *ngIf="companyAddress.errors?.['required']">L'adresse de l'entreprise est requise.</p>
+      <p *ngIf="companyAddress.errors?.['minlength']">le company name doit contenir au moins 10 caracteres.</p>
+    </div>
+  </div>
+
+  <!-- Company Contact Field -->
+  <div class="form-group">
+    <label for="companyContact">Company Contact:</label>
+    <input 
+      type="text" 
+      id="companyContact" 
+      [(ngModel)]="internship.companyContact" 
+      name="companyContact" 
+      required
+      minlength="8"
+      #companyContact="ngModel"
+    />
+    <div class="error-message" *ngIf="companyContact.invalid && companyContact.touched">
+      <p *ngIf="companyContact.errors?.['required']">Le contact de l'entreprise est requis.</p>
+      <p *ngIf="companyContact.errors?.['minlength']">le company name doit contenir au moins 8 caracteres.</p>
+    </div>
+  </div>
+
+  <!-- Type of Internship Field -->
+  <div class="form-group">
+    <label for="typeInternship">Type of Internship:</label>
+    <select 
+      id="typeInternship" 
+      [(ngModel)]="internship.typeInternship" 
+      name="typeInternship" 
+      required
+      #typeInternship="ngModel"
+    >
+      <option *ngFor="let type of typeInternshipEnum" [value]="type">{{ type }}</option>
+    </select>
+    <div class="error-message" *ngIf="typeInternship.invalid && typeInternship.touched">
+      <p *ngIf="typeInternship.errors?.['required']">Le type de stage est requis.</p>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" [disabled]="internshipForm.invalid">Add Internship</button>
+
 </form>

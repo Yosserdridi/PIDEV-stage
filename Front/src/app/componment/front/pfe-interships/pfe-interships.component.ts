@@ -14,7 +14,8 @@ export class PfeIntershipsComponent {
     endDate: new Date(),    // Initialize as Date object
     companyAddress: '',
     companyContact: '',
-    typeInternship: TypeInternship.INTERNSHIP_PFE, // Default to an enum value
+    typeInternship: TypeInternship.INTERNSHIP_PFE,
+    studentFirstName : '' // Default to an enum value
   };
 
   constructor(private internshipService: InternshipConventionService) {}

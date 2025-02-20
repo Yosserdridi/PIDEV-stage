@@ -12,16 +12,25 @@ export interface InternshipConvention {
   companyAddress: string;
   companyContact: string;
   typeInternship: TypeInternship; 
-
+  studentFirstName : string ;
 }
 @Injectable({
   providedIn: 'root'
 })
 export class InternshipConventionService {
 
-  private apiUrl = 'http://localhost:9091/stage/internships/add';
+  private baseUrl = 'http://localhost:9091/stage/internships';
+  private studentId = 3 ;
+  
   constructor(private http: HttpClient) { }
-  addInternship(internship: InternshipConvention): Observable<InternshipConvention> {
-    return this.http.post<InternshipConvention>(this.apiUrl, internship);
+  
+  addInternship(internship: InternshipConvention): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/add/${this.studentId}`, internship, { responseType: 'text' as 'json' });
+  }
+
+  
+
+  getAllConventions(): Observable<InternshipConvention[]> {
+    return this.http.get<InternshipConvention[]>(`${this.baseUrl}/getAllWithStudentName`);
   }
 }

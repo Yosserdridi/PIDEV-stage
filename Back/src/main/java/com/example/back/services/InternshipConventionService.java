@@ -1,5 +1,6 @@
 package com.example.back.services;
 
+import com.example.back.DTO.InternshipConventionDTO;
 import com.example.back.entities.InternshipConvention;
 import com.example.back.entities.Student;
 import com.example.back.reopsitory.InternshipConventionRepository;
@@ -52,5 +53,9 @@ public class InternshipConventionService implements IInternshipConventionService
         internshipConvention.setStudent(student);
 
         return internshipConventionRepository.save(internshipConvention);
+    }
+
+    public List<InternshipConventionDTO> getAllInternshipConventionsWithStudentFirstName() {
+        return internshipConventionRepository.findAllInternshipConventionsWithStudentFirstName();
     }
 }

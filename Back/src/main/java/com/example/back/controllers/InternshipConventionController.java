@@ -1,5 +1,6 @@
 package com.example.back.controllers;
 
+import com.example.back.DTO.InternshipConventionDTO;
 import com.example.back.entities.InternshipConvention;
 import com.example.back.services.IInternshipConventionService;
 import lombok.AllArgsConstructor;
@@ -7,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -36,15 +39,23 @@ public class InternshipConventionController {
     }
 
     @PostMapping("/add/{studentId}")
-    public ResponseEntity<String> addInternshipConvention(
+    public ResponseEntity<Map<String, String>> addInternshipConvention(
             @PathVariable Long studentId,
             @RequestBody InternshipConvention internshipConvention) {
         try {
             internshipConventionService.addInternshipConvention(studentId, internshipConvention);
-            return new ResponseEntity<>("Internship Convention successfully added.", HttpStatus.CREATED);
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Internship Convention successfully added.");
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (RuntimeException ex) {
-            return new ResponseEntity<>("Error: " + ex.getMessage(), HttpStatus.BAD_REQUEST); // Handle errors
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Error: " + ex.getMessage());
+            return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
         }
+    }
+    @GetMapping("/getAllWithStudentName")
+    public List<InternshipConventionDTO> getAllInternshipConventions() {
+        return internshipConventionService.getAllInternshipConventionsWithStudentFirstName();
     }
 
 }
