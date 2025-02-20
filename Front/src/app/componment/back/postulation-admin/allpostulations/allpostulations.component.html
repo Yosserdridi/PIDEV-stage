@@ -1,0 +1,19 @@
+<div class="postulations-container">
+    <h2>All Postulations </h2>
+  
+    <div *ngIf="postulations.length > 0; else noPostulations">
+      <div class="postulation-card" *ngFor="let postulation of postulations">
+        <p><strong>Status:</strong> {{ postulation.status }}</p>
+        <p><strong>Date:</strong> {{ postulation.postulationDate | date:'yyyy-MM-dd' }}</p>
+        <p><strong>Comment:</strong> {{ postulation.comment }}</p>
+ 
+        <button class="btn btn-secondary mb-3" >Accept</button>
+        <button class="btn btn-danger mb-3" >Reject </button>
+      </div>
+    </div>
+  
+    <ng-template #noPostulations>
+      <p>No postulations found for this subject.</p>
+    </ng-template>
+  </div>
+  

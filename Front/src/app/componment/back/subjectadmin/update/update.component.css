@@ -1,0 +1,115 @@
+/* Wrapper for the entire form */
+form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 1cm;
+  }
+  
+  /* Form title */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0086FB;
+    font-size: 24px;
+    margin-top: 3cm;
+  }
+  
+  /* Label for the input fields */
+  label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  /* Styling for input fields */
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Styling for the textarea */
+  textarea {
+    resize: vertical;
+    height: 150px;
+  }
+  
+  /* Button styles */
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #0086FB;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #00D3D6;
+  }
+  
+  /* Back button */
+  button[type="button"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #1976D2;
+  }
+  
+  /* Disabled button */
+  button[disabled] {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  /* Add some space between form elements */
+  div {
+    margin-bottom: 20px;
+  }
+  
+  /* Focus state for input fields */
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #00D3D6;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 600px) {
+    form {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 20px;
+    }
+  
+    button {
+      padding: 10px;
+    }
+  }
+  

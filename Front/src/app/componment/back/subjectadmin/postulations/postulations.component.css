@@ -1,0 +1,38 @@
+.postulations-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 3cm;
+
+  }
+  
+  h2 {
+    color: #0086FB;
+  }
+  
+  .postulation-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  strong {
+    color: #0086FB;
+  }
+  
+  ng-template {
+    text-align: center;
+    font-size: 1.2em;
+    color: #888;
+  }
+  button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
