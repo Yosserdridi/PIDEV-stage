@@ -1,19 +1,22 @@
 <div class="postulations-container">
-    <h2>All Postulations </h2>
-  
-    <div *ngIf="postulations.length > 0; else noPostulations">
-      <div class="postulation-card" *ngFor="let postulation of postulations">
-        <p><strong>Status:</strong> {{ postulation.status }}</p>
-        <p><strong>Date:</strong> {{ postulation.postulationDate | date:'yyyy-MM-dd' }}</p>
-        <p><strong>Comment:</strong> {{ postulation.comment }}</p>
- 
-        <button class="btn btn-secondary mb-3" >Accept</button>
-        <button class="btn btn-danger mb-3" >Reject </button>
-      </div>
+  <h2>All Postulations</h2>
+
+  <div *ngIf="postulations.length > 0; else noPostulations">
+    <div class="postulation-card" *ngFor="let postulation of postulations">
+      <p><strong>Title:</strong> {{ postulation.titrecandidature }}</p>
+      <p><strong>Motivation Letter:</strong> {{ postulation.lettremotivation }}</p>
+      <p><strong>Region:</strong> {{ postulation.region }}</p>
+      <p><strong>Date:</strong> {{ postulation.postulationDate | date:'yyyy-MM-dd' }}</p>
+      <p><strong>Comment:</strong> {{ postulation.comment }}</p>
+      <p><strong>Status:</strong> {{ getStatusLabel(postulation.status) }}</p>
+
+      <!-- Only display buttons if status is 0 (Pending) -->
+      <button *ngIf="postulation.status === 0" class="btn btn-secondary mb-3" (click)="acceptPostulation(postulation.id)">Accept</button>
+      <button *ngIf="postulation.status === 0" class="btn btn-danger mb-3" (click)="rejectPostulation(postulation.id)">Reject</button>
     </div>
-  
-    <ng-template #noPostulations>
-      <p>No postulations found for this subject.</p>
-    </ng-template>
   </div>
-  
+
+  <ng-template #noPostulations>
+    <p>No postulations found for this subject.</p>
+  </ng-template>
+</div>

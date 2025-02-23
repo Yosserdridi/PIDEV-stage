@@ -24,9 +24,10 @@ export class PostulationService {
 
   // Ajouter une nouvelle postulation
   addPostulation(postulation: postulation): Observable<postulation> {
-    return this.http.post<postulation>(`${this.baseUrl}/addPos`, postulation);
+    return this.http.post<postulation>(`${this.baseUrl}/addPos?idsujet=${postulation.idsujet}`, postulation);
   }
 
+  
   // Supprimer une postulation par son ID
   deletePostulation(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/remove/${id}`);

@@ -29,14 +29,14 @@ export class IntershipOfferService {
   }
 
   updateOffer(offer: intershipoffer): Observable<intershipoffer> {
-    return this.http.put<intershipoffer>(`http://localhost:9091/offer/modify-off/${offer.id}`, offer);
+    return this.http.put<intershipoffer>(`http://localhost:9091/offer/modify-off/${offer.idsujet}`, offer);
   }
   
     
 
   // Delete an internship offer
   deleteOffer(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/remove/off/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/rezmove/off/${id}`);
   }
   
   

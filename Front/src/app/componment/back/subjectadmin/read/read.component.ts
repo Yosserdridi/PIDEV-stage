@@ -12,24 +12,21 @@ export class ReadadminComponent implements OnInit {
   sujets: intershipoffer[] = [];
   filteredSujets: intershipoffer[] = [];
   searchTerm: string = '';
-  sujetIndexToEdit: number = -1;
   message: string = '';
-  selectedSujet: intershipoffer | null = null;
 
   constructor(private sujetService: IntershipOfferService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchSujets();
   }
-
   fetchSujets(): void {
     this.sujetService.getAllOffers().subscribe(sujets => {
+      console.log("Fetched sujets:", sujets); // Debugging
       this.sujets = sujets;
       this.filteredSujets = sujets;  
-      console.log(sujets);
     });
- 
   }
+  
 
   filterSujets(): void {
     this.filteredSujets = this.sujets.filter(sujet =>
@@ -42,45 +39,26 @@ export class ReadadminComponent implements OnInit {
       console.error("Error: The subject ID is undefined.");
       return;
     }
-  
-    console.log("Deleting subject with ID:", idSujet);
-  
     this.sujetService.deleteOffer(idSujet).subscribe(() => {
       this.message = "Suppression effectuée avec succès.";
       this.fetchSujets();
     });
   }
-  
 
-  afficherFormulaireModifier(index: number): void {
-    const id = this.sujets[index].id;  
-    this.router.navigate(['/adminsujetedit', id]);
+  afficherFormulaireModifier(sujet: intershipoffer): void {
+    console.log("Editing sujet:", sujet); // Debugging
+    if (sujet && sujet.idsujet !== undefined) {
+      this.router.navigate(['/adminsujetedit', sujet.idsujet]);
+    } else {
+      console.error("Invalid sujet or ID missing:", sujet);
+    }
   }
   
-
-  modifierSujet(sujet: intershipoffer): void {
-    this.sujetService.updateOffer(sujet).subscribe(() => {
-      this.sujetIndexToEdit = -1;
-      this.selectedSujet = null;
-      this.message = "Modification effectuée avec succès.";
-      this.fetchSujets();
-    });
-  }
-
   ajouterSujet(): void {
     this.router.navigate(['/adminsujetcreate']);
   }
 
-     // Navigate to the postulations page with the corresponding idsujet
-    displayPostulations(idsujet: number): void {
-      this.router.navigate(['/postulationbysujet', idsujet]);
-    }
-
-
-
-  logSujetId(id: number | undefined): void {
-    console.log("Deleting subject with ID:", id);
+  displayPostulations(idsujet: number): void {
+    this.router.navigate(['/postulationbysujet', idsujet]);
   }
-  
-
 }

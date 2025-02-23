@@ -9,7 +9,7 @@ export enum TypeInternship {
 
 }
 export class intershipoffer {
-  id!: number;
+  idsujet!: number;
   title!: string;
   description!: string;
   location!: string;

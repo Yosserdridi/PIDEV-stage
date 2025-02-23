@@ -26,6 +26,28 @@ export class AllPostulationsComponent implements OnInit {
         console.error('Error fetching postulations:', error);
       }
     );
-    console.log(this.postulations);
+  }
+
+  getStatusLabel(status: number): string {
+    switch (status) {
+      case 0:
+        return 'Pending';
+      case 1:
+        return 'Accepted';
+      case 2:
+        return 'Rejected';
+      default:
+        return 'Unknown';
+    }
+  }
+
+  acceptPostulation(id: number): void {
+    // Add the accept postulation logic
+    console.log(`Postulation ${id} accepted`);
+  }
+
+  rejectPostulation(id: number): void {
+    // Add the reject postulation logic
+    console.log(`Postulation ${id} rejected`);
   }
 }

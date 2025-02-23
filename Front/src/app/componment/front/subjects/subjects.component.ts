@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IntershipOfferService } from 'src/app/Services/IntershipOffer/intership-offer-services.service';
+  import { IntershipOfferService } from 'src/app/Services/IntershipOffer/intership-offer-services.service';
 import { intershipoffer } from 'src/app/models/intershipoffer';
 import { Router } from '@angular/router';
 
@@ -52,9 +52,9 @@ export class SubjectsComponent implements OnInit {
   }
   
 
-  afficherFormulaireModifier(index: number): void {
-    const id = this.sujets[index].id;  
-    this.router.navigate(['/adminsujetedit', id]);
+  postulate(index: number): void {
+    const id = this.sujets[index].idsujet;
+    this.router.navigate(['/create/postulation', id]);
   }
   
 

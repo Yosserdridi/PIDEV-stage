@@ -1,5 +1,6 @@
 package com.example.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,14 +21,18 @@ public class Postulation {
     private int status ;
     private Date PostulationDate ;
     private String comment;
-    private Long idsujet;
+   // private Long idsujet;
+    private String titrecandidature;
+    private String region;
+    private String lettremotivation;
 
-    /*
+
     @ManyToOne
-    IntershipOffer intershipOffer ;
-    @ManyToOne
-    Student student ;
-*/
+    @JoinColumn(name = "idsujet")
+    @JsonIgnore
+    private IntershipOffer intershipOffer;
+
+
 
 
 }

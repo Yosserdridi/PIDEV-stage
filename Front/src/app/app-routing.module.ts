@@ -19,7 +19,8 @@ import { ReadadminComponent } from './componment/back/subjectadmin/read/read.com
 import { CreateadminComponent } from './componment/back/subjectadmin/create/create.component';
 import { UpdateadminComponent } from './componment/back/subjectadmin/update/update.component';
 import { PostulationsSpComponent } from './componment/back/subjectadmin/postulations/postulations.component';
- 
+import { AddPComponent } from './componment/front/postulations/add/add.component';
+
 const routes: Routes = [
 
   
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'postulationbysujet/:idsujet', component: PostulationsSpComponent },
   {path: 'postulationsadmin', component: AllPostulationsComponent},
  
+  {path: 'create/postulation/:idsujet', component: AddPComponent},
 
 
 

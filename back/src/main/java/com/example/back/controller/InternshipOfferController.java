@@ -47,7 +47,7 @@ public class InternshipOfferController {
 
     @PutMapping("/modify-off/{id}")
     public IntershipOffer updatePos(@PathVariable("id") Long id, @RequestBody IntershipOffer off) {
-        off.setId(id); // Ensure the ID of the offer is included in the request
+        off.setIdsujet(id); // Ensure the ID of the offer is included in the request
         return iInternshipOfferservice.updatePos(off);
     }
 

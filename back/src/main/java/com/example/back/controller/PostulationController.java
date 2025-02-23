@@ -30,11 +30,13 @@ public class PostulationController {
         return postulationService.retrievePos(id);
     }
 
-    @PostMapping("/addPos")
-    public Postulation addPos(@RequestBody Postulation pos) {
-        Postulation postulation = postulationService.addPos(pos);
-        return postulation;
-    }
+        @PostMapping("/addPos")
+        public Postulation addPos(@RequestBody Postulation pos, @RequestParam Long idsujet) {
+            // Call the service method and pass the Postulation and idsujet
+            Postulation postulation = postulationService.addPos(pos, idsujet);
+            return postulation;
+        }
+
 
     @DeleteMapping("/remove/{id}")
     public void removePos(@PathVariable ("id") Long id) {postulationService.deletePos(id);}

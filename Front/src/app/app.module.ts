@@ -25,6 +25,7 @@ import { ReadadminComponent } from './componment/back/subjectadmin/read/read.com
 import { UpdateadminComponent } from './componment/back/subjectadmin/update/update.component';
 import { PostulationsSpComponent } from './componment/back/subjectadmin/postulations/postulations.component';
 import { AllPostulationsComponent } from './componment/back/postulation-admin/allpostulations/allpostulations.component';
+import { AddPComponent } from './componment/front/postulations/add/add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { AllPostulationsComponent } from './componment/back/postulation-admin/al
     ReadadminComponent,
     UpdateadminComponent,
     PostulationsSpComponent,
-    AllPostulationsComponent
+    AllPostulationsComponent,
+    AddPComponent
     
     
     

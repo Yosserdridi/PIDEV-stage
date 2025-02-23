@@ -52,7 +52,7 @@ public class InternshipOfferService implements IInternshipOfferservice {
 
     public IntershipOffer updatePos(IntershipOffer id) {
         // Retrieve the existing IntershipOffer from the database
-        IntershipOffer existingOffer = internshipOfferRepository.findById(id.getId()).orElse(null);
+        IntershipOffer existingOffer = internshipOfferRepository.findById(id.getIdsujet()).orElse(null);
 
         if (existingOffer != null) {
             // Update only the changed fields

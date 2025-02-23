@@ -1,39 +1,86 @@
 .postulations-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    margin-top: 3cm;
-  }
-  
-  h2 {
-    color: #0086FB;
-  }
-  
-  .postulation-card {
-    background-color: #fff;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 3cm;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2 {
+  color: #0086FB;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.postulation-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.postulation-card:hover {
+  transform: scale(1.02);
+}
+
+strong {
+  color: #0086FB;
+}
+
+ng-template {
+  text-align: center;
+  font-size: 1.2em;
+  color: #888;
+  font-style: italic;
+}
+
+button {
+  padding: 12px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  border: none;
+}
+
+button.btn-secondary {
+  background-color: #0086FB;
+  color: white;
+}
+
+button.btn-secondary:hover {
+  background-color: #006bb3;
+  transform: translateY(-2px);
+}
+
+button.btn-danger {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+button.btn-danger:hover {
+  background-color: #cc0000;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .postulations-container {
     padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 2cm;
   }
-  
-  strong {
-    color: #0086FB;
+
+  .postulation-card {
+    padding: 15px;
+    margin-bottom: 15px;
   }
-  
-  ng-template {
-    text-align: center;
-    font-size: 1.2em;
-    color: #888;
-  }
-  
 
   button {
     padding: 10px 15px;
-    margin-right: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    font-size: 14px;
   }
-  
+}

@@ -4,22 +4,21 @@
       <div class="main-content">
         <div class="row">
           <div class="col-md-12">
-            <input type="text" (input)="filterSujets()" placeholder="Search by company name">
+            <input type="text" (input)="filterSujets()" [(ngModel)]="searchTerm" placeholder="Search by company name">
           </div>
           <div class="col-md-12">
             <button class="btn btn-primary btn-sky-blue mb-3" (click)="ajouterSujet()">Add a Subject</button>
 
             <div class="card">
               <div class="card-header card-header-danger">
-                <h4 class="card-title">Subjects   </h4>
+                <h4 class="card-title">Subjects</h4>
                 <p class="card-category">Manage Subjects</p>
               </div>
               <div class="card-body">
                 <div *ngIf="message" class="alert alert-success">{{ message }}</div>
                 <div *ngFor="let sujet of filteredSujets; let i = index" class="sujet-item">
- 
-                   <h2>{{ sujet.title }}</h2>
-                  <p><strong>Descripton:</strong> {{ sujet.description }}</p>
+                  <h2>{{ sujet.title }}</h2>
+                  <p><strong>Description:</strong> {{ sujet.description }}</p>
                   <p><strong>Duration:</strong> {{ sujet.duration }}</p>
                   <p><strong>Location:</strong> {{ sujet.location }}</p>
                   <p><strong>Contact:</strong> {{ sujet.companymail }}</p>
@@ -28,12 +27,10 @@
                   <p><strong>Requirements:</strong> {{ sujet.requirements }}</p>
                   <p><strong>Subject type:</strong> {{ sujet.typeInternship }}</p>
 
-                  <button class="btn btn-primary btn-sky-blue mb-3" (click)="afficherFormulaireModifier(i)">Edit</button>
+                  <button class="btn btn-primary btn-sky-blue mb-3" (click)="afficherFormulaireModifier(sujet)">Edit</button>
 
-                 
-                  <button class="btn btn-danger mb-3" (click)="supprimerSujet(sujet.id)">Delete</button>
-                  
-                  <button class="btn btn-secondary mb-3" (click)="displayPostulations(sujet.id)">Show Postulations</button>
+                  <button class="btn btn-danger mb-3" (click)="supprimerSujet(sujet.idsujet)">Delete</button>
+                  <button class="btn btn-secondary mb-3" (click)="displayPostulations(sujet.idsujet)">Show Postulations</button>
                 </div>
               </div>
             </div>

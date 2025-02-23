@@ -16,7 +16,7 @@ import java.util.Set;
 public class IntershipOffer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idsujet;
     private String title;
     private String description ;
     private int duration ;
@@ -29,14 +29,9 @@ public class IntershipOffer {
     private TypeInternship typeInternship ;
 
 
-  /*
-    @ManyToOne
-    Company company;
-
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy="intershipOffer")
     private Set<Postulation> postulations ;
-*/
+
 
 
 }
