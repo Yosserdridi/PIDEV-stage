@@ -13,15 +13,24 @@ import { Restitution } from 'src/app/models/restitution.model';
   styleUrls: ['./pfe-interships.component.css']
 })
 export class PfeIntershipsComponent {
+
   student!: Student;
 
-
+  pipelineSteps = [
+    { label: 'Lancement Stage PFE', icon: '📝', active: true },
+    { label: 'Demande Convention', icon: '📄', active: true },
+    { label: 'Dépot de Stage', icon: '📂', active: false },
+    { label: 'Lancement Restitution', icon: '🎤', active: false },
+    { label: 'Dépot Rapport Final', icon: '📑', active: false }
+  ];
+  
   
 
   constructor(private studentService: StudentService) {}
 
   ngOnInit(): void {
-    this.getStudent(1); // Fetch student with ID 1
+    this.getStudent(1);
+
   }
 
   getStudent(id: number): void {
@@ -114,6 +123,10 @@ export class PfeIntershipsComponent {
       }
     );
   }
-  
 
 }
+
+  
+
+  
+

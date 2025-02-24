@@ -1,3 +1,9 @@
+<div class="pipeline">
+  <div *ngFor="let step of pipelineSteps; let i = index" class="pipeline-step" [class.active]="step.active">
+    <div class="icon">{{ step.icon }}</div>
+    <p>{{ step.label }}</p>
+  </div>
+</div>
 <div *ngIf="student">
   <h2>{{ student.firstName }} {{ student.lastName }}</h2>
   <p>Email: {{ student.email }}</p>
