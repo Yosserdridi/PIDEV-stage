@@ -136,54 +136,39 @@
                       <div class="row">
                         <div class="col-12 grid-margin stretch-card">
                           <div class="card card-rounded">
-                            <div class="card-body">
-                              <div class="d-sm-flex justify-content-between align-items-start">
-                                <h4 class="card-title">Internship Conventions</h4>
-                              </div>
-                              <div class="table-responsive mt-3">
-                                <table class="table table-bordered">
-                                  <thead>
-                                    <tr>
-                                      <th>Last Name</th>
-                                      <th>First Name</th>
-                                      <th>Email</th>
-                                      <th>Internship Details</th>
-                                      <th>Action</th> <!-- Add a new column for the button -->
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr *ngFor="let student of students">
-                                      <td>{{ student.lastName }}</td>
-                                      <td>{{ student.firstName }}</td>
-                                      <td>{{ student.email }}</td>
+                            <!-- student-details.component.html -->
+                            <div class="container">
+                                <div *ngIf="student">
+                                  <h2>{{ student.firstName }} {{ student.lastName }}</h2>
+                                  <p>Email: {{ student.email }}</p>
+                              
+                                  <h3>Internship Conventions</h3>
+                                  <div *ngFor="let internship of student.internshipConventions">
+                                    <h4>{{ internship.companyName }}</h4>
+                                    <p>Type: {{ internship.typeInternship }}</p>
+                                    <p>Start Date: {{ internship.startDate | date:'yyyy-MM-dd' }}</p>
+                                    <p>End Date: {{ internship.endDate | date:'yyyy-MM-dd' }}</p>
+                              
+                                    <!-- Internship PFE details -->
+                                    <div *ngIf="internship.internshipPFE">
+                                      <h4>Internship PFE</h4>
+                                      <p>Title: {{ internship.internshipPFE.title }}</p>
+                                      <p>Description: {{ internship.internshipPFE.description }}</p>
                                       
-                                      <!-- Internship details -->
-                                      <td>
-                                        <div *ngIf="student.internshipConventions?.length; else noInternships">
-                                          <ul>
-                                            <li *ngFor="let convention of student.internshipConventions">
-                                              {{ convention.typeInternship }} - {{ convention.companyName }} 
-                                              ({{ convention.startDate | date:'yyyy-MM-dd' }} to {{ convention.endDate | date:'yyyy-MM-dd' }})
-                                            </li>
-                                          </ul>
-                                        </div>
-                                        
-                                        <!-- Fallback for students without internships -->
-                                        <ng-template #noInternships>
-                                          <span>No Internship</span>
-                                        </ng-template>
-                                      </td>
-                                
-                                      <!-- Add the action button -->
-                                      <td>
-                                        <button class="btn btn-info" (click)="showStudentDetails(student.id)">Show Details</button>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>                                
-                              </div>
-                                                        
-                            </div>
+                                      <!-- Restitution details if available -->
+                                      <div *ngIf="internship.internshipPFE.restitution">
+                                        <h5>Restitution Information</h5>
+                                        <p><strong>Subject:</strong> {{ internship.internshipPFE.restitution.subject }}</p>
+                                        <p><strong>Task:</strong> {{ internship.internshipPFE.restitution.task }}</p>
+                                        <p><strong>Technology:</strong> {{ internship.internshipPFE.restitution.technology }}</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              
+                                <!-- Button to return to PFE Internships page -->
+                                <button class="btn btn-primary mt-3" (click)="goBack()">Return to PFE Internships</button>
+                              </div>                              
                           </div>
                         </div>
                       </div>
@@ -226,3 +211,4 @@
     <!-- End custom js for this page-->
   </body>
 </html>
+  

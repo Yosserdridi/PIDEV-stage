@@ -24,7 +24,9 @@ public class Student extends User{
     @OneToMany(cascade = CascadeType.ALL, mappedBy="student")
     private Set<Postulation> postulations;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="student")
+
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<InternshipConvention> internshipConventions ;
+
 
 }

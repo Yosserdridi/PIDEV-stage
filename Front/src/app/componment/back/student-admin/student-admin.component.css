@@ -1,0 +1,81 @@
+.container {
+    margin-top: 30px;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #0056b3; /* Title color for the student's name */
+  }
+  
+  h3 {
+    font-size: 22px;
+    color: #007bff; /* Title color for Internship Conventions */
+  }
+  
+  h4 {
+    font-size: 18px;
+    color: #28a745; /* Title color for Internship Company Name */
+  }
+  
+  p {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  button:active {
+    background-color: #003366;
+  }
+  
+  /* Student and internship section styling */
+  .student-details, .internship-details {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .student-details h2, .student-details p {
+    font-size: 18px;
+  }
+  
+  .student-details h3 {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  
+  .internship-details h4 {
+    font-size: 18px;
+    margin-top: 15px;
+  }
+  
+  .internship-details p {
+    font-size: 16px;
+  }
+  
+  .internship-details div {
+    margin-top: 10px;
+  }
+  

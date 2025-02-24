@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Student } from 'src/app/models/student.model';
 import { InternshipConvention, InternshipConventionService } from 'src/app/services/internship-convention.service';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-pfe-admin',
@@ -8,13 +11,31 @@ import { InternshipConvention, InternshipConventionService } from 'src/app/servi
 })
 export class PfeAdminComponent {
 
-  conventions: InternshipConvention[] = [];
+  students: Student[] = [];
 
-  constructor(private conventionService: InternshipConventionService) {}
+  constructor(private conventionService: InternshipConventionService,
+    private studentService: StudentService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.conventionService.getAllConventions().subscribe((data) => {
-      this.conventions = data;
-    });
+
+    this.getAllStudents(); 
+
+  }
+
+  getAllStudents(): void {
+    this.studentService.getAllStudents().subscribe(
+      (data: Student[]) => {
+        this.students = data;  // Store the fetched students in the students array
+      },
+      (error: any) => {
+        console.error('Error fetching students:', error);
+      }
+    );
+  }
+
+  showStudentDetails(studentId: number): void {
+    this.router.navigate(['/student', studentId]);  // Navigate to the details page, passing the student ID
   }
 }

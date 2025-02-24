@@ -1,112 +1,51 @@
+<div *ngIf="student">
+  <h2>{{ student.firstName }} {{ student.lastName }}</h2>
+  <p>Email: {{ student.email }}</p>
 
-<h2>Internship Convention Request</h2>
-<form (ngSubmit)="addInternship()" #internshipForm="ngForm">
+  <h3>Internship Conventions</h3>
+  <div *ngFor="let internship of student.internshipConventions">
+    <h4>{{ internship.companyName }}</h4>
+    <p>Type: {{ internship.typeInternship }}</p>
+    <p>Start Date: {{ internship.startDate }}</p>
+    <p>End Date: {{ internship.endDate }}</p>
 
-  <!-- Company Name Field -->
-  <div class="form-group">
-    <label for="companyName">Company Name:</label>
-    <input 
-      type="text" 
-      id="companyName" 
-      [(ngModel)]="internship.companyName" 
-      name="companyName" 
-      required
-      minlength="3"
+    <button (click)="generatePDF()">Generate PDF</button>
+    <div *ngIf="internship.internshipPFE">
+      <h4>Internship PFE</h4>
+      <p>Title: {{ internship.internshipPFE.title }}</p>
+      <p>Description: {{ internship.internshipPFE.description }}</p>
       
-      #companyName="ngModel"
-    />
-    <div class="error-message" *ngIf="companyName.invalid && companyName.touched">
-      <p *ngIf="companyName.errors?.['required']">Le nom de l'entreprise est requis.</p>
-      <p *ngIf="companyName.errors?.['minlength']">le company name doit contenir au moins 3 caracteres.</p>
+      <!-- Check if there is an existing restitution for this internship -->
+      <div *ngIf="internship.internshipPFE.restitution">
+        <!-- Display the existing restitution details -->
+        <h5>Restitution Information</h5>
+        <p><strong>Subject:</strong> {{ internship.internshipPFE.restitution.subject }}</p>
+        <p><strong>Task:</strong> {{ internship.internshipPFE.restitution.task }}</p>
+        <p><strong>Technology:</strong> {{ internship.internshipPFE.restitution.technology }}</p>
+      </div>
+      
+      <!-- If no restitution exists, show the "Add Restitution" button -->
+      <div *ngIf="!internship.internshipPFE.restitution">
+        <button (click)="toggleForm(internship.internshipPFE.id)">Add Restitution</button>
+      </div>
+
+      <!-- Show form only if the selectedInternshipId matches -->
+      <div *ngIf="selectedInternshipId === internship.internshipPFE.id">
+        <h4>Add Restitution</h4>
+        <form *ngIf="restitution" (ngSubmit)="addRestitution(internship.internshipPFE.id)">
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" [(ngModel)]="restitution.subject" name="subject" required />
+          
+          <label for="task">Task:</label>
+          <textarea id="task" [(ngModel)]="restitution.task" name="task" required></textarea>
+          
+          <label for="technology">Technology:</label>
+          <input type="text" id="technology" [(ngModel)]="restitution.technology" name="technology" required />
+          
+          <button type="submit">Submit</button>
+          <button type="button" (click)="toggleForm(null)">Cancel</button>
+        </form>
+      </div>
     </div>
   </div>
-
-  <!-- Start Date Field -->
-  <div class="form-group">
-    <label for="startDate">Start Date:</label>
-    <input 
-      type="date" 
-      id="startDate" 
-      [(ngModel)]="internship.startDate" 
-      name="startDate" 
-      required
-      #startDate="ngModel"
-    />
-    <div class="error-message" *ngIf="startDate.invalid && startDate.touched">
-      <p *ngIf="startDate.errors?.['required']">La date de début est requise.</p>
-    </div>
-  </div>
-
-  <!-- End Date Field -->
-  <div class="form-group">
-    <label for="endDate">End Date:</label>
-    <input 
-      type="date" 
-      id="endDate" 
-      [(ngModel)]="internship.endDate" 
-      name="endDate" 
-      required
-      #endDate="ngModel"
-    />
-    <div class="error-message" *ngIf="endDate.invalid && endDate.touched">
-      <p *ngIf="endDate.errors?.['required']">La date de fin est requise.</p>
-    </div>
-  </div>
-
-  <!-- Company Address Field -->
-  <div class="form-group">
-    <label for="companyAddress">Company Address:</label>
-    <input 
-      type="text" 
-      id="companyAddress" 
-      [(ngModel)]="internship.companyAddress" 
-      name="companyAddress" 
-      required
-      minlength="10"
-      #companyAddress="ngModel"
-    />
-    <div class="error-message" *ngIf="companyAddress.invalid && companyAddress.touched">
-      <p *ngIf="companyAddress.errors?.['required']">L'adresse de l'entreprise est requise.</p>
-      <p *ngIf="companyAddress.errors?.['minlength']">le company name doit contenir au moins 10 caracteres.</p>
-    </div>
-  </div>
-
-  <!-- Company Contact Field -->
-  <div class="form-group">
-    <label for="companyContact">Company Contact:</label>
-    <input 
-      type="text" 
-      id="companyContact" 
-      [(ngModel)]="internship.companyContact" 
-      name="companyContact" 
-      required
-      minlength="8"
-      #companyContact="ngModel"
-    />
-    <div class="error-message" *ngIf="companyContact.invalid && companyContact.touched">
-      <p *ngIf="companyContact.errors?.['required']">Le contact de l'entreprise est requis.</p>
-      <p *ngIf="companyContact.errors?.['minlength']">le company name doit contenir au moins 8 caracteres.</p>
-    </div>
-  </div>
-
-  <!-- Type of Internship Field -->
-  <div class="form-group">
-    <label for="typeInternship">Type of Internship:</label>
-    <select 
-      id="typeInternship" 
-      [(ngModel)]="internship.typeInternship" 
-      name="typeInternship" 
-      required
-      #typeInternship="ngModel"
-    >
-      <option *ngFor="let type of typeInternshipEnum" [value]="type">{{ type }}</option>
-    </select>
-    <div class="error-message" *ngIf="typeInternship.invalid && typeInternship.touched">
-      <p *ngIf="typeInternship.errors?.['required']">Le type de stage est requis.</p>
-    </div>
-  </div>
-
-  <!-- Submit Button -->
-  <button type="submit" [disabled]="internshipForm.invalid">Add Internship</button>
-
-</form>
+</div>

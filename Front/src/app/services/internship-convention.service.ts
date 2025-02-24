@@ -20,7 +20,7 @@ export interface InternshipConvention {
 export class InternshipConventionService {
 
   private baseUrl = 'http://localhost:9091/stage/internships';
-  private studentId = 3 ;
+  private studentId =  1 ;
   
   constructor(private http: HttpClient) { }
   
@@ -31,6 +31,7 @@ export class InternshipConventionService {
   
 
   getAllConventions(): Observable<InternshipConvention[]> {
-    return this.http.get<InternshipConvention[]>(`${this.baseUrl}/getAllWithStudentName`);
+    return this.http.get<InternshipConvention[]>(`${this.baseUrl}/getAll`);
   }
+  
 }

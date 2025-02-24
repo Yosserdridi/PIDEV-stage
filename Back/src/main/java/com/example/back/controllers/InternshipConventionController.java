@@ -2,6 +2,7 @@ package com.example.back.controllers;
 
 import com.example.back.DTO.InternshipConventionDTO;
 import com.example.back.entities.InternshipConvention;
+import com.example.back.entities.TypeInternship;
 import com.example.back.services.IInternshipConventionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -53,9 +54,28 @@ public class InternshipConventionController {
             return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/student/{studentId}/type/{typeInternship}")
+    public ResponseEntity<InternshipConvention> getInternshipConvention(
+            @PathVariable Long studentId,
+            @PathVariable TypeInternship typeInternship) {
+
+        try {
+            InternshipConvention internshipConvention = internshipConventionService.getInternshipConventionByStudentIdAndType(studentId, typeInternship);
+            return new ResponseEntity<>(internshipConvention, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
     @GetMapping("/getAllWithStudentName")
     public List<InternshipConventionDTO> getAllInternshipConventions() {
         return internshipConventionService.getAllInternshipConventionsWithStudentFirstName();
     }
+
+    @GetMapping("/pfe-id/{studentId}")
+    public Long getInternshipConventionId(@PathVariable Long studentId) {
+        return internshipConventionService.getInternshipConventionId(studentId);
+    }
+
 
 }

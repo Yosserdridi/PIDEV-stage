@@ -1,0 +1,36 @@
+/* Style the dropdown menu */
+.dropdown-menu {
+    position: absolute;
+    background: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  /* Hide menu by default */
+  .dropdown-menu li {
+    padding: 10px;
+  }
+  
+  /* Show menu on hover */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  /* Link styles */
+  .dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .dropdown-menu a:hover {
+    background: #f0f0f0;
+  }
+  

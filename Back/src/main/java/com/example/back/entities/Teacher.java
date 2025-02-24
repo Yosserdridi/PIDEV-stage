@@ -22,7 +22,7 @@ public class Teacher extends User{
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Journal> journals;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="teacher")
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<InternshipPFE> internshipPFEs;
 
     @OneToMany(cascade = CascadeType.ALL)

@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  showDropdown = false;
+
+  toggleDropdown(event: Event) {
+    event.preventDefault(); // Prevent page from jumping
+    this.showDropdown = !this.showDropdown;
+  }
 
 }

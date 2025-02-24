@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './componment/front/home/home.component';
 import { ComplaintsComponent } from './componment/front/complaints/complaints.component';
@@ -16,6 +16,9 @@ import { SubjectsAdminComponent } from './componment/back/subjects-admin/subject
 import { SummerAdminComponent } from './componment/back/summer-admin/summer-admin.component';
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
 import { AdminComponent } from './componment/back/admin/admin.component';
+import { InternshipConventionComponent } from './internship-convention/internship-convention.component';
+import { DepositPfeInternshipComponent } from './deposit-pfe-internship/deposit-pfe-internship.component';
+import { StudentAdminComponent } from './componment/back/student-admin/student-admin.component';
 
 
 
@@ -24,22 +27,34 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'complaints', component: ComplaintsComponent },
   { path: 'forum', component: ForumComponent },
-  { path: 'pfe', component:PfeIntershipsComponent  },
   { path: 'postulations', component: PostulationsComponent },
   { path: 'subjects', component: SubjectsComponent },
   { path: 'summer', component: SummerIntershipsComponent },
   { path: 'login', component: LoginComponent },
-  
-  {path: 'complaintsadmin', component: ComplaintsAdminComponent },
-  {path: 'forumadmin', component: ForumAdminComponent},
-  {path: 'pfeadmin', component: PfeAdminComponent},
-  {path: 'postulationsadmin', component: PostulationAdminComponent},
-  {path: 'subjectsadmin', component: SubjectsAdminComponent},
-  {path: 'summeradmin', component: SummerAdminComponent},
-  {path: 'loginadmin', component: LoginAdminComponent},
-  {path: 'admin', component: AdminComponent}
+  { path: 'complaintsadmin', component: ComplaintsAdminComponent },
+  { path: 'forumadmin', component: ForumAdminComponent},
+  { path: 'pfeadmin', component: PfeAdminComponent},
+  { path: 'postulationsadmin', component: PostulationAdminComponent},
+  { path: 'subjectsadmin', component: SubjectsAdminComponent},
+  { path: 'summeradmin', component: SummerAdminComponent},
+  { path: 'loginadmin', component: LoginAdminComponent},
+  { path: 'admin', component: AdminComponent},
+
+
+
+  { path: 'pfe', component:PfeIntershipsComponent  },
+  { path: 'pfeadmin', component: PfeAdminComponent},
+  { path: 'internship-convention', component: InternshipConventionComponent},
+  { path: 'depoist-pfe-internship', component : DepositPfeInternshipComponent},
+  { path: 'student/:id', component: StudentAdminComponent }
+
 
 ];
+
+
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

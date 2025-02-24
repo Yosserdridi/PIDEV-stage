@@ -23,6 +23,9 @@ import { ForumAdminComponent } from './componment/back/forum-admin/forum-admin.c
 import { ComplaintsAdminComponent } from './componment/back/complaints-admin/complaints-admin.component';
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InternshipConventionComponent } from './internship-convention/internship-convention.component';
+import { DepositPfeInternshipComponent } from './deposit-pfe-internship/deposit-pfe-internship.component';
+import { StudentAdminComponent } from './componment/back/student-admin/student-admin.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { HttpClientModule } from '@angular/common/http';
     ComplaintsAdminComponent,
     LoginAdminComponent,
     AdminComponent,
+    InternshipConventionComponent,
+    DepositPfeInternshipComponent,
+    StudentAdminComponent,
   ],
   imports: [
     BrowserModule,

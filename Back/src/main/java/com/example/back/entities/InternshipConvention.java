@@ -1,5 +1,6 @@
 package com.example.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,12 +30,11 @@ public class InternshipConvention {
     private TypeInternship typeInternship;
     private Boolean isValid;
 
-    @ManyToOne
-    Student student;
 
     @OneToOne(mappedBy="internshipConvention")
     SummerInternship summerInternship;
 
-    @OneToOne(mappedBy = "internshipConvention")
+    @JsonManagedReference
+    @OneToOne(mappedBy = "internshipConvention" , cascade = CascadeType.ALL)
     InternshipPFE internshipPFE;
 }
