@@ -1,6 +1,7 @@
 package com.example.back.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,14 +18,16 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "complaints")
+
 public class Complaint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
     private String title;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date DateComplaint;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date dateComplaint;
     @Enumerated(EnumType.STRING)
     private StatusComplaint typeStatus ;
     @Enumerated(EnumType.STRING)

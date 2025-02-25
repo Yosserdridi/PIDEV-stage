@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './componment/front/home/home.component';
-import { ComplaintsComponent } from './componment/front/complaints/complaints.component';
 import { ForumComponent } from './componment/front/forum/forum.component';
 import { PfeIntershipsComponent } from './componment/front/pfe-interships/pfe-interships.component';
 import { PostulationsComponent } from './componment/front/postulations/postulations.component';
@@ -16,20 +15,18 @@ import { SubjectsAdminComponent } from './componment/back/subjects-admin/subject
 import { SummerAdminComponent } from './componment/back/summer-admin/summer-admin.component';
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
 import { AdminComponent } from './componment/back/admin/admin.component';
-
+import { AddComplaintComponent } from './componment/front/complaints/add-complaint/add-complaint.component';
+import {ComplaintsComponent} from "./componment/front/complaints/complaints.component";
 
 
 const routes: Routes = [
-
   { path: 'home', component: HomeComponent },
-  { path: 'complaints', component: ComplaintsComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'pfe', component:PfeIntershipsComponent  },
   { path: 'postulations', component: PostulationsComponent },
   { path: 'subjects', component: SubjectsComponent },
   { path: 'summer', component: SummerIntershipsComponent },
   { path: 'login', component: LoginComponent },
-  
   { path: 'complaintsadmin', component: ComplaintsAdminComponent },
   {path: 'forumadmin', component: ForumAdminComponent},
   {path: 'pfeadmin', component: PfeAdminComponent},
@@ -37,10 +34,12 @@ const routes: Routes = [
   {path: 'subjectsadmin', component: SubjectsAdminComponent},
   {path: 'summeradmin', component: SummerAdminComponent},
   {path: 'loginadmin', component: LoginAdminComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  { path: 'complaints', component: ComplaintsComponent },
 
+  { path: 'add-complaint', component: AddComplaintComponent },
+  { path: '', redirectTo: '/complaints', pathMatch: 'full' }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
