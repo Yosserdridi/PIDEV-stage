@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { PfeInternshipService } from '../services/pfe-internship.service';
 import { StudentService } from '../services/student.service';
 import { Student } from '../models/student.model';
+import { InternshipConvention } from '../services/internship-convention.service';
+import { TypeInternship } from '../models/type_internship.eunm';
 
 @Component({
   selector: 'app-deposit-pfe-internship',
@@ -19,9 +21,22 @@ export class DepositPfeInternshipComponent {
     endDate: new Date()
   };
 
+  file?: File ;
+
+      typeInternshipEnum = Object.values(TypeInternship); // Getting enum values
+      internship: InternshipConvention = {
+        companyName: '',
+        startDate: new Date(),  // Initialize as Date object
+        endDate: new Date(),    // Initialize as Date object
+        companyAddress: '',
+        companyContact: '',
+        typeInternship: TypeInternship.INTERNSHIP_PFE,
+        studentFirstName : '' // Default to an enum value
+      };
+
   internshipConventionId?: number;
   hasPFEInternship: boolean = false;
-  studentId: number = 1 ;
+
 
 
   constructor(private internshipService: PfeInternshipService, 
@@ -29,33 +44,16 @@ export class DepositPfeInternshipComponent {
   ) {}
 
   ngOnInit() {
-    this.fetchInternshipConventionId();
-    this.getStudent(3);
   }
 
-  checkPFEInternship(): void {
-    this.studentService.getInternshipByStudentAndType(this.studentId)
-      .subscribe(
-        (internship) => {
-          this.hasPFEInternship = !!internship;  // If internship exists, disable form
-        },
-        (error) => {
-          this.hasPFEInternship = false; // If no internship found, allow form submission
-        }
-      );
-  }
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input?.files?.length) {
+        this.file = input.files[0];  // Save the selected file
+    }
+}
 
-  fetchInternshipConventionId() {
-    this.internshipService.getInternshipConventionId().subscribe({
-      next: (id) => {
-        this.internshipConventionId = id;
-        console.log('InternshipConvention ID:', this.internshipConventionId);
-      },
-      error: (err) => {
-        console.error('Error fetching InternshipConvention ID', err);
-      }
-    });
-  }
+
 
   addInternshipPFE(): void {
     if (!this.newInternshipPFE) {
@@ -64,7 +62,7 @@ export class DepositPfeInternshipComponent {
       return;
     }
   
-    this.internshipService.addInternshipPFE(this.newInternshipPFE).subscribe({
+    this.internshipService.addInternshipPFE(this.newInternshipPFE, this.file).subscribe({
       next: (response) => {
         console.log('InternshipPFE added successfully:', response);
         alert('InternshipPFE added successfully!');
@@ -76,10 +74,11 @@ export class DepositPfeInternshipComponent {
       }
     });
   }
+  
 
 
-  getStudent(id: number): void {
-    this.studentService.getStudentById(id).subscribe(
+  getStudent(): void {
+    this.studentService.getStudentById().subscribe(
       (data) => {
         this.student = data;
         console.log(this.student);
@@ -89,6 +88,10 @@ export class DepositPfeInternshipComponent {
       }
     );
   }
+
+  selectedFile?: File;
+
+
   
   
 

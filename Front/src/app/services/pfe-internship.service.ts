@@ -19,10 +19,26 @@ export class PfeInternshipService {
       return this.http.get<number>(`${this.internshipsUrl}/pfe-id/${this.studentId}`);
     }
 
-    addInternshipPFE(internshipPFE: any): Observable<any> {
+    addInternshipPFE(internshipPFE: any, file?: File): Observable<any> {
+      const formData = new FormData();
+      
+      formData.append("title", internshipPFE.title);
+      formData.append("description", internshipPFE.description);
+      formData.append("startDate", internshipPFE.startDate);
+      formData.append("endDate", internshipPFE.endDate);
+  
+      if (file) {
+          formData.append("signedConvention", file);
+      }
+  
+      return this.http.post<any>(`${this.PfeInternshipUrl}/${this.studentId}/assign-internshipPFE`, formData);
+  }
+  
+
+    /* addInternshipPFE(internshipPFE: any): Observable<any> {
       return this.http.post<any>(`${this.PfeInternshipUrl}/${this.studentId}/assign-internshipPFE`, internshipPFE);
     }
-
+ */
     addRestitution(internshipId: number, restitution: any): Observable<any> {
       return this.http.post(`${this.restitutionUrl}/addRestitutionAndAssignToPFEInternship/${internshipId}`, restitution);
     }

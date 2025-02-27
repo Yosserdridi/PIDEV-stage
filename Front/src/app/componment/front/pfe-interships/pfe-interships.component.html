@@ -1,5 +1,5 @@
 <div class="pipeline">
-  <div *ngFor="let step of pipelineSteps; let i = index" class="pipeline-step" [class.active]="step.active">
+  <div *ngFor="let step of pipelineSteps" class="pipeline-step" [class.active]="step.active">
     <div class="icon">{{ step.icon }}</div>
     <p>{{ step.label }}</p>
   </div>
@@ -20,6 +20,14 @@
       <h4>Internship PFE</h4>
       <p>Title: {{ internship.internshipPFE.title }}</p>
       <p>Description: {{ internship.internshipPFE.description }}</p>
+      <p>Convention: {{ internship.internshipPFE.signedConvention }}</p>
+      <div class="post-file-container" *ngIf="internship.internshipPFE.signedConvention">
+        <a [href]="'http://localhost:9091/stage/PfeInternship/uploads/' + internship.internshipPFE.signedConvention" 
+           download 
+           target="_blank">
+          📄 Download Signed Convention
+        </a>
+      </div>
       
       <!-- Check if there is an existing restitution for this internship -->
       <div *ngIf="internship.internshipPFE.restitution">

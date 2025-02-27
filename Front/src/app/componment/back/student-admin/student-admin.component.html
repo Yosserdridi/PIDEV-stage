@@ -106,6 +106,19 @@
                 <i class="menu-icon mdi mdi-layers-outline"></i>
                 <span class="menu-title">FORUM</span>
              
+                <div class="collapse" id="forumSubmenu">
+    <ul class="nav flex-column sub-menu">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/forumadmin/discussions">Discussions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/forumadmin/questions">Questions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/forumadmin/announcements">Announcements</a>
+      </li>
+    </ul>
+  </div>
               </a>
             
             </li>
@@ -161,6 +174,25 @@
                                         <p><strong>Subject:</strong> {{ internship.internshipPFE.restitution.subject }}</p>
                                         <p><strong>Task:</strong> {{ internship.internshipPFE.restitution.task }}</p>
                                         <p><strong>Technology:</strong> {{ internship.internshipPFE.restitution.technology }}</p>
+                                        <div>
+                                          <h3>Assign Teacher</h3>
+                                        
+                                          <label for="teacherSelect">Select Teacher:</label>
+<select id="teacherSelect" [(ngModel)]="selectedTeacherId">
+  <option *ngFor="let teacher of teachers" [value]="teacher.id">
+    {{ teacher.firstName }} {{ teacher.lastName }}
+  </option>
+</select>
+
+                                          <button 
+                                            (click)="assignRestitutionToTeacher(selectedTeacherId!, internship.internshipPFE.restitution.id!)" 
+                                            [disabled]="!selectedTeacherId">
+                                            Assign Restitution
+                                          </button>
+                                        
+                                          <p *ngIf="message">{{ message }}</p>
+                                        </div>
+                                        
                                       </div>
                                     </div>
                                   </div>
@@ -168,7 +200,11 @@
                               
                                 <!-- Button to return to PFE Internships page -->
                                 <button class="btn btn-primary mt-3" (click)="goBack()">Return to PFE Internships</button>
-                              </div>                              
+                                
+                              </div>  
+                              
+                              
+                              
                           </div>
                         </div>
                       </div>

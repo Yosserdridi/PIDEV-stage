@@ -5,11 +5,22 @@ import com.example.back.entities.Restitution;
 import com.example.back.entities.TypeInternship;
 import com.example.back.services.IPFEInternshipService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -22,6 +33,11 @@ public class PFEInternshipController {
     public InternshipPFE create(@RequestBody InternshipPFE internshipPFE) {
         return pfeInternshipService.save(internshipPFE);
     }
+
+
+
+
+
     @GetMapping("/getAll")
     public List<InternshipPFE> getAll() {
         return pfeInternshipService.getAll();
@@ -38,6 +54,7 @@ public class PFEInternshipController {
     }
 
 
+/*
     @PostMapping("/{studentId}/assign-internshipPFE")
     public ResponseEntity<InternshipPFE> assignInternshipPFE(
             @PathVariable Long studentId,
@@ -46,6 +63,54 @@ public class PFEInternshipController {
         InternshipPFE savedInternshipPFE = pfeInternshipService.assignInternshipPFEToStudent(studentId, internshipPFE);
         return ResponseEntity.ok(savedInternshipPFE);
     }
+*/
+
+
+    @PostMapping("/{studentId}/assign-internshipPFE")
+    public ResponseEntity<InternshipPFE> assignInternshipPFE(
+            @PathVariable Long studentId,
+            @RequestParam("title") String title,
+            @RequestParam("description") String description,
+            @RequestParam("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+            @RequestParam("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate,
+            @RequestParam(value = "signedConvention", required = false) MultipartFile signedConvention) {
+
+        InternshipPFE internshipPFE = new InternshipPFE();
+        internshipPFE.setTitle(title);
+        internshipPFE.setDescription(description);
+        internshipPFE.setStartDate(startDate);
+        internshipPFE.setEndDate(endDate);
+
+        if (signedConvention != null && !signedConvention.isEmpty()) {
+            try {
+                // Generate unique filename
+                String fileName = UUID.randomUUID().toString() + "_" + signedConvention.getOriginalFilename();
+                Path uploadPath = Paths.get("uploads");
+
+                // Ensure the directory exists
+                if (!Files.exists(uploadPath)) {
+                    Files.createDirectories(uploadPath);
+                }
+
+                Path filePath = uploadPath.resolve(fileName);
+                Files.copy(signedConvention.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+
+                internshipPFE.setSignedConvention(fileName); // Store only filename in DB
+                System.out.println("Signed convention saved with filename: " + fileName);
+
+            } catch (IOException e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            }
+        } else {
+            System.out.println("No signed convention uploaded.");
+        }
+
+        InternshipPFE savedInternshipPFE = pfeInternshipService.assignInternshipPFEToStudent(studentId, internshipPFE);
+        System.out.println("Internship assigned to student ID: " + studentId + " with Internship ID: " + savedInternshipPFE.getId());
+
+        return ResponseEntity.ok(savedInternshipPFE);
+    }
+
 
 
     // POST method to associate an InternshipPFE with an InternshipConvention
@@ -80,6 +145,38 @@ public class PFEInternshipController {
         return "Internships successfully assigned to teachers!";
     }
 
+
+    @GetMapping("/uploads/{filename:.+}")
+    public ResponseEntity<Resource> serveImage(@PathVariable String filename) {
+        Path filePath = Paths.get("uploads").resolve(filename);
+        try {
+            Resource resource = new UrlResource(filePath.toUri());
+
+            if (!resource.exists() || !resource.isReadable()) {
+                System.out.println("File not found: " + filePath.toString()); // ✅ Debugging
+
+                return ResponseEntity.notFound().build();
+            }
+
+            // Determine the content type dynamically
+            String contentType = Files.probeContentType(filePath);
+            if (contentType == null) {
+                contentType = "application/octet-stream";
+            }
+            System.out.println("Serving file: " + filename + " with type: " + contentType); // ✅ Debugging
+
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType(contentType))
+                    .cacheControl(CacheControl.noCache().mustRevalidate()) // Prevents caching issues
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + filename + "\"")
+                    .body(resource);
+
+        } catch (IOException e) { // Both MalformedURLException and IOException are caught here
+            System.out.println("Error loading file: " + e.getMessage()); // ✅ Debugging
+
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 
 /*   @GetMapping("/student/{studentId}/internshipPFE")
     public ResponseEntity<InternshipPFE> getInternshipPFEForStudent(

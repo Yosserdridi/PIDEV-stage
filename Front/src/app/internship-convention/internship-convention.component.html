@@ -2,7 +2,7 @@
   <h2>Internship Convention</h2>
 
   <!-- Show message if the student already has an internship convention -->
-  <div *ngIf="student.internshipConventions && student.internshipConventions.length > 0">
+  <div *ngIf="student.internshipConventions && student.internshipConventions.length > 0" class="internship-warning">
     <p style="color: red;">You already have an internship convention. You cannot add a new one.</p>
   </div>
 

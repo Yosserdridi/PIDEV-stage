@@ -12,4 +12,5 @@ export interface InternshipPFE {
   internshipConvention?: InternshipConvention;
   teacher?: Teacher;
   restitution?: Restitution;
+  signedConvention: string ;
 }

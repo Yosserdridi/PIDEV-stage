@@ -47,7 +47,7 @@ export class InternshipConventionComponent {
     }
   
     getStudent(id: number): void {
-      this.studentService.getStudentById(id).subscribe(
+      this.studentService.getStudentById().subscribe(
         (data) => {
           this.student = data;
           console.log(this.student);
