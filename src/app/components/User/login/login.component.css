@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif; /* Police de la page */
+    background-color: #f2f2f2; /* Couleur de fond douce */
+    height: 100vh; /* Hauteur de la fenêtre pour centrer verticalement */
+    display: flex;
+    justify-content: center; /* Centrage horizontal */
+    align-items: center; /* Centrage vertical */
+}
+
+.card {
+    max-width: 480px; /* Largeur maximale du conteneur */
+    width: 100%; /* Largeur à 100% pour le responsive */
+    margin: 1.5cm auto; /* Marges pour centrer */
+    padding: 35px; /* Padding du conteneur */
+    border: 1px solid #ddd; /* Bordure neutre */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre */
+    background-color: #fff; /* Couleur de fond */
+}
+
+h2 {
+    text-align: center; /* Centrage du titre */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 20px; /* Marge en bas pour espacer le titre */
+}
+
+.btn-wrapper a {
+    margin: 0 10px; /* Espacement entre les boutons */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Espacement entre les groupes de formulaire */
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Largeur à 100% */
+    padding: 10px; /* Padding des champs */
+    border: 1px solid #bbb; /* Bordure neutre */
+    border-radius: 5px; /* Coins arrondis */
+    transition: border-color 0.3s; /* Transition de couleur de bordure */
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff; /* Couleur de bordure au focus */
+}
+
+button {
+    width: 100%; /* Largeur à 100% */
+    padding: 10px; /* Padding du bouton */
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointer */
+    transition: background-color 0.3s; /* Transition de couleur de fond */
+}
+
+button:hover {
+    background-color: #0056b3; /* Couleur au survol */
+}
+
+.error {
+    color: red; /* Couleur d'erreur */
+    text-align: center; /* Centrage du texte */
+    margin-top: 10px; /* Marge en haut */
+}
+
+/* Styles responsifs */
+@media (max-width: 600px) {
+    .card {
+        padding: 15px; /* Ajustement du padding */
+    }
+    
+    h2 {
+        font-size: 20px; /* Taille de la police pour les petits écrans */
+    }
+    
+    input, button {
+        font-size: 14px; /* Taille de la police pour les petits écrans */
+    }
+}
