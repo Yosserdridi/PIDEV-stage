@@ -11,7 +11,7 @@
 h2 {
   color: #0086FB;
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .postulation-card {
@@ -25,6 +25,12 @@ h2 {
 
 .postulation-card:hover {
   transform: scale(1.02);
+}
+
+p{
+  font-size: 16px;
+
+
 }
 
 strong {
@@ -86,4 +92,70 @@ button.btn-danger:hover {
 }
 .subject-title {
   color: #ec0000e7; /* Dark Red color */
+}
+
+
+
+
+/* Filter container styling */
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styling */
+.filter-container label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  margin-right: 15px;
+  margin-bottom: 0;
+}
+
+p{
+  font-size: 16px;
+
+
+}
+
+/* Dropdown styling */
+#statusFilter {
+  padding: 12px 18px;  /* Adjust padding for a larger dropdown */
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: #fafafa;
+  color: #333;
+  cursor: pointer;
+  width: 200px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  margin-left: 1cm;
+}
+
+/* Hover and focus effects for the dropdown */
+#statusFilter:hover,
+#statusFilter:focus {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+  outline: none;
+}
+
+/* Adjust layout for small screens */
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  #statusFilter {
+    width: 100%;
+    margin-left: 0;
+  }
 }

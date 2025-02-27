@@ -1,8 +1,19 @@
 <div class="postulations-container">
   <h2>Postulations for Subject: <span class="subject-title">{{ subjectTitle }}</span></h2>
 
+  <!-- Filter Section -->
+  <div class="filter-container">
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter" [(ngModel)]="filterStatus" (change)="applyFilter()">
+      <option value="all">All</option>
+      <option value="0">Pending</option>
+      <option value="1">Accepted</option>
+      <option value="2">Rejected</option>
+    </select>
+  </div>
+
   <div *ngIf="postulations.length > 0; else noPostulations">
-    <div class="postulation-card" *ngFor="let postulation of postulations">
+    <div class="postulation-card" *ngFor="let postulation of filteredPostulations">
       <p><strong>Title:</strong> {{ postulation.titrecandidature }}</p>
       <p><strong>Motivation Letter:</strong> {{ postulation.lettremotivation }}</p>
       <p><strong>Region:</strong> {{ postulation.region }}</p>

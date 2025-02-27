@@ -1,6 +1,10 @@
 <div *ngIf="offerToUpdate">
-  <h1>Edit Internship Offer</h1>
   <form (ngSubmit)="onSubmit()">
+
+    <h1>Edit Internship Offer</h1>
+
+
+    
     <div>
       <label for="title">Title</label>
       <input type="text" id="title" [(ngModel)]="offerToUpdate.title" name="title" required />
@@ -48,5 +52,4 @@
     </button>
   </form>
 
-  <button (click)="goBack()">Go Back</button>
-</div>
+ </div>

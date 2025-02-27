@@ -1,136 +1,167 @@
+/* Overall container for postulations */
+.container {
+  padding: 30px;
+  background-color: #f4f6f9;
+  border-radius: 10px;
+  margin: 30px auto;
+  max-width: 1200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-/* styles.css */
+/* Title styling */
+h2 {
+  color: #fb0000;
+  font-size: 28px;
+  margin-bottom: 20px;
+ }
+
+/* Flex container */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Content container */
+.content-container {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 90%; /* Increase width */
+  max-width: 1400px; /* Wider max width */
+}
+
+/* Input styling */
 input[type="text"] {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-top: 20px;
-    margin-bottom: 10px; /* Add margin-bottom to create space below the input */
-    width: 400px;
-  }
-  /* Updated CSS for the .nav-bar class */
-  .nav-bar {
-      /* Add styling for the navigation bar */
-      flex: 0 0 auto; /* Prevent the navigation bar from growing */
-      margin: 0; /* Remove any margin */
-    }
-    
-    
-  /* Read Component */
-  .container {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
-  .flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  
-  .content-container {
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 90%; /* Increase width */
-    max-width: 1400px; /* Wider max width */
-  }
-  
-  
-  .card {
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-header {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  
-    
-    /* Styling for the card category */
-    .card-category {
-      font-size: 0.875rem; /* Adjust the font size of the card category */
-    }
-    
-    .sujet-item {
-      background-color: #f0f0f0;
-      padding: 10px;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
-  
-  /* General Button Styling */
-  .btn {
-    padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-  }
-  
-  /* Primary Button (Sky Blue) */
-  .btn-sky-blue {
-    background-color: #0086FB;
-    border: none;
-    color: white;
-  }
-  
-  .btn-sky-blue:hover {
-    background-color: #0070D6;
-    transform: scale(1.05);
-  }
-  
-  /* Success Button */
-  .btn-success {
-    background-color: #28a745;
-    border: none;
-    color: white;
-  }
-  
-  .btn-success:hover {
-    background-color: #218838;
-    transform: scale(1.05);
-  }
-  
-  /* Danger Button */
-  .btn-danger {
-    background-color: #dc3545;
-    border: none;
-    color: white;
-  }
-  
-  .btn-danger:hover {
-    background-color: #c82333;
-    transform: scale(1.05);
-  }
-  
-  /* Secondary Button */
-  .btn-secondary {
-    background-color: #6c757d;
-    border: none;
-    color: white;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #5a6268;
-    transform: scale(1.05);
-  }
-  
-  /* Spacing Between Buttons */
-  .sujet-item button {
-    margin-right: 10px; /* Adds space between buttons */
-    margin-bottom: 10px; /* Adds spacing below buttons */
-  }
-  
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 20px;
+  margin-bottom: 10px; /* Add margin-bottom to create space below the input */
+  width: 400px;
+}
 
-   .ff{
-    color: #0906c7;
-  }
+/* Postulation card styling */
+.postulation-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect for postulation card */
+.postulation-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Subject item styling */
+.sujet-item {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* Button styling */
+.btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Sky blue button */
+.btn-sky-blue {
+  background-color: #0086FB;
+  border: none;
+  color: white;
+}
+
+.btn-sky-blue:hover {
+  background-color: #0070D6;
+  transform: scale(1.05);
+}
+
+/* Success button */
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Danger button */
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+/* Button spacing */
+.sujet-item button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* Filter container */
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Label inside filter container */
+.filter-container label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #afafaf;
+  margin-right: 15px;
+}
+
+/* Dropdown filter */
+#statusFilter {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: #fafafa;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  width: 40%;
+  margin-left: 1cm;
+}
+
+/* Hover and focus effects for dropdown */
+#statusFilter:hover,
+#statusFilter:focus {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+  outline: none;
+}
+
+/* Additional styles for the heading color */
+.ff {
+  color: #007bff;
+}
+

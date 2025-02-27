@@ -84,4 +84,13 @@ public class PostulationService implements IPostulationService {
     }
 
 
+
+
+    @Override
+    public List<Postulation> retrievePostulationsByStatus(int status) {
+        return postulationRepository.findByStatus(status);  // Assuming you have this method in your repository
+    }
+
+
+
 }

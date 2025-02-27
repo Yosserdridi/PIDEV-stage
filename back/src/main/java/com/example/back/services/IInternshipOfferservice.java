@@ -10,4 +10,5 @@ public interface IInternshipOfferservice {
     IntershipOffer retireIntershipOffer(Long id);
     IntershipOffer updatePos(IntershipOffer id);
     void deleteIntershipOffer(Long id);
+
 }

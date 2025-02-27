@@ -36,7 +36,7 @@ export class IntershipOfferService {
 
   // Delete an internship offer
   deleteOffer(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/rezmove/off/${id}`);
+    return this.http.delete<void>(`${this.baseUrl}/remove/off/${id}`);
   }
   
   

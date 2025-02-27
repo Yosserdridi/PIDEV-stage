@@ -42,4 +42,12 @@ export class PostulationService {
   getPostulationsByIdsujet(idsujet: number): Observable<postulation[]> {
     return this.http.get<postulation[]>(`${this.baseUrl}/retrieve-by-idsujet/${idsujet}`);
   }
+
+
+    // Get postulations filtered by status
+    getPostulationsByStatus(status: number): Observable<postulation[]> {
+      return this.http.get<postulation[]>(`${this.baseUrl}/retrieve-by-status?status=${status}`);
+    }
+
+    
 }

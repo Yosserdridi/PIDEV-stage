@@ -7,17 +7,16 @@
             <input type="text" (input)="filterSujets()" [(ngModel)]="searchTerm" placeholder="Search by company name">
           </div>
           <div class="col-md-12">
-            <button class="btn btn-primary btn-sky-blue mb-3" (click)="ajouterSujet()">Add a Subject</button>
+            <button class="btn btn-sky-blue mb-3" (click)="ajouterSujet()">Add a Subject</button>
 
             <div class="card">
               <div class="card-header card-header-danger">
-                <h4 class="card-title">Subjects</h4>
-                <p class="card-category">Manage Subjects</p>
+                <h2>Subjects</h2>
               </div>
               <div class="card-body">
                 <div *ngIf="message" class="alert alert-success">{{ message }}</div>
                 <div *ngFor="let sujet of filteredSujets; let i = index" class="sujet-item">
-                  <h2>{{ sujet.title }}</h2>
+                  <h3>{{ sujet.title }}</h3>
                   <p><strong>Description:</strong> {{ sujet.description }}</p>
                   <p><strong>Duration:</strong> {{ sujet.duration }}</p>
                   <p><strong>Location:</strong> {{ sujet.location }}</p>
@@ -27,10 +26,11 @@
                   <p><strong>Requirements:</strong> {{ sujet.requirements }}</p>
                   <p><strong>Subject type:</strong> {{ sujet.typeInternship }}</p>
 
-                  <button class="btn btn-primary btn-sky-blue mb-3" (click)="afficherFormulaireModifier(sujet)">Edit</button>
-
-                  <button class="btn btn-danger mb-3" (click)="supprimerSujet(sujet.idsujet)">Delete</button>
-                  <button class="btn btn-secondary mb-3" (click)="displayPostulations(sujet.idsujet)">Show Postulations</button>
+                  <div class="button-group">
+                    <button class="btn btn-primary btn-sky-blue" (click)="afficherFormulaireModifier(sujet)">Edit</button>
+                    <button class="btn btn-danger" (click)="supprimerSujet(sujet.idsujet)">Delete</button>
+                    <button class="btn btn-secondary" (click)="displayPostulations(sujet.idsujet)">Show Postulations</button>
+                  </div>
                 </div>
               </div>
             </div>

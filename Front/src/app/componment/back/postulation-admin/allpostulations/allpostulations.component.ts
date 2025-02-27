@@ -10,6 +10,8 @@ import { postulation } from 'src/app/models/postulation';
 export class AllPostulationsComponent implements OnInit {
 
   postulations: postulation[] = [];
+  filteredPostulations: postulation[] = [];
+  selectedStatus: number | string = '';  // Allow empty value for 'All'
 
   constructor(private postulationService: PostulationService) { }
 
@@ -21,6 +23,7 @@ export class AllPostulationsComponent implements OnInit {
     this.postulationService.getAllPostulations().subscribe(
       (data) => {
         this.postulations = data;
+        this.filteredPostulations = data;  // Initially display all postulations
       },
       (error) => {
         console.error('Error fetching postulations:', error);
@@ -49,5 +52,13 @@ export class AllPostulationsComponent implements OnInit {
   rejectPostulation(id: number): void {
     // Add the reject postulation logic
     console.log(`Postulation ${id} rejected`);
+  }
+
+  filterByStatus(): void {
+    if (this.selectedStatus === '') {
+      this.filteredPostulations = this.postulations;  // Show all postulations
+    } else {
+      this.filteredPostulations = this.postulations.filter(postulation => postulation.status === +this.selectedStatus);
+    }
   }
 }

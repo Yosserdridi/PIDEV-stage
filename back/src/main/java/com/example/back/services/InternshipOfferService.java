@@ -14,16 +14,19 @@ public class InternshipOfferService implements IInternshipOfferservice {
     InternshipOfferRepository internshipOfferRepository;
 
 
+
     public IntershipOffer addIntershipOffer(IntershipOffer intershipOffer) {
         // Check if the title is null
         if (intershipOffer.getTitle() == null) {
             throw new IllegalArgumentException("Title cannot be null");
         }
 
-        // Check if an existing offer with the same title exists
-        IntershipOffer existingOffer = internshipOfferRepository.findByTitle(intershipOffer.getTitle());
-        if (existingOffer != null) {
-            throw new IllegalArgumentException("An offer with this title already exists!");
+        // Check if an internship with the same title & type exists
+        List<IntershipOffer> matchingOffers = internshipOfferRepository
+                .findByTitleAndTypeInternship(intershipOffer.getTitle(), intershipOffer.getTypeInternship());
+
+        if (!matchingOffers.isEmpty()) {
+            throw new IllegalArgumentException("An offer with the same title and type already exists!");
         }
 
         // Save the offer if no duplicates are found
@@ -93,11 +96,11 @@ public class InternshipOfferService implements IInternshipOfferservice {
     }
 
 
-
-
-
     public void deleteIntershipOffer(Long id) {
         internshipOfferRepository.deleteById(id);
 
     }
+
+
+
 }

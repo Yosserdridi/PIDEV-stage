@@ -1,42 +1,114 @@
+/* Overall container for postulations */
 .postulations-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    margin-top: 1cm;
-    margin-left:6cm ;
-    margin-right:6cm ;
+  padding: 30px;
+  background-color: #f4f6f9;
+  border-radius: 10px;
+  margin: 30px auto;
+  max-width: 1200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-  }
-  
-  h2 {
-    color: #0086FB;
-  }
-  
-  .postulation-card {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  strong {
-    color: #0086FB;
-  }
-  
-  ng-template {
-    text-align: center;
-    font-size: 1.2em;
-    color: #888;
-  }
-  
+/* Title styling */
+h2 {
+  color: #0086FB;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-  button {
-    padding: 10px 15px;
-    margin-right: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+/* Filter container */
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styling */
+.filter-container label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  margin-right: 15px;
+}
+
+/* Dropdown styling */
+#statusFilter {
+  padding: 10px 15px;        /* Add more padding to make it larger */
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: #fafafa;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease; 
+  width: 40%;     
+  margin-left:1cm;
   }
-  
+
+
+/* Hover and focus effects for the dropdown */
+#statusFilter:hover,
+#statusFilter:focus {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+  outline: none;
+
+}
+
+/* Postulation cards */
+.postulation-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect on postulation cards */
+.postulation-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the text inside postulation cards */
+.postulation-card p {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Strong text styling (for labels inside the card) */
+strong {
+  color: #0086FB;
+  font-weight: 600;
+}
+
+/* Delete button styling */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #c53030;
+  transform: scale(1.05);
+}
+
+/* Styling for the 'no postulations' message */
+ng-template {
+  text-align: center;
+  font-size: 1.2em;
+  color: #888;
+}

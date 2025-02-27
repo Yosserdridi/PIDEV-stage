@@ -5,8 +5,6 @@ import { postulation } from 'src/app/models/postulation';
 import { IntershipOfferService } from 'src/app/Services/IntershipOffer/intership-offer-services.service';
 import { intershipoffer } from 'src/app/models/intershipoffer';
 
-
-
 @Component({
   selector: 'app-postulations',
   templateUrl: './postulations.component.html',
@@ -15,8 +13,10 @@ import { intershipoffer } from 'src/app/models/intershipoffer';
 export class PostulationsSpComponent implements OnInit {
 
   postulations: postulation[] = [];
-  subjectTitle: string = ''; // Variable to hold the subject title
+  filteredPostulations: postulation[] = [];  // Store filtered postulations
+  subjectTitle: string = '';  // Variable to hold the subject title
   idsujet: number | undefined;
+  filterStatus: string = 'all';  // Default filter to 'all'
 
   constructor(
     private postulationService: PostulationService,
@@ -45,15 +45,13 @@ export class PostulationsSpComponent implements OnInit {
     }
   }
 
-
-
-  
   // Load postulations based on idsujet
   loadPostulations(): void {
     if (this.idsujet !== undefined) {
       this.postulationService.getPostulationsByIdsujet(this.idsujet).subscribe(
         (data) => {
           this.postulations = data;
+          this.filteredPostulations = data;  // Initially, all postulations are shown
         },
         (error) => {
           console.error('Error fetching postulations:', error);
@@ -64,8 +62,16 @@ export class PostulationsSpComponent implements OnInit {
     }
   }
 
-
-
+  // Apply filter to postulations based on selected status
+  applyFilter(): void {
+    if (this.filterStatus === 'all') {
+      this.filteredPostulations = this.postulations;
+    } else {
+      this.filteredPostulations = this.postulations.filter(
+        postulation => postulation.status.toString() === this.filterStatus
+      );
+    }
+  }
 
   // Get status label based on the status number
   getStatusLabel(status: number): string {

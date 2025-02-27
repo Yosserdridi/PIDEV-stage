@@ -13,4 +13,10 @@ public interface PostulationRepository extends JpaRepository<Postulation, Long> 
     // Query method to find postulations by idsujet
     List<Postulation> findByIntershipOffer_Idsujet(Long idsujet);
 
+
+
+    // Find postulations by status
+    List<Postulation> findByStatus(int status);
+
+
 }

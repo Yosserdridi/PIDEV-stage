@@ -41,10 +41,12 @@ export class ReadadminComponent implements OnInit {
       console.error("Error: The subject ID is undefined.");
       return;
     }
+    console.log("Deleting subject with ID:", idSujet);
     this.sujetService.deleteOffer(idSujet).subscribe(() => {
       this.message = "Suppression effectuée avec succès.";
       this.fetchSujets();
     });
+
   }
 
   afficherFormulaireModifier(sujet: intershipoffer): void {

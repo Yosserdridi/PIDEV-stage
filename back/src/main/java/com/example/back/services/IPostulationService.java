@@ -14,5 +14,5 @@ public interface IPostulationService {
     //get postulations by idsujet
     List<Postulation> getPostulationsByIdsujet(Long idsujet);
 
-
+    List<Postulation> retrievePostulationsByStatus(int status);
 }

@@ -55,6 +55,15 @@ public class PostulationController {
         return postulationService.getPostulationsByIdsujet(idsujet);
     }
 
+
+    // Retrieve postulations by status
+    @GetMapping("/retrieve-by-status")
+    public List<Postulation> retrieveByStatus(@RequestParam int status) {
+        return postulationService.retrievePostulationsByStatus(status);
+    }
+
+
+
 }
 
 
