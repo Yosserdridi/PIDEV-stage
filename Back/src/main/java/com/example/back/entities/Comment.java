@@ -25,6 +25,6 @@ public class Comment {
     @Enumerated(EnumType.STRING)
     private VoteComment VoteComment;
 
-    @OneToMany (cascade = CascadeType.ALL)
+    @OneToMany (cascade = CascadeType.ALL , orphanRemoval = true )
     private Set<Comment> Reponse;
 }

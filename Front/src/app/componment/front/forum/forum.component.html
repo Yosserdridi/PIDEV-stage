@@ -1,90 +1,78 @@
-<!-- Formulaire d'ajout de post -->
-<form (ngSubmit)="addPost()" #postForm="ngForm">
-  <!-- Champ Sujet -->
-  <div class="form-group">
-    <label for="subject">Sujet :</label>
-    <input 
-      type="text" 
-      id="subject" 
-      [(ngModel)]="post.subject" 
-      name="subject" 
-      required
-      minlength="3"
-      #subject="ngModel"
-    />
-    <div class="error-message" *ngIf="subject.invalid && subject.touched">
-      <p *ngIf="subject.errors?.['required']">Le sujet est requis.</p>
-      <p *ngIf="subject.errors?.['minlength']">Le sujet doit contenir au moins 3 caractères.</p>
-    </div>
-  </div>
+<body>
 
-  <!-- Champ Contenu -->
-  <div class="form-group">
-    <label for="content">Contenu :</label>
-    <textarea 
-      id="content" 
-      [(ngModel)]="post.content" 
-      name="content" 
-      required
-      minlength="5"
-      #content="ngModel"
-    ></textarea>
-    <div class="error-message" *ngIf="content.invalid && content.touched">
-      <p *ngIf="content.errors?.['required']">Le contenu est requis.</p>
-      <p *ngIf="content.errors?.['minlength']">Le contenu doit contenir au moins 5 caractères.</p>
-    </div>
-  </div>
-
-  <!-- Option Anonyme -->
-  <div class="form-group">
-    <label>
-      <input type="checkbox" [(ngModel)]="post.isAnonymous" name="isAnonymous" />
-      Publier en anonyme
-    </label>
-  </div>
-
-  <!-- Bouton Ajouter désactivé si formulaire invalide -->
-  <button type="submit" [disabled]="postForm.invalid">Ajouter</button>
-</form>
-
-
-<!-- Titre de la section des posts -->
-<h2 class="post-list-title">Liste des posts</h2>
-
-<!-- Liste des posts -->
-<div *ngIf="posts.length > 0; else noPosts">
-  <div *ngFor="let post of posts" class="post-card">
-    <h3 class="post-title">{{ post.subject }}</h3>
-    <p class="post-content">{{ post.content }}</p>
-    <p class="post-date"><strong>Date:</strong> {{ post.datePost | date:'short' }}</p>
-
-    <!-- Liste des commentaires -->
-    <div class="comments-section">
-      <h4>Commentaires :</h4>
-      <div *ngIf="post.comments.length > 0; else noComments">
-        <div *ngFor="let comment of post.comments" class="comment">
-          <p>{{ comment.description }}</p>
-        </div>
-      </div>
-      <ng-template #noComments>
-        <p>Aucun commentaire pour ce post.</p>
-      </ng-template>
-    </div>
-
-    <!-- Formulaire d'ajout de commentaire -->
-    <div class="add-comment-form">
+<div class="top">
+  <h1 class="post-list-title" style="font-weight: bold; background: linear-gradient(to right, #ff3737, #ff6969); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Liste des posts
+  </h1>
+  <div class="search-container">
+    <div class="search-box">
       <input 
         type="text" 
-        [(ngModel)]="newComment[post.id!]" 
-        placeholder="Ajouter un commentaire"
-        *ngIf="post.id !== undefined"
+        placeholder="Search by subject..." 
+        [(ngModel)]="searchTerm" 
+        (input)="filterPosts()" 
+        class="search-input"
+        style="border-radius: 30px; padding: 10px 20px 10px 40px; background-color: #f9f9f9; border: 2px solid #ccc; outline: none; transition: all 0.3s ease;"
       />
-      <button (click)="addComment(post.id)">Commenter</button>
+      <i style="position: absolute; top: 12px; left: 15px;" class="fa fa-search search-icon"></i>
+    </div>
+  </div>
+  <button style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; background-color: #ff6969; color: #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;" 
+          routerLink="/add-post" class="btn btn-primary"
+          onmouseover="this.style.transform='scale(1.1)';" 
+          onmouseout="this.style.transform='scale(1)';">
+    Add post
+  </button>
+</div>
+<div class="container">
+
+  <!-- Titre de la section des posts -->
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="post-list">
+        <div *ngIf="filteredPosts.length > 0; else noPosts">
+          <div *ngFor="let post of filteredPosts | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" class="post">
+            <div class="post-header">
+              <div class="post-avatar">
+                <img src="https://picsum.photos/50/50" alt="avatar">
+              </div>
+              <div class="post-info">
+                <h3 class="post-author">By {{ post.user?.userName || 'Anonymous' }}</h3>
+                <p class="post-date">{{ post.datePost | date:'short' }}</p>
+              </div>
+            </div>
+            <div class="post-content">
+              <p class="post-title">{{ post.subject }}</p>
+              <p>{{ post.content }}</p>
+              <div class="post-image-container" *ngIf="post.picture">
+                <img [src]="'http://localhost:9091/stage/Post/uploads/'+ post.picture" alt="Post Image" class="post-image" />
+              </div>
+            </div>
+            <hr style="border-top: 1px solid #ccc; margin: 20px 0;">
+            <div class="post-actions" style="display: flex; justify-content: center; padding: 0 50px;">
+              <button (click)="deletePost(post.id!)" class="icon-button delete-button" style="background-color: #ff6969; margin: 0 5px;">
+                <i class="fa fa-trash"></i>
+              </button>
+              <button (click)="getPostDetails(post.id!)" class="icon-button view-button" style="background-color: #ff6969; margin: 0 5px;">
+                <i class="fa fa-eye"></i>
+              </button>
+              <button (click)="updatePost(post.id!)" class="icon-button update-button" style="background-color: #ff6969; margin: 0 5px;">
+                <i class="fa fa-pencil"></i>
+              </button>
+            </div>
+           
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Message si aucun post n'est disponible -->
+
+<!-- ✅ Pagination Controls -->
+<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+
 <ng-template #noPosts>
   <p class="no-posts-message">Aucun post pour le moment.</p>
 </ng-template>
+

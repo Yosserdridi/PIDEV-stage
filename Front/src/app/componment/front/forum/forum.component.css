@@ -1,198 +1,171 @@
-/* General Styles */
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #3b1c1c; /* Softer dark red */
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100vw;
-  min-height: 100vh;
+.container {
+   padding-right: 190px;
+    background-color: #fff;
 }
 
-/* Centering the main container */
-.forum-container {
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.row {
+    display: flex;
+    justify-content: center;
 }
 
-/* Form Styling */
-form {
-  width: 90%;
-  max-width: 800px;
-  padding: 25px;
-  background: linear-gradient(145deg, #ee6b6e, #d95a5d); /* New red gradient */
-  border-radius: 12px;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto;
+.col-md-8 {
+    width: 66.66667%;
 }
 
-/* Form Labels */
-label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 6px;
-  color: #fff;
-  text-align: left;
-  width: 100%;
+.offset-md-2 {
+    margin-left: 16.66667%;
 }
 
-/* Input Fields */
-input[type="text"],
-textarea {
-  width: 100%;
-  max-width: 750px;
-  padding: 12px;
-  margin-top: 5px;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  background: #fff;
-  color: #333;
-  outline: none;
-  transition: all 0.3s ease-in-out;
+.post-list {
+    margin-top: 20px;
 }
 
-textarea {
-  min-height: 120px;
-  resize: vertical;
+.post {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
 }
 
-/* Inputs Focus Effect */
-input:focus,
-textarea:focus {
-  box-shadow: 0 0 8px rgba(238, 107, 110, 0.5); /* New soft red glow */
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-/* Button */
-button {
-  width: 100%;
-  max-width: 750px;
-  padding: 12px;
-  margin-top: 15px;
-  background: #ee6b6e; /* Primary button color */
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 2px 2px 10px rgba(238, 107, 110, 0.3);
+.post-avatar img {
+    border-radius: 50%;
 }
 
-button:hover {
-  background: #cc5658; /* Slightly darker version */
-  transform: scale(1.05);
+.post-info {
+    margin-left: 15px;
 }
 
-button:disabled {
-  background: gray;
-  cursor: not-allowed;
+.post-title {
+    margin: 0;
+    font-size: 1.5em;
 }
 
-/* Error Messages */
-.error-message {
-  color: #ffb3b3; /* Softer pinkish red */
-  font-size: 14px;
-  margin-top: 5px;
+.post-date {
+    color: #6c757d;
+    font-size: 0.9em;
 }
 
-/* Post Card Styling */
-.post-card {
-  width: 90%;
-  max-width: 800px;
-  background: linear-gradient(145deg, #ee6b6e, #d95a5d); /* New gradient */
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  transition: transform 0.3s ease-in-out;
-  color: white;
-  text-align: left;
-  margin: 20px auto;
+.post-content p {
+    margin: 15px 0;
 }
 
-.post-card:hover {
-  transform: translateY(-5px);
+.post-image-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 
-/* Fancy Post Title */
-.post-list-title {
-  text-align: center;
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  width: 100%;
-  color: black; /* Set to black */
-  text-transform: uppercase; /* Make it stand out */
-  letter-spacing: 2px; /* Add spacing for elegance */
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
-  padding-bottom: 5px; /* Space under the text */
-  animation: fadeIn 1s ease-in-out;
+.post-image {
+    max-width: 100%;
+    max-height: 300px; /* Added max-height to limit image size */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Fade-in Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
 }
 
-/* No Posts Message */
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.view-button {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.update-button {
+    background-color: #ffc107;
+    color: #fff;
+}
+
 .no-posts-message {
-  text-align: center;
-  font-size: 18px;
-  color: #e28b8b;
+    text-align: center;
+    font-size: 1.2em;
+    color: #6c757d;
+    margin-top: 20px;
 }
 
-/* Post Content */
-.post-content {
-  font-size: 16px;
-  color: #ffd1d1;
-  margin-bottom: 15px;
-}
-
-/* Post Meta */
-.post-date,
-.post-likes {
-  font-size: 14px;
-  color: #ffbfbf;
-}
-
-/* Flexbox Centering */
-.centered {
+.top {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 60px auto;
+  padding: 20px;
+  width: 80%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-}
-.search-bar {
-  margin-bottom: 15px;
-}
-
-.search-bar input {
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  align-items: center;
+  flex-direction: column;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .ngx-pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ngx-pagination li {
+    margin: 0 5px;
+  }
+  
+  .ngx-pagination a {
+    padding: 5px 10px;
+    background: #ff6969;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .ngx-pagination a:hover {
+    background: #ff3737;
+  }
+  
+  .ngx-pagination .current {
+    background: #cc0000;
+  }
+  

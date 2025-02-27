@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,19 +39,40 @@ public class CommentService implements ICommentService{
     commentRepository.deleteById(id);
     }
 
-    public Comment addReply(Long parentCommentId, Comment replyComment) {
-        Optional<Comment> parentCommentOpt = commentRepository.findById(parentCommentId);
+    @Override
+    public Comment updateComment(Long commentId, String newDescription) {
+        // Find the comment by ID
+        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new RuntimeException("Comment not found"));
 
-        if (parentCommentOpt.isPresent()) {
-            Comment parentComment = parentCommentOpt.get();
-            parentComment.getReponse().add(replyComment); // Add reply to Set<Comment>
-            return commentRepository.save(parentComment);
-        } else {
-            throw new RuntimeException("Parent comment not found!");
-        }
+        // Update the description (or any other fields you need)
+        comment.setDescription(newDescription);
+
+        // Save the updated comment
+        return commentRepository.save(comment);
     }
 
-    public void deleteCommentFromPost(Long postId, Long commentId) {
+
+    public Comment addReply(Long parentId, Comment reply) {
+        // Find the parent comment by ID
+        Comment parentComment = commentRepository.findById(parentId)
+                .orElseThrow(() -> new RuntimeException("Parent comment not found"));
+
+        // Set the reply's parent as the parent comment
+        if (parentComment.getReponse() == null) {
+            parentComment.setReponse(new HashSet<>());
+        }
+
+        // Add the reply to the parent comment
+        parentComment.getReponse().add(reply);
+
+        // Save the parent comment with the new reply
+        commentRepository.save(parentComment);
+
+        return reply;
+    }
+
+
+    /*public void deleteCommentFromPost(Long postId, Long commentId) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new RuntimeException("Post not found"));
 
@@ -61,5 +83,17 @@ public class CommentService implements ICommentService{
         postRepository.save(post);  // ✅ Save updated post
 
         commentRepository.delete(comment);  // ✅ Delete the comment itself
+    }*/
+
+
+    public boolean deleteCommentById(Long commentId) {
+        if (commentRepository.existsById(commentId)) {
+            commentRepository.deleteById(commentId);
+            return true;
+        }
+        return false;
     }
+
+
 }
+

@@ -1,0 +1,53 @@
+<!-- Formulaire d'ajout de post -->
+<form (ngSubmit)="addPost()" #postForm="ngForm">
+    <!-- Champ Sujet -->
+    <div class="form-group">
+      <label for="subject">Subject :</label>
+      <input 
+        type="text" 
+        id="subject" 
+        [(ngModel)]="post.subject" 
+        name="subject" 
+        required
+        minlength="3"
+        #subject="ngModel"
+      />
+      <div class="error-message" *ngIf="subject.invalid && subject.touched">
+        <p *ngIf="subject.errors?.['required']">Le sujet est requis.</p>
+        <p *ngIf="subject.errors?.['minlength']">Le sujet doit contenir au moins 3 caractères.</p>
+      </div>
+    </div>
+  
+    <!-- Champ Contenu -->
+    <div class="form-group">
+      <label for="content">Content :</label>
+      <textarea 
+        id="content" 
+        [(ngModel)]="post.content" 
+        name="content" 
+        required
+        minlength="5"
+        #content="ngModel"
+      ></textarea>
+      <div class="error-message" *ngIf="content.invalid && content.touched">
+        <p *ngIf="content.errors?.['required']">Le contenu est requis.</p>
+        <p *ngIf="content.errors?.['minlength']">Le contenu doit contenir au moins 5 caractères.</p>
+      </div>
+    </div>
+  
+    <!-- Option Anonyme -->
+    <div class="form-group">
+      <label>
+        <input type="checkbox" [(ngModel)]="post.isAnonymous" name="isAnonymous" />
+       is anonymous
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="file">Upload Image:</label>
+      <input type="file" (change)="onFileSelected($event)" />
+    </div>
+  
+  
+    <!-- Bouton Ajouter désactivé si formulaire invalide -->
+    <button type="submit" [disabled]="postForm.invalid">Add post</button>
+  </form>

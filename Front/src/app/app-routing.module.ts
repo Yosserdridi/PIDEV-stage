@@ -16,6 +16,14 @@ import { SubjectsAdminComponent } from './componment/back/subjects-admin/subject
 import { SummerAdminComponent } from './componment/back/summer-admin/summer-admin.component';
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
 import { AdminComponent } from './componment/back/admin/admin.component';
+import { AddPostComponent } from './add-post/add-post.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
+import { UpdatePostBackComponent } from './update-post-back/update-post-back.component';
+import { AddPostBackComponent } from './add-post-back/add-post-back.component';
+import { ListApprovedComponent } from './componment/back/list-approved/list-approved.component';
+import { ListRejectedComponent } from './componment/back/list-rejected/list-rejected.component';
+
 
 
 
@@ -37,7 +45,14 @@ const routes: Routes = [
   {path: 'subjectsadmin', component: SubjectsAdminComponent},
   {path: 'summeradmin', component: SummerAdminComponent},
   {path: 'loginadmin', component: LoginAdminComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'add-post', component:AddPostComponent },
+  { path: 'update-post/:id', component: UpdatePostComponent },
+  { path: 'post-details/:id', component: PostDetailsComponent },
+  { path: 'update-post-back/:id', component: UpdatePostBackComponent },
+  {path: 'add-post-back', component:AddPostBackComponent },
+  {path: 'list-approved', component:ListApprovedComponent },
+  {path: 'list-rejected', component:ListRejectedComponent },
 
 ];
 

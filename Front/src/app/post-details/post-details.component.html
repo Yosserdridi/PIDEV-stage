@@ -1,0 +1,93 @@
+<div class="post-details-container">
+    <h2 style="font-weight: bold; background: linear-gradient(to right, #ff3737, #ff6969); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{ post.subject }}</h2>
+    <div class="post-divider"></div> <!-- Fancy Divider -->
+    <p>{{ post.content }}</p>
+    <p class="post-date">
+        <strong>Date:</strong> {{ post.datePost ? (post.datePost | date:'short') : 'No date available' }}
+      </p>
+     
+      <img [src]="'http://localhost:9091/stage/Post/uploads/' + post.picture" alt="Post Image" class="post-image" />
+
+ 
+    
+      
+    <!-- Comment Section -->
+    <div class="comment-section">
+      <h3>Comments</h3>
+  
+      <div *ngIf="post.comments.length > 0; else noComments">
+          <div *ngFor="let comment of post?.comments" class="comment">
+              <!-- ✅ Si on édite ce commentaire, afficher un input au lieu du texte -->
+              <p *ngIf="editingCommentId !== comment.id" class="comment-text">
+                  {{ comment.description }}
+              </p>
+              
+              <input *ngIf="editingCommentId === comment.id"
+                     type="text"
+                     [(ngModel)]="newCommentDescription"
+                     (keyup.enter)="updateComment()" />
+  
+              <span class="comment-date">{{ comment.dateComment | date:'short' }}</span>
+                    <!-- Edit Button -->
+                  <button *ngIf="editingCommentId !== comment.id"
+                  (click)="startEditing(comment.id!, comment.description!)"
+                  class="icon-button update-button">
+                  <i class="fa fa-pencil"></i> Edit
+                  </button>
+
+                  <!-- Save & Cancel Buttons -->
+                  <div *ngIf="editingCommentId === comment.id" class="button-group">
+                    <button class="icon-button save-button" (click)="updateComment()">
+                        <i class="fa fa-check"></i> Save
+                    </button>
+                    
+                    <button class="icon-button cancel-button" (click)="editingCommentId = null">
+                        <i class="fa fa-times"></i> Cancel
+                    </button>
+                </div>
+                
+
+                  <!-- Input for Replying -->
+                  <div>
+                  <input type="text" [(ngModel)]="newComment[comment.id!]" placeholder="Répondre..." />
+                  <button class="icon-button reply-button" (click)="replyToComment(comment.id!)">
+                  <i class="fa fa-reply"></i> Reply
+                  </button>
+                  </div>
+
+  
+              <h4>Réponses :</h4>
+              <div *ngFor="let reply of comment.reponse" class="reply">
+                  <p class="reply-text">{{ reply.description }}</p>
+                  <span class="reply-date">{{ reply.dateComment | date:'short' }}</span>
+              </div>
+          </div>
+      </div>
+  
+      <!-- No Comments Message -->
+      <ng-template #noComments>
+          <p class="no-comments-message">No comments yet. Be the first to comment!</p>
+      </ng-template>
+  </div>
+  
+      
+  
+   
+    
+  
+    <!-- Add Comment Form -->
+    <div class="add-comment">
+      <input type="text" [(ngModel)]="newComment[post.id!]" placeholder="Write a comment..." />
+      <button (click)="addComment(post.id)" class="comment-button">Add Comment</button>
+    </div>
+  </div>
+  
+    <!-- Back Button -->
+    
+  
+    <button style="position: fixed; bottom: 20px; left: 20px; padding: 10px 20px; background-color: #ff6969; color: #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;" 
+    routerLink="/forum" class="back-button"
+    onmouseover="this.style.transform='scale(1.1)';" 
+    onmouseout="this.style.transform='scale(1)';">
+    Back to Forum</button>
+  

@@ -1,0 +1,152 @@
+/* General Form Container */
+form {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title of the Form */
+  form h2 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  /* Form Group */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Labels */
+  label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Inputs and Textarea */
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Textarea specific styles */
+  textarea {
+    resize: vertical;
+    height: 150px;
+  }
+  
+  /* Focus State for inputs and textareas */
+  input:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Error Messages */
+  .error-message {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  /* Checkbox */
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  /* Submit Button */
+  button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    background-color: #ff6969;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Submit Button Hover */
+  button[type="submit"]:hover {
+    background-color: #e74c3c;
+  }
+  
+  /* Disabled Button */
+  button[disabled] {
+    background-color: #ff6969;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    form {
+      padding: 15px;
+    }
+  
+    button[type="submit"] {
+      font-size: 14px;
+    }
+  }
+  
+  /* Centered Post List Title */
+  .post-list-title {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  /* Action Buttons */
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .icon-button i {
+    font-size: 16px;
+  }
+  
+  /* Error Message Hover Effects */
+  .delete-button:hover {
+    background-color: #a71d2a;
+  }
+  
+  .view-button:hover {
+    background-color: #218838;
+  }
+  
+  .update-button:hover {
+    background-color: #e0a800;
+  }
+  .post-image {
+    max-width: 20%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  

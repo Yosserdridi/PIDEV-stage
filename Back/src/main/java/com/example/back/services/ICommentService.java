@@ -9,8 +9,8 @@ public interface ICommentService {
     Comment getById(Long id);
     Comment save(Comment post);
     void delete(Long id);
-
-    Comment addReply(Long parentCommentId, Comment replyComment);
-
-    void deleteCommentFromPost(Long postId, Long commentId);
+    public Comment updateComment(Long commentId, String newDescription);
+ Comment addReply(Long parentId, Comment reply);
+    public boolean deleteCommentById(Long commentId);
+   /* void deleteCommentFromPost(Long postId, Long commentId);*/
 }

@@ -23,6 +23,16 @@ import { ComplaintsAdminComponent } from './componment/back/complaints-admin/com
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddPostComponent } from './add-post/add-post.component';
+
+import { PostDetailsComponent } from './post-details/post-details.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
+import { UpdatePostBackComponent } from './update-post-back/update-post-back.component';
+import { AddPostBackComponent } from './add-post-back/add-post-back.component';
+import { ListApprovedComponent } from './componment/back/list-approved/list-approved.component';
+import { ListRejectedComponent } from './componment/back/list-rejected/list-rejected.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +55,15 @@ import { HttpClientModule } from '@angular/common/http';
     ComplaintsAdminComponent,
     LoginAdminComponent,
     AdminComponent,
+    AddPostComponent,
+  
+    PostDetailsComponent,
+        UpdatePostComponent,
+        UpdatePostBackComponent,
+        AddPostBackComponent,
+        ListApprovedComponent,
+        ListRejectedComponent,
+
     
     
     
@@ -54,9 +73,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}
