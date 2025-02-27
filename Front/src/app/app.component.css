@@ -8,7 +8,7 @@ body {
 
 /* Navbar styling */
 nav {
-  width: 200px; /* Reduce width of navbar to give more space to content */
+  width: 250px; /* Reduce width of navbar to give more space to content */
   padding: 20px;
   position: fixed; /* Keeps the navbar in place */
   height: 100vh; /* Full screen height */

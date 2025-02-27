@@ -1,6 +1,7 @@
 <div class="postulations-container">
   <h2>All Postulations</h2>
 
+  
   <div *ngIf="postulations.length > 0; else noPostulations">
     <div class="postulation-card" *ngFor="let postulation of postulations">
       <p><strong>Title:</strong> {{ postulation.titrecandidature }}</p>

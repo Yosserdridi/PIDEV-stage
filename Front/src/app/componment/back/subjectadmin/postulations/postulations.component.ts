@@ -45,6 +45,9 @@ export class PostulationsSpComponent implements OnInit {
     }
   }
 
+
+
+  
   // Load postulations based on idsujet
   loadPostulations(): void {
     if (this.idsujet !== undefined) {
@@ -60,6 +63,9 @@ export class PostulationsSpComponent implements OnInit {
       console.error('Idsujet is undefined');
     }
   }
+
+
+
 
   // Get status label based on the status number
   getStatusLabel(status: number): string {

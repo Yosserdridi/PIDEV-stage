@@ -7,7 +7,7 @@ input[type="text"] {
     border-radius: 6px;
     margin-top: 20px;
     margin-bottom: 10px; /* Add margin-bottom to create space below the input */
-    width: 300px;
+    width: 400px;
   }
   /* Updated CSS for the .nav-bar class */
   .nav-bar {

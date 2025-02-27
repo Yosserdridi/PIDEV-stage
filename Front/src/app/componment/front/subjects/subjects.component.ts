@@ -33,9 +33,11 @@ export class SubjectsComponent implements OnInit {
 
   filterSujets(): void {
     this.filteredSujets = this.sujets.filter(sujet =>
-      sujet.companyname.toLowerCase().includes(this.searchTerm.toLowerCase())
+      sujet.companyname.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      sujet.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
+  
 
   supprimerSujet(idSujet: number | undefined): void {
     if (idSujet === undefined) {
@@ -52,8 +54,8 @@ export class SubjectsComponent implements OnInit {
   }
   
 
-  postulate(index: number): void {
-    const id = this.sujets[index].idsujet;
+  postulate(idsujet: number): void {
+    const id = this.sujets[idsujet].idsujet;
     this.router.navigate(['/create/postulation', id]);
   }
   
