@@ -1,0 +1,47 @@
+<div class="container">
+  <h3>List of Conventions</h3>
+
+  <!-- Advanced Search Form -->
+  <div>
+    <label for="companyName">Company Name:</label>
+    <input type="text" id="companyName" [(ngModel)]="searchCompanyName" (keyup)="searchConvention()" name="companyName" placeholder="Search by company name">
+  </div>
+
+  <!-- No Results Found Message -->
+  <div *ngIf="notFound" class="alert alert-warning">
+    No conventions found with the provided company name.
+  </div>
+
+  <!-- Conventions Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Company Name</th>
+        <th>companyContact</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let convention of filteredConventions">
+        <td>{{ convention.id }}</td>
+        <td>{{ convention.companyName }}</td>
+        <td>{{ convention.companyContact }}</td>
+        <td>{{ convention.startDate }}</td>
+        <td>{{ convention.endDate }}</td>
+        <td>
+          <button (click)="deleteConvention(convention.id)">Delete</button>
+          <button
+          [ngStyle]="{'background-color': convention.isValid ? 'green' : 'red'}"
+          (click)="toggleValidity(convention)">
+          {{ convention.isValid ? 'Valid' : 'Not Valid' }}
+        </button>
+        </td>
+
+     
+      </tr>
+    </tbody>
+  </table>
+</div>

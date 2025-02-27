@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="card p-4 shadow-sm">
+    <h5 class="text-center mb-4">Uploader les fichiers</h5>
+
+    <form (ngSubmit)="onSubmit()">
+      <!-- Upload Report -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">Upload Report:</label>
+        <div class="input-group">
+          <input type="file" id="reportFile" class="form-control" (change)="onFileSelected($event, 'report')" accept=".pdf,.doc,.docx">
+        </div>
+        <small class="text-muted">{{ reportFile || 'No file chosen' }}</small>
+      </div>
+
+      <!-- Upload Certificate -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">Upload Certificate:</label>
+        <div class="input-group">
+          <input type="file" id="certificateFile" class="form-control" (change)="onFileSelected($event, 'certificate')" accept=".pdf,.jpg,.png">
+        </div>
+        <small class="text-muted">{{ certificateFile || 'No file chosen' }}</small>
+      </div>
+
+      <!-- Upload Button -->
+      <button type="submit" class="btn btn-primary w-100">Upload</button>
+    </form>
+  </div>
+</div>

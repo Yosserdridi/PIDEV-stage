@@ -2,12 +2,15 @@ package com.example.back.controller;
 
 
 import com.example.back.entities.InternshipConvention;
+import com.example.back.repository.ConventionRepository;
 import com.example.back.services.ConventionService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -15,6 +18,7 @@ import java.util.List;
 public class ConventionController {
 
         ConventionService conventionService;
+        ConventionRepository conventionRepository;
 
         @PostMapping("/addInternshipConvention")
         public  InternshipConvention addInternshipConvention(@RequestBody InternshipConvention internshipConvention) {
@@ -51,6 +55,21 @@ public class ConventionController {
             conventionService.deleteInternshipConvention(id);
         }
 
+
+
+    @PutMapping("/convention/{id}/validity")
+    public ResponseEntity<String> toggleValidity(@PathVariable Long id, @RequestParam boolean isValid) {
+        Optional<InternshipConvention> conventionOpt = conventionRepository.findById(id);
+
+        if (conventionOpt.isPresent()) {
+            InternshipConvention convention = conventionOpt.get();
+            convention.setIsValid(isValid);
+            conventionRepository.save(convention);
+            return ResponseEntity.ok("Convention validity updated successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Convention not found.");
+        }
+    }
 
 
 

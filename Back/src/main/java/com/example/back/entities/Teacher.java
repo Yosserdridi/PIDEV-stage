@@ -30,8 +30,7 @@ public class Teacher extends User{
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Soutenance> soutenances;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Files> files;
+
 
 
 

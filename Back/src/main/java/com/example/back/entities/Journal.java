@@ -18,9 +18,16 @@ public class Journal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    private String title;
+
     private String remark;
 
     private Boolean isValid;
+
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "journal")
+    private Files file;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="journal")
     private Set<Task> tasks;

@@ -1,0 +1,31 @@
+
+
+
+<div class="container">
+  
+  <h3> Lists Internships :</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>title </th>
+        <th>description</th>
+        <th>duration</th>
+        <th>Actions</th>
+     
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of internships">
+        <td>{{ i.id }}</td>
+        <td>{{ i.title}}</td>
+        <td>{{ i.description }}</td>
+        <td>{{ i.duration }}</td>
+       
+        <td>
+          <button (click)="deleteInternship(i.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

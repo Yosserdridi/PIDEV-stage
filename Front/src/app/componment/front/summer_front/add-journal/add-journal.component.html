@@ -1,0 +1,20 @@
+<div class="container">
+    <form [formGroup]="journalForm" (ngSubmit)="addJournal()">
+      
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" type="text" formControlName="title" class="form-control" />
+        <div *ngIf="journalForm.get('title')?.invalid && journalForm.get('title')?.touched" class="text-danger">
+          <small>Title is required.</small>
+        </div>
+      </div>
+  
+
+
+  
+      <button type="submit" [disabled]="journalForm.invalid">Save</button>
+
+      <button *ngIf="journalId" (click)="goToAddTaskPage()">Go to Add Tasks</button>
+    </form>
+  </div>
+  

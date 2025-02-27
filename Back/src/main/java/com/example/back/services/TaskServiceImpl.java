@@ -6,14 +6,20 @@ import com.example.back.entities.Task;
 import com.example.back.repository.JournalRepository;
 import com.example.back.repository.TaskRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class TaskServiceImpl implements TaskService {
+
+    @Autowired
      TaskRepository taskRepository;
+
+    @Autowired
      JournalRepository journalRepository;
 
 
@@ -50,4 +56,24 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.save(task);
 
     }
+
+    public Task addTaskToJournal(Long journalId, Task task) {
+        Optional<Journal> journalOpt = journalRepository.findById(journalId);
+        if (journalOpt.isPresent()) {
+            Journal journal = journalOpt.get();
+            task.setJournal(journal);
+            return taskRepository.save(task);
+        }
+        throw new RuntimeException("Journal not found");
+    }
+
+
+
+
+
+
+
+
+
+
 }

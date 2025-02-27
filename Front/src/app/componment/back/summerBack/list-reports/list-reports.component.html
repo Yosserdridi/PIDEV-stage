@@ -1,0 +1,27 @@
+<div class="admin">
+  <table>
+    <thead>
+      <tr>
+        <th>Report</th>
+        <th>Certificate</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let report of reports">
+        <td>{{ report.report }}</td>
+        <td>{{ report.internship_Certifcate }}</td>
+        <td>
+          <!-- Horizontal buttons layout -->
+          <div style="display: flex; gap: 10px;">
+            <!-- Button for Report -->
+            <button *ngIf="report.report" (click)="downloadReport(report.report)">Download Report</button>
+
+            <!-- Button for Certificate -->
+            <button *ngIf="report.internship_Certifcate" (click)="downloadReport(report.internship_Certifcate)">Download Certificate</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

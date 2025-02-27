@@ -1,9 +1,7 @@
 package com.example.back.services;
 
 
-import com.example.back.entities.Files;
-import com.example.back.entities.InternshipConvention;
-import com.example.back.entities.SummerInternship;
+import com.example.back.entities.*;
 import com.example.back.repository.ConventionRepository;
 import com.example.back.repository.FileRepository;
 import com.example.back.repository.SummerInternshipRepository;
@@ -12,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -51,12 +50,19 @@ public class SummerInternshipServiceImpl implements SummerInternshipService {
 
     @Override
     public void fileAssignToInternship(long idFile, long idInternship) {
+
+    }
+
+    /*@Override
+    public void fileAssignToInternship(long idFile, long idInternship) {
         Files file =fileRepository.findById(idFile).get();
         SummerInternship summerInternship =summerInternshipRepository.findById(idInternship).get();
 
         summerInternship.setFile(file);
         summerInternshipRepository.save(summerInternship);
-    }
+    }*/
+
+
 
     @Override
     public void ConventionAssignToInternship(long idConvention, long idInternship) {
@@ -66,7 +72,16 @@ public class SummerInternshipServiceImpl implements SummerInternshipService {
 
         summerInternship.setInternshipConvention(internshipConvention);
         summerInternshipRepository.save(summerInternship);
-
     }
 
+    public SummerInternship addInternshipConvention(Long conventionId, SummerInternship summerInternship) {
+        Optional<InternshipConvention> conventionOpt = conventionRepository.findById(conventionId);
+        if (conventionOpt.isPresent()) {
+
+        InternshipConvention convention =conventionOpt.get();
+            summerInternship.setInternshipConvention(convention);
+            return summerInternshipRepository.save(summerInternship);
+        }
+        throw new RuntimeException("conevnyion not found");
+    }
 }

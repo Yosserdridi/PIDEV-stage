@@ -3,54 +3,109 @@ package com.example.back.services;
 
 import com.example.back.entities.Files;
 import com.example.back.entities.Journal;
+import com.example.back.entities.Task;
 import com.example.back.repository.FileRepository;
 import com.example.back.repository.JournalRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static java.nio.file.Files.createDirectories;
 
 @Service
 @AllArgsConstructor
 public class FileServiceImpl implements FileService {
 
+    @Autowired
     FileRepository fileRepository;
     JournalRepository journalRepository;
 
-    @Override
-    public Files addFile(Files file) {
-        return fileRepository.save(file);
+
+
+    private final Path fileStorageLocation = Paths.get("uploads").toAbsolutePath().normalize();
+
+    public FileServiceImpl() {
+        try {
+            java.nio.file.Files.createDirectories(this.fileStorageLocation);
+        } catch (IOException ex) {
+            throw new RuntimeException("Could not create the directory for file storage.", ex);
+        }
     }
 
-    @Override
-    public Files updateFile(Files file) {
-        return fileRepository.save(file);
+    public String saveFile(MultipartFile file) {
+        try {
+            String fileName = file.getOriginalFilename();
+            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            java.nio.file.Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
+            return fileName;
+        } catch (IOException ex) {
+            throw new RuntimeException("Could not store the file. Please try again!", ex);
+        }
     }
 
-    @Override
-    public Files getFileById(long id) {
-        return fileRepository.findById(id).get();
-    }
+    public Resource loadFileAsResource(String fileName) {
+        try {
+            Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
+            Resource resource = new UrlResource(filePath.toUri());
+            if (resource.exists()) {
+                return resource;
+            } else {
+                throw new RuntimeException("File not found " + fileName);
+            }
+        } catch (MalformedURLException ex) {
+            throw new RuntimeException("File not found " + fileName, ex);
+        }
 
-    @Override
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public List<Files> getAllFiles() {
-        return fileRepository.findAll();
+        return fileRepository.getAllFiles(); // Use the native query method
     }
 
-    @Override
-    public void deleteFileById(long id) {
+    public Files getFileById(Long id) {
+        return fileRepository.findById(id).orElseThrow(() -> new RuntimeException("File not found"));
+    }
+
+    public void deleteFileById(Long id) {
         fileRepository.deleteById(id);
-
-    }
-
-    @Override
-    public void addJournalAndAssignToFile(long idFile, long idJournal) {
-        Journal journal = journalRepository.findById(idJournal).get();
-        Files file = fileRepository.findById(idFile).get();
-
-        file.setJournal(journal);
-         fileRepository.save(file);
     }
 
 
-}
+
+
+
+
+    }
+
+
+
+

@@ -21,6 +21,19 @@ import { SummerAdminComponent } from './componment/back/summer-admin/summer-admi
 import { ForumAdminComponent } from './componment/back/forum-admin/forum-admin.component';
 import { ComplaintsAdminComponent } from './componment/back/complaints-admin/complaints-admin.component';
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { ListConventionComponent } from './componment/back/summerBack/list-convention/list-convention.component';
+import { AddConventionComponent } from './componment/front/summer_front/add-convention/add-convention.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddInternshipComponent } from './componment/front/summer_front/add-internship/add-internship.component';
+import { ListInternshipComponent } from './componment/back/summerBack/list-internship/list-internship.component';
+import { InternshipdetailComponent } from './componment/back/summerBack/internshipdetail/internshipdetail.component';
+import { AddFileComponent } from './componment/front/summer_front/add-file/add-file.component';
+import { ListReportsComponent } from './componment/back/summerBack/list-reports/list-reports.component';
+import { AddTasksComponent } from './componment/front/summer_front/add-tasks/add-tasks.component';
+import { AddJournalComponent } from './componment/front/summer_front/add-journal/add-journal.component';
+import { ValidConevntionComponent } from './componment/front/summer_front/valid-conevntion/valid-conevntion.component';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +56,16 @@ import { LoginAdminComponent } from './componment/back/login-admin/login-admin.c
     ComplaintsAdminComponent,
     LoginAdminComponent,
     AdminComponent,
+    ListConventionComponent,
+    AddConventionComponent,
+    AddInternshipComponent,
+    ListInternshipComponent,
+    InternshipdetailComponent,
+    AddFileComponent,
+    ListReportsComponent,
+    AddTasksComponent,
+    AddJournalComponent,
+    ValidConevntionComponent,
     
     
     
@@ -50,7 +73,14 @@ import { LoginAdminComponent } from './componment/back/login-admin/login-admin.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+
+  
+    
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

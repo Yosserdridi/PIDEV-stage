@@ -1,10 +1,7 @@
 package com.example.back.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
@@ -24,15 +21,16 @@ public class SummerInternship {
 
     private int duration;
 
-    private String internship_Certifcate;
 
 
-    private String stauts;
+    private String statuts;
 
-
-    @OneToOne
+    @Getter(AccessLevel.NONE)
+    @OneToOne(cascade = CascadeType.ALL)
     private InternshipConvention internshipConvention;
 
-  @OneToOne
-    private Files file;
+
+    @Getter(AccessLevel.NONE)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Files files;
 }

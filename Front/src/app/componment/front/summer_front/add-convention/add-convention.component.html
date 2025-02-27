@@ -1,0 +1,62 @@
+<div class="container mt-4">
+  <div class="form-container mx-auto">
+    <h2>Add Convention</h2>
+
+    <form [formGroup]="conventionForm" (ngSubmit)="addConvention()">
+      
+      <!-- Company Name -->
+      <div class="mb-3">
+        <label for="companyName">Company Name:</label>
+        <input id="companyName" type="text" formControlName="companyName" class="form-control">
+        <small *ngIf="conventionForm.controls['companyName'].invalid && conventionForm.controls['companyName'].touched" class="text-danger">
+          Company name is required
+        </small>
+      </div>
+
+      <!-- Company Address -->
+      <div class="mb-3">
+        <label for="companyAddress">Company Address:</label>
+        <input id="companyAddress" type="text" formControlName="companyAddress" class="form-control">
+        <small *ngIf="conventionForm.controls['companyAddress'].invalid && conventionForm.controls['companyAddress'].touched" class="text-danger">
+          Address is required
+        </small>
+      </div>
+
+      <!-- Company Contact -->
+      <div class="mb-3">
+        <label for="companyContact">Company Contact:</label>
+        <input id="companyContact" type="text" formControlName="companyContact" class="form-control">
+        <small *ngIf="conventionForm.controls['companyContact'].invalid && conventionForm.controls['companyContact'].touched" class="text-danger">
+          Enter a valid phone number (8-15 digits).
+        </small>
+      </div>
+
+      <!-- Start Date -->
+      <div class="mb-3">
+        <label for="startDate">Start Date:</label>
+        <input id="startDate" type="date" formControlName="startDate" class="form-control">
+      </div>
+
+      <!-- End Date -->
+      <div class="mb-3">
+        <label for="endDate">End Date:</label>
+        <input id="endDate" type="date" formControlName="endDate" class="form-control">
+        <small *ngIf="conventionForm.controls['endDate'].hasError('endDateLessThanStartDate') && conventionForm.controls['endDate'].touched" class="text-danger">
+          End date must be greater than the start date.
+        </small>
+      </div>
+
+      <!-- Internship Type -->
+      <div class="mb-3">
+        <label for="internshipTypes">Internship Type:</label>
+        <select id="internshipTypes" formControlName="internshipTypes" class="form-control">
+          <option *ngFor="let t of internshipTypes" [value]="t">{{ t }}</option>
+        </select>
+      </div>
+
+      <!-- Buttons -->
+      <button type="submit" class="btn btn-primary" [disabled]="conventionForm.invalid">Save</button> <br>
+      <button *ngIf="conventionId" (click)="goToAddTaskPage()" class="btn btn-secondary mt-3">Go to Add Internship</button>
+    </form>
+  </div>
+</div>

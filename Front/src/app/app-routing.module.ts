@@ -16,6 +16,11 @@ import { SubjectsAdminComponent } from './componment/back/subjects-admin/subject
 import { SummerAdminComponent } from './componment/back/summer-admin/summer-admin.component';
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
 import { AdminComponent } from './componment/back/admin/admin.component';
+import { InternshipdetailComponent } from './componment/back/summerBack/internshipdetail/internshipdetail.component';
+import { AddTasksComponent } from './componment/front/summer_front/add-tasks/add-tasks.component';
+import { AddInternshipComponent } from './componment/front/summer_front/add-internship/add-internship.component';
+import { AddFileComponent } from './componment/front/summer_front/add-file/add-file.component';
+import { ValidConevntionComponent } from './componment/front/summer_front/valid-conevntion/valid-conevntion.component';
 
 
 
@@ -37,7 +42,16 @@ const routes: Routes = [
   {path: 'subjectsadmin', component: SubjectsAdminComponent},
   {path: 'summeradmin', component: SummerAdminComponent},
   {path: 'loginadmin', component: LoginAdminComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path:  'internshipDetail/:id', component:InternshipdetailComponent},
+  { path: 'add-tasks/:id', component: AddTasksComponent },
+  { path: 'add-internship/:id', component: AddInternshipComponent },
+  { path: 'add-files/:id', component: AddFileComponent },
+  {path: 'valide_convention', component: ValidConevntionComponent},
+  
+
+
+
 
 ];
 

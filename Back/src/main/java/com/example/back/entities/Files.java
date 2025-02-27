@@ -7,6 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+
 @Entity
 @Getter
 @Setter
@@ -17,8 +21,15 @@ public class Files {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String Report;
+    private String internship_Certifcate;
 
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     private  Journal journal;
+
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "files")
+    private SummerInternship summerInternship;
+
 
 }

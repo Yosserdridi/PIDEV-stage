@@ -1,0 +1,69 @@
+/* Container for Admin */
+.admin {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* List Styling */
+  .admin ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .admin li {
+    background-color: #f9f9f9;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .admin li:hover {
+    background-color: #e8f5e9;  /* Light Green */
+  }
+  
+  .admin li span {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Button Styling */
+  button {
+    background-color: #007bff; /* Blue */
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker Blue */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .admin {
+      padding: 15px;
+    }
+  
+    .admin li {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  

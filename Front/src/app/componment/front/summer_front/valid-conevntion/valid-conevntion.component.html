@@ -1,0 +1,31 @@
+<!-- user.component.html -->
+<div class="container my-4">
+    <div class="row">
+      <div *ngFor="let convention of conventions" class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h3 class="card-title">{{ convention.companyName }}</h3>
+            <p><strong>Start Date:</strong> {{ convention.startDate | date }}</p>
+            <p><strong>End Date:</strong> {{ convention.endDate | date }}</p>
+            <p><strong>Address:</strong> {{ convention.companyAddress }}</p>
+            <p><strong>Contact:</strong> {{ convention.companyContact }}</p>
+  
+            <!-- Message based on validity -->
+            <div *ngIf="canProceed(convention)" class="alert alert-success" role="alert">
+              <strong>Success!</strong> You can continue to the next step.
+            </div>
+            <div *ngIf="!canProceed(convention)" class="alert alert-danger" role="alert">
+              <strong>Error!</strong> Convention is invalid. Please contact the admin.
+            </div>
+  
+            <!-- Proceed button only visible if the convention is valid -->
+            <button *ngIf="canProceed(convention)" class="btn btn-primary w-100 mt-3" (click)="proceed(convention)">
+              Proceed to Next Step
+            </button>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
