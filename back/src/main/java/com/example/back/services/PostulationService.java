@@ -84,6 +84,20 @@ public class PostulationService implements IPostulationService {
     }
 
 
+    public void acceptPostulation(Long postulationId) {
+        Postulation postulation = postulationRepository.findById(postulationId)
+                .orElseThrow(() -> new RuntimeException("Postulation not found with id: " + postulationId));
+        postulation.setStatus(1); // Set status to "Accepted"
+        postulationRepository.save(postulation); // Save the updated postulation
+    }
+    public void rejectPostulation(Long postulationId) {
+        Postulation postulation = postulationRepository.findById(postulationId)
+                .orElseThrow(() -> new RuntimeException("Postulation not found with id: " + postulationId));
+        postulation.setStatus(2); // Set status to "Rejected"
+        postulationRepository.save(postulation); // Save the updated postulation
+    }
+
+
 
 
     @Override

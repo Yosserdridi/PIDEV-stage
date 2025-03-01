@@ -27,7 +27,6 @@ export class PostulationService {
     return this.http.post<postulation>(`${this.baseUrl}/addPos?idsujet=${postulation.idsujet}`, postulation);
   }
 
-  
   // Supprimer une postulation par son ID
   deletePostulation(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/remove/${id}`);
@@ -43,11 +42,18 @@ export class PostulationService {
     return this.http.get<postulation[]>(`${this.baseUrl}/retrieve-by-idsujet/${idsujet}`);
   }
 
+  // Get postulations filtered by status
+  getPostulationsByStatus(status: number): Observable<postulation[]> {
+    return this.http.get<postulation[]>(`${this.baseUrl}/retrieve-by-status?status=${status}`);
+  }
 
-    // Get postulations filtered by status
-    getPostulationsByStatus(status: number): Observable<postulation[]> {
-      return this.http.get<postulation[]>(`${this.baseUrl}/retrieve-by-status?status=${status}`);
-    }
+  // Accept postulation
+  acceptPostulation(postulationId: number): Observable<void> {
+    return this.http.put<void>(`${this.baseUrl}/accept/${postulationId}`, {});
+  }
 
-    
+  // Reject postulation
+  rejectPostulation(postulationId: number): Observable<void> {
+    return this.http.put<void>(`${this.baseUrl}/reject/${postulationId}`, {});
+  }
 }

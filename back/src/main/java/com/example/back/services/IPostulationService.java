@@ -11,8 +11,15 @@ public interface IPostulationService {
     Postulation updatePos(Postulation pos);
     void deletePos(Long id);
 
-    //get postulations by idsujet
+    // Get postulations by idsujet
     List<Postulation> getPostulationsByIdsujet(Long idsujet);
 
+    // Retrieve postulations by status
     List<Postulation> retrievePostulationsByStatus(int status);
+
+    // Accept postulation
+    void acceptPostulation(Long postulationId);
+
+    // Reject postulation
+    void rejectPostulation(Long postulationId);
 }

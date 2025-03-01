@@ -89,13 +89,27 @@ export class PostulationsSpComponent implements OnInit {
 
   // Accept postulation
   acceptPostulation(postulationId: number): void {
-    console.log('Accepting postulation with ID:', postulationId);
-    // Logic for accepting postulation goes here
+    this.postulationService.acceptPostulation(postulationId).subscribe(
+      () => {
+        console.log('Postulation accepted:', postulationId);
+        this.loadPostulations();  // Refresh the postulations after accepting
+      },
+      (error) => {
+        console.error('Error accepting postulation:', error);
+      }
+    );
   }
 
   // Reject postulation
   rejectPostulation(postulationId: number): void {
-    console.log('Rejecting postulation with ID:', postulationId);
-    // Logic for rejecting postulation goes here
+    this.postulationService.rejectPostulation(postulationId).subscribe(
+      () => {
+        console.log('Postulation rejected:', postulationId);
+        this.loadPostulations();  // Refresh the postulations after rejecting
+      },
+      (error) => {
+        console.error('Error rejecting postulation:', error);
+      }
+    );
   }
 }

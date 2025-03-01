@@ -44,17 +44,34 @@ export class AllPostulationsComponent implements OnInit {
     }
   }
 
+  // Accept postulation and update status from 0 -> 1
   acceptPostulation(id: number): void {
-    // Add the accept postulation logic
-    console.log(`Postulation ${id} accepted`);
+    this.postulationService.acceptPostulation(id).subscribe(
+      () => {
+        console.log(`Postulation ${id} accepted`);
+        this.loadPostulations();  // Refresh postulations after accepting
+      },
+      (error) => {
+        console.error('Error accepting postulation:', error);
+      }
+    );
   }
 
+  // Reject postulation and update status from 0 -> 2
   rejectPostulation(id: number): void {
-    // Add the reject postulation logic
-    console.log(`Postulation ${id} rejected`);
+    this.postulationService.rejectPostulation(id).subscribe(
+      () => {
+        console.log(`Postulation ${id} rejected`);
+        this.loadPostulations();  // Refresh postulations after rejecting
+      },
+      (error) => {
+        console.error('Error rejecting postulation:', error);
+      }
+    );
   }
 
-  filterByStatus(): void {
+  // Filter postulations by selected status
+  applyFilter(): void {
     if (this.selectedStatus === '') {
       this.filteredPostulations = this.postulations;  // Show all postulations
     } else {

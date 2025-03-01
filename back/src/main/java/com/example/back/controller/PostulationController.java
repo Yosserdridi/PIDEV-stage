@@ -1,6 +1,5 @@
 package com.example.back.controller;
 
-
 import com.example.back.entities.Postulation;
 import com.example.back.services.IPostulationService;
 import lombok.AllArgsConstructor;
@@ -13,12 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/post")
 @CrossOrigin(origins = "http://localhost:4200")
-
-//http://localhost:9091/stage/post
-
 public class PostulationController {
 
-    IPostulationService postulationService;
+    @Autowired
+    private IPostulationService postulationService;
 
     @GetMapping("/retrieve-all")
     public List<Postulation> retrieveAll() {
@@ -26,44 +23,44 @@ public class PostulationController {
     }
 
     @GetMapping("/retrieve-pos/{id}")
-    public Postulation retrievePos(@PathVariable ("id") Long id) {
+    public Postulation retrievePos(@PathVariable("id") Long id) {
         return postulationService.retrievePos(id);
     }
 
-        @PostMapping("/addPos")
-        public Postulation addPos(@RequestBody Postulation pos, @RequestParam Long idsujet) {
-            // Call the service method and pass the Postulation and idsujet
-            Postulation postulation = postulationService.addPos(pos, idsujet);
-            return postulation;
-        }
-
+    @PostMapping("/addPos")
+    public Postulation addPos(@RequestBody Postulation pos, @RequestParam Long idsujet) {
+        return postulationService.addPos(pos, idsujet);
+    }
 
     @DeleteMapping("/remove/{id}")
-    public void removePos(@PathVariable ("id") Long id) {postulationService.deletePos(id);}
-
+    public void removePos(@PathVariable("id") Long id) {
+        postulationService.deletePos(id);
+    }
 
     @PutMapping("/modify-pos")
     public Postulation updatePos(@RequestBody Postulation pos) {
-        Postulation postulation = postulationService.updatePos(pos);
-        return postulation;
+        return postulationService.updatePos(pos);
     }
 
-
-    //   get postulations by idsujet
     @GetMapping("/retrieve-by-idsujet/{idsujet}")
     public List<Postulation> retrievePostulationsByIdsujet(@PathVariable("idsujet") Long idsujet) {
         return postulationService.getPostulationsByIdsujet(idsujet);
     }
 
-
-    // Retrieve postulations by status
     @GetMapping("/retrieve-by-status")
     public List<Postulation> retrieveByStatus(@RequestParam int status) {
         return postulationService.retrievePostulationsByStatus(status);
     }
 
+    // Accept postulation
+    @PutMapping("/accept/{postulationId}")
+    public void acceptPostulation(@PathVariable Long postulationId) {
+        postulationService.acceptPostulation(postulationId);
+    }
 
-
+    // Reject postulation
+    @PutMapping("/reject/{postulationId}")
+    public void rejectPostulation(@PathVariable Long postulationId) {
+        postulationService.rejectPostulation(postulationId);
+    }
 }
-
-

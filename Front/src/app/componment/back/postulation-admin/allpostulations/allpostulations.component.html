@@ -4,8 +4,8 @@
   <!-- Status filter dropdown -->
   <div class="filter-container">
     <label for="statusFilter">Filter by Status:</label>
-    <select id="statusFilter" [(ngModel)]="selectedStatus" (change)="filterByStatus()">
-      <option value="">All</option> 
+    <select id="statusFilter" [(ngModel)]="selectedStatus" (change)="applyFilter()">
+      <option value="">All</option>
       <option value="0">Pending</option>
       <option value="1">Accepted</option>
       <option value="2">Rejected</option>
@@ -28,6 +28,6 @@
   </div>
 
   <ng-template #noPostulations>
-    <p>No postulations found for this subject.</p>
+    <p>No postulations found.</p>
   </ng-template>
 </div>

@@ -12,7 +12,7 @@
     </select>
   </div>
 
-  <div *ngIf="postulations.length > 0; else noPostulations">
+  <div *ngIf="filteredPostulations.length > 0; else noPostulations">
     <div class="postulation-card" *ngFor="let postulation of filteredPostulations">
       <p><strong>Title:</strong> {{ postulation.titrecandidature }}</p>
       <p><strong>Motivation Letter:</strong> {{ postulation.lettremotivation }}</p>
@@ -31,4 +31,3 @@
     <p>No postulations found for this subject.</p>
   </ng-template>
 </div>
-```
