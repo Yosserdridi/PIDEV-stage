@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IntershipOfferService } from 'src/app/Services/IntershipOffer/intership-offer-services.service';
-import { intershipoffer } from 'src/app/models/intershipoffer';
+import { intershipoffer, TypeInternship } from 'src/app/models/intershipoffer';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,19 +14,33 @@ export class ReadadminComponent implements OnInit {
   searchTerm: string = '';
   message: string = '';
 
+  // Mapping for internship types to user-friendly names
+  typeInternshipMapping: { [key in TypeInternship]: string } = {
+    [TypeInternship.STAGE_FORMATION_HUMAINE_SOCIALE]: 'Formation Humaine et Sociale',
+    [TypeInternship.STAGE_IMMERSION_ENTREPRISE]: 'Immersion en entreprise',
+    [TypeInternship.STAGE_INGENIEUR]: 'Internship Ingénieur',
+    [TypeInternship.STAGE_PFE]: 'Projet de Fin d\'Etudes',
+  };
+
   constructor(private sujetService: IntershipOfferService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchSujets();
   }
+
   fetchSujets(): void {
     this.sujetService.getAllOffers().subscribe(sujets => {
       console.log("Fetched sujets:", sujets); // Debugging
-      this.sujets = sujets;
-      this.filteredSujets = sujets;  
+      // Sort the subjects by idsujet (descending order)
+      this.sujets = sujets.sort((a, b) => b.idsujet - a.idsujet);
+      this.filteredSujets = this.sujets;
     });
   }
-  
+
+  // Method to map internship type to user-friendly names
+  mappedTypeInternship(type: TypeInternship): string {
+    return this.typeInternshipMapping[type] || type;  // Default to the enum value if not found
+  }
 
   filterSujets(): void {
     this.filteredSujets = this.sujets.filter(sujet =>
@@ -34,7 +48,6 @@ export class ReadadminComponent implements OnInit {
       sujet.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
-  
 
   supprimerSujet(idSujet: number | undefined): void {
     if (idSujet === undefined) {
@@ -46,7 +59,6 @@ export class ReadadminComponent implements OnInit {
       this.message = "Suppression effectuée avec succès.";
       this.fetchSujets();
     });
-
   }
 
   afficherFormulaireModifier(sujet: intershipoffer): void {
@@ -57,7 +69,7 @@ export class ReadadminComponent implements OnInit {
       console.error("Invalid sujet or ID missing:", sujet);
     }
   }
-  
+
   ajouterSujet(): void {
     this.router.navigate(['/adminsujetcreate']);
   }

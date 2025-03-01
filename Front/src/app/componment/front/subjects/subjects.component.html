@@ -9,7 +9,7 @@
 
           <div class="col-md-12">
             <div class="postulation-card">
-              <div class="card-header  ">
+              <div class="card-header">
                 <h2 class="ff">Subjects</h2>
               </div>
               <div class="card-body">
@@ -24,7 +24,8 @@
                   <p><strong>Company name:</strong> {{ sujet.companyname }}</p>
                   <p><strong>Required number of students:</strong> {{ sujet.numberOfStudents }}</p>
                   <p><strong>Requirements:</strong> {{ sujet.requirements }}</p>
-                  <p><strong>Subject type:</strong> {{ sujet.typeInternship }}</p>
+                  <!-- Display the mapped internship type -->
+                  <p><strong>Subject type:</strong> {{ mappedTypeInternship(sujet.typeInternship) }}</p>
                   <button class="btn btn-primary btn-sky-blue mb-3" (click)="postulate(i)">Postulate</button>
                 </div>
               </div>

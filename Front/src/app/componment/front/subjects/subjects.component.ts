@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-  import { IntershipOfferService } from 'src/app/Services/IntershipOffer/intership-offer-services.service';
-import { intershipoffer } from 'src/app/models/intershipoffer';
+import { IntershipOfferService } from 'src/app/Services/IntershipOffer/intership-offer-services.service';
+import { intershipoffer, TypeInternship } from 'src/app/models/intershipoffer';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,6 +16,14 @@ export class SubjectsComponent implements OnInit {
   message: string = '';
   selectedSujet: intershipoffer | null = null;
 
+  // Ensure the mapping is consistent with the enum values in 'intershipoffer'
+  typeInternshipMapping: { [key in TypeInternship]: string } = {
+    [TypeInternship.STAGE_FORMATION_HUMAINE_SOCIALE]: 'Formation Humaine et Sociale',
+    [TypeInternship.STAGE_IMMERSION_ENTREPRISE]: 'Immersion en entreprise',
+    [TypeInternship.STAGE_INGENIEUR]: 'Internship Ingénieur',
+    [TypeInternship.STAGE_PFE]: 'Projet de Fin d\'Etudes',
+  };
+
   constructor(private sujetService: IntershipOfferService, private router: Router) {}
 
   ngOnInit(): void {
@@ -25,10 +33,9 @@ export class SubjectsComponent implements OnInit {
   fetchSujets(): void {
     this.sujetService.getAllOffers().subscribe(sujets => {
       this.sujets = sujets;
-      this.filteredSujets = sujets;  
+      this.filteredSujets = sujets;
       console.log(sujets);
     });
- 
   }
 
   filterSujets(): void {
@@ -37,28 +44,23 @@ export class SubjectsComponent implements OnInit {
       sujet.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
-  
 
   supprimerSujet(idSujet: number | undefined): void {
     if (idSujet === undefined) {
       console.error("Error: The subject ID is undefined.");
       return;
     }
-  
     console.log("Deleting subject with ID:", idSujet);
-  
     this.sujetService.deleteOffer(idSujet).subscribe(() => {
       this.message = "Suppression effectuée avec succès.";
       this.fetchSujets();
     });
   }
-  
 
   postulate(idsujet: number): void {
     const id = this.sujets[idsujet].idsujet;
     this.router.navigate(['/create/postulation', id]);
   }
-  
 
   modifierSujet(sujet: intershipoffer): void {
     this.sujetService.updateOffer(sujet).subscribe(() => {
@@ -73,16 +75,16 @@ export class SubjectsComponent implements OnInit {
     this.router.navigate(['/adminsujetcreate']);
   }
 
-     // Navigate to the postulations page with the corresponding idsujet
-    displayPostulations(idsujet: number): void {
-      this.router.navigate(['/postulationbysujet', idsujet]);
-    }
+  displayPostulations(idsujet: number): void {
+    this.router.navigate(['/postulationbysujet', idsujet]);
+  }
 
-
+  // Make sure the mapping is correct and the enum values match
+  mappedTypeInternship(type: TypeInternship): string {
+    return this.typeInternshipMapping[type] || type;
+  }
 
   logSujetId(id: number | undefined): void {
     console.log("Deleting subject with ID:", id);
   }
-  
-
 }

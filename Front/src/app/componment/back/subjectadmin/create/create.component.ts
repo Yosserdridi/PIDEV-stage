@@ -14,11 +14,19 @@ export class CreateadminComponent implements AfterViewInit {
   // New offer model
   newOffer: intershipoffer = new intershipoffer();
   
-  // Available types of internship
+  // Available types of internship (enum values)
   internshipTypes = Object.values(TypeInternship);
 
+  // Mapping for internship types to user-friendly names
+  typeInternshipMapping: { [key in TypeInternship]: string } = {
+    [TypeInternship.STAGE_FORMATION_HUMAINE_SOCIALE]: 'Formation Humaine et Sociale',
+    [TypeInternship.STAGE_IMMERSION_ENTREPRISE]: 'Immersion en entreprise',
+    [TypeInternship.STAGE_INGENIEUR]: 'Internship Ingénieur',
+    [TypeInternship.STAGE_PFE]: 'Projet de Fin d\'Etudes',
+  };
+
   // Error message property
-  errorMessage: string = '';  // Add this property to store the error message
+  errorMessage: string = '';
 
   // ViewChild to get the form reference
   @ViewChild('createForm') createForm!: NgForm;
@@ -29,10 +37,14 @@ export class CreateadminComponent implements AfterViewInit {
   ) { }
 
   ngAfterViewInit(): void {
-    // To prevent the error when accessing ViewChild immediately after constructor
     if (this.createForm) {
       console.log('Form initialized');
     }
+  }
+
+  // Method to map internship type to user-friendly names
+  mappedTypeInternship(type: TypeInternship): string {
+    return this.typeInternshipMapping[type] || type;  // Default to the enum value if not found
   }
 
   // Submit the form to create the internship offer

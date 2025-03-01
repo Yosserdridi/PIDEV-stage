@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -25,6 +26,11 @@ public class IntershipOffer {
     private String companyname ;
     private String companymail ;
     private int numberOfStudents;
+
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date creationDate;
+
     @Enumerated(EnumType.STRING)
     private TypeInternship typeInternship ;
 

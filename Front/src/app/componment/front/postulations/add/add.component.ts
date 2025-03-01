@@ -4,6 +4,7 @@ import { PostulationService } from 'src/app/Services/postulation/postulation.ser
 import { IntershipOfferService } from 'src/app/Services/IntershipOffer/intership-offer-services.service';
 import { postulation } from 'src/app/models/postulation';
 import { intershipoffer } from 'src/app/models/intershipoffer';
+import { TypeInternship } from 'src/app/models/intershipoffer'; // Import the enum
 
 @Component({
   selector: 'app-add',
@@ -18,8 +19,9 @@ export class AddPComponent implements OnInit {
     "Tunis", "Ariana", "Ben Arous", "Manouba", "Nabeul", "Zaghouan", "Bizerte", "Béja",
     "Jendouba", "Kef", "Siliana", "Sousse", "Monastir", "Mahdia", "Kairouan", "Kasserine",
     "Sidi Bouzid", "Sfax", "Gabès", "Medenine", "Tataouine", "Gafsa", "Tozeur", "Kebili"
-  ];
+  ];  
   subjectTitle: string = '';  // Store the subject title
+
 
   constructor(
     private postulationService: PostulationService,
@@ -51,6 +53,7 @@ export class AddPComponent implements OnInit {
       }
     });
   }
+
 
   onSubmit(): void {
     if (this.newPostulation.titrecandidature && this.newPostulation.lettremotivation && this.newPostulation.region) {

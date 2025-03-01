@@ -19,5 +19,6 @@ export class intershipoffer {
   companyname!: string;
   companymail!: string;
   typeInternship!: TypeInternship;
+  creationDate!: string;
  // postulationtSet!: Postulation[];
 }

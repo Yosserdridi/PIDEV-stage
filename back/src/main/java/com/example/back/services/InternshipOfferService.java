@@ -4,6 +4,7 @@ package com.example.back.services;
 import com.example.back.entities.IntershipOffer;
 import com.example.back.repository.InternshipOfferRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,8 +42,7 @@ public class InternshipOfferService implements IInternshipOfferservice {
     // }
 
     public List<IntershipOffer> retrieveAllIntershipOffers() {
-        List<IntershipOffer> intershipOffers = internshipOfferRepository.findAll();
-        return intershipOffers;
+        return internshipOfferRepository.findAll(Sort.by(Sort.Order.desc("creationDate")));
     }
 
     public IntershipOffer retireIntershipOffer(Long id) {
