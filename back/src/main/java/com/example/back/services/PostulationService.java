@@ -7,6 +7,7 @@ import com.example.back.repository.InternshipOfferRepository;
 import com.example.back.repository.PostulationRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,11 +36,9 @@ public class PostulationService implements IPostulationService {
 
 
     public List<Postulation> retrieveAllPos() {
-       List<Postulation> postulations = postulationRepository.findAll();
-       return postulations;
+        // Sort postulations by postulationDate in descending order
+        return postulationRepository.findAll(Sort.by(Sort.Order.desc("postulationDate")));
     }
-
-
 
 
     public Postulation retrievePos(Long id ) {
@@ -85,11 +84,31 @@ public class PostulationService implements IPostulationService {
 
 
     public void acceptPostulation(Long postulationId) {
+        // Find the postulation
         Postulation postulation = postulationRepository.findById(postulationId)
                 .orElseThrow(() -> new RuntimeException("Postulation not found with id: " + postulationId));
-        postulation.setStatus(1); // Set status to "Accepted"
-        postulationRepository.save(postulation); // Save the updated postulation
+
+        // Get the related InternshipOffer (subject)
+        IntershipOffer intershipOffer = postulation.getIntershipOffer();
+
+        // Set status to "Accepted"
+        postulation.setStatus(1);
+        postulationRepository.save(postulation);
+
+        // Count the number of accepted postulations for this subject
+        long acceptedCount = postulationRepository.countByIntershipOfferAndStatus(intershipOffer, 1);
+
+        // If the required number of students is reached, reject all remaining pending postulations
+        if (acceptedCount >= intershipOffer.getNumberOfStudents()) {
+            List<Postulation> pendingPostulations = postulationRepository.findByIntershipOfferAndStatus(intershipOffer, 0);
+
+            for (Postulation pending : pendingPostulations) {
+                pending.setStatus(2); // Reject them
+                postulationRepository.save(pending);
+            }
+        }
     }
+
     public void rejectPostulation(Long postulationId) {
         Postulation postulation = postulationRepository.findById(postulationId)
                 .orElseThrow(() -> new RuntimeException("Postulation not found with id: " + postulationId));

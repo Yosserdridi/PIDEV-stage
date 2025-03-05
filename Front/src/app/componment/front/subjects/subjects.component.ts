@@ -32,12 +32,12 @@ export class SubjectsComponent implements OnInit {
 
   fetchSujets(): void {
     this.sujetService.getAllOffers().subscribe(sujets => {
-      this.sujets = sujets;
-      this.filteredSujets = sujets;
-      console.log(sujets);
+      console.log("Fetched sujets:", sujets); // Debugging
+      // Sort the subjects by idsujet (descending order)
+      this.sujets = sujets.sort((a, b) => b.idsujet - a.idsujet);
+      this.filteredSujets = this.sujets;
     });
   }
-
   filterSujets(): void {
     this.filteredSujets = this.sujets.filter(sujet =>
       sujet.companyname.toLowerCase().includes(this.searchTerm.toLowerCase()) ||

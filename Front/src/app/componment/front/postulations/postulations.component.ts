@@ -18,23 +18,23 @@ export class PostulationsComponent implements OnInit {
   ngOnInit(): void {
     this.loadPostulations();
   }
-
   loadPostulations(): void {
-    this.postulationService.getAllPostulations().subscribe(
-      (data) => {
-        this.postulations = data;
-        this.filteredPostulations = data; // Initially, no filtering
-      },
-      (error) => {
-        console.error('Error fetching postulations:', error);
-      }
-    );
+    this.postulationService.getAllPostulations().subscribe(postulations => {
+      console.log("Fetched postulations:", postulations); // Debugging
+      // Sort the postulations by postulationDate (descending order)
+      this.postulations = postulations.sort((a, b) => new Date(b.postulationDate).getTime() - new Date(a.postulationDate).getTime());
+      this.filteredPostulations = this.postulations;  // Initially, display all postulations
+    }, (error) => {
+      console.error('Error fetching postulations:', error);
+    });
   }
-
+  
   filterByStatus(): void {
     if (this.selectedStatus === 0) {
-      this.filteredPostulations = this.postulations;
+      // Show all postulations when "All" is selected
+      this.filteredPostulations = [...this.postulations]; // Using spread operator to create a new reference
     } else {
+      // Fetch postulations by selected status
       this.postulationService.getPostulationsByStatus(this.selectedStatus).subscribe(
         (data) => {
           this.filteredPostulations = data;
@@ -45,6 +45,8 @@ export class PostulationsComponent implements OnInit {
       );
     }
   }
+  
+
 
   getStatusLabel(status: number): string {
     switch (status) {

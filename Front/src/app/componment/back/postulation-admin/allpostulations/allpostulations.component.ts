@@ -20,17 +20,16 @@ export class AllPostulationsComponent implements OnInit {
   }
 
   loadPostulations(): void {
-    this.postulationService.getAllPostulations().subscribe(
-      (data) => {
-        this.postulations = data;
-        this.filteredPostulations = data;  // Initially display all postulations
-      },
-      (error) => {
-        console.error('Error fetching postulations:', error);
-      }
-    );
+    this.postulationService.getAllPostulations().subscribe(postulations => {
+      console.log("Fetched postulations:", postulations); // Debugging
+      // Sort the postulations by postulationDate (descending order)
+      this.postulations = postulations.sort((a, b) => new Date(b.postulationDate).getTime() - new Date(a.postulationDate).getTime());
+      this.filteredPostulations = this.postulations;  // Initially, display all postulations
+    }, (error) => {
+      console.error('Error fetching postulations:', error);
+    });
   }
-
+  
   getStatusLabel(status: number): string {
     switch (status) {
       case 0:

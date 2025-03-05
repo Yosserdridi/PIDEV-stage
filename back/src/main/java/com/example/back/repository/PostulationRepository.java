@@ -1,5 +1,6 @@
 package com.example.back.repository;
 
+import com.example.back.entities.IntershipOffer;
 import com.example.back.entities.Postulation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -18,5 +19,8 @@ public interface PostulationRepository extends JpaRepository<Postulation, Long> 
     // Find postulations by status
     List<Postulation> findByStatus(int status);
 
+    long countByIntershipOfferAndStatus(IntershipOffer intershipOffer, int status);
 
+    // Trouver toutes les postulations en attente (status = 0) pour un sujet donné
+    List<Postulation> findByIntershipOfferAndStatus(IntershipOffer intershipOffer, int status);
 }

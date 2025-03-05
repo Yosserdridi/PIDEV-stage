@@ -19,12 +19,14 @@ public class Postulation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int status ;
-    private Date PostulationDate ;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date postulationDate ;
     private String comment;
    // private Long idsujet;
     private String titrecandidature;
     private String region;
     private String lettremotivation;
+
 
 
     @ManyToOne
