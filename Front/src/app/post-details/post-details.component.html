@@ -1,15 +1,19 @@
 <div class="post-details-container">
-    <h2 style="font-weight: bold; background: linear-gradient(to right, #ff3737, #ff6969); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{ post.subject }}</h2>
-    <div class="post-divider"></div> <!-- Fancy Divider -->
-    <p>{{ post.content }}</p>
-    <p class="post-date">
-        <strong>Date:</strong> {{ post.datePost ? (post.datePost | date:'short') : 'No date available' }}
-      </p>
-     
-      <img [src]="'http://localhost:9091/stage/Post/uploads/' + post.picture" alt="Post Image" class="post-image" />
-
- 
+    <div class="post-header">
+      <div style="display: flex; align-items: center;">
+        <img src="https://picsum.photos/50/50" alt="Profile Picture" class="profile-picture" style="border-radius: 50%; margin-right: 10px;">
+        <p class="post-author" style="font-weight: bold; margin-top: 15px;">By {{ post.user?.userName || 'Anonymous' }}</p>
+      </div>
+      <div style="display: flex; justify-content: space-between;">
+        <h2 style="font-weight: bold; background: linear-gradient(to right, #ff3737, #ff6969); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{ post.subject }}</h2>
+        <p class="post-date">
+          <strong>Date:</strong> {{ post.datePost ? (post.datePost | date:'short') : 'No date available' }}
+        </p>
+      </div>
+    </div>
     
+    <p>{{ post.content }}</p>
+    <img [src]="post.picture ? 'http://localhost:9091/stage/Post/uploads/' + post.picture : 'https://picsum.photos/200/300'" alt="Post Image" class="post-image" />
       
     <!-- Comment Section -->
     <div class="comment-section">
@@ -18,7 +22,11 @@
       <div *ngIf="post.comments.length > 0; else noComments">
           <div *ngFor="let comment of post?.comments" class="comment">
               <!-- ✅ Si on édite ce commentaire, afficher un input au lieu du texte -->
-              <p *ngIf="editingCommentId !== comment.id" class="comment-text">
+              <div class="comment-header">
+                <img src="https://picsum.photos/50/50" alt="Profile Picture" class="profile-picture" style="border-radius: 50%;">
+                <span class="comment-author" style="margin-left: 10px;">Anonymous</span>
+              </div>
+              <p *ngIf="editingCommentId !== comment.id" class="comment-text" style="margin-left: 20px; margin-top: 1em;">
                   {{ comment.description }}
               </p>
               
@@ -28,12 +36,29 @@
                      (keyup.enter)="updateComment()" />
   
               <span class="comment-date">{{ comment.dateComment | date:'short' }}</span>
-                    <!-- Edit Button -->
-                  <button *ngIf="editingCommentId !== comment.id"
-                  (click)="startEditing(comment.id!, comment.description!)"
-                  class="icon-button update-button">
-                  <i class="fa fa-pencil"></i> Edit
+                  <div style="display: flex; align-items: center; margin: 0.5em 0;">
+              <div class="reaction-container" style="margin-right: 1em;">
+                <button class="like-button" 
+                        (click)="likeComment(comment.id!, 'Like')" 
+                        (mouseover)="showReactions(comment.id!, 'comment')" 
+                        (mouseleave)="hideReactions(comment.id!, 'comment')">
+                  <i [ngClass]="getReactionIcon(comment.likeComment!)"></i> 
+                  {{ comment.likeComment || 'Like' }}
+                </button>
+              
+                <div class="reaction-box" *ngIf="activeCommentId === comment.id" (mouseleave)="hideReactions(comment.id!, 'comment')">
+                  <button *ngFor="let reaction of reactions" (click)="likeComment(comment.id!, reaction.type)">
+                    <i [ngClass]="reaction.icon"></i>
                   </button>
+                </div>
+              </div>
+                   <!-- Edit Button -->
+                   <button *ngIf="editingCommentId !== comment.id"
+                   (click)="startEditing(comment.id!, comment.description!)"
+                   class="icon-button update-button">
+                   <i class="fa fa-pencil"></i> Edit
+                   </button>
+         </div>
 
                   <!-- Save & Cancel Buttons -->
                   <div *ngIf="editingCommentId === comment.id" class="button-group">
@@ -48,18 +73,22 @@
                 
 
                   <!-- Input for Replying -->
-                  <div>
-                  <input type="text" [(ngModel)]="newComment[comment.id!]" placeholder="Répondre..." />
-                  <button class="icon-button reply-button" (click)="replyToComment(comment.id!)">
-                  <i class="fa fa-reply"></i> Reply
-                  </button>
+                  <div style="display: flex; align-items: center;">
+                    <input type="text" [(ngModel)]="newComment[comment.id!]" placeholder="Répondre..." style="flex-grow: 1; background: none; " />
+                    <button class="icon-button reply-button" style="background: none;" (click)="replyToComment(comment.id!)">
+                      <i class="fa fa-send" style="font-size: 1.5em; color: red;"></i>
+                    </button>
                   </div>
 
   
-              <h4>Réponses :</h4>
-              <div *ngFor="let reply of comment.reponse" class="reply">
-                  <p class="reply-text">{{ reply.description }}</p>
-                  <span class="reply-date">{{ reply.dateComment | date:'short' }}</span>
+             
+              <div *ngFor="let reply of comment.reponse" class="reply" style="display: flex; align-items: flex-start; margin-bottom: 1em; margin-top: 1em;">
+                  <img src="https://picsum.photos/40/40" alt="Profile Picture" style="border-radius: 50%; margin-right: 10px;">
+                  <div>
+                      <span class="reply-author" style="font-weight: bold;">Anonymous</span>
+                      <p class="reply-text" style="margin: 5px 0;">{{ reply.description }}</p>
+                      <span class="reply-date" style="font-size: 12px; color: #777;">{{ reply.dateComment | date:'short' }}</span>
+                  </div>
               </div>
           </div>
       </div>

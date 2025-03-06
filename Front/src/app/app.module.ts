@@ -32,6 +32,7 @@ import { AddPostBackComponent } from './add-post-back/add-post-back.component';
 import { ListApprovedComponent } from './componment/back/list-approved/list-approved.component';
 import { ListRejectedComponent } from './componment/back/list-rejected/list-rejected.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ListArchivedComponent } from './componment/back/list-archived/list-archived.component';
 
 
 @NgModule({
@@ -63,6 +64,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
         AddPostBackComponent,
         ListApprovedComponent,
         ListRejectedComponent,
+        ListArchivedComponent,
+   
 
     
     

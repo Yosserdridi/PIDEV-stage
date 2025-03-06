@@ -115,8 +115,6 @@
                 </li>
               </ul>
             </li>
-            
-        
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" routerLink="/complaintsadmin" aria-expanded="false" aria-controls="auth">
                 <i class="menu-icon mdi mdi-account-circle-outline"></i>
@@ -144,11 +142,10 @@
                         <div class="col-12 grid-margin stretch-card">
                           <div class="card card-rounded">
                             <div class="card-body">
-<!--                                 <button routerLink="/add-post-back" class="btn btn-primary">Add Post</button>
- -->                                
-
-                              <h2 class="post-list-title">List of posts</h2>
-                                
+                                <!-- <button routerLink="/add-post-back" class="btn btn-primary">Add Post</button> -->
+                              
+                                <h2 class="post-list-title">Liste des posts</h2>
+                              
                                 <!-- Search Bar -->
                                 <div class="search-container">
                                   <div class="search-box">
@@ -162,52 +159,50 @@
                                     <i class="fa fa-search search-icon"></i>
                                   </div>
                                 </div>
-                                
+                              
                                 <!-- List of Posts -->
                                 <div *ngIf="filteredPosts.length > 0; else noPosts">
                                   <div *ngFor="let post of filteredPosts | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" class="post-card">
                                     <h3 class="post-title">{{ post.subject }}</h3>
-                                    
+                              
                                     <div *ngIf="post.picture">
                                       <img [src]="'http://localhost:9091/stage/Post/uploads/'+ post.picture" alt="Post Image" class="post-image" />
                                     </div>
-                                    
+                              
                                     <p class="post-content">{{ post.content }}</p>
                                     <p class="post-date"><strong>Date:</strong> {{ post.datePost | date:'short' }}</p>
-                                
-                                    <div class="post-actions">
-                                      <!-- <button (click)="deletePost(post.id!)" class="icon-button delete-button">Delete</button> -->
-                                      <!--<button (click)="updatePost(post.id!)" class="icon-button update-button">Update</button>!-->
-                                  
                               
-                                      <button (click)="approvePost(post.id!)" class="btn approved-button">
-                                          <i class="fa fa-check"></i> Approved
-                                      </button>
-                                      <button (click)="rejectPost(post.id!)" class="btn reject-button">
-                                          <i class="fa fa-times"></i> Rejected
-                                      </button>
-                                          <button (click)="archivePost(post.id!)" class="btn archive-button" style="color: white;">
-                                        <i class="fa fa-archive"></i> Archive</button> <!-- New Archive Button -->
+                                    <!-- Display archived reason if the post is archived -->
+                                    <div *ngIf="post.status === 'Archived'" class="archived-reason">
+                                       
+                                      <p><strong>Archived Reason:</strong> {{ post.archivedReason }}</p>
+                                              <!-- Cancel Button to Restore Post -->
+                                    </div>
+
+                                    <br>
+                                              <div>
+                                                <button class="btn cancel-button" (click)="pendingPost(post.id!)">
+                                                     <i class="fa fa-undo"></i> Restore
+                                                   </button>
+                                                 </div>
+                                    
                                   </div>
-                                  
-                                  
-                                  </div>
-                                   
                                 </div>
+                              
                                 <!-- ✅ Pagination Controls -->
                                 <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
-                                
+                              
                                 <!-- No Posts Message -->
                                 <ng-template #noPosts>
                                   <p class="no-posts-message">No posts found for this subject.</p>
                                 </ng-template>
-                                
+                              
                                 <!-- Message if no posts available -->
                                 <ng-template #noPosts>
                                   <p class="no-posts-message">No posts available yet.</p>
                                 </ng-template>
-                                
                               </div>
+                              
                             </div>
                           </div>
                         </div>

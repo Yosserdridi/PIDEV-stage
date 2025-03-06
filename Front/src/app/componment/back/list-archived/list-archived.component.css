@@ -1,0 +1,322 @@
+/* General Container */
+.post-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.post-list-container:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Add Post Button */
+.btn-primary {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #0056b3, #003c80);
+}
+
+/* Center the Post List Title */
+.post-list-title {
+  font-size: 28px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-align: center; /* Centers the title */
+}
+
+/* Individual Post Cards */
+.post-card {
+  width: 100%;
+  max-width: 700px;
+  background: #f9f9f9;
+  padding: 20px;
+  margin: 15px auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.post-title {
+  font-size: 22px;
+  color: #444;
+  font-weight: 600;
+}
+
+.post-content {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.post-date {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Action Buttons */
+.delete-button,
+.view-button,
+.update-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.delete-button {
+  background: #dc3545;
+  color: #fff;
+}
+
+.delete-button:hover {
+  background: #a71d2a;
+}
+
+.view-button {
+  background: #28a745;
+  color: #fff;
+}
+
+.view-button:hover {
+  background: #218838;
+}
+
+.update-button {
+  background: #ffc107;
+  color: #fff;
+}
+
+.update-button:hover {
+  background: #e0a800;
+}
+
+/* Icons inside buttons */
+.icon-button i {
+  font-size: 16px;
+}
+
+/* No Posts Message */
+.no-posts-message {
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* Search Bar */
+.search-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 45px 12px 20px; 
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #007bff;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.search-box:hover .search-icon {
+  color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .search-input {
+    width: 90%;
+  }
+}
+
+/* Post Image */
+.post-image {
+  max-width: 20%;
+  height: auto;
+  border-radius: 10px;
+  align-items: center;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.post-image:hover {
+  transform: scale(1.05);
+}
+
+/* Status Filters */
+.status-filters {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.status-filters .btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.status-filters .btn:hover {
+  opacity: 0.85;
+}
+
+/* Navigation Item */
+.nav-item {
+  margin-bottom: 20px;
+}
+
+/* Dropdown Content */
+.nav-item .collapse {
+  padding-left: 20px;
+}
+
+/* Align the status filter buttons */
+.nav-item .status-filters {
+  display: block;
+  margin-top: 15px;
+}
+/* Archived Reason Styling */
+.archived-reason {
+  background: rgba(255, 99, 71, 0.1); /* Soft red tint */
+  border-width: 5px solid #ff6347; /* Tomato color */
+  padding: 12px 15px;
+  margin-top: 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #d9534f;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  text-align: center;
+   transition: all 0.3s ease;
+}
+
+.archived-reason i {
+  color: #d9534f;
+  font-size: 18px;
+}
+
+/* Add a subtle hover effect */
+.archived-reason:hover {
+  background: rgba(255, 99, 71, 0.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 🟠 Cancel (Restore) Button */
+.btn.cancel-button {
+  background: linear-gradient(to right, #ff9800, #ffa726);
+  color: white;
+  box-shadow: 0 4px 6px rgba(255, 152, 0, 0.3);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between icon and text */
+  min-width: 140px;
+  margin: 10px auto;
+}
+
+/* Hover Effect */
+.btn.cancel-button:hover {
+  background: linear-gradient(to right, #e68900, #ff9800);
+  transform: scale(1.05);
+  box-shadow: 0 5px 8px rgba(255, 152, 0, 0.4);
+}
+
+/* 🟠 Icon Styling */
+.btn.cancel-button i {
+  font-size: 18px;
+}
+

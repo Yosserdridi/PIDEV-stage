@@ -110,6 +110,9 @@
                 <li class="nav-item">
                   <a class="nav-link sub-menu-item" routerLink="/list-rejected">❌ Rejected</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link sub-menu-item" routerLink="/list-archived">📦 Archived</a>
+                </li>
               </ul>
             </li>
             <li class="nav-item">
@@ -139,8 +142,8 @@
                         <div class="col-12 grid-margin stretch-card">
                           <div class="card card-rounded">
                             <div class="card-body">
-                                <button routerLink="/add-post-back" class="btn btn-primary">Add Post</button>
-
+                               <!--  <button routerLink="/add-post-back" class="btn btn-primary">Add Post</button>
+ -->
                                 <h2 class="post-list-title">Liste des posts</h2>
                                 
                                 <!-- Search Bar -->
@@ -169,10 +172,15 @@
                                     <p class="post-content">{{ post.content }}</p>
                                     <p class="post-date"><strong>Date:</strong> {{ post.datePost | date:'short' }}</p>
                                 
-                                    <div class="post-actions">
-                                      <button (click)="deletePost(post.id!)" class="icon-button delete-button">Delete</button>
-                                      <button (click)="updatePost(post.id!)" class="icon-button update-button">Update</button>
-                                    </div>
+                                  <div class="post-actions">
+                                      <!-- <button (click)="deletePost(post.id!)" class="icon-button delete-button">Delete</button>
+                                      <button (click)="updatePost(post.id!)" class="icon-button update-button">Update</button> -->
+                                      <div>
+                                        <button class="btn cancel-button" (click)="pendingPost(post.id!)">
+                                             <i class="fa fa-undo"></i> Restore
+                                           </button>
+                                         </div>
+                                    </div> 
                                   </div>
                                 </div>
                                  <!-- ✅ Pagination Controls -->

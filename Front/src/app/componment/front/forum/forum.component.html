@@ -1,7 +1,7 @@
 <body>
 
 <div class="top">
-  <h1 class="post-list-title" style="font-weight: bold; background: linear-gradient(to right, #ff3737, #ff6969); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Liste des posts
+  <h1 class="post-list-title" style="font-weight: bold; background: linear-gradient(to right, #ff3737, #ff6969); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">List of posts
   </h1>
   <div class="search-container">
     <div class="search-box">
@@ -49,7 +49,23 @@
               </div>
             </div>
             <hr style="border-top: 1px solid #ccc; margin: 20px 0;">
+            
             <div class="post-actions" style="display: flex; justify-content: center; padding: 0 50px;">
+              <div class="reaction-container">
+                <button class="like-button" 
+                        (click)="handleReactionClick(post.id!, 'Like')" 
+                        (mouseover)="showReactions(post.id!)" 
+                        (mouseleave)="hideReactions(post.id!)">
+                  <i [ngClass]="getReactionIcon(post.likePost!)"></i> {{ post.likePost || 'Like' }}
+                </button>
+
+                <div class="reaction-box" *ngIf="activePostId === post.id" (mouseleave)="hideReactions(post.id!)">
+                  <button *ngFor="let reaction of reactions" 
+                          (click)="handleReactionClick(post.id!, reaction.type)">
+                    <i [ngClass]="reaction.icon"></i>
+                  </button>
+                </div>
+              </div>
               <button (click)="deletePost(post.id!)" class="icon-button delete-button" style="background-color: #ff6969; margin: 0 5px;">
                 <i class="fa fa-trash"></i>
               </button>
@@ -59,7 +75,17 @@
               <button (click)="updatePost(post.id!)" class="icon-button update-button" style="background-color: #ff6969; margin: 0 5px;">
                 <i class="fa fa-pencil"></i>
               </button>
+              
             </div>
+
+                          
+              <!-- Reaction Buttons -->
+            
+
+            
+            
+            
+            
            
           </div>
         </div>

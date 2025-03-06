@@ -24,6 +24,7 @@ public class Post {
     private String Subject;
     private String Picture;
     private Boolean isAnonymous;
+    private String archivedReason ;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_post", nullable = false, updatable = false)
     @CreationTimestamp

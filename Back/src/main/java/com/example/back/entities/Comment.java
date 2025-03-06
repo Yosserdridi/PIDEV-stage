@@ -24,7 +24,8 @@ public class Comment {
     private Date DateComment;
     @Enumerated(EnumType.STRING)
     private VoteComment VoteComment;
-
+    @Enumerated(EnumType.STRING) // Store reaction as string
+    private LikePost reaction;
     @OneToMany (cascade = CascadeType.ALL , orphanRemoval = true )
     private Set<Comment> Reponse;
 }

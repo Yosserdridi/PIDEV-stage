@@ -23,6 +23,7 @@ import { UpdatePostBackComponent } from './update-post-back/update-post-back.com
 import { AddPostBackComponent } from './add-post-back/add-post-back.component';
 import { ListApprovedComponent } from './componment/back/list-approved/list-approved.component';
 import { ListRejectedComponent } from './componment/back/list-rejected/list-rejected.component';
+import { ListArchivedComponent } from './componment/back/list-archived/list-archived.component';
 
 
 
@@ -53,6 +54,7 @@ const routes: Routes = [
   {path: 'add-post-back', component:AddPostBackComponent },
   {path: 'list-approved', component:ListApprovedComponent },
   {path: 'list-rejected', component:ListRejectedComponent },
+  {path: 'list-archived', component:ListArchivedComponent },
 
 ];
 

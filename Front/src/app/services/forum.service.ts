@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface Comment {
-
+  likeComment?: string;
   date: string|number|Date;
   text: string;
   id?: number;  // Optional, as it's usually assigned by the backend
@@ -16,11 +16,21 @@ interface Comment {
 export enum StatusComplaint {
   Pending = 'Pending',
   Approved = 'Approved',
-  Rejected = 'Rejected'
+  Rejected = 'Rejected',
+  Archived = 'Archived'
 }
 
+export enum LikeType {
+  LIKE = 'Like',
+  LOVE = 'Love',
+  DISLIKE = 'Dislike',
+  WOW = 'Wow',
+  SAD = 'Sad',
+  ANGRY = 'Angry'
 
+}
 export interface Post {
+  likePost?: string; // ✅ Use the enum instead of `any`
   id?: number;
   subject: string;
   content: string;
@@ -31,13 +41,14 @@ export interface Post {
   comments: Comment[];
   picture: string | null;
   status?: StatusComplaint;
+  archivedReason?: string;
 }
 
 interface Reponse {
   id?: number;  // Optional, as it's usually assigned by the backend
   description?: string;
   dateComment?: Date;  // Optional if backend sets the date
-
+  likePost?: string;
 }
 
 
@@ -57,6 +68,8 @@ export class ForumService {
 
   private apiBaseUrl = 'http://localhost:9091/stage/Post';
   private apiUrlcom = 'http://localhost:9091/stage/Comment';
+  private purgomalumApiUrl = 'https://www.purgomalum.com/service/json?text='; // ✅ Purgomalum API
+  private customBadWords: string[] = ["flower", "star", "Flower", "Butterfly"];
 
 
 
@@ -80,17 +93,7 @@ export class ForumService {
   }
 
   
-// Ajouter un commentaire à un post
-addComment(postId: number, commentText: string): Observable<Comment> {
-  const comment: Comment = {
-  text: commentText, // Use the provided text from input
-    date: new Date(),
-    description: commentText,  // Provide a default value if needed
 
-    voteCommentts: 0 // Default vote count
-  };
-  return this.http.post<Comment>(`${this.apiBaseUrl}/${postId}/comments`, comment);
-}
 deletePost(id: number): Observable<void> {
   return this.http.delete<void>(`${this.apiBaseUrl}/${id}`);
 }
@@ -130,8 +133,69 @@ getPostImage(imagePath: string): Observable<Blob> {
       }
     );
   }
+
+  likePost(postId: number, likeType: string): Observable<any> {
+    return this.http.put(`${this.apiBaseUrl}/${postId}/like?likeType=${likeType}`, {});
+  }
+  likeComment(commentId: number, reactionType: string): Observable<any> {
+    return this.http.put(`${this.apiUrlcom}/comment/${commentId}/react?reaction=${reactionType}`, {}, { responseType: 'text' });
+  }
   
 
+// Ajouter une réaction à une réponse
+likeReply(replyId: number, likeType: string): Observable<any> {
+  return this.http.put(`${this.apiUrlcom}/${replyId}/likeReply?likeType=${likeType}`, {});
+}
+
+
+
+  // ✅ Function to filter text using Purgomalum API
+  private filterCustomBadWords(text: string): string {
+    let filteredText = text;
+    this.customBadWords.forEach(word => {
+      const regex = new RegExp(`\\b${word}\\b`, 'gi'); // Match whole word, case insensitive
+      filteredText = filteredText.replace(regex, '****'); // Replace with asterisks
+    });
+    return filteredText;
+  } 
+
+  // ✅ Add comment with bad word filtering
+  addComment(postId: number, commentText: string): Observable<Comment> {
+    return new Observable(observer => {
+      // First, apply custom bad word filtering
+      let filteredComment = this.filterCustomBadWords(commentText);
+
+      // Then, send the result to Purgomalum for additional filtering
+      this.http.get<any>(`${this.purgomalumApiUrl}${encodeURIComponent(filteredComment)}`).subscribe(
+        (response) => {
+          filteredComment = response.result; // Get cleaned text from Purgomalum
+
+          if (filteredComment !== commentText) {
+            alert('Votre commentaire a été modifié pour supprimer les mots inappropriés. 🚫');
+          }
+
+          const comment: Comment = {
+            text: filteredComment, // Use the fully filtered text
+            date: new Date(),
+            description: filteredComment,
+            voteCommentts: 0
+          };
+
+          this.http.post<Comment>(`${this.apiBaseUrl}/${postId}/comments`, comment).subscribe(
+            (result) => {
+              observer.next(result);
+              observer.complete();
+            },
+            (error) => observer.error(error)
+          );
+        },
+        (error) => {
+          console.error('Erreur lors de la vérification des mots interdits', error);
+          observer.error(error);
+        }
+      );
+    });
+  }
 }
 
 

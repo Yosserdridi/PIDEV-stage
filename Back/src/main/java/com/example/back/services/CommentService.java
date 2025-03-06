@@ -1,6 +1,7 @@
 package com.example.back.services;
 
 import com.example.back.entities.Comment;
+import com.example.back.entities.LikePost;
 import com.example.back.entities.Post;
 import com.example.back.repository.CommentRepository;
 import com.example.back.repository.PostRepository;
@@ -92,6 +93,22 @@ public class CommentService implements ICommentService{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void updateCommentReaction(Long commentId, LikePost reaction) {
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
+        comment.setReaction(reaction);
+        commentRepository.save(comment);
+    }
+
+    @Override
+    public void updateReplyReaction(Long replyId, LikePost reaction) {
+        Comment reply = commentRepository.findById(replyId)
+                .orElseThrow(() -> new RuntimeException("Reply not found"));
+        reply.setReaction(reaction);
+        commentRepository.save(reply);
     }
 
 

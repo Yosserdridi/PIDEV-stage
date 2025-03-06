@@ -1,6 +1,7 @@
 package com.example.back.controllers;
 
 import com.example.back.entities.Comment;
+import com.example.back.entities.LikePost;
 import com.example.back.services.ICommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -49,5 +50,18 @@ public class CommentController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Return 404 if comment not found
         }
     }
+
+    @PutMapping("/comment/{commentId}/react")
+    public ResponseEntity<?> updateCommentReaction(@PathVariable Long commentId, @RequestParam LikePost reaction) {
+        commentService.updateCommentReaction(commentId, reaction);
+        return ResponseEntity.ok("Reaction updated successfully!");
+    }
+
+    @PutMapping("/reply/{replyId}/react")
+    public ResponseEntity<?> updateReplyReaction(@PathVariable Long replyId, @RequestParam LikePost reaction) {
+        commentService.updateReplyReaction(replyId, reaction);
+        return ResponseEntity.ok("Reply reaction updated successfully!");
+    }
+
 }
 

@@ -1,6 +1,7 @@
 package com.example.back.controllers;
 
 import com.example.back.entities.Comment;
+import com.example.back.entities.LikePost;
 import com.example.back.entities.Post;
 import com.example.back.entities.StatusComplaint;
 import com.example.back.services.IPostService;
@@ -140,6 +141,15 @@ public class PostController {
         Post updatedPost = iPostService.updatePostStatus(id, newStatus);
         return ResponseEntity.ok(updatedPost);
     }
+
+
+
+    @PutMapping("/{postId}/like")
+    public ResponseEntity<Post> likePost(@PathVariable Long postId, @RequestParam LikePost likeType) {
+        Post updatedPost = iPostService.likePost(postId, likeType);
+        return ResponseEntity.ok(updatedPost);
+    }
+
 
 }
 

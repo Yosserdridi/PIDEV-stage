@@ -229,13 +229,13 @@ h3 {
 /* ✅ Style de l'input de réponse */
 .comment-section input[type="text"] {
     width: 100%;
-    max-width: 500px;
+   
     padding: 12px;
     margin: 5px 0;
-    border: 2px solid #ff6969; /* Couleur douce */
-    border-radius: 20px;
+    border: 1px solid #ff6969; /* Couleur douce */
+    border-radius: 8px;
     font-size: 14px;
-    background: #fff5f5; /* Léger fond rose clair */
+    background: #fff; /* Léger fond rose clair */
     transition: all 0.3s ease-in-out;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -295,3 +295,64 @@ h3 {
 .cancel-button:hover {
     background-color: #cc0000;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.reaction-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .like-button {
+    background-color: #ff6969;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+  }
+  
+  .reaction-box {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    display: flex;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .reaction-box button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .reaction-box img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .reaction-box img:hover {
+    transform: scale(1.3);
+  }

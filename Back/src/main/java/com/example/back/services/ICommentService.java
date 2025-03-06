@@ -1,6 +1,7 @@
 package com.example.back.services;
 
 import com.example.back.entities.Comment;
+import com.example.back.entities.LikePost;
 
 import java.util.List;
 
@@ -13,4 +14,7 @@ public interface ICommentService {
  Comment addReply(Long parentId, Comment reply);
     public boolean deleteCommentById(Long commentId);
    /* void deleteCommentFromPost(Long postId, Long commentId);*/
+
+    public void updateCommentReaction(Long commentId, LikePost reaction);
+    public void updateReplyReaction(Long replyId, LikePost reaction);
 }

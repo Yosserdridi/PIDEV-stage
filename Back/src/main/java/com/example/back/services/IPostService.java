@@ -1,6 +1,7 @@
 package com.example.back.services;
 
 import com.example.back.entities.Comment;
+import com.example.back.entities.LikePost;
 import com.example.back.entities.Post;
 import com.example.back.entities.StatusComplaint;
 import org.springframework.data.jpa.repository.Query;
@@ -23,4 +24,6 @@ public interface IPostService {
     Post updatePostStatus(Long id, StatusComplaint newStatus);
 
     public List<Post> searchPostsBySubjectC(String Subject);
+    Post likePost(Long postId, LikePost likeType);
+
 }

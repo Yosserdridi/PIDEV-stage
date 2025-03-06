@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ForumService, Post } from 'src/app/services/forum.service';
+import { ForumService, Post, StatusComplaint } from 'src/app/services/forum.service';
 
 @Component({
   selector: 'app-list-rejected',
@@ -83,5 +83,45 @@ export class ListRejectedComponent {
     updatePost(postId: number): void {
       this.router.navigate(['/update-post-back', postId]);
     }
+
+
+
+    // cancel buttom
+
+
+         private updatePostStatus(postId: number, updatedPost: Post,action: string): void {
+            this.postService.updatePost(postId, updatedPost).subscribe(
+              (response) => {
+                console.log('Post status updated successfully', response);
+                // Optionally, you can update the local list of posts
+                   // Show success message
+                   alert(`Post has been ${action} successfully!`);
+                   // Refresh the post list
+                   this.loadPosts();
+              },
+              (error) => {
+                console.error('Error updating post status', error);
+                 // Show error message
+                 alert('Error updating post status. Please try again.');
+              }
+            );
+          }
+    
+          
+    
+    
+    
+           pendingPost(postId: number): void {
+            const updatedPost: Post = {
+              ...this.getPostById(postId),
+              status:  StatusComplaint.Pending// Use enum value here
+            };
+            this.updatePostStatus(postId, updatedPost,'pending');
+          }
+         
+        
+          private getPostById(postId: number): Post {
+            return this.posts.find(post => post.id === postId)!; // Assuming posts are loaded
+          }
 
 }

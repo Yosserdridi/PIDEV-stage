@@ -2,6 +2,7 @@ package com.example.back.services;
 
 
 import com.example.back.entities.Comment;
+import com.example.back.entities.LikePost;
 import com.example.back.entities.Post;
 import com.example.back.entities.StatusComplaint;
 import com.example.back.repository.CommentRepository;
@@ -64,6 +65,7 @@ public class PostService implements IPostService {
         //post.setDatePost(postDetails.getDatePost());
         post.setIsAnonymous(postDetails.getIsAnonymous());
         post.setStatus(postDetails.getStatus());
+        post.setArchivedReason(postDetails.getArchivedReason()) ;
 
 
         // Save the updated post
@@ -97,6 +99,14 @@ public class PostService implements IPostService {
     public List<Post> searchPostsBySubjectC(String Subject) {
         return postRepository.searchPostsBySubjectC(Subject);
     }
+
+    @Override
+    public Post likePost(Long postId, LikePost likeType) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new RuntimeException("Post not found"));
+
+        post.setLikePost(likeType);
+        return postRepository.save(post);    }
 
 
 }

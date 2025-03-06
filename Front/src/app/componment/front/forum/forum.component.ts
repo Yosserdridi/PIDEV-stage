@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { ForumService, Post } from 'src/app/services/forum.service';
+import { ForumService, LikeType, Post } from 'src/app/services/forum.service';
 
 @Component({
   selector: 'app-forum',
@@ -22,6 +22,20 @@ export class ForumComponent {
     
   };
 
+  activePostId: number | null = null;
+
+  reactions = [
+    { type: 'Like', icon: 'fa fa-thumbs-up' },    
+    { type: 'Dislike', icon: 'fa fa-thumbs-down' },     // 👍 Like
+    { type: 'Celebrate', icon: 'fa fa-trophy' },      // 🏆 Celebrate
+    { type: 'Support', icon: 'fa fa-handshake-o' },   // 🤝 Support (Use `fa-handshake-o` for older versions)
+    { type: 'Love', icon: 'fa fa-heart' },            // ❤️ Love
+    { type: 'Insightful', icon: 'fa fa-lightbulb-o' }, // 💡 Insightful (Use `fa-lightbulb-o` in older versions)
+              // 😆 Funny (Use `fa-smile-o` for older versions)
+    
+  ];
+  
+  
   currentPage: number = 1; // Page actuelle
 itemsPerPage: number = 3; // Nombre d'éléments par page
 
@@ -115,6 +129,49 @@ updatePost(postId: number): void {
   this.router.navigate(['/update-post', postId]);
 }
 
+likePost(postId: number, reactionType: string) {
+  this.postService.likePost(postId, reactionType).subscribe({
+    next: () => {
+      const post = this.posts.find(p => p.id === postId);
+      if (post) {
+        post.likePost = reactionType;
+      }
+      this.activePostId = null; // Cacher le menu après la sélection
+    },
+    error: (err) => {
+      console.error('Error liking post:', err);
+    }
+  });
+}
+
+showReactions(postId: number) {
+  this.activePostId = postId;
+}
+
+hideReactions(postId: number) {
+  // Delay the hiding process and fade out
+  setTimeout(() => {
+    if (this.activePostId === postId) {
+      this.activePostId = null;
+      // Optionally apply a class for fading out effect
+      const reactionBox = document.querySelector(`.reaction-box`);
+      if (reactionBox) {
+        reactionBox.classList.add('hidden');
+      }
+    }
+  }, 50000);
+}
+
+
+getReactionIcon(reaction: string | null): string {
+  const reactionObj = this.reactions.find(r => r.type === reaction);
+  return reactionObj ? reactionObj.icon : 'assets/reactions/like.png';
+}
+
+handleReactionClick(postId: number, reactionType: string) {
+  this.likePost(postId, reactionType);
+  this.activePostId = null; // Immediately hide reaction menu after selecting
+}
 }
 
 

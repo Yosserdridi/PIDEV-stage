@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ChartData, ChartOptions } from 'chart.js';
 import { ForumService, Post, StatusComplaint } from 'src/app/services/forum.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-forum-admin',
@@ -16,7 +19,8 @@ export class ForumAdminComponent {
   currentPage: number = 1; // Page actuelle
   itemsPerPage: number = 3; // Nombre d'éléments par page
 
-  constructor(private postService: ForumService, private router: Router,private http: HttpClient) {}
+  
+  constructor(private postService: ForumService, private router: Router,private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.loadPosts(); // Load posts when the component is initialized
@@ -126,7 +130,78 @@ private getPostById(postId: number): Post {
   return this.posts.find(post => post.id === postId)!; // Assuming posts are loaded
 }
   
+  archivePost(postId: number): void {
+  // Create a modal window for entering the archive reason
+  const modal = document.createElement('div');
+  modal.style.position = 'fixed';
+  modal.style.top = '50%';
+  modal.style.left = '50%';
+  modal.style.transform = 'translate(-20%, -50%)';
+  modal.style.zIndex = '9999';
+  modal.style.backgroundColor = 'white';
+  modal.style.padding = '30px';
+  modal.style.borderRadius = '12px';
+  modal.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.3)';
+  modal.style.width = '400px'; // Make the window a little wider
+
+  // Create a close button
+  const closeButton = document.createElement('span');
+  closeButton.innerHTML = '&times;';
+  closeButton.style.position = 'absolute';
+  closeButton.style.top = '15px';
+  closeButton.style.right = '10px';
   
+  closeButton.style.cursor = 'pointer';
+  closeButton.style.fontSize = '30px';
+  closeButton.style.color = '#dc3545';
+  closeButton.style.lineHeight = '1';
+  closeButton.onclick = () => document.body.removeChild(modal);
+
+  // Create a text input for the archive reason
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'Enter archive reason';
+  input.style.width = '100%';
+  input.style.marginBottom = '15px';
+  input.style.padding = '10px';
+  input.style.border = '1px solid #ccc';
+  input.style.borderRadius = '4px';
+
+  // Create a submit button
+  const submitButton = document.createElement('button');
+  submitButton.innerText = 'Submit';
+  submitButton.style.padding = '10px 20px';
+  submitButton.style.background = 'linear-gradient(to right, #dc3545, #ff6b6b)';
+  submitButton.style.color = 'white';
+  submitButton.style.border = 'none';
+  submitButton.style.borderRadius = '4px';
+  submitButton.style.cursor = 'pointer';
+  submitButton.style.marginTop = '10px';
+  submitButton.style.display = 'block';
+  submitButton.style.marginLeft = 'auto';
+  submitButton.style.marginRight = 'auto';
+  submitButton.onclick = () => {
+    const reason = input.value;
+    if (reason) {
+      const postToArchive = this.getPostById(postId);
+      const updatedPost = {
+        ...postToArchive,
+        status: StatusComplaint.Archived,
+        archivedReason: reason
+      };
+      this.updatePostStatus(postId, updatedPost, 'archived');
+      document.body.removeChild(modal);
+    }
+  };
+
+  modal.appendChild(closeButton);
+  modal.appendChild(input);
+  modal.appendChild(submitButton);
+  document.body.appendChild(modal);
+}
+
+
+
   
   
 }
