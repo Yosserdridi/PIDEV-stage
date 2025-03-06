@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Summer } from 'src/model/summer';
 
 @Injectable({
@@ -17,13 +17,15 @@ export class SummerService {
       return this.http.post<Summer> (`${this.url}/addSummerInternship`,summer);
     }*/
 
-       addconevntionToSummer(conventionId: number, summerInternship: Summer): Observable<any> {
-          return this.http.post(`${this.url}/addConventionToSummer/${conventionId}/summerInternship`, summerInternship, { responseType: 'text' });
-        }
-        
+      addconevntionToSummer(conventionId: number, internshipData: any): Observable<any> {
+        return this.http.post<any>(`${this.url}/addConventionToSummer/${conventionId}/summerInternship`, internshipData).pipe(
+          tap((response) => {
+            console.log('Response from backend:', response);
+          })
+        );
+      }
+      
 
-
-  
        getAllSummerInternships() :Observable <Summer[]>{
   
       return this.http.get<Summer[]>(`${this.url}/getAllSummerInternships`);
@@ -46,6 +48,7 @@ export class SummerService {
   
   }
 
+ 
 
   
 

@@ -2,14 +2,17 @@ package com.example.back.controller;
 
 
 import com.example.back.entities.InternshipConvention;
+import com.example.back.entities.Journal;
 import com.example.back.repository.ConventionRepository;
 import com.example.back.services.ConventionService;
+import com.example.back.services.ConventionServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -17,7 +20,8 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200")
 public class ConventionController {
 
-        ConventionService conventionService;
+    private final ConventionServiceImpl conventionServiceImpl;
+    ConventionService conventionService;
         ConventionRepository conventionRepository;
 
         @PostMapping("/addInternshipConvention")
@@ -71,6 +75,33 @@ public class ConventionController {
         }
     }
 
+
+
+    @GetMapping("/getConventionWith relation/{id}")
+    public ResponseEntity<InternshipConvention> getConventionWithRelations(@PathVariable Long id) {
+        InternshipConvention internshipConvention = conventionServiceImpl.getConventionWithRelations(id);
+        return ResponseEntity.ok(internshipConvention);
+    }
+
+  /*  @GetMapping("/entities/{conventionId}")
+    public Map<String, Object> getAllEntities(@PathVariable Long conventionId) {
+        return conventionServiceImpl.getAllEntitiesByConventionId(conventionId);
+    }
+*/
+
+
+    @GetMapping("/getALLConventionWithRelation{conventionId}")
+    public ResponseEntity<Map<String, Object>> getAllEntitiesByConventionId(@PathVariable Long conventionId) {
+        try {
+            // Appeler la méthode du service pour récupérer les entités associées
+            Map<String, Object> response = conventionServiceImpl.getAllEntitiesByConventionId(conventionId);
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            // Gérer les erreurs, par exemple si l'ID est introuvable
+            return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 

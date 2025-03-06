@@ -14,12 +14,12 @@ export class FilesService {
 
   constructor(private http:HttpClient) {}
 
-  uploadFiles(reportFile: File, certificateFile: File): Observable<any> {
+  uploadFiles(summerInternshipId:number,reportFile: File, certificateFile: File): Observable<any> {
     const formData = new FormData();
     formData.append('report', reportFile); // Must match @RequestParam("report") in Spring Boot
     formData.append('certificate', certificateFile); // Must match @RequestParam("certificate")
 
-    return this.http.post(`${this.url}/upload`, formData);
+    return this.http.post(`${this.url}/upload/${summerInternshipId}`, formData);
   }
   getAllReport(): Observable <FileModel[]> {
     return this.http.get<FileModel[]>(`${this.url}/getAllFiles`);

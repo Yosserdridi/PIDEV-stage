@@ -13,15 +13,19 @@ export class AddFileComponent implements OnInit {
   reportFile?: File;
   certificateFile?: File;
 
-  summerID !:number;
+  //summerID !:number;
+
+  summerId !: number;
+  fileId!:number;
+  
 
 
-  constructor(private fileService: FilesService, private route:ActivatedRoute){}
+  constructor(private fileService: FilesService, private route:ActivatedRoute , private r:Router){}
 
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.summerID = +params['id'];  // Get the journalId from the route parameters
+      this.summerId = +params['id'];  // Get the journalId from the route parameters
     });
    
   }
@@ -43,10 +47,23 @@ export class AddFileComponent implements OnInit {
       return;
     }
 
-    this.fileService.uploadFiles(this.reportFile, this.certificateFile).subscribe(
-      response => console.log('Upload successful', response),
-      error => console.error('Upload failed', error)
-    );
+    this.fileService.uploadFiles(this.summerId,this.reportFile, this.certificateFile).subscribe(
+      response => {
+        if (response && response.fileId) {
+            console.log('File uploaded successfully, ID:', response.fileId);
+            this.fileId = response.fileId; 
+           this.r.navigate(['/add_journal', response.fileId]);
+
+           
+             // Store or use the file ID as needed
+        } else {
+            console.error('File ID is missing in the response');
+        }
+    },
+    error => {
+        console.error('File upload failed', error);
+    }
+        );
   }
 }
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Convention } from 'src/model/convention';
+import { Task } from 'src/model/task';
 
 
 @Injectable({
@@ -38,6 +39,7 @@ getInternshipConvention(id :  number) :Observable <Convention>{
 toggleConventionValidity(id: number, isValid: boolean): Observable<any> {
   return this.http.put<any>(`${this.url}/convention/${id}/validity?isValid=${isValid}`, {});
 }
+
 
 
 

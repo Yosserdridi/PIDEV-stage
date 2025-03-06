@@ -54,5 +54,10 @@ public class TaskController {
     }*/
 
 
+    @GetMapping("/getTasksByJournalId/{journalId}")
+    public ResponseEntity<List<Task>> getTasksByJournalId(@PathVariable Long journalId) {
+        List<Task> tasks = taskServiceImpl.getTasksByJournalId(journalId);
+        return ResponseEntity.ok(tasks);
+    }
 
 }

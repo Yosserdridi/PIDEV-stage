@@ -47,23 +47,25 @@ export class AddInternshipComponent implements OnInit {
    
   }
 
-  addInternship():void{
+  addInternship(): void {
     this.summerSevice.addconevntionToSummer(this.conventionId, this.internshipForm.value).subscribe(
       (response) => {
-        console.log("Internship created successfully!");
-        alert("Internship added successfully!"); // Simple browser alert
+        console.log('Response from backend:', response);  // Vérifie la réponse complète
+        if (response && response.id) {
+          this.r.navigate(['/add_files', response.id]);  // Assure-toi que response.id est bien là
+        } else {
+          console.error('ID is missing in the response');
+          alert('ID is missing in the response. Please try again!');
+        }
       },
-
-      
       (error) => {
         console.error("Error creating internship", error);
-        alert("Error adding internship. Please try again!"); // Error alert
+        alert("Error adding internship. Please try again!"); // Afficher un message d'erreur
       }
     );
-  
-
-
   }
+  
+  
 
   
 

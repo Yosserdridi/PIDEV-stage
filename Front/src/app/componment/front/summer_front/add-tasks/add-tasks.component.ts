@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Task } from 'src/model/task';
 import { TaskService } from 'src/services/service_task/task.service';
 
@@ -15,7 +15,7 @@ export class AddTasksComponent implements OnInit {
 
   
 
-  constructor(private taskService: TaskService  ,private route: ActivatedRoute){
+  constructor(private taskService: TaskService  ,private route: ActivatedRoute,private router:Router){
 
 
   }
@@ -58,6 +58,9 @@ export class AddTasksComponent implements OnInit {
   
       alert('Tasks added successfully!');
       this.tasks = [{ description: '', date: '' }];
+
+      this.router.navigate(['/entities', this.journalId]);
+
     }
   }
   

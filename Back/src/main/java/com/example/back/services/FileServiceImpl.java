@@ -72,21 +72,6 @@ public class FileServiceImpl implements FileService {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public List<Files> getAllFiles() {
         return fileRepository.getAllFiles(); // Use the native query method
     }

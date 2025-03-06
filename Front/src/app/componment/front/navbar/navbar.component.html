@@ -26,11 +26,19 @@
                 <a class="nav-link" routerLink="/postulations">POSULTAIONS</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/pfe">PFE_INTERNSHIPS</a>
+              <a class="nav-link" routerLink="/pfe">pfe_Internship</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/summer">SUMMER_INTERNSHIPS</a>
+            <li class="nav-item dropdown" (mouseenter)="showDropdown = true" (mouseleave)="showDropdown = false">
+              <a class="nav-link dropdown-toggle" href="#" (click)="toggleDropdown($event)">SUMMER_Internship</a>
+              
+              <ul class="dropdown-menu" *ngIf="showDropdown">
+                <li><a class="dropdown-item" routerLink="/valide_convention">valide_convention</a></li>
+                <li><a class="dropdown-item" routerLink="/add_journal">add_journal</a></li>
+                <li><a class="dropdown-item" routerLink="/add_convention">add_convention</a></li>
+                <li><a class="dropdown-item" routerLink="/add_files">add_file</a></li>
+              </ul>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" routerLink="/forum">FORUM</a>
             </li>

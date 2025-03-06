@@ -9,7 +9,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -84,4 +86,26 @@ public class SummerInternshipServiceImpl implements SummerInternshipService {
         }
         throw new RuntimeException("conevnyion not found");
     }
+
+
+    public Map<String, Object> getInternshipDetails(Long fileId) {
+        Optional<Files> fileOpt = fileRepository.findById(fileId);
+
+        if (fileOpt.isPresent()) {
+            Files file = fileOpt.get();
+            SummerInternship summerInternship = file.getSummerInternship();  // récupérer l'internship associé au fichier
+            InternshipConvention convention = summerInternship.getInternshipConvention(); // récupérer la convention associée à l'internship
+
+            // Construire une réponse JSON propre
+            Map<String, Object> response = new HashMap<>();
+            response.put("summerInternship", summerInternship);
+            response.put("internshipConvention", convention);
+            response.put("file", file);
+
+            return response;
+        } else {
+            throw new RuntimeException("Fichier avec l'ID " + fileId + " introuvable !");
+        }
+    }
+
 }

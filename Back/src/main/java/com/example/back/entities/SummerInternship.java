@@ -1,5 +1,6 @@
 package com.example.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,12 +26,14 @@ public class SummerInternship {
 
     private String statuts;
 
-    @Getter(AccessLevel.NONE)
+   // @Getter(AccessLevel.NONE)
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     private InternshipConvention internshipConvention;
 
 
-    @Getter(AccessLevel.NONE)
+   // @Getter(AccessLevel.NONE)
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     private Files files;
 }

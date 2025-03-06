@@ -21,6 +21,10 @@ import { AddTasksComponent } from './componment/front/summer_front/add-tasks/add
 import { AddInternshipComponent } from './componment/front/summer_front/add-internship/add-internship.component';
 import { AddFileComponent } from './componment/front/summer_front/add-file/add-file.component';
 import { ValidConevntionComponent } from './componment/front/summer_front/valid-conevntion/valid-conevntion.component';
+import { AddJournalComponent } from './componment/front/summer_front/add-journal/add-journal.component';
+import { AddConventionComponent } from './componment/front/summer_front/add-convention/add-convention.component';
+import { CIFDetailsComponent } from './componment/front/summer_front/cif-details/cif-details.component';
+import { ViewAllTasksComponent } from './componment/front/summer_front/view-all-tasks/view-all-tasks.component';
 
 
 
@@ -46,8 +50,16 @@ const routes: Routes = [
   {path:  'internshipDetail/:id', component:InternshipdetailComponent},
   { path: 'add-tasks/:id', component: AddTasksComponent },
   { path: 'add-internship/:id', component: AddInternshipComponent },
-  { path: 'add-files/:id', component: AddFileComponent },
+  { path: 'add_files/:id', component: AddFileComponent },
   {path: 'valide_convention', component: ValidConevntionComponent},
+  {path: 'add_journal/:id', component: AddJournalComponent},
+  {path: 'add_convention', component: AddConventionComponent},
+  {path:'entities/:id', component:CIFDetailsComponent},
+
+  {path:'alltasks/:id',component:ViewAllTasksComponent}
+
+
+
   
 
 

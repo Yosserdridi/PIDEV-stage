@@ -33,6 +33,8 @@ import { ListReportsComponent } from './componment/back/summerBack/list-reports/
 import { AddTasksComponent } from './componment/front/summer_front/add-tasks/add-tasks.component';
 import { AddJournalComponent } from './componment/front/summer_front/add-journal/add-journal.component';
 import { ValidConevntionComponent } from './componment/front/summer_front/valid-conevntion/valid-conevntion.component';
+import { CIFDetailsComponent } from './componment/front/summer_front/cif-details/cif-details.component';
+import { ViewAllTasksComponent } from './componment/front/summer_front/view-all-tasks/view-all-tasks.component';
 
 
 @NgModule({
@@ -66,6 +68,8 @@ import { ValidConevntionComponent } from './componment/front/summer_front/valid-
     AddTasksComponent,
     AddJournalComponent,
     ValidConevntionComponent,
+    CIFDetailsComponent,
+    ViewAllTasksComponent,
     
     
     

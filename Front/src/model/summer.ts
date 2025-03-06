@@ -2,7 +2,7 @@ export interface Summer {
 
       id: number;
       title: string;
-      description: Date;
+      description: string;
       duration: number;
   
 

@@ -34,15 +34,17 @@ public class InternshipConvention {
 
     private Boolean isValid;
 
-    @Getter(AccessLevel.NONE)
     @ManyToOne
+    @JsonIgnore
     private  Student student;
-    @Getter(AccessLevel.NONE)
 
-    @OneToOne(mappedBy="internshipConvention")
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy="internshipConvention")
+    @JsonIgnore
     private  SummerInternship summerInternship;
-    @Getter(AccessLevel.NONE)
 
-    @OneToOne(mappedBy = "internshipConvention")
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "internshipConvention")
+    @JsonIgnore
+
     private InternshipPFE internshipPFE;
 }

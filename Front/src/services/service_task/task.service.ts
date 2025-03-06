@@ -26,6 +26,11 @@ export class TaskService {
   addTaskToJournal(journalId: number, task: Task): Observable<any> {
     return this.http.post(`${this.url}/addTaskToJournal/${journalId}/task`, task, { responseType: 'text' });
   }
+
+    getTasksByJournalId(journalId: number): Observable<Task[]> {
+      return this.http.get<Task[]>(`${this.url}/getTasksByJournalId/${journalId}`);
+    }
+    
   
 
 

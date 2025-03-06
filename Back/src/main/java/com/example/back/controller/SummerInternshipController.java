@@ -1,8 +1,10 @@
 package com.example.back.controller;
 
 
+import com.example.back.entities.InternshipConvention;
 import com.example.back.entities.SummerInternship;
 import com.example.back.entities.Task;
+import com.example.back.repository.SummerInternshipRepository;
 import com.example.back.services.SummerInternshipService;
 import com.example.back.services.SummerInternshipServiceImpl;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -27,6 +31,8 @@ public class SummerInternshipController {
     SummerInternshipService summerInternshipService;
 
     SummerInternshipServiceImpl summerInternshipServiceImpl;
+
+    SummerInternshipRepository summerInternshipRepository;
 
     @PostMapping("/addSummerInternship")
     public SummerInternship addSummerInternship(@RequestBody SummerInternship summerInternship) {
@@ -68,8 +74,25 @@ public class SummerInternshipController {
     @PostMapping("/addConventionToSummer/{conventionId}/summerInternship")
     public ResponseEntity<SummerInternship> addConventionToSummer(@PathVariable Long conventionId, @RequestBody SummerInternship summerInternship) {
         SummerInternship savedSummer = summerInternshipServiceImpl.addInternshipConvention(conventionId, summerInternship);
-        System.out.println("Returning Task JSON: " + savedSummer);
+        if (savedSummer.getId() == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+        System.out.println("Returning SummerInternship JSON: " + savedSummer);
         return ResponseEntity.ok(savedSummer);
+    }
+
+
+
+   /* @GetMapping("/getInternshipWithrelation/{id}")
+    public ResponseEntity<SummerInternship> getInternshipById(@PathVariable Long id) {
+        Optional<SummerInternship> summerInternshipOptional= summerInternshipRepository.findById(id);
+        return summerInternshipOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }*/
+
+    @GetMapping("/getInternshipWithrelation/{id}")
+    public ResponseEntity<Map<String, Object>> getInternshipDetails(@PathVariable Long id) {
+        Map<String, Object> response = summerInternshipServiceImpl.getInternshipDetails(id);
+        return ResponseEntity.ok(response);
     }
 
 

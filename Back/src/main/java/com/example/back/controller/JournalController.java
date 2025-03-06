@@ -9,10 +9,12 @@ import com.example.back.services.JournalService;
 import com.example.back.services.JournalServiceImpl;
 import com.example.back.services.TaskServiceImpl;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -63,12 +65,35 @@ public class JournalController {
 
 
 
-    @PostMapping("/addJournalFile/{fileId}/journal")
+  /*  @PostMapping("/addJournalFile/{fileId}/journal")
     public ResponseEntity<Journal> addJournalFile(@PathVariable Long fileId, @RequestBody Journal journal) {
         Journal journalsave = journalServiceImpl.addJournalFile(fileId, journal);
         System.out.println("Returning Task JSON: " + journalsave);
         return ResponseEntity.ok(journalsave);
+    }*/
+
+    @PostMapping("/addJournal/{fileId}")
+    public ResponseEntity<Journal> addJournalWithFile(
+            @PathVariable Long fileId,
+            @RequestBody Journal journal) {
+        Journal savedJournal = journalServiceImpl.addJournalFile(fileId, journal);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedJournal);
     }
+
+
+    @GetMapping("/getjournal/{id}")
+    public ResponseEntity<Journal> getJournalById(@PathVariable Long id) {
+        Journal journal = journalServiceImpl.getJournalWithRelations(id);
+        return ResponseEntity.ok(journal);
+    }
+
+
+    @GetMapping("/entities/{journalId}")
+    public ResponseEntity<Map<String, Object>> getAllEntities(@PathVariable Long journalId) {
+        Map<String, Object> response = journalServiceImpl.getAllEntitiesByJournalId(journalId);
+        return ResponseEntity.ok(response);
+    }
+
 
 
 

@@ -58,6 +58,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Task addTaskToJournal(Long journalId, Task task) {
+
+
         Optional<Journal> journalOpt = journalRepository.findById(journalId);
         if (journalOpt.isPresent()) {
             Journal journal = journalOpt.get();
@@ -65,6 +67,10 @@ public class TaskServiceImpl implements TaskService {
             return taskRepository.save(task);
         }
         throw new RuntimeException("Journal not found");
+    }
+
+    public List<Task> getTasksByJournalId(Long journalId) {
+        return taskRepository.findByJournalId(journalId);
     }
 
 

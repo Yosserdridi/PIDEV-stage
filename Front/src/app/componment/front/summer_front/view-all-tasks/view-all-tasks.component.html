@@ -1,0 +1,25 @@
+<div class="container">
+    <h3>Task List</h3>
+    
+    <!-- Table for tasks -->
+    <table *ngIf="tasks.length > 0; else noTasks">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.description }}</td>
+          <td>{{ task.date }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Fallback if no tasks are available -->
+    <ng-template #noTasks>
+      <p>No tasks available for this journal.</p>
+    </ng-template>
+  </div>
+  

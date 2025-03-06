@@ -5,15 +5,12 @@ import com.example.back.entities.Files;
 import com.example.back.entities.Journal;
 import com.example.back.entities.SummerInternship;
 import com.example.back.repository.FileRepository;
+import com.example.back.repository.JournalRepository;
 import com.example.back.repository.SummerInternshipRepository;
-import com.example.back.services.FileService;
 import com.example.back.services.FileServiceImpl;
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.EntityNotFoundException;
+
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,10 +21,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @AllArgsConstructor
@@ -39,28 +33,39 @@ public class FileController {
 
     FileRepository fileRepository;
 
+    JournalRepository journalRepository;
+
     SummerInternshipRepository summerInternshipRepository;
     private final FileServiceImpl fileServiceimpl;
 
-    @PostMapping(value = "/upload", consumes = "multipart/form-data")
+
+     //add file with assocaition avec journal
+    /* @PostMapping(value = "/upload/{journalId}", consumes = "multipart/form-data")
     public ResponseEntity<Map<String, String>> uploadFiles(
+            @PathVariable Long journalId, // ID du Journal associé
             @RequestParam("report") MultipartFile reportFile,
             @RequestParam("certificate") MultipartFile certificateFile
-          ) {  // Change here to use @PathVariable
+    ) {
+        // Sauvegarde des fichiers
+        String reportFileName = fileServiceimpl.saveFile(reportFile);
+        String certificateFileName = fileServiceimpl.saveFile(certificateFile);
 
-        // Save report file and certificate file using the service
-        String reportFileName = fileServiceimpl.saveFile(reportFile); // Save report file
-        String certificateFileName = fileServiceimpl.saveFile(certificateFile); // Save certificate file
+        // Vérifier si le journal existe
+        Optional<Journal> journalOptional = journalRepository.findById(journalId);
+        if (journalOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Journal not found"));
+        }
 
-        // Save file information to the database
+
+        // Associer les fichiers au Journal
         Files newFile = new Files();
         newFile.setReport(reportFileName);
-        newFile.setInternship_Certifcate(certificateFileName); // Fixed the typo in field name
+        newFile.setInternship_Certifcate(certificateFileName);
+        newFile.setJournal(journalOptional.get()); // Associer le journal
+
         fileRepository.save(newFile);
 
-
-
-        // Return a JSON response with the file details
+        // Réponse JSON
         Map<String, String> response = new HashMap<>();
         response.put("message", "Files uploaded successfully");
         response.put("reportFile", reportFileName);
@@ -68,14 +73,59 @@ public class FileController {
 
         return ResponseEntity.ok(response);
     }
+*/
 
-    @GetMapping("/download/{fileName:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName) {
-        Resource resource = fileServiceimpl.loadFileAsResource(fileName);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
-                .body(resource);
+    @PostMapping(value = "/upload/{summerInternshipId}", consumes = "multipart/form-data")
+    public ResponseEntity<Map<String, Object>> uploadFiles(
+            @PathVariable Long summerInternshipId,
+            @RequestParam("report") MultipartFile reportFile,
+            @RequestParam("certificate") MultipartFile certificateFile
+    ) {
+        // Vérification que les fichiers ne sont pas vides
+        if (reportFile.isEmpty() || certificateFile.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Map.of("message", "Both report and certificate files are required"));
+        }
+
+        // Vérifier si le SummerInternship existe
+        Optional<SummerInternship> internshipOptional = summerInternshipRepository.findById(summerInternshipId);
+        if (internshipOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Summer Internship not found"));
+        }
+
+        // Sauvegarde des fichiers
+        String reportFileName = fileServiceimpl.saveFile(reportFile);
+        String certificateFileName = fileServiceimpl.saveFile(certificateFile);
+
+        // Création de l'entité Files
+        Files newFile = new Files();
+        newFile.setReport(reportFileName);
+        newFile.setInternship_Certifcate(certificateFileName);
+
+        // Sauvegarde de l'entité Files avant association
+        Files savedFile = fileRepository.save(newFile);
+
+        // Association avec SummerInternship
+        SummerInternship internship = internshipOptional.get();
+        internship.setFiles(savedFile);
+        summerInternshipRepository.save(internship);
+
+        // Réponse JSON avec l'ID du fichier sauvegardé
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Files uploaded successfully");
+        response.put("reportFile", reportFileName);
+        response.put("certificateFile", certificateFileName);
+        response.put("fileId", savedFile.getId());  // Add the ID of the saved file
+
+        return ResponseEntity.ok(response);
     }
+
+
+
+
+
+
+
 
 
     @GetMapping("getAllFiles")
