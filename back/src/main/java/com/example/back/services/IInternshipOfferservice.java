@@ -11,11 +11,8 @@ public interface IInternshipOfferservice {
     IntershipOffer retireIntershipOffer(Long id);
     IntershipOffer updatePos(IntershipOffer id);
     void deleteIntershipOffer(Long id);
-
-
     String uploadImage(Long id, MultipartFile file);
-    IntershipOffer getInternshipOfferWithImage(Long id);
-
+    IntershipOffer getInternshipOfferWithImage(Long id);  // New method for image retrieval
 
 
 }

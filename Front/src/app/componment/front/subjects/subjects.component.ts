@@ -34,18 +34,19 @@ export class SubjectsComponent implements OnInit {
   }
 
   fetchSujets(): void {
-    this.sujetService.getAllOffers().subscribe(sujets => {
-      console.log("Fetched sujets:", sujets);
-      this.sujets = sujets.sort((a, b) => b.idsujet - a.idsujet);
-      this.filteredSujets = [...this.sujets];
-      this.updatePagination();
-      
-   this.loadImages();
-
+    this.sujetService.getAllOffers().subscribe({
+      next: (sujets) => {
+        console.log("Fetched sujets:", sujets);
+        this.sujets = sujets.sort((a, b) => b.idsujet - a.idsujet);
+        this.filteredSujets = [...this.sujets];
+        this.updatePagination();
+        this.loadImages(); // Load images after fetching
+      },
+      error: () => {
+        this.message = "Failed to load internship offers.";
+      }
     });
   }
-
-
 
   loadImages(): void {
     this.filteredSujets.forEach(sujet => {
@@ -54,20 +55,17 @@ export class SubjectsComponent implements OnInit {
           next: (imageBlob) => {
             const reader = new FileReader();
             reader.onloadend = () => {
-              sujet.imageUrl = reader.result as string;
+              sujet.imageUrl = reader.result as string; // Convert Blob to base64 URL
             };
             reader.readAsDataURL(imageBlob);
           },
           error: () => {
-            sujet.imageUrl = 'assets/default-image.png';
+            sujet.imageUrl = 'assets/default-image.png'; // Fallback to default image
           }
         });
       }
     });
   }
-
-
-
 
   filterSujets(): void {
     this.filteredSujets = this.sujets.filter(sujet =>
@@ -100,12 +98,11 @@ export class SubjectsComponent implements OnInit {
     this.router.navigate(['/create/postulation', id]);
   }
 
-
   openModal(index: number): void {
     this.selectedSujet = this.pagedSujets[index];
     console.log("Selected Sujet:", this.selectedSujet); // Debugging
   }
-  
+
   closeModal(): void {
     this.selectedSujet = null;
   }
