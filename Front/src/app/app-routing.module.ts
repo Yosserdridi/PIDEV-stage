@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule,Routes } from '@angular/router';
 import { HomeComponent } from './componment/front/home/home.component';
 import { ComplaintsComponent } from './componment/front/complaints/complaints.component';
 import { ForumComponent } from './componment/front/forum/forum.component';
@@ -16,11 +16,13 @@ import { SubjectsAdminComponent } from './componment/back/subjects-admin/subject
 import { SummerAdminComponent } from './componment/back/summer-admin/summer-admin.component';
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
 import { AdminComponent } from './componment/back/admin/admin.component';
-
+import { SoutenanceComponent } from './componment/front/soutenance/soutenance.component';
+import { SoutenanceFComponent } from './componment/back/soutenance-f/soutenance-f.component';
+//import { JuryComponent } from './componment/front/jury/jury.component';
 
 
 const routes: Routes = [
-
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'complaints', component: ComplaintsComponent },
   { path: 'forum', component: ForumComponent },
@@ -29,7 +31,9 @@ const routes: Routes = [
   { path: 'subjects', component: SubjectsComponent },
   { path: 'summer', component: SummerIntershipsComponent },
   { path: 'login', component: LoginComponent },
-  
+  { path: 'soutenance', component: SoutenanceComponent },
+  //{ path: 'jury', component: JuryComponent },
+  {path: 'soutenance-f', component: SoutenanceFComponent},
   { path: 'complaintsadmin', component: ComplaintsAdminComponent },
   {path: 'forumadmin', component: ForumAdminComponent},
   {path: 'pfeadmin', component: PfeAdminComponent},
@@ -37,7 +41,8 @@ const routes: Routes = [
   {path: 'subjectsadmin', component: SubjectsAdminComponent},
   {path: 'summeradmin', component: SummerAdminComponent},
   {path: 'loginadmin', component: LoginAdminComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  //{path: 'soutenanceadmin', component: SoutenanceFComponent},
 
 ];
 

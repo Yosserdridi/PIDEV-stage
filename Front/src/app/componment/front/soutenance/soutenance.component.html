@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Soutenances - Agent de Stage</title>
+    <link rel="stylesheet" href="./soutenance.component.css">
+</head>
+<body>
+  <!-- Page principale -->
+  <div *ngIf="isMainPage" class="container">
+    <h1>Gestion des Soutenances</h1>
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="navigateToAdd()">
+        <mat-icon>add</mat-icon> Ajouter
+      </button>
+
+        <button mat-raised-button color="accent" (click)="navigateToShow()">
+          <mat-icon>list</mat-icon> Afficher
+        </button>
+          </div>
+  </div>
+
+  <!-- Page d'ajout -->
+  <div *ngIf="isAddPage" class="container">
+    <header>
+        <h1>Gestion des Soutenances</h1>
+    </header>
+    <main>
+        <section id="ajouter-soutenance">
+          <h3>Calendrier des soutenances</h3>
+          <full-calendar *ngIf="events.length > 0" [options]="calendarOptions"></full-calendar>
+          <input type="datetime-local" [ngModel]="soutenance.date" name="date" (ngModelChange)="soutenance.date = $event">
+            <h2>Ajouter la Soutenance</h2>
+            <form id="soutenance-form">
+                <!-- Section Date et Heure -->
+                <div class="form-section">
+                    <h3>Date et Heure de la Soutenance</h3>
+                    <div class="calendar-container">
+                      <label>Date de la soutenance :</label>
+                      <input type="datetime-local" [(ngModel)]="soutenance.date" name="date">
+
+                      <button (click)="assignerJurys()">Assigner les jurys</button>
+
+                      <div *ngIf="jurysAssignes.length > 0">
+                        <h4>Jurys assignés :</h4>
+                        <ul>
+                          <li *ngFor="let jury of jurysAssignes">
+                            {{ jury.name }}
+                          </li>
+                        </ul>
+                        <div>
+                          <label for="heure-soutenance">Heure de soutenance :</label>
+                          <input type="time" id="heure-soutenance" [(ngModel)]="soutenance.heure_soutenance" name="heure_soutenance">
+                      </div>
+                    </div>
+                </div>
+
+
+                <!-- Section Salles et Blocs -->
+                <div class="form-section">
+                    <h3>Sélection des Salles et Blocs</h3>
+                    <div>
+                      <label for="bloc-select">Bloc :</label>
+                      <select id="bloc-select" [(ngModel)]="soutenance.bloc" name="bloc">
+                          <option value="">Sélectionnez un bloc</option>
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="C">C</option>
+                          <option value="D">D</option>
+                          <option value="E">E</option>
+                          <option value="I">I</option>
+                          <option value="J">J</option>
+                          <option value="K">K</option>
+                          <option value="M">M</option>
+                          <option value="G">G</option>
+                      </select>
+                  </div>
+                  <div>
+
+                    <label for="salle-select">Numéro de Salle :</label>
+                    <select id="salle-select" [(ngModel)]="soutenance.salle_number" name="salle">
+                        <option value="">Sélectionnez une salle</option>
+                        <option *ngFor="let salle of salle_number" [value]="salle">{{ salle }}</option>
+                    </select>
+                </div>
+                </div>
+                <!-- Bouton de Soumission -->
+                <button type="button" (click)="addSoutenance()">Planifier la Soutenance</button>
+              </div>
+
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 ESPRIT - Gestion des Soutenances</p>
+    </footer>
+  </div>
+
+                 <!-- Page d'affichage de la liste des soutenances -->
+  <div *ngIf="isListPage" class="container">
+    <h1>Liste des Soutenances</h1>
+    <table *ngIf="soutenances.length > 0; else noSoutenance">
+      <thead>
+        <tr>
+          <!--<th>ID</th>-->
+          <th>NOM etudiant</th>
+          <th>NOM jury</th>
+          <th>Date</th>
+          <th>Heure</th>
+          <th>Salle</th>
+          <th>Bloc</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let soutenance of soutenances">
+          <!--<td>{{ soutenance.id }}</td>-->
+          <!--<td>{{ soutenance.nomEtudiant }}</td>--> <!-- Ajoutez cette propriété -->
+         <!-- <td>{{ soutenance.nomJury }}</td>-->
+          <td>{{ soutenance.date_soutenance | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ soutenance.heure_soutenance | date: 'HH:mm' }}</td>
+          <td>{{ soutenance.salle_number }}</td>
+          <td>{{ soutenance.bloc }}</td>
+          <td>
+            <button class="btn-update" (click)="updateRoomsList(bloc)">Update</button>
+          <button class="btn-delete" (click)="onDelete(soutenance.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Message si aucune soutenance n'est ajoutée -->
+    <ng-template #noSoutenance>
+      <p class="no-soutenance">No soutenance</p>
+    </ng-template>
+  </div>
+    <!-- Bouton pour revenir à la page principale -->
+    <button mat-raised-button color="primary" (click)="navigateToMain()">
+      <mat-icon>home</mat-icon> Retour à l'accueil
+    </button>
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<div class="admin-container">
+  <h2>Liste des Soutenances</h2>
+
+  <!-- Tableau des soutenances -->
+  <table *ngIf="soutenances.length > 0; else noSoutenance">
+    <thead>
+      <tr>
+        <!--<th>ID</th>-->
+        <th>NOM etudiant</th>
+        <th>NOM jury</th>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Salle</th>
+        <th>Bloc</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let soutenance of soutenances">
+        <!--<td>{{ soutenance.id }}</td>-->
+        <!--<td>{{ soutenance.nomEtudiant }}</td>--> <!-- Ajoutez cette propriété -->
+       <!-- <td>{{ soutenance.nomJury }}</td>-->
+        <td>{{ soutenance.date_soutenance | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ soutenance.heure_soutenance | date: 'HH:mm' }}</td>
+        <td>{{ soutenance.salle_number }}</td>
+        <td>{{ soutenance.bloc }}</td>
+        <td>
+          <button class="btn-update" (click)="onUpdate(soutenance)">Update</button>
+        <button class="btn-delete" (click)="onDelete(soutenance.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Message si aucune soutenance n'est ajoutée -->
+  <ng-template #noSoutenance>
+    <p class="no-soutenance">No soutenance</p>
+  </ng-template>
+</div>
+  <!-- Pagination -->
+
+  <mat-paginator *ngIf="totalElements > 0"
+    [length]="totalElements"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    (page)="onPageChange($event)"
+    [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>
+

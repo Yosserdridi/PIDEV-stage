@@ -1,5 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +17,7 @@ import { PostulationsComponent } from './componment/front/postulations/postulati
 import { PfeIntershipsComponent } from './componment/front/pfe-interships/pfe-interships.component';
 import { SummerIntershipsComponent } from './componment/front/summer-interships/summer-interships.component';
 import { ForumComponent } from './componment/front/forum/forum.component';
+ import { SoutenanceComponent } from './componment/front/soutenance/soutenance.component';
 import { ComplaintsComponent } from './componment/front/complaints/complaints.component';
 import { LoginComponent } from './componment/front/login/login.component';
 import { NavbarComponent } from './componment/front/navbar/navbar.component';
@@ -21,8 +30,19 @@ import { SummerAdminComponent } from './componment/back/summer-admin/summer-admi
 import { ForumAdminComponent } from './componment/back/forum-admin/forum-admin.component';
 import { ComplaintsAdminComponent } from './componment/back/complaints-admin/complaints-admin.component';
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
+import { SoutenanceService } from './Services/soutenance/Soutenanceserv';
+import { SoutenanceFComponent } from './componment/back/soutenance-f/soutenance-f.component';
+import { FormsModule } from '@angular/forms';
+import { RangePipe } from './range.pipe';
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import timeGridPlugin from '@fullcalendar/timegrid'; // another plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin for clickable events
+import { RouterModule } from '@angular/router';
+//import { JuryComponent } from './componment/front/jury/jury.component';
+//import { SoutenanceComponent } from './component/back/soutenance/soutenance.component';
 
-@NgModule({
+
+/*@NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
@@ -31,28 +51,40 @@ import { LoginAdminComponent } from './componment/back/login-admin/login-admin.c
     PfeIntershipsComponent,
     SummerIntershipsComponent,
     ForumComponent,
+    SoutenanceComponent,
     ComplaintsComponent,
     LoginComponent,
     NavbarComponent,
+    AdminComponent,
     NabradminComponent,
     SubjectsAdminComponent,
-    PostulationAdminComponent,
     PfeAdminComponent,
+    PostulationAdminComponent,
     SummerAdminComponent,
     ForumAdminComponent,
     ComplaintsAdminComponent,
     LoginAdminComponent,
-    AdminComponent,
-    
-    
-    
+    SoutenanceFComponent,
+    RangePipe
+
+
+
+
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatIconModule,
+    FullCalendarModule,
+    RouterModule.forRoot([]) ,
+
   ],
-  providers: [],
+  providers: [SoutenanceService],
   bootstrap: [AppComponent]
-})
+})*/
 export class AppModule { }
