@@ -160,7 +160,7 @@
                                 </div>
                               </div>
                               <div class="row d-flex">
-                                <div class="col-lg-4 col-md-6 mb-4 d-flex" *ngFor="let student of filteredStudents">
+                                <div class="col-lg-4 col-md-6 mb-4 d-flex" *ngFor="let student of displayedStudents">
                                   <div class="card student-card d-flex flex-column">
                                     <!-- Header with student name -->
                                     <div class="card-header">
@@ -232,6 +232,16 @@
                                     </div>
                                   </div>
                                 </div>
+                              </div>
+
+                              <div class="pagination-controls text-center mt-3">
+                                <button class="btn btn-secondary" (click)="goToPreviousPage()" [disabled]="currentPage === 1">
+                                  <i class="fas fa-arrow-left"></i> Previous
+                                </button>
+                                <span class="mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
+                                <button class="btn btn-secondary" (click)="goToNextPage()" [disabled]="currentPage === totalPages">
+                                  Next <i class="fas fa-arrow-right"></i>
+                                </button>
                               </div>
                             </div>
                             

@@ -128,11 +128,89 @@
   }
   
   .restitution-section {
-    margin-top: 15px;
-    padding: 10px;
-    background: #fff8e1;
-    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f0f8ff; /* Light blue background */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    font-family: Arial, sans-serif; /* Clean font */
   }
+  
+  .restitution-section h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2e7d32; /* Green color for headings */
+    margin-bottom: 15px;
+  }
+  
+  .restitution-section p {
+    font-size: 16px;
+    color: #333; /* Dark gray text */
+    line-height: 1.6;
+    margin: 8px 0;
+  }
+  
+  .restitution-section p strong {
+    color: #00796b; /* Teal color for labels */
+  }
+  
+  .assign-teacher {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e8f5e9; /* Light green background */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  }
+  
+  .assign-teacher h3 {
+    font-size: 22px;
+    color: #388e3c; /* Darker green for section header */
+    margin-bottom: 15px;
+  }
+  
+  .assign-teacher label {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .assign-teacher select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    transition: border 0.3s ease;
+  }
+  
+  .assign-teacher select:focus {
+    border-color: #00796b; /* Highlight border on focus */
+  }
+  
+  .assign-teacher button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #388e3c; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .assign-teacher button:hover {
+    background: #2c6e2f; /* Darker green on hover */
+  }
+  
+  .assign-teacher button:disabled {
+    background: #ccc; /* Disabled button */
+    cursor: not-allowed;
+  }
+
+  
+  
   
   .assign-teacher {
     margin-top: 10px;

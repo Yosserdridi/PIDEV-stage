@@ -14,7 +14,13 @@ export class PfeAdminComponent {
   students: Student[] = [];
 
   filteredStudents: Student[] = [];
+  displayedStudents: Student[] = [];
   searchTerm: string = '';
+
+
+  currentPage: number = 1;
+  pageSize: number = 6;
+  totalPages: number = 1;
 
   isPfeOpen = false;
 
@@ -101,11 +107,21 @@ export class PfeAdminComponent {
 
   }
 
+  updateDisplayedStudents(): void {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.displayedStudents = this.filteredStudents.slice(startIndex, endIndex);
+  }
+
+
   getAllStudents(): void {
     this.studentService.getAllStudents().subscribe(
       (data: Student[]) => {
         this.students = data;  // Store the fetched students in the students array
-        this.filteredStudents = data;
+        this.filteredStudents = [...data]; // Ensure a new reference
+        this.currentPage = 1;
+        this.totalPages = Math.ceil(this.filteredStudents.length / this.pageSize);
+        this.updateDisplayedStudents();
       },
       (error: any) => {
         console.error('Error fetching students:', error);
@@ -123,11 +139,35 @@ export class PfeAdminComponent {
     } else {
       this.filteredStudents = this.students;  // If search is empty, show all students
     }
+    this.currentPage = 1;
+    this.totalPages = Math.ceil(this.filteredStudents.length / this.pageSize);
+    this.updateDisplayedStudents();
   }
-  
+
   showStudentDetails(studentId: number): void {
     this.router.navigate(['/student', studentId]);  // Navigate to the details page, passing the student ID
   }
+
+
+
+  
+
+  goToPreviousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updateDisplayedStudents();
+    }
+  }
+
+  goToNextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updateDisplayedStudents();
+    }
+  }
+
+
+
 
   
 }

@@ -17,7 +17,7 @@ export class StudentService {
 
   constructor(private http: HttpClient) {}
 
-  private studentId : number = 1 ;
+  private studentId : number = 2 ;
   
 
   getAllStudents(): Observable<Student[]> {

@@ -58,18 +58,22 @@ assignRestitutionToTeacher(teacherId: number, restitutionId: number): void {
   // Ensure the values are valid numbers before making the request
   if (isNaN(teacherIdNum) || isNaN(restitutionIdNum)) {
     this.message = 'Please enter valid numeric IDs.';
+    alert(this.message);  // Alert message for invalid input
     return;
   }
 
   this.studentService.assignRestitution(teacherIdNum, restitutionIdNum).subscribe({
     next: (response) => {
       this.message = response;
+      alert('Restitution assigned successfully!');  // Alert message on success
     },
     error: (error) => {
       this.message = 'Error: ' + (error.error || 'Failed to assign restitution.');
+      alert('Restitution assigned successfully!');  // Alert message on error
     }
   });
 }
+
 fetchTeachers() {
   this.studentService.getAllTeachers().subscribe({
     next: (data) => {
