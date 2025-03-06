@@ -1,6 +1,9 @@
 package com.example.back.controllers;
 
+import com.example.back.entities.Files;
 import com.example.back.entities.Restitution;
+import com.example.back.reopsitory.Report;
+import com.example.back.services.IReportService;
 import com.example.back.services.IRestitutionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +16,7 @@ import java.util.List;
 public class RestitutionController {
 
     IRestitutionService restitutionService;
+    IReportService reportService ;
 
     @PostMapping("/add")
     public Restitution create(@RequestBody Restitution restitution) {
@@ -36,5 +40,10 @@ public class RestitutionController {
     @PostMapping("/addRestitutionAndAssignToPFEInternship/{internshipId}")
     public Restitution addRestitution(@RequestBody Restitution restitution, @PathVariable Long internshipId) {
         return restitutionService.addRestitutionAndAssignToInternship(restitution, internshipId);
+    }
+
+    @PostMapping("/addReportAndAssignToPFEInternship/{internshipId}")
+    public Files addReport(@RequestBody Files report, @PathVariable Long internshipId) {
+        return reportService.addReportAndAssignToInternship(report,internshipId);
     }
 }

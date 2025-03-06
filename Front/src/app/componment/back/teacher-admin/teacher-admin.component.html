@@ -148,76 +148,43 @@
                     <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
                       <div class="row">
                         <div class="col-12 grid-margin stretch-card">
-                          <div class="card card-rounded">
+                            <div class="card card-rounded">
+                                <div class="card-body">
 
-
-
-
-                            <!-- student-details.component.html -->
-                            <div class="container">
-                              <div *ngIf="student" class="student-card">
-                                <h2 class="student-name">{{ student.firstName }} {{ student.lastName }}</h2>
-                                <p class="student-email">📧 <strong>Email:</strong> {{ student.email }}</p>
-                            
-                                <div class="internship-section">
-                                  <h3>Internship Conventions</h3>
-                            
-                                  <div *ngFor="let internship of student.internshipConventions" class="internship-card">
-                                    <h4 class="company-name">🏢 {{ internship.companyName }}</h4>
-                                    <p><strong>Type:</strong> {{ internship.typeInternship }}</p>
-                                    <p><strong>Start Date:</strong> 📅 {{ internship.startDate | date:'yyyy-MM-dd' }}</p>
-                                    <p><strong>End Date:</strong> 📅 {{ internship.endDate | date:'yyyy-MM-dd' }}</p>
-                            
-                                    <!-- Internship PFE Details -->
-                                    <div *ngIf="internship.internshipPFE" class="pfe-details">
-                                      <h4>📌 Internship PFE</h4>
-                                      <p><strong>Title:</strong> {{ internship.internshipPFE.title }}</p>
-                                      <p><strong>Description:</strong> {{ internship.internshipPFE.description }}</p>
-                            
-                                      <!-- Download Signed Convention -->
-                                      <div class="post-file-container" *ngIf="internship.internshipPFE.signedConvention">
-                                        <a 
-                                          [href]="'http://localhost:9091/stage/PfeInternship/uploads/' + internship.internshipPFE.signedConvention"
-                                          download 
-                                          target="_blank" 
-                                          class="download-link">
-                                          📄 Download Signed Convention
-                                        </a>
+                                    <div class="container">
+                                        <h3 class="mb-4">Teachers List</h3>
+                                        <table class="table table-striped">
+                                          <thead>
+                                            <tr>
+                                              <th>First Name</th>
+                                              <th>Last Name</th>
+                                              <th>Email</th>
+                                              <th>Registration Number</th>
+                                              <th>Actions</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr *ngFor="let teacher of teachers">
+                                              <td>{{ teacher.firstName }}</td>
+                                              <td>{{ teacher.lastName }}</td>
+                                              <td>{{ teacher.email }}</td>
+                                              <td>{{ teacher.registrationNumber }}</td>
+                                              <td>
+                                                <!-- Add any actions like View or Edit here -->
+                                                <button class="btn btn-info btn-sm" (click)="showTeacherDetails(teacher.id)">View</button>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
                                       </div>
-                            
-                                      <!-- Restitution Details -->
-                                      <div *ngIf="internship.internshipPFE.restitution" class="restitution-section">
-                                        <h5>📑 Restitution Information</h5>
-                                        <p><strong>Subject:</strong> {{ internship.internshipPFE.restitution.subject }}</p>
-                                        <p><strong>Task:</strong> {{ internship.internshipPFE.restitution.task }}</p>
-                                        <p><strong>Technology:</strong> 🖥️ {{ internship.internshipPFE.restitution.technology }}</p>
-                            
-                                        <!-- Assign Teacher -->
-                                        <div class="assign-teacher">
-                                          <h3>🎓 Assign Teacher</h3>
-                                          <label for="teacherSelect">Select Teacher:</label>
-                                          <select id="teacherSelect" [(ngModel)]="selectedTeacherId" class="form-select">
-                                            <option *ngFor="let teacher of teachers" [value]="teacher.id">
-                                              {{ teacher.firstName }} {{ teacher.lastName }}
-                                            </option>
-                                          </select>
-                            
-                                          <button 
-                                            (click)="assignRestitutionToTeacher(selectedTeacherId!, internship.internshipPFE.restitution.id!)" 
-                                            [disabled]="!selectedTeacherId" 
-                                            class="assign-button">
-                                            Assign Restitution
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                                      
                                 </div>
+                                
+
+
+
                             
-                                <!-- Back Button -->
-                                <button class="btn btn-primary mt-3" (click)="goBack()">🔙 Return to PFE Internships</button>
-                              </div>
-                            </div>
+                            
                             
                               
                               

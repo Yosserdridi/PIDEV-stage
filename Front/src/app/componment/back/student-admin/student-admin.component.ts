@@ -18,6 +18,7 @@ export class StudentAdminComponent {
   teachers: Teacher[] = []; 
   selectedTeacherId: number | null = null;
 
+  isPfeOpen = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,19 +27,19 @@ export class StudentAdminComponent {
   ) {}
 
   ngOnInit(): void {
+    this.fetchTeachers();
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.studentId = +id;  // Convert the id to a number
-      this.getStudentDetails();  // Fetch student details on init
+      this.getStudentDetails(this.studentId);  // Fetch student details on init
     }
-    this.fetchTeachers();
-
+    
   }
 
 
 
-  getStudentDetails(): void {
-    this.studentService.getStudentById().subscribe(
+  getStudentDetails(s: number ): void {
+    this.studentService.getStudentById1(s).subscribe(
       (student) => {
         this.student = student;
         console.log('Student details:', this.student);

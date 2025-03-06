@@ -17,7 +17,10 @@ public class Files {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String Report;
+
     @ManyToOne
     User user ;
+
+
 
 }

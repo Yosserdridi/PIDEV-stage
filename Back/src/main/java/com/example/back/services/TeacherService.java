@@ -1,7 +1,10 @@
 package com.example.back.services;
 
+import com.example.back.entities.InternshipPFE;
 import com.example.back.entities.Restitution;
+import com.example.back.entities.Student;
 import com.example.back.entities.Teacher;
+import com.example.back.reopsitory.PFEInternshipRepository;
 import com.example.back.reopsitory.RestitutionRepository;
 import com.example.back.reopsitory.TeacherRepository;
 import lombok.AllArgsConstructor;
@@ -18,6 +21,7 @@ public class TeacherService implements ITeacherService{
 
     TeacherRepository teacherRepository;
     RestitutionRepository restitutionRepository;
+    PFEInternshipRepository pfeInternshipRepository ;
 
     @Override
     public Teacher save(Teacher teacher) {
@@ -50,4 +54,34 @@ public class TeacherService implements ITeacherService{
     public List<Teacher> getAll() {
         return teacherRepository.findAll();
     }
+
+    @Override
+    public Teacher getById(Long id) {
+        return teacherRepository.findById(id).orElseThrow(() -> new RuntimeException("teacher not found"));
+    }
+
+    public List<InternshipPFE> getUnassignedInternships() {
+        return pfeInternshipRepository.findUnassignedInternships();
+    }
+
+
+
+    // Assign a single internship to a teacher
+    public void assignInternshipToTeacher(Long teacherId, Long internshipId) {
+        Teacher teacher = teacherRepository.findById(teacherId)
+                .orElseThrow(() -> new RuntimeException("Teacher not found"));
+
+        // Fetch the internship by ID
+        InternshipPFE internship = pfeInternshipRepository.findById(internshipId)
+                .orElseThrow(() -> new RuntimeException("Internship not found"));
+
+
+        // Assign the internship to the teacher
+        teacher.getInternshipPFEs().add(internship);
+
+        // Save the teacher with the updated internship
+        teacherRepository.save(teacher);
+    }
+
+
 }

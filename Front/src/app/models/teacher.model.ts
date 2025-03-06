@@ -2,7 +2,7 @@ import { InternshipPFE } from './internship-pfe.model';
 import { Restitution } from './restitution.model';
 
 export interface Teacher {
-    id?: number;
+    id: number;
     lastName: string;
     firstName: string;
     email: string;

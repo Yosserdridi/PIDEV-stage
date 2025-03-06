@@ -97,6 +97,11 @@ public class PFEInternshipService implements IPFEInternshipService{
 
     }
 
+    /* @Override
+     public void assignInternshipsToTeachers() {
+
+     }
+ */
     @Override
     public InternshipPFE save(InternshipPFE internshipPFE) {
         if (internshipPFE.getInternshipConvention() != null) {
@@ -122,8 +127,8 @@ public class PFEInternshipService implements IPFEInternshipService{
         pfeInternshipRepository.deleteById(id);
     }
 
-/*
-    public void assignInternshipsToTeachers() {
+
+/*    public void assignInternshipsToTeachers() {
         List<Teacher> teachers = teacherRepository.findAll();
         List<InternshipPFE> internships = pfeInternshipRepository.findAll();
 
@@ -176,4 +181,7 @@ public class PFEInternshipService implements IPFEInternshipService{
             throw new RuntimeException("No PFE internship found for this student and Internship Convention");
         }
     }*/
+
+
+
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Student } from '../models/student.model';
 import { InternshipConvention } from './internship-convention.service';
 import { TypeInternship } from '../models/type_internship.eunm';
+import { Teacher } from '../models/teacher.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,32 @@ export class StudentService {
   }
 
   getAllTeachers(): Observable<any[]> {
-    return this.http.get<any[]>(this.teacherUrl);
+    const url = `${this.teacherUrl}/getAll`;
+    return this.http.get<any[]>(url);
   }
+
+  getStudentById1(studentId: number): Observable<Student> {
+    return this.http.get<Student>(`${this.baseUrl}/getById/${studentId}`);
+  }
+
+
+  getTeacherById(teacherId: number): Observable<Teacher> {
+    return this.http.get<Teacher>(`${this.teacherUrl}/getById/${teacherId}`);
+  }
+
+
+
+  getUnassignedInternships(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.teacherUrl}/unassigned`);
+  }
+
+
+  assignInternshipToTeacher(teacherId: number, internshipId: number): Observable<any> {
+    return this.http.post<any>(
+      `${this.teacherUrl}/${teacherId}/assign-internship/${internshipId}`,
+      {}
+    );
+  }
+
+  
 }

@@ -1,0 +1,154 @@
+/* Table Styles */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Card Styles */
+.student-card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.student-card .card-header {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 15px;
+}
+
+.student-card .card-body p {
+  font-size: 14px;
+  color: #555;
+}
+
+.student-card .list-group-item {
+  font-size: 13px;
+  border-left: 5px solid #007bff;
+  background: #f8f9fa;
+}
+
+.student-card .card-footer {
+  background: #f8f9fa;
+  padding: 10px;
+}
+
+.btn {
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card-container .card {
+  border: none;
+  width: calc(33.3333% - 10px);
+  padding: 16px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.card-container .card p {
+  font-size: 14px;
+  color: #555;
+}
+/* Card Styling for Restitutions */
+.student-card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.student-card .card-header {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 15px;
+}
+
+.student-card .card-body p {
+  font-size: 14px;
+  color: #555;
+}
+
+.student-card .list-group-item {
+  font-size: 13px;
+  border-left: 5px solid #007bff;
+  background: #f8f9fa;
+}
+
+.student-card .card-footer {
+  background: #f8f9fa;
+  padding: 10px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card-container .card {
+  border: none;
+  width: calc(33.3333% - 10px);
+  padding: 16px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.card-container .card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Restitution-specific styles */
+.student-card .card-header i {
+  margin-right: 8px;
+}
+
+.card-body .card-text i {
+  margin-right: 6px;
+}

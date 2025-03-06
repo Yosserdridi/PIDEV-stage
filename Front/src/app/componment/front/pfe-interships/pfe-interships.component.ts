@@ -18,12 +18,16 @@ export class PfeIntershipsComponent {
   student!: Student;
 
   pipelineSteps = [
-    { label: 'Lancement Stage PFE', icon: '📝', active: false },
-    { label: 'Demande Convention', icon: '📄', active: false },
-    { label: 'Dépot de Stage', icon: '📂', active: false },
-    { label: 'Lancement Restitution', icon: '🎤', active: false },
-    { label: 'Dépot Rapport Final', icon: '📑', active: false }
-  ];
+    { label: 'PFE Internship Launch', icon: '📝', active: false },
+    { label: 'Convention Request', icon: '📄', active: false },
+    { label: 'Internship Submission', icon: '📂', active: false },
+    { label: 'Restitution Launch', icon: '🎤', active: false },
+    { label: 'Final Report Submission', icon: '📑', active: false }
+];
+
+
+  
+  file?: File ;
   
 
   constructor(private studentService: StudentService) {}
@@ -74,9 +78,6 @@ export class PfeIntershipsComponent {
   
 
   }
-
-
-
   generatePDF() {
     const doc = new jsPDF();
 
@@ -182,6 +183,17 @@ export class PfeIntershipsComponent {
       }
     );
   }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input?.files?.length) {
+        this.file = input.files[0];  // Save the selected file
+    }
+}
+
+addReport(internshipId: number){
+  return
+}
 
 }
 

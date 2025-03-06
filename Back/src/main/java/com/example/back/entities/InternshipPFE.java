@@ -36,5 +36,20 @@ public class InternshipPFE {
     private Restitution restitution;
 
     @OneToOne
+    private Files report;
+
+    @OneToOne
     private Soutenance soutenance;
+
+
+
+
+/*
+    @JsonBackReference
+    @ManyToOne
+    Teacher teacher ;
+*/
+
+
+
 }

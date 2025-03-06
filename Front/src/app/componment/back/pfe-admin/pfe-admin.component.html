@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/assets/back/css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="/assets/back/back/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   </head>
   <body class="with-welcome-text">
     <div class="container-scroller">
@@ -82,12 +83,22 @@
 
 
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" routerLink="/pfeadmin" aria-expanded="false" aria-controls="charts">
+              <a class="nav-link" (click)="isPfeOpen = !isPfeOpen">
                 <i class="menu-icon mdi mdi-chart-line"></i>
                 <span class="menu-title">PFE_INTERNSHIPS</span>
+                <i class="menu-arrow mdi" [ngClass]="{'mdi-chevron-down': !isPfeOpen, 'mdi-chevron-up': isPfeOpen}"></i>
               </a>
+              
+              <!-- Submenu for PFE_INTERNSHIPS -->
+              <ul *ngIf="isPfeOpen" class="list-unstyled">
+                <li class="nav-item">
+                  <a class="nav-link sub-menu-item" routerLink="/pfestudentadmin">📋 Internship List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link sub-menu-item" routerLink="/pfeteacheradmin">➕ Teacher List</a>
+                </li>
+              </ul>
             </li>
-
 
 
             <li class="nav-item">
@@ -136,54 +147,96 @@
                       <div class="row">
                         <div class="col-12 grid-margin stretch-card">
                           <div class="card card-rounded">
-                            <div class="card-body">
-                              <div class="d-sm-flex justify-content-between align-items-start">
-                                <h4 class="card-title">Internship Conventions</h4>
+                            <div class="container mt-4">
+                              <div class="row">
+                                <div class="col-md-12 mb-4">
+                                  <!-- Search Input for Filtering Students by Name -->
+                                  <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Search by first or last name" 
+                                    [(ngModel)]="searchTerm" 
+                                    (input)="filterStudents()"> <!-- Bind the input to searchTerm and call filterStudents() on input -->
+                                </div>
                               </div>
-                              <div class="table-responsive mt-3">
-                                <table class="table table-bordered">
-                                  <thead>
-                                    <tr>
-                                      <th>Last Name</th>
-                                      <th>First Name</th>
-                                      <th>Email</th>
-                                      <th>Internship Details</th>
-                                      <th>Action</th> <!-- Add a new column for the button -->
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr *ngFor="let student of students">
-                                      <td>{{ student.lastName }}</td>
-                                      <td>{{ student.firstName }}</td>
-                                      <td>{{ student.email }}</td>
-                                      
-                                      <!-- Internship details -->
-                                      <td>
-                                        <div *ngIf="student.internshipConventions?.length; else noInternships">
-                                          <ul>
-                                            <li *ngFor="let convention of student.internshipConventions">
-                                              {{ convention.typeInternship }} - {{ convention.companyName }} 
-                                              ({{ convention.startDate | date:'yyyy-MM-dd' }} to {{ convention.endDate | date:'yyyy-MM-dd' }})
-                                            </li>
-                                          </ul>
+                              <div class="row d-flex">
+                                <div class="col-lg-4 col-md-6 mb-4 d-flex" *ngFor="let student of filteredStudents">
+                                  <div class="card student-card d-flex flex-column">
+                                    <!-- Header with student name -->
+                                    <div class="card-header">
+                                      <h5 class="mb-0">
+                                        <i class="fas fa-user-graduate"></i> {{ student.firstName }} {{ student.lastName }}
+                                      </h5>
+                                    </div>
+                            
+                                    <!-- Card Body (flex-grow for equal height) -->
+                                    <div class="card-body flex-grow-1">
+                                      <p class="card-text">
+                                        <i class="fas fa-envelope text-primary"></i> <strong>Email:</strong> {{ student.email }}
+                                      </p>
+                            
+                                      <!-- Timeline for Student -->
+                                      <!-- <div class="timeline-container">
+                                        <div class="timeline-progress" [style.width]="getStudentProgressWidth(student)"></div>
+                                        <div class="timeline-steps">
+                                          <div *ngFor="let step of pipelineSteps" class="timeline-step" [class.active]="step.active">
+                                            <div class="step-circle">
+                                              <i class="fas" [ngClass]="step.icon"></i>
+                                            </div>
+                                            <span class="step-label">{{ step.label }}</span>
+                                          </div>
                                         </div>
-                                        
-                                        <!-- Fallback for students without internships -->
-                                        <ng-template #noInternships>
-                                          <span>No Internship</span>
-                                        </ng-template>
-                                      </td>
-                                
-                                      <!-- Add the action button -->
-                                      <td>
-                                        <button class="btn btn-info" (click)="showStudentDetails(student.id)">Show Details</button>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>                                
+                                      </div> -->
+                                      <div class="timeline-container">
+                                        <div class="timeline-progress" [style.width]="getStudentProgressWidth(student)"></div>
+                                        <div class="timeline-steps">
+                                          <div *ngFor="let step of pipelineSteps" 
+                                               class="timeline-step" 
+                                               [ngClass]="{'active': step.active, 'completed': step.completed}">
+                                            <div class="step-circle">
+                                              <i class="fas" [ngClass]="step.icon"></i>
+                                            </div>
+                                            <span class="step-label">{{ step.label }}</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- Internship Details -->
+                                      <div *ngIf="student.internshipConventions?.length; else noInternships">
+                                        <h6><i class="fas fa-briefcase"></i> Internship(s):</h6>
+                                        <ul class="list-group">
+                                          <li class="list-group-item" *ngFor="let convention of student.internshipConventions">
+                                            <i class="fas fa-building"></i> {{ convention.companyName }}  
+                                            <br>
+                                            <small>
+                                              {{ convention.typeInternship }} | 
+                                              <i class="fas fa-calendar-alt"></i> 
+                                              {{ convention.startDate | date:'yyyy-MM-dd' }} → {{ convention.endDate | date:'yyyy-MM-dd' }}
+                                            </small>
+                                          </li>
+                                        </ul>
+                                      </div>
+                            
+                                      <!-- No Internship -->
+                                      <ng-template #noInternships>
+                                        <p class="text-muted">
+                                          <i class="fas fa-exclamation-circle"></i> No Internship
+                                        </p>
+                                      </ng-template>
+                                    </div>
+                            
+                                    <!-- Card Footer with Action (fixed at the bottom) -->
+                                    <div class="card-footer text-center mt-auto">
+                                      <button class="btn btn-info btn-sm" (click)="showStudentDetails(student.id)">
+                                        <i class="fas fa-eye"></i> View Details
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
-                                                        
                             </div>
+                            
+                            
+                            
                           </div>
                         </div>
                       </div>

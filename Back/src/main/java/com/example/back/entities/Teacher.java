@@ -1,6 +1,7 @@
 package com.example.back.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -22,6 +23,7 @@ public class Teacher extends User{
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Journal> journals;
 
+    //@JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL)
     private Set<InternshipPFE> internshipPFEs;
 

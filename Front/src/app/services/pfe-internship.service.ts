@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { StudentService } from './student.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class PfeInternshipService {
     private studentId = 1 ;
     
     constructor(private http: HttpClient) { }
+    
 
     getInternshipConventionId(): Observable<number> {
       return this.http.get<number>(`${this.internshipsUrl}/pfe-id/${this.studentId}`);
@@ -42,4 +44,6 @@ export class PfeInternshipService {
     addRestitution(internshipId: number, restitution: any): Observable<any> {
       return this.http.post(`${this.restitutionUrl}/addRestitutionAndAssignToPFEInternship/${internshipId}`, restitution);
     }
+
+    
 }

@@ -1,5 +1,6 @@
 package com.example.back.services;
 
+import com.example.back.entities.InternshipPFE;
 import com.example.back.entities.Restitution;
 import com.example.back.entities.Teacher;
 
@@ -10,4 +11,10 @@ public interface ITeacherService {
     String assignRestitutionToTeacher(Long restitutionId, Long teacherId);
 
     List<Teacher> getAll();
+
+    Teacher getById(Long id);
+
+    List<InternshipPFE> getUnassignedInternships() ;
+
+    void assignInternshipToTeacher(Long teacherId, Long internshipId) ;
 }

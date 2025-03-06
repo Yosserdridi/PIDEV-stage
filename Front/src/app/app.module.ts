@@ -26,6 +26,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { InternshipConventionComponent } from './internship-convention/internship-convention.component';
 import { DepositPfeInternshipComponent } from './deposit-pfe-internship/deposit-pfe-internship.component';
 import { StudentAdminComponent } from './componment/back/student-admin/student-admin.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TeacherAdminComponent } from './componment/back/teacher-admin/teacher-admin.component';
+import { GetTeacherAdminComponent } from './componment/back/get-teacher-admin/get-teacher-admin.component';
+
 
 @NgModule({
   declarations: [
@@ -51,12 +55,16 @@ import { StudentAdminComponent } from './componment/back/student-admin/student-a
     InternshipConventionComponent,
     DepositPfeInternshipComponent,
     StudentAdminComponent,
+    TeacherAdminComponent,
+    GetTeacherAdminComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

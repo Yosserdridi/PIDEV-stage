@@ -4,6 +4,7 @@
     <p>{{ step.label }}</p>
   </div>
 </div>
+
 <div *ngIf="student">
   <h2>{{ student.firstName }} {{ student.lastName }}</h2>
   <p>Email: {{ student.email }}</p>
@@ -12,15 +13,16 @@
   <div *ngFor="let internship of student.internshipConventions">
     <h4>{{ internship.companyName }}</h4>
     <p>Type: {{ internship.typeInternship }}</p>
-    <p>Start Date: {{ internship.startDate }}</p>
-    <p>End Date: {{ internship.endDate }}</p>
+    <p>Start Date: {{ internship.startDate | date: 'yyyy-MM-dd' }}</p>
+    <p>End Date: {{ internship.endDate | date: 'yyyy-MM-dd' }}</p>
+    
 
     <button (click)="generatePDF()">Generate PDF</button>
     <div *ngIf="internship.internshipPFE">
       <h4>Internship PFE</h4>
       <p>Title: {{ internship.internshipPFE.title }}</p>
       <p>Description: {{ internship.internshipPFE.description }}</p>
-      <p>Convention: {{ internship.internshipPFE.signedConvention }}</p>
+      <p>Convention: </p>
       <div class="post-file-container" *ngIf="internship.internshipPFE.signedConvention">
         <a [href]="'http://localhost:9091/stage/PfeInternship/uploads/' + internship.internshipPFE.signedConvention" 
            download 
@@ -60,6 +62,24 @@
           <button type="button" (click)="toggleForm(null)">Cancel</button>
         </form>
       </div>
+        <div *ngIf="!internship.internshipPFE.report  && internship.internshipPFE.restitution">
+          <h5>Report:</h5>
+          <form *ngIf="restitution" (ngSubmit)="addReport(internship.internshipPFE.id)">
+              
+              <input type="file" id="signedConvention" (change)="onFileSelected($event)" required />
+            <button type="submit" >Submit Report Deposit</button>
+          </form>
+        </div>
+        <div *ngIf="internship.internshipPFE.report">
+        <h5>Report</h5>
+        <div class="post-file-container" *ngIf="internship.internshipPFE.report">
+          <a [href]="'http://localhost:9091/stage/PfeInternship/uploads/' + internship.internshipPFE.report" 
+             download 
+             target="_blank">
+            📄 Download Report
+          </a>
+        </div>
+        </div>
     </div>
   </div>
 </div>

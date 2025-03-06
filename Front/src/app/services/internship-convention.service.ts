@@ -22,7 +22,9 @@ export class InternshipConventionService {
   private baseUrl = 'http://localhost:9091/stage/internships';
   private studentId =  1 ;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+
+  }
   
   addInternship(internship: InternshipConvention): Observable<string> {
     return this.http.post<string>(`${this.baseUrl}/add/${this.studentId}`, internship, { responseType: 'text' as 'json' });

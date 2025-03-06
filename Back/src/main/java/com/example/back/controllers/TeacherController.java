@@ -1,5 +1,6 @@
 package com.example.back.controllers;
 
+import com.example.back.entities.InternshipPFE;
 import com.example.back.entities.Student;
 import com.example.back.entities.Teacher;
 import com.example.back.services.ITeacherService;
@@ -37,5 +38,25 @@ public class TeacherController {
     @GetMapping("/getAll")
     public List<Teacher> getAll() {
         return teacherService.getAll();
+    }
+
+    @GetMapping("/getById/{id}")
+    public Teacher getById(@PathVariable Long id) {
+        return teacherService.getById(id);
+    }
+
+
+    @GetMapping("/unassigned")
+    public ResponseEntity<List<InternshipPFE>> getUnassignedInternships() {
+        List<InternshipPFE> unassignedInternships = teacherService.getUnassignedInternships();
+        return ResponseEntity.ok(unassignedInternships);
+    }
+
+    @PostMapping("/{teacherId}/assign-internship/{internshipId}")
+    public ResponseEntity<String> assignInternshipToTeacher(
+            @PathVariable Long teacherId,
+            @PathVariable Long internshipId) {
+        teacherService.assignInternshipToTeacher(teacherId, internshipId);
+        return ResponseEntity.ok("Internship assigned successfully");
     }
 }

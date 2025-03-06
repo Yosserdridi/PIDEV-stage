@@ -19,6 +19,8 @@ import { AdminComponent } from './componment/back/admin/admin.component';
 import { InternshipConventionComponent } from './internship-convention/internship-convention.component';
 import { DepositPfeInternshipComponent } from './deposit-pfe-internship/deposit-pfe-internship.component';
 import { StudentAdminComponent } from './componment/back/student-admin/student-admin.component';
+import { TeacherAdminComponent } from './componment/back/teacher-admin/teacher-admin.component';
+import { GetTeacherAdminComponent } from './componment/back/get-teacher-admin/get-teacher-admin.component';
 
 
 
@@ -43,11 +45,12 @@ const routes: Routes = [
 
 
   { path: 'pfe', component:PfeIntershipsComponent  },
-  { path: 'pfeadmin', component: PfeAdminComponent},
+  { path: 'pfestudentadmin', component: PfeAdminComponent},
+  { path: 'pfeteacheradmin', component: TeacherAdminComponent},
   { path: 'internship-convention', component: InternshipConventionComponent},
   { path: 'depoist-pfe-internship', component : DepositPfeInternshipComponent},
-  { path: 'student/:id', component: StudentAdminComponent }
-
+  { path: 'student/:id', component: StudentAdminComponent },
+  { path: 'teacher/:id', component: GetTeacherAdminComponent }
 
 ];
 

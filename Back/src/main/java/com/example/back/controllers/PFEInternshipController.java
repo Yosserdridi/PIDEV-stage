@@ -34,10 +34,6 @@ public class PFEInternshipController {
         return pfeInternshipService.save(internshipPFE);
     }
 
-
-
-
-
     @GetMapping("/getAll")
     public List<InternshipPFE> getAll() {
         return pfeInternshipService.getAll();
