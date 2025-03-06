@@ -1,0 +1,231 @@
+<!--
+<div class="complaints-container">
+  <h2 class="text-center mb-4">All Complaints</h2>
+
+  &lt;!&ndash; Bouton pour ajouter une plainte &ndash;&gt;
+  <button class="btn btn-primary mb-3" routerLink="/add-complaint">Add Complaint</button>
+
+  <div class="search-bar mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Filter by type or status"
+      [(ngModel)]="searchTerm"
+      (input)="applyFilter()"
+    />
+  </div>
+
+  &lt;!&ndash; Liste des plaintes sous forme de tableau &ndash;&gt;
+  <div class="complaints-list">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Response</th>
+          <th>Actions</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let complaint of filteredComplaints  | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+          <td>{{ complaint.title }}</td>
+          <td>{{ complaint.content }}</td>
+          <td>{{ complaint.typeC }}</td>
+          <td>
+            <span [ngClass]="{
+              'text-warning': complaint.typeStatus === 'Pending',
+              'text-success': complaint.typeStatus === 'Resolved',
+              'text-danger': complaint.typeStatus === 'Rejected'
+            }">
+              {{ complaint.typeStatus }}
+            </span>
+          </td>
+          <td>{{ complaint.dateComplaint | date:'yyyy-MM-dd' }}</td>
+          <td>{{ complaint?.responses[0]?.response }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="openUpdateForm(complaint)">Update</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteComplaint(complaint.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  &lt;!&ndash; Formulaire de mise à jour &ndash;&gt;
+  <div *ngIf="showUpdateForm" class="update-form mt-4">
+    <h4>Update complaint : {{ selectedComplaint?.title }}</h4>
+    <form (ngSubmit)="submitUpdate()">
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          [(ngModel)]="selectedComplaint.title"
+          name="title"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="content">Contenu</label>
+        <textarea
+          id="content"
+          class="form-control"
+          [(ngModel)]="selectedComplaint.content"
+          name="content"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="typeC">Type</label>
+        <select
+          id="typeC"
+          class="form-control"
+          [(ngModel)]="selectedComplaint.typeC"
+          name="typeC"
+          required
+        >
+          <option value="Modification">Modification</option>
+          <option value="Cancellation">Cancellation</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="typeStatus">Statut</label>
+        <select
+          id="typeStatus"
+          class="form-control"
+          [(ngModel)]="selectedComplaint.typeStatus"
+          name="typeStatus"
+          required
+        >
+          <option value="Pending">Pending</option>
+          <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success">Mettre à jour</button>
+      <button type="button" class="btn btn-secondary" (click)="closeUpdateForm()">Annuler</button>
+    </form>
+  </div>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+-->
+<div class="complaints-container">
+  <h2 class="text-center mb-4"> 📝 All Complaints</h2>
+  <!-- Bouton pour ajouter une plainte -->
+  <button class="btn btn-primary mb-3" routerLink="/add-complaint">Add Complaint</button>
+    <div class="search-bar mb-3">
+    <input 
+      type="text"
+      class="form-control"
+      placeholder="Filter by type or status"
+      [(ngModel)]="searchTerm"
+      (input)="applyFilter()"
+    /><p>🔍</p>
+  </div>
+
+  <div class="complaints-list row">
+    <div *ngFor="let complaint of filteredComplaints | paginate: { itemsPerPage: itemsPerPage, currentPage: p }"
+         class="col-md-4 mb-4">
+      <div class="card shadow-sm position-relative">
+
+        <!-- Tag de statut -->
+        <div class="status-tag" [ngClass]="{
+        'status-pending': complaint?.typeStatus === 'Pending',
+        'status-resolved': complaint?.typeStatus === 'Resolved',
+        'status-rejected': complaint?.typeStatus === 'Rejected'
+      }">
+          {{ complaint.typeStatus }}
+        </div>
+
+        <img *ngIf="complaint.image" [src]="'http://localhost:9091/stage/uploads/' + complaint.image"
+             class="card-img-top complaint-img" alt="Complaint Image" />
+
+        <div class="card-body">
+          <h5 class="card-title">{{ complaint.title }}</h5>
+          <p class="card-text"><strong>Content:</strong> {{ complaint.content }}</p>
+          <p><strong>Type:</strong> {{ complaint?.typeC }}</p>
+          <p><strong>Date:</strong> {{ complaint?.dateComplaint | date:'yyyy-MM-dd' }}</p>
+          <p><strong>Response:</strong> {{ complaint?.responses[0]?.response || 'Available later' }}</p>
+
+          <!-- Boutons d'actions avec icônes -->
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-warning btn-sm" (click)="openUpdateForm(complaint)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteComplaint(complaint.id)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Formulaire de mise à jour -->
+  <div *ngIf="showUpdateForm" class="update-form mt-4">
+    <h4>Update complaint : {{ selectedComplaint?.title }}</h4>
+    <form (ngSubmit)="submitUpdate()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          [(ngModel)]="selectedComplaint.title"
+          name="title"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea
+          id="content"
+          class="form-control"
+          [(ngModel)]="selectedComplaint.content"
+          name="content"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="typeC">Type</label>
+        <select
+          id="typeC"
+          class="form-control"
+          [(ngModel)]="selectedComplaint.typeC"
+          name="typeC"
+          required
+        >
+          <option value="Modification">Modification</option>
+          <option value="Cancellation">Cancellation</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="typeStatus">Statut</label>
+        <select
+          id="typeStatus"
+          class="form-control"
+          [(ngModel)]="selectedComplaint.typeStatus"
+          name="typeStatus"
+          required
+        >
+          <option value="Pending">Pending</option>
+          <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success">Update</button>
+      <button type="button" class="btn btn-secondary" (click)="closeUpdateForm()">Cancel</button>
+    </form>
+  </div>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
