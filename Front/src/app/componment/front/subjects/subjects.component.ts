@@ -11,12 +11,15 @@ import { Router } from '@angular/router';
 export class SubjectsComponent implements OnInit {
   sujets: intershipoffer[] = [];
   filteredSujets: intershipoffer[] = [];
+  pagedSujets: intershipoffer[] = [];
   searchTerm: string = '';
-  sujetIndexToEdit: number = -1;
   message: string = '';
+
+  currentPage: number = 1;
+  pageSize: number = 9;
+  totalPages: number = 0;
   selectedSujet: intershipoffer | null = null;
 
-  // Ensure the mapping is consistent with the enum values in 'intershipoffer'
   typeInternshipMapping: { [key in TypeInternship]: string } = {
     [TypeInternship.STAGE_FORMATION_HUMAINE_SOCIALE]: 'Formation Humaine et Sociale',
     [TypeInternship.STAGE_IMMERSION_ENTREPRISE]: 'Immersion en entreprise',
@@ -32,59 +35,82 @@ export class SubjectsComponent implements OnInit {
 
   fetchSujets(): void {
     this.sujetService.getAllOffers().subscribe(sujets => {
-      console.log("Fetched sujets:", sujets); // Debugging
-      // Sort the subjects by idsujet (descending order)
+      console.log("Fetched sujets:", sujets);
       this.sujets = sujets.sort((a, b) => b.idsujet - a.idsujet);
-      this.filteredSujets = this.sujets;
+      this.filteredSujets = [...this.sujets];
+      this.updatePagination();
+      
+   this.loadImages();
+
     });
   }
+
+
+
+  loadImages(): void {
+    this.filteredSujets.forEach(sujet => {
+      if (sujet.idsujet) {
+        this.sujetService.getImage(sujet.idsujet).subscribe({
+          next: (imageBlob) => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              sujet.imageUrl = reader.result as string;
+            };
+            reader.readAsDataURL(imageBlob);
+          },
+          error: () => {
+            sujet.imageUrl = 'assets/default-image.png';
+          }
+        });
+      }
+    });
+  }
+
+
+
+
   filterSujets(): void {
     this.filteredSujets = this.sujets.filter(sujet =>
       sujet.companyname.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
       sujet.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
+    this.updatePagination();
   }
 
-  supprimerSujet(idSujet: number | undefined): void {
-    if (idSujet === undefined) {
-      console.error("Error: The subject ID is undefined.");
-      return;
-    }
-    console.log("Deleting subject with ID:", idSujet);
-    this.sujetService.deleteOffer(idSujet).subscribe(() => {
-      this.message = "Suppression effectuée avec succès.";
-      this.fetchSujets();
-    });
+  updatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredSujets.length / this.pageSize);
+    this.currentPage = Math.min(this.currentPage, this.totalPages) || 1;
+    this.paginate();
+  }
+
+  paginate(): void {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.pagedSujets = this.filteredSujets.slice(startIndex, endIndex);
+  }
+
+  changePage(page: number): void {
+    if (page < 1 || page > this.totalPages) return;
+    this.currentPage = page;
+    this.paginate();
   }
 
   postulate(idsujet: number): void {
-    const id = this.sujets[idsujet].idsujet;
+    const id = idsujet;
     this.router.navigate(['/create/postulation', id]);
   }
 
-  modifierSujet(sujet: intershipoffer): void {
-    this.sujetService.updateOffer(sujet).subscribe(() => {
-      this.sujetIndexToEdit = -1;
-      this.selectedSujet = null;
-      this.message = "Modification effectuée avec succès.";
-      this.fetchSujets();
-    });
+
+  openModal(index: number): void {
+    this.selectedSujet = this.pagedSujets[index];
+    console.log("Selected Sujet:", this.selectedSujet); // Debugging
+  }
+  
+  closeModal(): void {
+    this.selectedSujet = null;
   }
 
-  ajouterSujet(): void {
-    this.router.navigate(['/adminsujetcreate']);
-  }
-
-  displayPostulations(idsujet: number): void {
-    this.router.navigate(['/postulationbysujet', idsujet]);
-  }
-
-  // Make sure the mapping is correct and the enum values match
   mappedTypeInternship(type: TypeInternship): string {
     return this.typeInternshipMapping[type] || type;
-  }
-
-  logSujetId(id: number | undefined): void {
-    console.log("Deleting subject with ID:", id);
   }
 }

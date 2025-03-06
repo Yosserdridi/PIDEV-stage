@@ -27,6 +27,7 @@ public class IntershipOffer {
     private String companymail ;
     private int numberOfStudents;
 
+    private String imageUrl;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDate;

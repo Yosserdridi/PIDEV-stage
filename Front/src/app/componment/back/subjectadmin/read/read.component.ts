@@ -1,7 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { IntershipOfferService } from 'src/app/Services/IntershipOffer/intership-offer-services.service';
 import { intershipoffer, TypeInternship } from 'src/app/models/intershipoffer';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-read',
@@ -14,7 +16,7 @@ export class ReadadminComponent implements OnInit {
   searchTerm: string = '';
   message: string = '';
 
-  // Mapping for internship types to user-friendly names
+
   typeInternshipMapping: { [key in TypeInternship]: string } = {
     [TypeInternship.STAGE_FORMATION_HUMAINE_SOCIALE]: 'Formation Humaine et Sociale',
     [TypeInternship.STAGE_IMMERSION_ENTREPRISE]: 'Immersion en entreprise',
@@ -22,25 +24,33 @@ export class ReadadminComponent implements OnInit {
     [TypeInternship.STAGE_PFE]: 'Projet de Fin d\'Etudes',
   };
 
+
   constructor(private sujetService: IntershipOfferService, private router: Router) {}
+
 
   ngOnInit(): void {
     this.fetchSujets();
   }
 
+
   fetchSujets(): void {
-    this.sujetService.getAllOffers().subscribe(sujets => {
-      console.log("Fetched sujets:", sujets); // Debugging
-      // Sort the subjects by idsujet (descending order)
-      this.sujets = sujets.sort((a, b) => b.idsujet - a.idsujet);
-      this.filteredSujets = this.sujets;
+    this.sujetService.getAllOffers().subscribe({
+      next: (sujets) => {
+        this.sujets = sujets.sort((a, b) => b.idsujet - a.idsujet);
+        this.filteredSujets = this.sujets;
+        this.loadImages(); // Load images and PDFs after fetching
+      },
+      error: () => {
+        this.message = "Failed to load internship offers.";
+      }
     });
   }
 
-  // Method to map internship type to user-friendly names
+
   mappedTypeInternship(type: TypeInternship): string {
-    return this.typeInternshipMapping[type] || type;  // Default to the enum value if not found
+    return this.typeInternshipMapping[type] || type;
   }
+
 
   filterSujets(): void {
     this.filteredSujets = this.sujets.filter(sujet =>
@@ -49,20 +59,22 @@ export class ReadadminComponent implements OnInit {
     );
   }
 
+
   supprimerSujet(idSujet: number | undefined): void {
-    if (idSujet === undefined) {
-      console.error("Error: The subject ID is undefined.");
-      return;
-    }
-    console.log("Deleting subject with ID:", idSujet);
-    this.sujetService.deleteOffer(idSujet).subscribe(() => {
-      this.message = "Suppression effectuée avec succès.";
-      this.fetchSujets();
+    if (idSujet === undefined) return;
+    this.sujetService.deleteOffer(idSujet).subscribe({
+      next: () => {
+        this.message = "Suppression effectuée avec succès.";
+        this.fetchSujets();
+      },
+      error: () => {
+        this.message = "Failed to delete internship offer.";
+      }
     });
   }
 
+
   afficherFormulaireModifier(sujet: intershipoffer): void {
-    console.log("Editing sujet:", sujet); // Debugging
     if (sujet && sujet.idsujet !== undefined) {
       this.router.navigate(['/adminsujetedit', sujet.idsujet]);
     } else {
@@ -70,11 +82,39 @@ export class ReadadminComponent implements OnInit {
     }
   }
 
+
   ajouterSujet(): void {
     this.router.navigate(['/adminsujetcreate']);
   }
 
+
   displayPostulations(idsujet: number): void {
     this.router.navigate(['/postulationbysujet', idsujet]);
   }
+
+
+  loadImages(): void {
+    this.filteredSujets.forEach(sujet => {
+      if (sujet.idsujet) {
+        // Load image
+        this.sujetService.getImage(sujet.idsujet).subscribe({
+          next: (imageBlob) => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              // Convert Blob to base64 string
+              sujet.imageUrl = reader.result as string;  // Now imageUrl is a string (base64)
+            };
+            reader.readAsDataURL(imageBlob);
+          },
+          error: () => {
+            sujet.imageUrl = 'assets/default-image.png';
+          }
+        });
+
+
+       
+      }
+    });
+  }
+
 }

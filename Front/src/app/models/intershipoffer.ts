@@ -20,5 +20,10 @@ export class intershipoffer {
   companymail!: string;
   typeInternship!: TypeInternship;
   creationDate!: string;
+
+
+  imageUrl!: string;
+
+  
  // postulationtSet!: Postulation[];
 }

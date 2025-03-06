@@ -1,29 +1,32 @@
 <div class="create-form-container">
   <h2>Create New Internship Offer</h2>
 
+
   <form (ngSubmit)="onSubmit()" #createForm="ngForm">
-    
+   
+    <!-- Title -->
     <div class="form-group">
-      <label for="titre">Title</label>
+      <label for="title">Title</label>
       <input
         type="text"
-        id="titre"
-        name="titre"
+        id="title"
+        name="title"
         class="form-control"
         [(ngModel)]="newOffer.title"
         required
-        #titre="ngModel"
-        [class.is-invalid]="titre.invalid && titre.touched"
+        #title="ngModel"
+        [class.is-invalid]="title.invalid && title.touched"
       />
-      <div *ngIf="titre.invalid && titre.touched" class="invalid-feedback">
+      <div *ngIf="title.invalid && title.touched" class="invalid-feedback">
         Title is required.
       </div>
     </div>
 
+
+    <!-- Description -->
     <div class="form-group">
       <label for="description">Description</label>
-      <input
-        type="text"
+      <textarea
         id="description"
         name="description"
         class="form-control"
@@ -31,12 +34,14 @@
         required
         #description="ngModel"
         [class.is-invalid]="description.invalid && description.touched"
-      />
+      ></textarea>
       <div *ngIf="description.invalid && description.touched" class="invalid-feedback">
         Description is required.
       </div>
     </div>
 
+
+    <!-- Location -->
     <div class="form-group">
       <label for="location">Location</label>
       <input
@@ -54,6 +59,8 @@
       </div>
     </div>
 
+
+    <!-- Type of Internship -->
     <div class="form-group">
       <label for="typeInternship">Type of Internship</label>
       <select
@@ -72,6 +79,8 @@
       </div>
     </div>
 
+
+    <!-- Duration -->
     <div class="form-group">
       <label for="duration">Duration (months)</label>
       <input
@@ -89,6 +98,8 @@
       </div>
     </div>
 
+
+    <!-- Number of Students -->
     <div class="form-group">
       <label for="numberOfStudents">Number of Students</label>
       <input
@@ -106,6 +117,8 @@
       </div>
     </div>
 
+
+    <!-- Requirements -->
     <div class="form-group">
       <label for="requirements">Requirements</label>
       <textarea
@@ -122,6 +135,8 @@
       </div>
     </div>
 
+
+    <!-- Company Name -->
     <div class="form-group">
       <label for="companyname">Company Name</label>
       <input
@@ -139,6 +154,8 @@
       </div>
     </div>
 
+
+    <!-- Company Email -->
     <div class="form-group">
       <label for="companymail">Company Email</label>
       <input
@@ -157,11 +174,34 @@
         <div *ngIf="companymail.errors?.['email']">Please enter a valid email address.</div>
       </div>
     </div>
+
+
+    <!-- File Upload Section for Image -->
+    <div class="form-group">
+      <label for="image">Upload Image</label>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        class="form-control"
+        (change)="onFileSelected($event)"
+      />
+      <div *ngIf="selectedFile" class="mt-2">
+        <p>Selected file: {{ selectedFile.name }}</p>
+      </div>
+    </div>
+
+
+
     
+
+    <!-- Error Message -->
     <div *ngIf="errorMessage" class="alert alert-danger">
       {{ errorMessage }}
     </div>
-    
+
+
+    <!-- Submit Button -->
     <button type="submit" class="btn btn-secondary mb-3" [disabled]="!createForm.valid">
       Create Internship Offer
     </button>

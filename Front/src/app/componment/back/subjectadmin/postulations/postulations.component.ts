@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { PostulationService } from 'src/app/Services/postulation/postulation.service';
 import { postulation } from 'src/app/models/postulation';
 import { IntershipOfferService } from 'src/app/Services/IntershipOffer/intership-offer-services.service';
-import { intershipoffer } from 'src/app/models/intershipoffer';
 
 @Component({
   selector: 'app-postulations',
@@ -14,29 +13,33 @@ export class PostulationsSpComponent implements OnInit {
 
   postulations: postulation[] = [];
   filteredPostulations: postulation[] = [];  // Store filtered postulations
+  paginatedPostulations: postulation[] = [];  // Store paginated postulations
   subjectTitle: string = '';  // Variable to hold the subject title
   idsujet: number | undefined;
   filterStatus: string = 'all';  // Default filter to 'all'
 
+  // Pagination variables
+  currentPage: number = 1;
+  itemsPerPage: number = 5;   
+  totalPages: number = 1;
+
   constructor(
     private postulationService: PostulationService,
-    private subjectService: IntershipOfferService, // Inject SubjectService to get the subject title
+    private subjectService: IntershipOfferService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    // Retrieve the 'idsujet' from the route parameter
     this.idsujet = Number(this.route.snapshot.paramMap.get('idsujet'));
     this.loadSubjectTitle();
     this.loadPostulations();
   }
 
-  // Fetch the subject title based on idsujet
   loadSubjectTitle(): void {
     if (this.idsujet !== undefined) {
       this.subjectService.getOfferById(this.idsujet).subscribe(
         (data) => {
-          this.subjectTitle = data.title;  // Assuming the API returns a 'title' field
+          this.subjectTitle = data.title;
         },
         (error) => {
           console.error('Error fetching subject title:', error);
@@ -45,13 +48,13 @@ export class PostulationsSpComponent implements OnInit {
     }
   }
 
-  // Load postulations based on idsujet
   loadPostulations(): void {
     if (this.idsujet !== undefined) {
       this.postulationService.getPostulationsByIdsujet(this.idsujet).subscribe(
         (data) => {
           this.postulations = data;
-          this.filteredPostulations = data;  // Initially, all postulations are shown
+          this.filteredPostulations = data;
+          this.calculatePagination();
         },
         (error) => {
           console.error('Error fetching postulations:', error);
@@ -62,7 +65,6 @@ export class PostulationsSpComponent implements OnInit {
     }
   }
 
-  // Apply filter to postulations based on selected status
   applyFilter(): void {
     if (this.filterStatus === 'all') {
       this.filteredPostulations = this.postulations;
@@ -71,9 +73,27 @@ export class PostulationsSpComponent implements OnInit {
         postulation => postulation.status.toString() === this.filterStatus
       );
     }
+    this.calculatePagination();
   }
 
-  // Get status label based on the status number
+  calculatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredPostulations.length / this.itemsPerPage);
+    this.paginatePostulations();
+  }
+
+  paginatePostulations(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedPostulations = this.filteredPostulations.slice(startIndex, endIndex);
+  }
+
+  changePage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.paginatePostulations();
+    }
+  }
+
   getStatusLabel(status: number): string {
     switch (status) {
       case 0:
@@ -87,12 +107,10 @@ export class PostulationsSpComponent implements OnInit {
     }
   }
 
-  // Accept postulation
   acceptPostulation(postulationId: number): void {
     this.postulationService.acceptPostulation(postulationId).subscribe(
       () => {
-        console.log('Postulation accepted:', postulationId);
-        this.loadPostulations();  // Refresh the postulations after accepting
+        this.loadPostulations();
       },
       (error) => {
         console.error('Error accepting postulation:', error);
@@ -100,12 +118,10 @@ export class PostulationsSpComponent implements OnInit {
     );
   }
 
-  // Reject postulation
   rejectPostulation(postulationId: number): void {
     this.postulationService.rejectPostulation(postulationId).subscribe(
       () => {
-        console.log('Postulation rejected:', postulationId);
-        this.loadPostulations();  // Refresh the postulations after rejecting
+        this.loadPostulations();
       },
       (error) => {
         console.error('Error rejecting postulation:', error);

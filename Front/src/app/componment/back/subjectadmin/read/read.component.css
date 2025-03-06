@@ -179,3 +179,47 @@ h2 {
 h3 {
   color: #cc0000;
 }
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Pagination button styling */
+.pagination-controls button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  background-color: #0086FB;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Pagination button hover effect */
+.pagination-controls button:hover {
+  background-color: #0070D6;
+  transform: scale(1.05);
+}
+
+/* Disabled button styling */
+.pagination-controls button[disabled] {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Pagination text (e.g., current page and total pages) */
+.pagination-controls span {
+  font-size: 16px;
+  padding: 10px;
+  color: #333;
+}
+
+/* Active page button styling */
+.pagination-controls button.active {
+  background-color: #00D3D6;
+  transform: scale(1.05);
+}

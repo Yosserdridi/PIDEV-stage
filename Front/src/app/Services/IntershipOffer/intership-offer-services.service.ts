@@ -41,6 +41,20 @@ export class IntershipOfferService {
   
   
 
+ // Upload an image for an internship offer
+ uploadImage(id: number, file: File): Observable<{ imageUrl: string }> {
+  const formData = new FormData();
+  formData.append('file', file);
+
+
+  return this.http.post<{ imageUrl: string }>(`${this.baseUrl}/${id}/uploadImage`, formData);
+}
+
+
+// Get image for an internship offer
+getImage(id: number): Observable<Blob> {
+  return this.http.get(`${this.baseUrl}/${id}/image`, { responseType: 'blob' });
+}
 
 
 
