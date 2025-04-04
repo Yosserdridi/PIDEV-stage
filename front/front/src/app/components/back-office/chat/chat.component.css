@@ -1,0 +1,81 @@
+/* Custom styles */
+.chat {
+  margin-top: -38px;
+}
+.message-bubble .card {
+  border-radius: 1.25rem;
+}
+
+.message-bubble[class*="justify-content-end"] .card {
+  border-bottom-right-radius: 0;
+}
+
+.message-bubble:not([class*="justify-content-end"]) .card {
+  border-bottom-left-radius: 0;
+}
+
+.conversation-list .list-group-item {
+  transition: all 0.2s ease;
+  border-radius: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.conversation-list .list-group-item:hover {
+  transform: translateX(5px);
+}
+
+.chat-area {
+  background-color: #f8f9fa;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.chat-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 5px;
+}
+.list-group {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.list-group-item {
+  word-wrap: break-word;
+}
+
+.message-container {
+  flex-grow: 1; /* Allow the messages container to grow */
+  overflow-y: auto; /* Allow scrolling if messages overflow */
+  padding-bottom: 60px; /* To make space for the input area at the bottom */
+}
+
+.input-area {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+
+.input-group input {
+  flex-grow: 1;
+}
+
+input:disabled {
+  background-color: #f8f9fa;
+}

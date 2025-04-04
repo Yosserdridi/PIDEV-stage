@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: chatbot-service
+  config:
+    import: optional:configserver:http://localhost:8888
+app:
+  jwt:
+    secret: aGVsbG9UaGVyZUNoYXQgdGhpcyBpcyBhIHZlcnkgbG9uZyBzZWNyZXQga2V5IHdpdGggcHJvcGVyIHNpemUuCg==

@@ -1,0 +1,87 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+<div class="container p-3">
+
+  <div class="p-mb-3">
+    <button pButton label="Create User" icon="pi pi-plus" (click)="openCreateDialog()" class="p-button-success"></button>
+  </div>
+
+  <p-table [value]="users" [rows]="10" [paginator]="true" [styleClass]="'p-datatable-sm'">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th style="width: 120px">Roles</th>
+        <th style="width: 150px">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.firstName || '-' }}</td>
+        <td>{{ user.lastName || '-' }}</td>
+        <td><span *ngFor="let role of user.roles" class="p-tag p-mr-1">{{ role }}</span></td>
+        <td>
+          <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-text"
+                  (click)="editUser(user)"></button>
+          <button pButton icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger"
+                  (click)="deleteUser(user.id)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-dialog   *ngIf="selectedUser" [(visible)]="displayDialog" [header]="isNewUser ? 'Create User' : 'Edit User'" [modal]="true" [style]="{width: '450px'}">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="username">Username</label>
+        <input id="username" type="text" pInputText [(ngModel)]="selectedUser!.username" required>
+      </div>
+
+      <div class="p-field">
+        <label for="email">Email</label>
+        <input id="email" type="email" pInputText [(ngModel)]="selectedUser!.email" required>
+      </div>
+
+      <div class="p-field" *ngIf="isNewUser">
+        <label for="password">Password</label>
+        <input id="password" type="password" pInputText [(ngModel)]="selectedUser!.password" required>
+      </div>
+
+      <div class="p-grid">
+        <div class="p-field p-col">
+          <label for="firstName">First Name</label>
+          <input id="firstName" type="text" pInputText [(ngModel)]="selectedUser!.firstName">
+        </div>
+        <div class="p-field p-col">
+          <label for="lastName">Last Name</label>
+          <input id="lastName" type="text" pInputText [(ngModel)]="selectedUser!.lastName">
+        </div>
+      </div>
+
+      <div class="p-field">
+        <label for="roles">Roles</label>
+        <p-multiSelect
+          id="roles"
+          [(ngModel)]="selectedUser.roles"
+          [options]="roleOptions"
+          optionLabel="label"
+          placeholder="Select roles"
+          name="roles">
+        </p-multiSelect>
+      </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <button pButton label="Cancel" icon="pi pi-times" (click)="displayDialog = false" class="p-button-text"></button>
+      <button pButton label="Save" icon="pi pi-check" (click)="saveUser()"
+      [disabled]="!selectedUser.username || !selectedUser.email || (isNewUser && !selectedUser.password)"
+      class="p-button-success"></button>
+    </ng-template>
+  </p-dialog>
+</div>

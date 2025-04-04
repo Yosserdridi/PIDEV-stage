@@ -1,0 +1,14 @@
+<div class="list-group">
+  <a *ngFor="let conv of conversations"
+     href="#"
+     class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+     [class.active]="selectedConversationId === conv.id"
+     (click)="onSelect(conv.id)">
+    {{ conv.title }}
+    <button class="btn btn-link text-danger p-0"
+            (click)="onDelete($event, conv.id)"
+            title="Delete conversation">
+      <i class="bi bi-trash"></i>
+    </button>
+  </a>
+</div>

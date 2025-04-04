@@ -1,0 +1,121 @@
+<main>
+  <section class="section section-shaped section-lg">
+    <div class="shape shape-style-1 bg-gradient-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-header bg-white pb-5">
+              <div class="text-muted text-center mb-3">
+                <h2>Login </h2>
+                <small>Connectez-vous avec</small>
+              </div>
+              <div class="btn-wrapper text-center mb-4">
+                <!-- Bouton GitHub -->
+                <a href="https://github.com/login" target="_blank" rel="noopener noreferrer">
+
+                  <span class="btn-inner--icon">
+                    <img src="assets/images/github.svg.ico" alt="Github" style="width: 30px; height: 30px;">
+                  </span>
+                  &nbsp;
+                  <span class="btn-inner--text">Se connecter avec GitHub</span>
+                </a>
+                <!-- Bouton Google -->
+                <a href="https://accounts.google.com/signin" target="_blank" rel="noopener noreferrer" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon">
+                    <img src="assets/images/google.svg.ico" alt="Google" style="width: 30px; height: 30px;">
+                  </span>
+                  &nbsp;
+                  <span class="btn-inner--text">Se connecter avec Google</span>
+                </a>
+                <!-- Bouton youtube -->
+                <a href="https://www.youtube.com/@sirinehamzaoui" target="_blank" rel="noopener noreferrer" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon">
+                    <img src="assets/images/youtube.svg.ico" alt="Youtube" style="width: 30px; height: 30px;">
+                  </span>
+                  &nbsp;
+                  <span class="btn-inner--text">visitez notre chaine </span>
+                </a>
+              </div>
+            </div>
+
+            <div class="card-body px-lg-5 py-lg-5">
+              <div class="text-center text-muted mb-4">
+                <small>Ou connectez-vous avec vos identifiants</small>
+              </div>
+              <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" autocomplete="off">
+                <div class="form-group mb-3" [ngClass]="{'focused': focus}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Username" type="text" name="email" [(ngModel)]="user.username" required
+                      (focus)="focus = true" (blur)="focus = false" autocomplete="off">
+                  </div>
+                  <!-- <div *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">
+                    <p *ngIf="loginForm.controls['email'].errors?.['required']" class="text-danger">Email est requis.</p>
+                    <p *ngIf="loginForm.controls['email'].errors?.['pattern']" class="text-danger">Format d'email invalide.</p>
+                  </div> -->
+                </div>
+
+                <div class="form-group" [ngClass]="{'focused': focus1}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Mot de passe" type="password" name="password" [(ngModel)]="user.password"
+                      required  (focus)="focus1 = true" (blur)="focus1 = false" autocomplete="off">
+                  </div>
+                  <!-- pattern="^(?=.*[a-zA-Z])(?=.*\d).+$" -->
+                  <!-- <div *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+                    <p *ngIf="loginForm.controls['password'].errors?.['required']" class="text-danger">Le mot de passe est requis.</p>
+                    <p *ngIf="loginForm.controls['password'].errors?.['pattern']" class="text-danger">Le mot de passe doit contenir des lettres et des chiffres.</p>
+                  </div> -->
+                </div>
+
+                <div class="custom-control custom-control-alternative custom-checkbox">
+                  <input class="custom-control-input" id="customCheckLogin" type="checkbox" name="rememberMe" [(ngModel)]="rememberMe">
+                  <label class="custom-control-label" for="customCheckLogin">
+                    <span>Se souvenir de moi</span>
+                  </label>
+                </div>
+
+                <!-- <div *ngIf="loginError" class="error-message text-danger">
+                  {{ loginError }}
+                </div> -->
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary my-4" [disabled]="loginForm.invalid" (click)="onSubmit()">Se connecter</button>
+                </div>
+
+                <div class="text-center">
+                  <a (click)=" onForgotPassword()" class="text-light">
+                    <small>Mot de passe oublié ?</small>
+                  </a>
+                  <br>
+                  <a routerLink="/register" class="text-light">
+                    <small>Créer un nouveau compte</small>
+                  </a>
+                  <br>
+                  <!-- <a routerLink="/modify-pass" class="text-light">
+                    <small>Modifier le mot de passe</small>
+                  </a> -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

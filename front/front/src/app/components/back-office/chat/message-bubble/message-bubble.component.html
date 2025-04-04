@@ -1,0 +1,12 @@
+<div class="row mb-3" [class.justify-content-end]="isUser">
+  <div class="col-10 col-md-8">
+    <div class="card" [class.bg-primary]="isUser" [class.text-white]="isUser">
+      <div class="card-body p-3">
+        <div class="card-text">{{ message.content }}</div>
+        <small class="d-block text-end mt-2" [class.text-white-50]="isUser" [class.text-muted]="!isUser">
+          {{ message.createdAt | date:'shortTime' }}
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

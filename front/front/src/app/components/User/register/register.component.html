@@ -1,0 +1,122 @@
+<div class="login-container">
+  <h2>Create an account</h2>
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+      <div>
+          <label for="nom">Last name:</label>
+          <input
+              type="text"
+              id="nom"
+              name="nom"
+              [(ngModel)]="nom"
+              #nomField="ngModel"
+              required
+              pattern="[A-Za-z]+"
+              placeholder="Enter your last name"
+          />
+          <p *ngIf="registerForm.submitted && !nomField.valid" class="error-message">
+              Last name is required and must be alphabetic.
+          </p>
+      </div>
+      <div>
+          <label for="prenom">First name:</label>
+          <input
+              type="text"
+              id="prenom"
+              name="prenom"
+              [(ngModel)]="prenom"
+              #prenomField="ngModel"
+              required
+              pattern="[A-Za-z]+"
+              placeholder="Enter your first name"
+          />
+          <p *ngIf="registerForm.submitted && !prenomField.valid" class="error-message">
+              First name is required and must be alphabetic.
+          </p>
+      </div>
+      <div>
+          <label for="login">Username:</label>
+          <input
+              type="text"
+              id="login"
+              name="login"
+              [(ngModel)]="username"
+              #nomField="ngModel"
+              required
+              placeholder="Enter your username"
+          />
+          <p *ngIf="registerForm.submitted && !prenomField.valid" class="error-message">
+              ID is required .
+          </p>
+      </div>
+      <div>
+          <label for="email">Email:</label>
+          <input
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="email"
+              #emailField="ngModel"
+              required
+              placeholder="Enter your email"
+          />
+          <p *ngIf="registerForm.submitted && !emailField.valid" class="error-message">
+              Email is required and must be a valid email address.
+          </p>
+      </div>
+      <!-- <div>
+          <label for="numtel">Phone number:</label>
+          <input
+              type="text"
+              id="numtel"
+              name="numtel"
+              [(ngModel)]="numtel"
+              #numtelField="ngModel"
+              required
+              pattern="[0-9]{8}"
+              placeholder="Enter your phone number"
+          />
+          <p *ngIf="registerForm.submitted && !numtelField.valid" class="error-message">
+              Phone number is required and must be 8 digits.
+          </p>
+      </div> -->
+      <div>
+          <label for="password">Password:</label>
+          <input
+              type="password"
+              id="password"
+              name="password"
+              [(ngModel)]="password"
+              #passwordField="ngModel"
+              required
+              placeholder="Enter your password"
+          />
+          <p *ngIf="registerForm.submitted && !passwordField.valid" class="error-message">
+              Password is required.
+          </p>
+      </div>
+      <div>
+          <label for="confirmPassword">Confirm Password:</label>
+          <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              [(ngModel)]="confirmPassword"
+              #confirmPasswordField="ngModel"
+              required
+              placeholder="Confirm your password"
+          />
+          <p *ngIf="registerForm.submitted && !confirmPasswordField.valid" class="error-message">
+              Confirm Password is required.
+          </p>
+          <p *ngIf="registerForm.submitted && password !== confirmPassword" class="error-message">
+              Passwords do not match.
+          </p>
+      </div>
+      <button type="submit" (click)=" onSubmit()">Register</button>
+      <div class="additional-links">
+          <a [routerLink]="['/login']" class="register-link">
+              Have an account already? <strong>Login</strong>
+            </a>
+      </div>
+  </form>
+</div>

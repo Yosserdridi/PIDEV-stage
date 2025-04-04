@@ -1,0 +1,61 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(to bottom, #6A0000, #FF0000); /* Black to red */
+    color: white; /* Text color */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between; /* Spread out the left and right sections */
+    align-items: center; /* Vertically center items */
+ }
+
+/* Left section */
+.header-left {
+    display: flex;
+    justify-content: center; /* Center items horizontally in the left section */
+    align-items: center; /* Center items vertically */
+    position: absolute; /* Position absolutely to center in header */
+    left: 50%; /* Position at 50% from the left */
+    transform: translateX(-50%); /* Move it back by 50% of its width to center it */
+}
+
+.header-left a {
+    margin-right: 50px;  
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.header-left a:hover {
+    text-decoration: underline;
+}
+
+/* Right section */
+.header-right {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center; /* Center items vertically */
+    right: 20px; /* Add right margin to give space */
+ }
+ 
+.header-right .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-right .social-icons a {
+    margin-right: 10px;
+}
+
+.header-right .social-icons img {
+    width: 20px;
+    height: 20px;
+}

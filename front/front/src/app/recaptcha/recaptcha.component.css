@@ -1,0 +1,11 @@
+.recaptcha-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .recaptcha {
+    width: 100%;
+    max-width: 400px; /* Ajustez la largeur maximale selon vos besoins */
+  }

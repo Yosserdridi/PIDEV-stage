@@ -1,0 +1,50 @@
+
+
+sirine:
+  app:
+    jwtSecret: aGVsbG9UaGVyZUNoYXQgdGhpcyBpcyBhIHZlcnkgbG9uZyBzZWNyZXQga2V5IHdpdGggcHJvcGVyIHNpemUuCg==
+    jwtExpirationMs: 3600000
+    jwtRefreshExpirationMs: 86400000
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+server:
+  port: 8083
+spring:
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/stage?useSSL=false
+    username: root
+    password:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: b8e4801a0b293e
+    password: e58b7b5834ff08
+    protocol: smtp
+    test-connection: false
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: false
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
