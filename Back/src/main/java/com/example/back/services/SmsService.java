@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SmsService {
+    /*
     private final String ACCOUNT_SID = "AC773508ae951a5c236c256a9e4a9007fa"; // from Twilio
     private final String AUTH_TOKEN = "8b79d84efd13994bf60e13ef923dff61"; // from Twilio
     private final String FROM_PHONE = "+15632847921"; // Twilio number
@@ -24,5 +25,5 @@ public class SmsService {
                 messageContent // message content
         ).create();
         System.out.println("SMS sent: " + message.getSid());
-    }
+    }*/
 }

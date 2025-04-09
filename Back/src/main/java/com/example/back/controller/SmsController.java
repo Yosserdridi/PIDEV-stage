@@ -17,7 +17,7 @@ public class SmsController {
     @Autowired
     private SmsService smsService;
 
-    @PostMapping("/send")
+  /*  @PostMapping("/send")
     public ResponseEntity<String> sendSms(@RequestParam String userPhone, @RequestParam String messageContent) {
         try {
             smsService.sendSms(userPhone, messageContent);
@@ -25,5 +25,5 @@ public class SmsController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error sending SMS.");
         }
-    }
+    }*/
 }
