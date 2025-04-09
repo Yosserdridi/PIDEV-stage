@@ -180,55 +180,61 @@
                                 <div *ngIf="teacher.internshipPFEs">
                                   <h3>Internship PFEs:</h3>
                         
-                                  <div class="col-lg-4 col-md-6 mb-4 d-flex" *ngFor="let internship of teacher.internshipPFEs">
-                                    <div class="card student-card d-flex flex-column">
-                                      <!-- Header with internship title -->
-                                      <div class="card-header">
-                                        <h5 class="mb-0">
-                                          <i class="fas fa-briefcase"></i> {{ internship.title }}
-                                        </h5>
-                                      </div>
-                        
-                                      <!-- Card Body (flex-grow for equal height) -->
-                                      <div class="card-body flex-grow-1">
-                                        <p class="card-text">
-                                          <i class="fas fa-file-alt text-primary"></i> <strong>Description:</strong> {{ internship.description }}
-                                        </p>
-                        
-                                        <!-- Dates of Internship -->
-                                        <p class="card-text">
-                                          <strong>Start Date:</strong> {{ internship.startDate | date: 'yyyy-MM-dd' }} <br>
-                                          <strong>End Date:</strong> {{ internship.endDate | date: 'yyyy-MM-dd' }}
-                                        </p>
+                                  <div class="row">
+                                    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let internship of teacher.internshipPFEs">
+                                      <div class="card student-card d-flex flex-column h-100">
+                                        <!-- Header with internship title -->
+                                        <div class="card-header">
+                                          <h5 class="mb-0">
+                                            <i class="fas fa-briefcase"></i> {{ internship.title }}
+                                          </h5>
+                                        </div>
+                                  
+                                        <!-- Card Body (flex-grow for equal height) -->
+                                        <div class="card-body flex-grow-1">
+                                          <p class="card-text">
+                                            <i class="fas fa-file-alt text-primary"></i> <strong>Description:</strong> {{ internship.description }}
+                                          </p>
+                                  
+                                          <!-- Dates of Internship -->
+                                          <p class="card-text">
+                                            <strong>Start Date:</strong> {{ internship.startDate | date: 'yyyy-MM-dd' }} <br>
+                                            <strong>End Date:</strong> {{ internship.endDate | date: 'yyyy-MM-dd' }}
+                                          </p>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
+                                  
                                 </div>
                         
                                 <!-- Display Restitutions in cards -->
                                 <div *ngIf="teacher.restitutions">
                                   <h3>Restitutions:</h3>
-                                  <div class="col-lg-4 col-md-6 mb-4 d-flex" *ngFor="let restitution of teacher.restitutions">
-                                    <div class="card student-card d-flex flex-column">
-                                      <!-- Header with restitution subject -->
-                                      <div class="card-header">
-                                        <h5 class="mb-0">
-                                          <i class="fas fa-exclamation-circle"></i> {{ restitution.subject }}
-                                        </h5>
-                                      </div>
-
-                                      <!-- Card Body -->
-                                      <div class="card-body flex-grow-1">
-                                        <p class="card-text">
-                                          <i class="fas fa-tasks text-primary"></i> <strong>Task:</strong> {{ restitution.task }}
-                                        </p>
-                                        <p class="card-text">
-                                          <i class="fas fa-cogs text-primary"></i> <strong>Technology:</strong> {{ restitution.technology }}
-                                        </p>
+                                  <div class="row"> <!-- Ensure proper row wrapping -->
+                                    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let restitution of teacher.restitutions">
+                                      <div class="card student-card d-flex flex-column h-100">
+                                        <!-- Header with restitution subject -->
+                                        <div class="card-header">
+                                          <h5 class="mb-0">
+                                            <i class="fas fa-exclamation-circle"></i> {{ restitution.subject }}
+                                          </h5>
+                                        </div>
+                                
+                                        <!-- Card Body -->
+                                        <div class="card-body flex-grow-1">
+                                          <p class="card-text">
+                                            <i class="fas fa-tasks text-primary"></i> <strong>Task:</strong> {{ restitution.task }}
+                                          </p>
+                                          <p class="card-text">
+                                            <i class="fas fa-cogs text-primary"></i> <strong>Technology:</strong> {{ restitution.technology }}
+                                          </p>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
+                                
 
                               </div>
                             </div>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { TypeInternship } from './../models/type_internship.eunm';
 import { Observable } from 'rxjs';
+import { StudentService } from './student.service';
 
 export interface InternshipConvention {
   id?: number;
@@ -20,9 +21,9 @@ export interface InternshipConvention {
 export class InternshipConventionService {
 
   private baseUrl = 'http://localhost:9091/stage/internships';
-  private studentId =  2 ;
+  private studentId =  3 ;
   
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient , private studentService: StudentService) { 
 
   }
   

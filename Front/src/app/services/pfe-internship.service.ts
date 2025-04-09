@@ -12,9 +12,9 @@ export class PfeInternshipService {
     private internshipsUrl = 'http://localhost:9091/stage/internships';
     private restitutionUrl = 'http://localhost:9091/stage/restitution';
 
-    private studentId = 2 ;
+    private studentId = 3 ;
     
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient ,private studentService: StudentService) { }
     
 
     getInternshipConventionId(): Observable<number> {
