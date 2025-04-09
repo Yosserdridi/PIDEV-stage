@@ -15,8 +15,8 @@ export class AddConventionComponent {
 
   conventionId !:number;
   conventionForm!:FormGroup;
-  internshipTypes = Object.values(TypeInternship); // Dropdown values
-
+  TypeInternship = TypeInternship;
+  
 
   constructor(
     private fb :FormBuilder,
@@ -30,7 +30,7 @@ export class AddConventionComponent {
       companyContact: ['', [Validators.required, Validators.pattern('^[0-9]{8,15}$')]],
       startDate: ['', [Validators.required]],
       endDate: ['', [Validators.required, dateGreaterThan('startDate')]],
-      internshipTypes: ['', Validators.required] 
+      typeInternship: ['', Validators.required] 
 
 
     })

@@ -49,9 +49,9 @@
       <!-- Internship Type -->
       <div class="mb-3">
         <label for="internshipTypes">Internship Type:</label>
-        <select id="internshipTypes" formControlName="internshipTypes" class="form-control">
-          <option *ngFor="let t of internshipTypes" [value]="t">{{ t }}</option>
-        </select>
+        <select id="internshipTypes" formControlName="typeInternship" class="form-control">
+          <option *ngFor="let t of TypeInternship | keyvalue" [value]="t.value">{{ t.value }}</option>
+                </select>
       </div>
 
       <!-- Buttons -->

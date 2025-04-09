@@ -16,6 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student extends User{
+
     private String registrationNumber;
     private String cv;
     private String branche;

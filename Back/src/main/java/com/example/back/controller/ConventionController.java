@@ -89,7 +89,6 @@ public class ConventionController {
     }
 */
 
-
     @GetMapping("/getALLConventionWithRelation{conventionId}")
     public ResponseEntity<Map<String, Object>> getAllEntitiesByConventionId(@PathVariable Long conventionId) {
         try {
@@ -102,6 +101,21 @@ public class ConventionController {
             return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.NOT_FOUND);
         }
     }
+
+
+    @GetMapping("/details/by-student/{studentId}")
+    public ResponseEntity<Map<String, Object>> getConventionDetailsByStudentId(@PathVariable Long studentId) {
+        try {
+            Map<String, Object> response = conventionServiceImpl.getAllEntitiesByUserId(studentId);
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                    Map.of("error", e.getMessage())
+            );
+        }
+    }
+
+   
 
 
 

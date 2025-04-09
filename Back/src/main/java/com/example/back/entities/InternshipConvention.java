@@ -28,7 +28,6 @@ public class InternshipConvention {
     private String companyContact;
 
     @Enumerated(EnumType.STRING)
-    @JsonProperty("typeInternship")
     private TypeInternship typeInternship;
 
 
