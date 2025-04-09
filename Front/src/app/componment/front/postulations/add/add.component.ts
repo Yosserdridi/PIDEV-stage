@@ -15,13 +15,13 @@ export class AddPComponent implements OnInit {
 
   newPostulation: postulation = new postulation();
   errorMessage: string = '';
+  selectedFile: File | null = null;
   regions: string[] = [
     "Tunis", "Ariana", "Ben Arous", "Manouba", "Nabeul", "Zaghouan", "Bizerte", "Béja",
     "Jendouba", "Kef", "Siliana", "Sousse", "Monastir", "Mahdia", "Kairouan", "Kasserine",
     "Sidi Bouzid", "Sfax", "Gabès", "Medenine", "Tataouine", "Gafsa", "Tozeur", "Kebili"
   ];  
   subjectTitle: string = '';  // Store the subject title
-
 
   constructor(
     private postulationService: PostulationService,
@@ -54,13 +54,22 @@ export class AddPComponent implements OnInit {
     });
   }
 
+  onFileSelected(event: any): void {
+    if (event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
+    }
+  }
 
   onSubmit(): void {
     if (this.newPostulation.titrecandidature && this.newPostulation.lettremotivation && this.newPostulation.region) {
-      this.postulationService.addPostulation(this.newPostulation).subscribe({
-        next: () => {
+      this.postulationService.addPostulation(this.newPostulation, this.newPostulation.idsujet).subscribe({
+        next: (createdPostulation) => {
           console.log('Postulation created successfully');
-          this.router.navigate(['/postulations']);
+          if (this.selectedFile) {
+            this.uploadPdf(createdPostulation.id);
+          } else {
+            this.router.navigate(['/postulations']);
+          }
         },
         error: (error) => {
           console.error('Error creating postulation:', error);
@@ -69,6 +78,21 @@ export class AddPComponent implements OnInit {
       });
     } else {
       this.errorMessage = "Form is not valid. Please check all fields.";
+    }
+  }
+
+  uploadPdf(postulationId: number): void {
+    if (this.selectedFile) {
+      this.postulationService.uploadPdf(postulationId, this.selectedFile).subscribe({
+        next: () => {
+          console.log('PDF uploaded successfully');
+          this.router.navigate(['/postulations']);
+        },
+        error: (error) => {
+          console.error('Error uploading PDF:', error);
+          this.errorMessage = 'Error uploading PDF. Please try again.';
+        }
+      });
     }
   }
 }

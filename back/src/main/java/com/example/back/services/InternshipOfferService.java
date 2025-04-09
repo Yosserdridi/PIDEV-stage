@@ -84,9 +84,9 @@ public class InternshipOfferService implements IInternshipOfferservice {
     public IntershipOffer getInternshipOfferWithImage(Long id) {
         IntershipOffer offer = internshipOfferRepository.findById(id).orElse(null);
         if (offer == null || offer.getImageUrl() == null) {
-            return null;  // Return null if no offer or no image
+            return null;
         }
-        return offer;  // Return the offer with the image URL
+        return offer;
     }
 
     public String saveFile(MultipartFile file) {

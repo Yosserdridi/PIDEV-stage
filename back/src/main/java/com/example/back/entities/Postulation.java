@@ -26,7 +26,7 @@ public class Postulation {
     private String titrecandidature;
     private String region;
     private String lettremotivation;
-
+    private String pdfUrl;
 
 
     @ManyToOne

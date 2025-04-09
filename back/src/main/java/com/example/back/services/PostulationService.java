@@ -9,14 +9,21 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 @Slf4j
 public class PostulationService implements IPostulationService {
-
+    private static final String UPLOAD_DIR = "uploads/pdfs/";
     private final InternshipOfferRepository internshipOfferRepository;
     PostulationRepository postulationRepository;
 
@@ -116,14 +123,52 @@ public class PostulationService implements IPostulationService {
         postulationRepository.save(postulation); // Save the updated postulation
     }
 
-
-
-
     @Override
     public List<Postulation> retrievePostulationsByStatus(int status) {
         return postulationRepository.findByStatus(status);  // Assuming you have this method in your repository
     }
 
+    public String uploadPdf(Long postulationId, MultipartFile file) {
+        Postulation postulation = postulationRepository.findById(postulationId)
+                .orElseThrow(() -> new RuntimeException("Postulation not found"));
 
+        String fileUrl = saveFile(file); // Save the file and get the URL
+        System.out.println("✅ PDF URL saved: " + fileUrl);
 
+        postulation.setPdfUrl(fileUrl);
+        postulationRepository.save(postulation);
+
+        return fileUrl;
+    }
+
+   
+    public Postulation getPostulationWithPdf(Long id) {
+        Postulation postulation = postulationRepository.findById(id).orElse(null);
+        if (postulation == null || postulation.getPdfUrl() == null) {
+            return null;  // Return null if no postulation or no PDF
+        }
+        return postulation;  // Return the postulation with the PDF URL
+    }
+
+    // Method to save the file
+    private String saveFile(MultipartFile file) {
+        try {
+            File uploadDir = new File(UPLOAD_DIR);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+
+            String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+            Path filePath = Paths.get(UPLOAD_DIR, uniqueFileName);
+            Files.write(filePath, file.getBytes());
+
+            System.out.println("File saved at: " + filePath);
+
+            return "http://localhost:9091/files/" + uniqueFileName;
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to save file", e);
+        }
+    }
 }
+
+

@@ -86,7 +86,7 @@ public class InternshipOfferController {
         }
 
         try {
-            // Extract the file name from the URL
+
             String fileName = offer.getImageUrl().substring(offer.getImageUrl().lastIndexOf('/') + 1);
             Path imagePath = Paths.get(UPLOAD_DIR).resolve(fileName);
 

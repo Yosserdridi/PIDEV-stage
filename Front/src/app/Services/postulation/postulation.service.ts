@@ -23,8 +23,8 @@ export class PostulationService {
   }
 
   // Ajouter une nouvelle postulation
-  addPostulation(postulation: postulation): Observable<postulation> {
-    return this.http.post<postulation>(`${this.baseUrl}/addPos?idsujet=${postulation.idsujet}`, postulation);
+  addPostulation(postulation: postulation, idsujet: number): Observable<postulation> {
+    return this.http.post<postulation>(`${this.baseUrl}/addPos?idsujet=${idsujet}`, postulation);
   }
 
   // Supprimer une postulation par son ID
@@ -55,5 +55,17 @@ export class PostulationService {
   // Reject postulation
   rejectPostulation(postulationId: number): Observable<void> {
     return this.http.put<void>(`${this.baseUrl}/reject/${postulationId}`, {});
+  }
+
+  // Upload PDF
+  uploadPdf(postulationId: number, file: File): Observable<{ pdfUrl: string }> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post<{ pdfUrl: string }>(`${this.baseUrl}/${postulationId}/uploadPdf`, formData);
+  }
+
+  // Get PDF URL
+  getPdfUrl(postulationId: number): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}/${postulationId}/pdf`, { responseType: 'blob' });
   }
 }
