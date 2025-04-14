@@ -32,6 +32,8 @@
         <td>{{ convention.startDate }}</td>
         <td>{{ convention.endDate }}</td>
         <td>
+        
+          <button (click)="goToDetails(convention.id)">Détails</button>
           <button (click)="deleteConvention(convention.id)">Delete</button>
           <button
           [ngStyle]="{'background-color': convention.isValid ? 'green' : 'red'}"
@@ -39,6 +41,9 @@
           {{ convention.isValid ? 'Valid' : 'Not Valid' }}
         </button>
         </td>
+
+
+  
 
      
       </tr>

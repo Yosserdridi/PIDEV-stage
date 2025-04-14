@@ -3,7 +3,9 @@ package com.example.back.controller;
 
 import com.example.back.entities.InternshipConvention;
 import com.example.back.entities.Journal;
+import com.example.back.entities.Teacher;
 import com.example.back.repository.ConventionRepository;
+import com.example.back.repository.UserRepository;
 import com.example.back.services.ConventionService;
 import com.example.back.services.ConventionServiceImpl;
 import lombok.AllArgsConstructor;
@@ -19,6 +21,8 @@ import java.util.Optional;
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:4200")
 public class ConventionController {
+
+    UserRepository userRepository;
 
     private final ConventionServiceImpl conventionServiceImpl;
     ConventionService conventionService;
@@ -77,7 +81,7 @@ public class ConventionController {
 
 
 
-    @GetMapping("/getConventionWith relation/{id}")
+    @GetMapping("/getConventionWithrelation/{id}")
     public ResponseEntity<InternshipConvention> getConventionWithRelations(@PathVariable Long id) {
         InternshipConvention internshipConvention = conventionServiceImpl.getConventionWithRelations(id);
         return ResponseEntity.ok(internshipConvention);
@@ -89,7 +93,7 @@ public class ConventionController {
     }
 */
 
-    @GetMapping("/getALLConventionWithRelation{conventionId}")
+    @GetMapping("/getALLConventionWithRelation/{conventionId}")
     public ResponseEntity<Map<String, Object>> getAllEntitiesByConventionId(@PathVariable Long conventionId) {
         try {
             // Appeler la méthode du service pour récupérer les entités associées
@@ -104,9 +108,9 @@ public class ConventionController {
 
 
     @GetMapping("/details/by-student/{studentId}")
-    public ResponseEntity<Map<String, Object>> getConventionDetailsByStudentId(@PathVariable Long studentId) {
+    public ResponseEntity<?> getConventionDetailsByStudentId(@PathVariable Long studentId) {
         try {
-            Map<String, Object> response = conventionServiceImpl.getAllEntitiesByUserId(studentId);
+            List<Map<String, Object>> response = conventionServiceImpl.getAllEntitiesByUserId(studentId);
             return ResponseEntity.ok(response);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
@@ -115,7 +119,25 @@ public class ConventionController {
         }
     }
 
-   
+
+
+
+    @PutMapping("/admin/assign-convention")
+    public ResponseEntity<?> assignConventionToTeacher(
+            @RequestParam Long conventionId,
+            @RequestParam Long teacherId) {
+
+        InternshipConvention convention = conventionRepository.findById(conventionId).orElseThrow();
+        Teacher teacher = (Teacher) userRepository.findById(teacherId).orElseThrow();
+
+        convention.setAssignedTeacher(teacher);
+        conventionRepository.save(convention);
+
+        return ResponseEntity.ok("Convention assigned to teacher successfully.");
+    }
+
+
+
 
 
 

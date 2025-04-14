@@ -35,6 +35,11 @@ import { AddJournalComponent } from './componment/front/summer_front/add-journal
 import { ValidConevntionComponent } from './componment/front/summer_front/valid-conevntion/valid-conevntion.component';
 import { CIFDetailsComponent } from './componment/front/summer_front/cif-details/cif-details.component';
 import { ViewAllTasksComponent } from './componment/front/summer_front/view-all-tasks/view-all-tasks.component';
+import { ConventionUserComponent } from './componment/front/summer_front/convention-user/convention-user.component';
+import { ConventionDetailUserComponent } from './componment/front/summer_front/convention-detail-user/convention-detail-user.component';
+import { UserAllTasksComponent } from './componment/front/summer_front/user-all-tasks/user-all-tasks.component';
+import { CoventiondetailComponent } from './componment/back/summerBack/coventiondetail/coventiondetail.component';
+import { TasksConventionComponent } from './componment/back/summerBack/tasks-convention/tasks-convention.component';
 
 
 @NgModule({
@@ -70,6 +75,11 @@ import { ViewAllTasksComponent } from './componment/front/summer_front/view-all-
     ValidConevntionComponent,
     CIFDetailsComponent,
     ViewAllTasksComponent,
+    ConventionUserComponent,
+    ConventionDetailUserComponent,
+    UserAllTasksComponent,
+    CoventiondetailComponent,
+    TasksConventionComponent,
     
     
     

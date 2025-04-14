@@ -1,0 +1,87 @@
+<div *ngIf="data" class="container my-4">
+    <!-- Card: Détails de la Convention -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title text-primary fw-bold">Détails de la Convention</h2>
+        <p><strong>Title :</strong> {{ data.summerInternship.title || 'Non disponible' }}</p>
+        <p><strong>Description :</strong> {{ data.summerInternship.description || 'Non disponible' }}</p>
+        <p><strong>Duration :</strong> {{ data.summerInternship.duration || 'Non disponible' }} mois</p>
+      </div>
+    </div>
+  
+    <!-- Card: Fichiers -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title text-primary fw-bold">Fichiers</h2>
+        <p><strong>Rapports :</strong> {{ data.file.report || 'Non disponible' }}</p>
+        <p><strong>Internship Certificate :</strong> {{ data.file.internship_Certifcate || 'Non disponible' }}</p>
+      </div>
+    </div>
+  
+    <!-- Card: Journal -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title text-secondary">Journal</h3>
+        <p><strong>Résumé :</strong> {{ data.journal.title || 'Non disponible' }}</p>
+        <p><strong>Remarque :</strong> {{ data.journal.remark || 'Pas de remarque' }}</p>
+        <p><strong>Statut :</strong>
+          <span *ngIf="data.journal.isvalid" class="text-success">Validé</span>
+          <span *ngIf="!data.journal.isvalid && data.journal.isvalid !== null" class="text-danger">Refusé</span>
+          <span *ngIf="data.journal.isvalid === null" class="text-warning">En attente</span>
+        </p>
+  
+        <!-- Actions : Validation/Refus -->
+        <div class="my-3">
+          <button (click)="validerJournal()" class="btn btn-success me-2">✅ Valider</button>
+          <button (click)="refuserJournal()" class="btn btn-danger">❌ Refuser</button>
+        </div>
+  
+        <!-- Formulaire de mise à jour du Journal -->
+        <button (click)="openJournalUpdateForm(data.journal)" class="btn btn-primary mt-3">📝 Mettre à jour manuellement</button>
+  
+        <div *ngIf="showJournalUpdateForm" class="mt-4 p-3 border rounded-3 shadow-sm" style="max-width: 500px;">
+          <h3>Modifier le Journal</h3>
+          <form (ngSubmit)="updateJournal()" #journalForm="ngForm">
+            
+            <div class="mb-3">
+              <label for="remark"><strong>Remarque :</strong></label><br>
+              <input
+                type="text"
+                id="remark"
+                [(ngModel)]="selectedJournal.remark"
+                name="remark"
+                required
+                class="form-control"
+              />
+            </div>
+  
+            <div class="mb-3">
+              <label for="isValide">
+                <input
+                  type="checkbox"
+                  id="isValide"
+                  [(ngModel)]="selectedJournal.isValide"
+                  name="isValide"
+                />
+                <strong>Valider le journal</strong>
+              </label>
+            </div>
+  
+            <div class="mt-4">
+              <button type="submit" class="btn btn-success" [disabled]="journalForm.invalid">💾 Enregistrer</button>
+              <button type="button" class="btn btn-secondary ms-2" (click)="closeJournalUpdateForm()">❌ Annuler</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Card: Affichage des tâches -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title text-primary">Afficher les tâches</h3>
+        <button (click)="goToDetails(data.internshipConvention.id)" class="btn btn-info">Détails</button>
+      </div>
+    </div>
+  </div>
+  

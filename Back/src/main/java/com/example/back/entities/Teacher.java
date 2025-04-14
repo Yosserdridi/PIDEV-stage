@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,9 +19,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class Teacher extends User{
     private String registrationNumber;
-
-
-
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy="teacher")
     private Set<InternshipPFE> internshipPFEs;
 
@@ -29,6 +28,10 @@ public class Teacher extends User{
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Soutenance> soutenances;
+
+
+    @OneToMany(mappedBy = "assignedTeacher")
+    private List<InternshipConvention> assignedConventions;
 
 
 

@@ -46,4 +46,8 @@ public class InternshipConvention {
     @JsonIgnore
 
     private InternshipPFE internshipPFE;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher assignedTeacher;
 }

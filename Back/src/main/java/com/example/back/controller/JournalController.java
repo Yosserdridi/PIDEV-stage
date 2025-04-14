@@ -4,6 +4,7 @@ package com.example.back.controller;
 import com.example.back.entities.Journal;
 import com.example.back.entities.SummerInternship;
 import com.example.back.entities.Task;
+import com.example.back.repository.JournalRepository;
 import com.example.back.repository.TaskRepository;
 import com.example.back.services.JournalService;
 import com.example.back.services.JournalServiceImpl;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -24,6 +26,8 @@ public class JournalController {
 
     private final TaskServiceImpl taskServiceImpl;
     JournalService journalService;
+
+    JournalRepository journalRepository;
 
     JournalServiceImpl journalServiceImpl;
 
@@ -93,6 +97,25 @@ public class JournalController {
         Map<String, Object> response = journalServiceImpl.getAllEntitiesByJournalId(journalId);
         return ResponseEntity.ok(response);
     }
+
+
+    @PutMapping("/validjournal/{id}")
+    public ResponseEntity<Journal> updateJournal(@PathVariable Long id, @RequestBody Journal journalDetails) {
+        Optional<Journal> existingJournal = journalRepository.findById(id);
+
+        if (!existingJournal.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Journal journal = existingJournal.get();
+        journal.setRemark(journalDetails.getRemark());
+        journal.setIsValid(journalDetails.getIsValid());
+
+        Journal updatedJournal = journalRepository.save(journal);
+
+        return ResponseEntity.ok(updatedJournal);
+    }
+
 
 
 

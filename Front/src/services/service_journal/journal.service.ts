@@ -31,6 +31,10 @@ export class JournalService {
         getAllEntitiesByJournalId(journalId: number): Observable<any> {
           return this.http.get(`${this.url}/entities/${journalId}`);
         }
+
+        valideJournal(id: number, journal: Journal): Observable<Journal> {
+          return this.http.put<Journal>(`${this.url}/validjournal/${id}`, journal);
+        }
       
 
 

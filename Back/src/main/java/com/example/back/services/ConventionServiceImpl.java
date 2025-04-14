@@ -6,10 +6,7 @@ import com.example.back.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -112,40 +109,44 @@ public class ConventionServiceImpl implements ConventionService {
 
 
     //passser id student not id convention pour recupéere convention  et ses detail pou un unser précie
-    public Map<String, Object> getAllEntitiesByUserId(Long studentId) {
-        // Récupérer la convention de stage par l'ID de l'étudiant
-        Optional<InternshipConvention> conventionOpt = conventionRepository.findByStudentId(studentId);
 
-        if (conventionOpt.isPresent()) {
-            InternshipConvention convention = conventionOpt.get();
+    public List<Map<String, Object>> getAllEntitiesByUserId(Long studentId) {
+        List<InternshipConvention> conventions = conventionRepository.findAllByStudentId(studentId);
 
-            SummerInternship summerInternship = convention.getSummerInternship();
-
-            if (summerInternship != null) {
-                Files file = summerInternship.getFiles();
-
-                if (file != null) {
-                    Journal journal = file.getJournal();
-                    List<Task> tasks = taskRepository.findByJournalId(journal.getId());
-
-                    Map<String, Object> response = new HashMap<>();
-                    response.put("tasks", tasks);
-                    response.put("journal", journal);
-                    response.put("file", file);
-                    response.put("summerInternship", summerInternship);
-                    response.put("internshipConvention", convention);
-
-                    return response;
-                } else {
-                    throw new RuntimeException("Fichier associé à la convention introuvable !");
-                }
-            } else {
-                throw new RuntimeException("Internship associé à la convention introuvable !");
-            }
-        } else {
+        if (conventions.isEmpty()) {
             throw new RuntimeException("Aucune convention trouvée pour l'étudiant avec l'ID : " + studentId);
         }
+
+        List<Map<String, Object>> responseList = new ArrayList<>();
+
+        for (InternshipConvention convention : conventions) {
+            SummerInternship summerInternship = convention.getSummerInternship();
+
+            if (summerInternship == null) {
+                continue; // ou log l'erreur et continue
+            }
+
+            Files file = summerInternship.getFiles();
+            if (file == null) {
+                continue;
+            }
+
+            Journal journal = file.getJournal();
+            List<Task> tasks = journal != null ? taskRepository.findByJournalId(journal.getId()) : new ArrayList<>();
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("tasks", tasks);
+            response.put("journal", journal);
+            response.put("file", file);
+            response.put("summerInternship", summerInternship);
+            response.put("internshipConvention", convention);
+
+            responseList.add(response);
+        }
+
+        return responseList;
     }
+
 
 }
 

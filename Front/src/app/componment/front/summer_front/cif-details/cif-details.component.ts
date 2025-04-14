@@ -15,7 +15,7 @@ export class CIFDetailsComponent implements OnInit {
   journalId!: number;
   entities: Entities = {
     tasks: [],
-    journal: { id: 0, title: '', isvalid: false},
+    journal: { id: 0, title: '',remark:'', isvalid: false},
 
     file: { id: 0, report : '', internship_Certifcate: '' },
 
@@ -46,10 +46,6 @@ export class CIFDetailsComponent implements OnInit {
       this.journalId = +params['id']; 
 
       this.fetchEntities();
-
-
-
-    
     });
   }
 

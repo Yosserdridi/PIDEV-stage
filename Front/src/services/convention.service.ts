@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Convention } from 'src/model/convention';
 import { Task } from 'src/model/task';
+import { Entities } from 'src/model/entities';
 
 
 @Injectable({
@@ -39,6 +40,30 @@ getInternshipConvention(id :  number) :Observable <Convention>{
 toggleConventionValidity(id: number, isValid: boolean): Observable<any> {
   return this.http.put<any>(`${this.url}/convention/${id}/validity?isValid=${isValid}`, {});
 }
+
+getConventionsByStudentId(studentId: number): Observable<any[]> {
+  return this.http.get<Entities[]>(`${this.url}/details/by-student/${studentId}`);
+}
+
+
+sendSms(userPhone: string, messageContent: string): Observable<any> {
+  const params = new HttpParams()
+    .set('userPhone', userPhone)
+    .set('messageContent', messageContent);
+
+  return this.http.post(`${this.url}/send`, null, { params });
+}
+
+
+
+getEntitiesByConventionId(conventionId: number): Observable<any> {
+  return this.http.get<Entities>(`${this.url}/getALLConventionWithRelation/${conventionId}`);
+}
+
+
+
+
+
 
 
 

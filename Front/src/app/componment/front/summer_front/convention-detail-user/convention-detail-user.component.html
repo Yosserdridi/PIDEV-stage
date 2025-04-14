@@ -1,0 +1,37 @@
+<!-- Message d'erreur -->
+<div *ngIf="error" class="alert alert-danger text-center shadow-sm rounded-3 mt-3">
+  {{ error }}
+</div>
+
+<!-- Affichage des détails -->
+<div *ngIf="details" class="container my-4">
+  <div class="card shadow-lg custom-card border-0">
+    <div class="card-body">
+      
+      <!-- Infos Stage -->
+      <h2 class="card-title text-primary fw-bold mb-4">
+        <i class="bi bi-briefcase-fill me-2"></i> Stage : {{ details.summerInternship.title }}
+      </h2>
+      <p><strong>📝 Description:</strong> {{ details.summerInternship.description }}</p>
+      <p><strong>⏳ Duration:</strong> {{ details.summerInternship.duration }} mois</p>
+      
+      <hr class="my-4">
+
+      <!-- Fichiers -->
+      <h4 class="text-secondary fw-semibold mb-3">
+        <i class="bi bi-file-earmark-arrow-down-fill me-2"></i> Fichiers liés
+      </h4>
+      <p><strong>📄 Report:</strong> {{ details.file.report }}</p>
+      <p><strong>📜 Internship Certificate:</strong> {{ details.file.internship_Certifcate }}</p>
+
+      <!-- Bouton -->
+      <div class="mt-4 text-end">
+        <button class="btn btn-outline-primary btn-rounded"
+          [routerLink]="['/convention/user/tasks', details.internshipConvention.id]">
+          <i class="bi bi-list-check me-1"></i> Show Details
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
