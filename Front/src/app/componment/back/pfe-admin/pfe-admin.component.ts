@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
 import { InternshipConvention, InternshipConventionService } from 'src/app/services/internship-convention.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -17,6 +18,9 @@ export class PfeAdminComponent {
   displayedStudents: Student[] = [];
   searchTerm: string = '';
 
+
+  notifications: any[] = [];
+  showNotifications: boolean = false;
 
   currentPage: number = 1;
   pageSize: number = 6;
@@ -98,12 +102,15 @@ export class PfeAdminComponent {
   
   constructor(private conventionService: InternshipConventionService,
     private studentService: StudentService,
+    private notificationService : NotificationService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
 
     this.getAllStudents(); 
+    this.loadNotifications();
+    setInterval(() => this.loadNotifications(), 10000);
 
   }
 
@@ -166,8 +173,23 @@ export class PfeAdminComponent {
     }
   }
 
-
+  loadNotifications() {
+    this.notificationService.getNotifications().subscribe(data => {
+      this.notifications = data;
+    });
+  }
+  
+  toggleNotifications() {
+    this.showNotifications = !this.showNotifications;
+  }
+  
+  clearAll() {
+    this.notificationService.clearNotifications().subscribe(() => {
+      this.notifications = [];
+      this.showNotifications = false;
+    });
 
 
   
+}
 }

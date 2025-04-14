@@ -20,6 +20,9 @@ public class RestitutionService implements IRestitutionService{
     RestitutionRepository restitutionRepository;
     PFEInternshipRepository pfeInternshipRepository;
     TeacherRepository teacherRepository;
+
+    private SimpleNotificationService notificationService;
+
     @Override
     public List<Restitution> getAll() {
         return restitutionRepository.findAll();
@@ -58,6 +61,9 @@ public class RestitutionService implements IRestitutionService{
         internship.setRestitution(restitution);
         restitutionRepository.save(restitution);
         pfeInternshipRepository.save(internship);
+
+        String subject = restitution.getSubject();
+        notificationService.addNotification("📢 New restitution submitted: " + subject);
 
         return restitution;
     }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -29,6 +29,9 @@ import { StudentAdminComponent } from './componment/back/student-admin/student-a
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeacherAdminComponent } from './componment/back/teacher-admin/teacher-admin.component';
 import { GetTeacherAdminComponent } from './componment/back/get-teacher-admin/get-teacher-admin.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 
 @NgModule({
@@ -57,6 +60,7 @@ import { GetTeacherAdminComponent } from './componment/back/get-teacher-admin/ge
     StudentAdminComponent,
     TeacherAdminComponent,
     GetTeacherAdminComponent,
+    CalendarComponent,
 
   ],
   imports: [
@@ -65,8 +69,10 @@ import { GetTeacherAdminComponent } from './componment/back/get-teacher-admin/ge
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FullCalendarModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

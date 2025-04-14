@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
@@ -76,6 +77,18 @@ public class InternshipConventionController {
     public Long getInternshipConventionId(@PathVariable Long studentId) {
         return internshipConventionService.getInternshipConventionId(studentId);
     }
+
+    @GetMapping("/calendar")
+    public List<Map<String, Object>> getConventionsForCalendar() {
+        return internshipConventionService.getAll().stream().map(convention -> {
+            Map<String, Object> event = new HashMap<>();
+            event.put("title", convention.getCompanyName());
+            event.put("start", convention.getStartDate()); // Only start date
+            event.put("allDay", true); // Optional: show as all-day event
+            return event;
+        }).collect(Collectors.toList());
+    }
+
 
 
 }

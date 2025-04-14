@@ -21,6 +21,7 @@ public class InternshipConventionService implements IInternshipConventionService
 
     InternshipConventionRepository internshipConventionRepository;
     StudentRepository studentRepository;
+    private SimpleNotificationService notificationService;
 
 
     @Override
@@ -59,6 +60,10 @@ public class InternshipConventionService implements IInternshipConventionService
 
         // Save the student (CascadeType.ALL ensures the internshipConvention gets saved)
         studentRepository.save(student);
+
+        String firstName = student.getFirstName();
+        String lastName = student.getLastName();
+        notificationService.addNotification("📢 New Internship Convention submitted by : " + firstName + " " +  lastName);
 
         return internshipConvention;
     }

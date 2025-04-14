@@ -48,6 +48,23 @@
       <input type="file" id="signedConvention" (change)="onFileSelected($event)" required />
     </div>
 
+    <!-- Signature Pad -->
+    <div class="form-group">
+      <label>Digital Signature:</label>
+      <signature-pad [options]="signaturePadOptions" (endEvent)="drawComplete()" #signaturePad></signature-pad>
+      
+      <div class="signature-buttons">
+        <button type="button" (click)="clearSignature()">Clear</button>
+      </div>
+
+      <!-- Optional: preview the signature -->
+      <div *ngIf="signatureImage">
+        <p>Signature Preview:</p>
+        <img [src]="signatureImage" alt="Signature" style="border: 1px solid #ccc; max-width: 300px;">
+      </div>
+    </div>
+
+
     <button type="submit" [disabled]="pfeDepositForm.invalid">Submit PFE Deposit</button>
 
   </form>

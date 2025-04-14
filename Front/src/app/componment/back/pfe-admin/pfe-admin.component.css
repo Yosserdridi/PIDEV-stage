@@ -181,3 +181,16 @@
   background: #007bff;
   color: white;
 }
+
+
+.notification-dropdown {
+  border-radius: 10px;
+  width: 280px;
+}
+.notification-dropdown ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+.notification-dropdown li {
+  padding: 5px 0;
+}
