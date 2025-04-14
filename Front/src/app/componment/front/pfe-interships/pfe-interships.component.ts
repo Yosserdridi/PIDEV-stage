@@ -80,66 +80,74 @@ export class PfeIntershipsComponent {
   }
   generatePDF() {
     const doc = new jsPDF();
-
-    // Set font
-    doc.setFont("helvetica", "bold");
-
-    // Title: Student Name and Email
-    doc.setFontSize(18);
-    doc.text(`Student: ${this.student?.firstName} ${this.student?.lastName}`, 10, 15);
-    
-    doc.setFontSize(12);
-    doc.setFont("helvetica", "normal");
-    doc.text(`Email: ${this.student?.email}`, 10, 25);
-
-    // Internship Conventions
-    const internships = this.student?.internshipConventions || [];
-    let yOffset = 40; // Initial Y position for internship details
-
-    if (internships.length > 0) {
+  
+    const logo = new Image();
+    logo.src = 'assets/images/logo.png'; // path relative to `src/` folder or public assets
+  
+    logo.onload = () => {
+      // Add logo (x, y, width, height)
+      doc.addImage(logo, 'PNG', 10, 5, 30, 30); // Adjust position and size as needed
+  
+      // Set font
+      doc.setFont("helvetica", "bold");
+  
+      // Title: Student Name and Email
+      doc.setFontSize(18);
+      doc.text(`Student: ${this.student?.firstName} ${this.student?.lastName}`, 50, 15); // Moved to the right to make space for logo
+  
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "normal");
+      doc.text(`Email: ${this.student?.email}`, 50, 25);
+  
+      // Internship Conventions
+      const internships = this.student?.internshipConventions || [];
+      let yOffset = 40; // Initial Y position for internship details
+  
+      if (internships.length > 0) {
         doc.setFont("helvetica", "bold");
         doc.setFontSize(14);
         doc.text('Internship Conventions:', 10, yOffset);
-        yOffset += 10; // Move down
+        yOffset += 10;
         doc.setFont("helvetica", "normal");
-
+  
         internships.forEach((internship: any, index: number) => {
-            if (yOffset > 270) { // Check if we need a new page
-                doc.addPage();
-                yOffset = 20;
-            }
-
-            doc.setFontSize(12);
-            doc.setFont("helvetica", "bold");
-            yOffset += 6;
-
-            doc.setFont("helvetica", "normal");
-
-            // Create a structured description
-            const internshipDescription = `
-                The student ${this.student?.firstName} ${this.student?.lastName} participated in an internship at 
-                ${internship.companyName}, where the internship type was ${internship.typeInternship}. 
-                This internship started on ${formatDate(internship.startDate, 'yyyy-MM-dd', 'en-US')} 
-                and ended on ${formatDate(internship.endDate, 'yyyy-MM-dd', 'en-US')}.
-            `;
-
-            const wrappedText = doc.splitTextToSize(internshipDescription.trim(), 180);
-            doc.text(wrappedText, 10, yOffset);
-            yOffset += wrappedText.length * 6 + 5; // Adjust spacing
+          if (yOffset > 270) {
+            doc.addPage();
+            yOffset = 20;
+          }
+  
+          doc.setFontSize(12);
+          doc.setFont("helvetica", "bold");
+          yOffset += 6;
+  
+          doc.setFont("helvetica", "normal");
+  
+          const internshipDescription = `
+            The student ${this.student?.firstName} ${this.student?.lastName} participated in an internship at 
+            ${internship.companyName}, where the internship type was ${internship.typeInternship}. 
+            This internship started on ${formatDate(internship.startDate, 'yyyy-MM-dd', 'en-US')} 
+            and ended on ${formatDate(internship.endDate, 'yyyy-MM-dd', 'en-US')}.
+          `;
+  
+          const wrappedText = doc.splitTextToSize(internshipDescription.trim(), 180);
+          doc.text(wrappedText, 10, yOffset);
+          yOffset += wrappedText.length * 6 + 5;
         });
-    }
-
-    // Footer with page numbers
-    const pageCount = doc.getNumberOfPages();
-    for (let i = 1; i <= pageCount; i++) {
+      }
+  
+      // Footer with page numbers
+      const pageCount = doc.getNumberOfPages();
+      for (let i = 1; i <= pageCount; i++) {
         doc.setPage(i);
         doc.setFontSize(10);
         doc.text(`Page ${i} of ${pageCount}`, 10, doc.internal.pageSize.height - 10);
-    }
-
-    // Save the PDF
-    doc.save('student_details.pdf');
-}
+      }
+  
+      // Save the PDF
+      doc.save('student_details.pdf');
+    };
+  }
+  
   selectedInternshipId: number | null = null;
 
   restitution: Restitution = { subject: '', task: '', technology: '' }; 

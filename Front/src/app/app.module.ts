@@ -70,6 +70,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     HttpClientModule,
     BrowserAnimationsModule,
     FullCalendarModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

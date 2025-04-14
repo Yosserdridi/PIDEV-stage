@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PfeInternshipService } from '../services/pfe-internship.service';
 import { StudentService } from '../services/student.service';
 import { Student } from '../models/student.model';
 import { InternshipConvention } from '../services/internship-convention.service';
 import { TypeInternship } from '../models/type_internship.eunm';
+import SignaturePad from 'signature_pad';
 
 @Component({
   selector: 'app-deposit-pfe-internship',
@@ -12,6 +13,8 @@ import { TypeInternship } from '../models/type_internship.eunm';
 })
 export class DepositPfeInternshipComponent {
 
+  @ViewChild('signaturePadCanvas') signaturePadElement!: ElementRef<HTMLCanvasElement>;
+private signaturePad!: SignaturePad;
   student!: Student;
 
   newInternshipPFE = {
@@ -43,7 +46,8 @@ export class DepositPfeInternshipComponent {
                       private studentService: StudentService
   ) {}
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
+    this.signaturePad = new SignaturePad(this.signaturePadElement.nativeElement);
   }
 
   onFileSelected(event: Event): void {
@@ -54,27 +58,43 @@ export class DepositPfeInternshipComponent {
 }
 
 
-
-  addInternshipPFE(): void {
-    if (!this.newInternshipPFE) {
-      console.error('No InternshipPFE data provided');
-      alert('Please fill in the InternshipPFE details before submitting.');
-      return;
-    }
-  
-    this.internshipService.addInternshipPFE(this.newInternshipPFE, this.file).subscribe({
-      next: (response) => {
-        console.log('InternshipPFE added successfully:', response);
-        alert('InternshipPFE added successfully!');
-        // Optionally reset the form or navigate to another page
-      },
-      error: (err) => {
-        console.error('Error adding InternshipPFE:', err);
-        alert(`Error adding InternshipPFE: ${err.error?.message || 'Please try again later.'}`);
-      }
-    });
+addInternshipPFE(): void {
+  if (!this.newInternshipPFE) {
+    console.error('No InternshipPFE data provided');
+    alert('Please fill in the InternshipPFE details before submitting.');
+    return;
   }
-  
+
+  // 🖊️ Check if signature exists
+  if (this.signaturePad.isEmpty()) {
+    alert('Please sign before submitting.');
+    return;
+  }
+
+  // 🎨 Convert signature to Blob
+  const signatureDataUrl = this.signaturePad.toDataURL('image/png'); // Base64
+  const byteString = atob(signatureDataUrl.split(',')[1]);
+  const mimeString = signatureDataUrl.split(',')[0].split(':')[1].split(';')[0];
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  const signatureBlob = new Blob([ab], { type: mimeString });
+
+  // 📤 Send form data
+  this.internshipService.addInternshipPFE(this.newInternshipPFE, this.file, signatureBlob).subscribe({
+    next: (response) => {
+      console.log('InternshipPFE added successfully:', response);
+      alert('InternshipPFE added successfully!');
+    },
+    error: (err) => {
+      console.error('Error adding InternshipPFE:', err);
+      alert(`Error adding InternshipPFE: ${err.error?.message || 'Please try again later.'}`);
+    }
+  });
+}
+
 
 
   getStudent(): void {
@@ -90,6 +110,10 @@ export class DepositPfeInternshipComponent {
   }
 
   selectedFile?: File;
+
+  clearSignature(): void {
+    this.signaturePad.clear(); // Clear the signature pad
+  }
 
 
   
