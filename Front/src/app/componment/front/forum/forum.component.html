@@ -3,7 +3,10 @@
 <div class="top">
   <h1 class="post-list-title" style="font-weight: bold; background: linear-gradient(to right, #ff3737, #ff6969); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">List of posts
   </h1>
+
+   
   <div class="search-container">
+    
     <div class="search-box">
       <input 
         type="text" 
@@ -15,6 +18,7 @@
       />
       <i style="position: absolute; top: 12px; left: 15px;" class="fa fa-search search-icon"></i>
     </div>
+    
   </div>
   <button style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; background-color: #ff6969; color: #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease;" 
           routerLink="/add-post" class="btn btn-primary"
@@ -40,9 +44,31 @@
                 <h3 class="post-author">By {{ post.user?.userName || 'Anonymous' }}</h3>
                 <p class="post-date">{{ post.datePost | date:'short' }}</p>
               </div>
+              <!-- 📌 Pin Button -->
+               
+              <button 
+              (click)="isPinned(post.id) ? unpinPost(post.id) : pinPost(post.id)" 
+              title="{{ isPinned(post.id) ? 'Unpin Post' : 'Pin Post' }}"
+              class="btn btn-sm"
+              style="background: none; border: none; color: #ff6969; font-size: 18px; position: relative; top: -20px;">
+              <i class="fa fa-thumb-tack" 
+                 [ngClass]="{ 'text-muted': !isPinned(post.id) }" 
+                 aria-hidden="true"></i>
+            </button>
+            
             </div>
+
+            
             <div class="post-content">
-              <p class="post-title">{{ post.subject }}</p>
+              
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <p class="post-title" style="margin: 0;">{{ post.subject }}</p>
+                <button class="speak-btn" (click)="speakPost(post)" title="Écouter le post">
+                  🔊
+                </button>
+ 
+              </div>
+        
               <p>{{ post.content }}</p>
               <div class="post-image-container" *ngIf="post.picture">
                 <img [src]="'http://localhost:9091/stage/Post/uploads/'+ post.picture" alt="Post Image" class="post-image" />

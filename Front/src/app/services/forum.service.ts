@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 
 interface Comment {
   likeComment?: string;
@@ -42,6 +42,7 @@ export interface Post {
   picture: string | null;
   status?: StatusComplaint;
   archivedReason?: string;
+  
 }
 
 interface Reponse {
@@ -65,12 +66,11 @@ export interface ForumComment {
   providedIn: 'root'
 })
 export class ForumService {
-
+  private readonly libreTranslateUrl = 'https://libretranslate.de';
   private apiBaseUrl = 'http://localhost:9091/stage/Post';
   private apiUrlcom = 'http://localhost:9091/stage/Comment';
   private purgomalumApiUrl = 'https://www.purgomalum.com/service/json?text='; // ✅ Purgomalum API
   private customBadWords: string[] = ["flower", "star", "Flower", "Butterfly"];
-
 
 
 
@@ -196,6 +196,36 @@ likeReply(replyId: number, likeType: string): Observable<any> {
       );
     });
   }
+  detectLanguage(text: string): Observable<string> {
+    const url = `${this.libreTranslateUrl}/detect`;
+    return this.http.post<any[]>(url, { q: text }).pipe(
+      map(res => res[0]?.language || 'en'),
+      catchError(err => {
+        console.error('Erreur de détection de langue:', err);
+        return of('en'); // fallback
+      })
+    );
+  }
+
+  translateText(text: string, targetLang: string): Observable<string> {
+    const url = `${this.libreTranslateUrl}/translate`;
+    const body = {
+      q: text,
+      source: 'auto',
+      target: targetLang,
+      format: 'text'
+    };
+    return this.http.post<any>(url, body).pipe(
+      map(res => res.translatedText),
+      catchError(err => {
+        console.error('Erreur de traduction:', err);
+        return of(text); // fallback : retourne le texte original
+      })
+    );
+  }
+
+
+
 }
 
 

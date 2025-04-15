@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ForumComment, ForumService, LikeType, Post } from '../services/forum.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -10,8 +11,11 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
   styleUrls: ['./post-details.component.css']
 })
 export class PostDetailsComponent {
+  postTextOriginal = "";
+  postTextTranslated = '';
   
-  
+  translatedContent: string | null = null;
+  translatedComments: { [key: number]: string } = {};
   post!: Post;
   newComment: { [key: number]: string } = {};
 
@@ -34,35 +38,47 @@ export class PostDetailsComponent {
   ];
   
 
-  constructor(private route: ActivatedRoute, private postService: ForumService ,  private sanitizer: DomSanitizer ) {}
+  constructor(private route: ActivatedRoute, private postService: ForumService ,  private sanitizer: DomSanitizer ,private http: HttpClient) {}
 
   ngOnInit(): void {
+    
+    
+    const alreadyReloaded = localStorage.getItem('reloaded');
+
+  if (!alreadyReloaded) {
+    localStorage.setItem('reloaded', 'true');
+    window.location.reload();
+  } else {
+    localStorage.removeItem('reloaded');
+
     const postId = Number(this.route.snapshot.paramMap.get('id'));
     if (!isNaN(postId)) {
-      this.postService.getPostById(postId).subscribe(
-        (data) => {
-          console.log("Received Post:", data); // ✅ Debugging: Check if datePost is received
-          this.post = data;
-  
-          // Load the image only if post.picture exists
-          if (this.post.picture) {
-            this.loadImage(this.post.picture);
-          }
-        },
-        (error) => {
-          console.error('Error fetching post details', error);
-        }
-      );
+      this.loadPost(postId);
     }
   }
-  
+  }
+
+  loadPost(postId: number): void {
+    this.postService.getPostById(postId).subscribe(
+      (data) => {
+        this.post = data;
+        if (this.post.picture) {
+          this.loadImage(this.post.picture);
+        }
+        this.translatePostToFrench(this.post.content);
+      },
+      (error) => {
+        console.error('Error fetching post details', error);
+      }
+    );
+  }  
   
 
- 
   posts: Post[] = [];
 
 
   addComment(postId?: number): void {
+
     if (!postId || !this.newComment[postId]?.trim()) return;
 
     const commentText = this.newComment[postId].trim();
@@ -210,7 +226,7 @@ hideReactions(id: number, type: 'post' | 'comment' | 'reply') {
     } else if (type === 'reply' && this.activeReplyId === id) {
       this.activeReplyId = null;
     }
-  }, 500);
+  }, 50000);
 }
 
 // Récupérer l'icône associée à la réaction
@@ -221,4 +237,36 @@ getReactionIcon(reaction: string | null): string {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+translatePostToFrench(text: string): void {
+  this.postService.detectLanguage(text).subscribe(sourceLang => {
+    if (sourceLang !== 'fr') {
+      this.postService.translateText(text, 'fr').subscribe(translated => {
+        this.postTextTranslated = translated;
+      });
+    } else {
+      this.postTextTranslated = text;
+    }
+  });
 }
+
+
+
+}
+
+

@@ -55,6 +55,8 @@ itemsPerPage: number = 3; // Nombre d'éléments par page
       (data) => {
         this.posts = data.reverse(); // Show newest posts first
         this.filteredPosts = this.posts.filter(post => post.status === 'Approved'); // Initialize filtered posts with all posts
+        this.reorderPosts(); // 👈 Add this
+
         console.log('Posts chargés:', this.posts);
         console.log('Posts received:', this.filteredPosts); // ✅ Check if images are included
       },
@@ -172,6 +174,88 @@ handleReactionClick(postId: number, reactionType: string) {
   this.likePost(postId, reactionType);
   this.activePostId = null; // Immediately hide reaction menu after selecting
 }
+
+
+
+
+
+
+speakPost(post: Post): void {
+  const textToSpeak = `${post.subject}. ${post.content}`;
+  if ('responsiveVoice' in window) {
+    (window as any).responsiveVoice.speak(textToSpeak, "UK English Female");
+  } else {
+    alert('Text-to-Speech not supported in your browser.');
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Add this helper function
+getPinnedPostIds(): number[] {
+  const pinned = localStorage.getItem('pinnedPosts');
+  return pinned ? JSON.parse(pinned) : [];
+}
+
+pinPost(postId: number | undefined): void {
+  if (postId === undefined) return;
+
+  let pinned = this.getPinnedPostIds();
+  if (!pinned.includes(postId)) {
+    pinned.unshift(postId); // Add to top
+    localStorage.setItem('pinnedPosts', JSON.stringify(pinned));
+    this.reorderPosts();
+  }
+}
+
+unpinPost(postId: number | undefined): void {
+  if (postId === undefined) return;
+
+  let pinned = this.getPinnedPostIds();
+  pinned = pinned.filter(id => id !== postId);
+  localStorage.setItem('pinnedPosts', JSON.stringify(pinned));
+  this.reorderPosts();
+}
+
+isPinned(postId: number | undefined): boolean {
+  if (postId === undefined) return false;
+  return this.getPinnedPostIds().includes(postId);
+}
+
+// Call this after loading posts or pin/unpin
+reorderPosts(): void {
+  const pinnedIds = this.getPinnedPostIds();
+  const pinnedPosts: Post[] = [];
+  const unpinnedPosts: Post[] = [];
+
+  for (let post of this.posts) {
+    if (pinnedIds.includes(post.id!)) {
+      pinnedPosts.push(post);
+    } else {
+      unpinnedPosts.push(post);
+    }
+  }
+
+  // Order pinned posts based on pinnedIds order
+  pinnedPosts.sort((a, b) => pinnedIds.indexOf(a.id!) - pinnedIds.indexOf(b.id!));
+
+  this.filteredPosts = [...pinnedPosts, ...unpinnedPosts];
+}
+
 }
 
 

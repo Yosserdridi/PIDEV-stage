@@ -12,8 +12,18 @@
       </div>
     </div>
     
+    
     <p>{{ post.content }}</p>
-    <img [src]="post.picture ? 'http://localhost:9091/stage/Post/uploads/' + post.picture : 'https://picsum.photos/200/300'" alt="Post Image" class="post-image" />
+
+    
+  
+
+    <img
+  *ngIf="post.picture"
+  [src]="'http://localhost:9091/stage/Post/uploads/' + post.picture"
+  alt="Post Image"
+  class="post-image"
+/>
       
     <!-- Comment Section -->
     <div class="comment-section">
@@ -21,6 +31,8 @@
   
       <div *ngIf="post.comments.length > 0; else noComments">
           <div *ngFor="let comment of post?.comments" class="comment">
+                    
+            
               <!-- ✅ Si on édite ce commentaire, afficher un input au lieu du texte -->
               <div class="comment-header">
                 <img src="https://picsum.photos/50/50" alt="Profile Picture" class="profile-picture" style="border-radius: 50%;">

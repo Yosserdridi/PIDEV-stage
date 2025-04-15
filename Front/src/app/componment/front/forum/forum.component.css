@@ -360,3 +360,48 @@ button:hover {
 .reaction-container button:hover {
   transform: scale(1.1);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.speak-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.speak-btn:hover {
+  color: #ff6969;
+}
+
+
+
+
+
+.pinned-post {
+  background-color: #fff7e6;
+  border-left: 4px solid #ffc107;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+
+
