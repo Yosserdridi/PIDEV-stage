@@ -1,5 +1,6 @@
 package com.example.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,8 +24,6 @@ public class IntershipOffer {
     private int duration ;
     private String location;
     private String requirements;
-    private String companyname ;
-    private String companymail ;
     private int numberOfStudents;
     private String imageUrl;
 
@@ -34,9 +33,14 @@ public class IntershipOffer {
     @Enumerated(EnumType.STRING)
     private TypeInternship typeInternship ;
 
+    private Long idcompany;
+
+
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="intershipOffer")
     private Set<Postulation> postulations ;
+
 
 
 

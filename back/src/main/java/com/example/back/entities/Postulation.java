@@ -22,8 +22,7 @@ public class Postulation {
     @Temporal(TemporalType.TIMESTAMP)
     private Date postulationDate ;
     private String comment;
-   // private Long idsujet;
-    private String titrecandidature;
+     private String titrecandidature;
     private String region;
     private String lettremotivation;
     private String pdfUrl;
@@ -35,6 +34,8 @@ public class Postulation {
     private IntershipOffer intershipOffer;
 
 
+
+    private Long studentid;
 
 
 }

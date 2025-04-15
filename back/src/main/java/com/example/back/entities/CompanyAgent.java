@@ -15,6 +15,8 @@ import lombok.Setter;
 public class CompanyAgent extends User {
 
     private String contact;
+
+
     @OneToOne(mappedBy="companyAgent")
     private Company company;
 }

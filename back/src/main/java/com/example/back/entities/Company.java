@@ -1,6 +1,7 @@
 package com.example.back.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,13 +25,14 @@ public class Company {
     private String sectorActivity;
     private String Contact;
     private String webSite;
+    private String mail;
 
 
-    /*
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="company")
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<IntershipOffer> IntershipOffers;
-*/
+
     @OneToOne
+    @JsonIgnore
     private CompanyAgent companyAgent;
 
 

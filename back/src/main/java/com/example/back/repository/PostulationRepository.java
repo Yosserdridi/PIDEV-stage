@@ -4,6 +4,7 @@ import com.example.back.entities.IntershipOffer;
 import com.example.back.entities.Postulation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -23,4 +24,9 @@ public interface PostulationRepository extends JpaRepository<Postulation, Long> 
 
     // Trouver toutes les postulations en attente (status = 0) pour un sujet donné
     List<Postulation> findByIntershipOfferAndStatus(IntershipOffer intershipOffer, int status);
+
+
+    List<Postulation> findBystudentidOrderByPostulationDateDesc(int studentid);
+
+
 }

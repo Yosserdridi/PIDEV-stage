@@ -1,8 +1,12 @@
 package com.example.back.services;
 
+import com.example.back.entities.Company;
 import com.example.back.entities.IntershipOffer;
+import com.example.back.entities.Postulation;
+import com.example.back.entities.Student;
 import com.example.back.repository.InternshipOfferRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +24,9 @@ import java.util.UUID;
 public class InternshipOfferService implements IInternshipOfferservice {
     private final InternshipOfferRepository internshipOfferRepository;
     public static final String UPLOAD_DIR = "uploads/";
+    UserService userService;
+    @Autowired
+    private MailCheckService emailService;
 
     public IntershipOffer addIntershipOffer(IntershipOffer intershipOffer) {
         if (intershipOffer.getTitle() == null) {
@@ -33,8 +40,32 @@ public class InternshipOfferService implements IInternshipOfferservice {
             throw new IllegalArgumentException("An offer with the same title and type already exists!");
         }
 
+        intershipOffer.setIdcompany(1L);
+        sendNewSubjectEmail(intershipOffer , 1L);
         return internshipOfferRepository.save(intershipOffer);
     }
+
+
+
+
+    private void sendNewSubjectEmail(IntershipOffer intershipOffer, Long studentId) {
+        Student student = userService.getStudentById(studentId);
+        Company company = userService.getCompanyById(1L);
+
+        if (student != null) {
+            String toEmail = student.getEmail();
+            String subject = "New Internship Offer Available";
+            String body = "Hello " + student.getFirstName() + " " + student.getLastName() +
+                    ",\n\nA new internship offer has been added for the company '" + company.getCompanyName() +
+                    "' with the title '" + intershipOffer.getTitle() + "'.\n\nCheck it out and apply if you're interested!";
+
+            emailService.sendMail(toEmail, subject, body);
+        } else {
+            System.out.println("Student not found with ID: " + studentId);
+        }
+    }
+
+
 
     public List<IntershipOffer> retrieveAllIntershipOffers() {
         return internshipOfferRepository.findAll(Sort.by(Sort.Order.desc("creationDate")));
@@ -55,9 +86,6 @@ public class InternshipOfferService implements IInternshipOfferservice {
             if (id.getRequirements() != null) existingOffer.setRequirements(id.getRequirements());
             if (id.getNumberOfStudents() > 0) existingOffer.setNumberOfStudents(id.getNumberOfStudents());
             if (id.getTypeInternship() != null) existingOffer.setTypeInternship(id.getTypeInternship());
-            if (id.getCompanyname() != null) existingOffer.setCompanyname(id.getCompanyname());
-            if (id.getCompanymail() != null) existingOffer.setCompanymail(id.getCompanymail());
-
             return internshipOfferRepository.save(existingOffer);
         }
         return null;
@@ -105,6 +133,20 @@ public class InternshipOfferService implements IInternshipOfferservice {
             return "http://localhost:9091/images/" + uniqueFileName;
         } catch (IOException e) {
             throw new RuntimeException("Failed to save file", e);
+        }
+    }
+
+
+    public void deleteImageFile(String imageUrl) {
+        if (imageUrl != null && imageUrl.startsWith("http://localhost:9091/images/")) {
+            String filename = imageUrl.replace("http://localhost:9091/images/", "");
+            Path filePath = Paths.get(UPLOAD_DIR, filename);
+            try {
+                Files.deleteIfExists(filePath);
+                System.out.println("🗑️ Image deleted: " + filePath);
+            } catch (IOException e) {
+                System.err.println("❌ Failed to delete image: " + e.getMessage());
+            }
         }
     }
 

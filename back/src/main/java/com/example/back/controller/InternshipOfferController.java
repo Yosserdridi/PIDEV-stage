@@ -1,6 +1,8 @@
 package com.example.back.controller;
 
+import com.example.back.entities.Company;
 import com.example.back.entities.IntershipOffer;
+import com.example.back.repository.CompanyRepository;
 import com.example.back.services.IInternshipOfferservice;
 import com.example.back.services.InternshipOfferService;
 import jakarta.annotation.Resource;
@@ -31,7 +33,6 @@ public class InternshipOfferController {
 
     private final IInternshipOfferservice iInternshipOfferservice;
     private final InternshipOfferService internshipOfferService;
-
     @GetMapping("/retrieve-all")
     public List<IntershipOffer> retrieveAllIntershipOffers() {
         return iInternshipOfferservice.retrieveAllIntershipOffers();
@@ -42,10 +43,18 @@ public class InternshipOfferController {
         return iInternshipOfferservice.retireIntershipOffer(id);
     }
 
+
+
+
+
     @PostMapping("/addoff")
     public IntershipOffer addIntershipOffer(@RequestBody IntershipOffer off) {
         return iInternshipOfferservice.addIntershipOffer(off);
+
     }
+
+
+
 
     @DeleteMapping("/remove/off/{id}")
     public void removePos(@PathVariable("id") Long id) {
@@ -57,6 +66,9 @@ public class InternshipOfferController {
         off.setIdsujet(id); // Ensure the ID of the offer is included in the request
         return iInternshipOfferservice.updatePos(off);
     }
+
+
+
 
     // New Image Upload Endpoint
     @PostMapping("/{id}/uploadImage")
