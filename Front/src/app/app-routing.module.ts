@@ -21,6 +21,8 @@ import { DepositPfeInternshipComponent } from './deposit-pfe-internship/deposit-
 import { StudentAdminComponent } from './componment/back/student-admin/student-admin.component';
 import { TeacherAdminComponent } from './componment/back/teacher-admin/teacher-admin.component';
 import { GetTeacherAdminComponent } from './componment/back/get-teacher-admin/get-teacher-admin.component';
+import { CalendarComponent } from './componment/back/calendar/calendar.component';
+
 
 
 
@@ -50,7 +52,8 @@ const routes: Routes = [
   { path: 'internship-convention', component: InternshipConventionComponent},
   { path: 'depoist-pfe-internship', component : DepositPfeInternshipComponent},
   { path: 'student/:id', component: StudentAdminComponent },
-  { path: 'teacher/:id', component: GetTeacherAdminComponent }
+  { path: 'teacher/:id', component: GetTeacherAdminComponent },
+  { path: 'calendar', component: CalendarComponent },
 
 ];
 

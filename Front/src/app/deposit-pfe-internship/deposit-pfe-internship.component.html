@@ -48,6 +48,12 @@
       <input type="file" id="signedConvention" (change)="onFileSelected($event)" required />
     </div>
 
+    <div class="form-group">
+      <label for="signature">Digital Signature:</label>
+      <canvas #signaturePadCanvas width="400" height="200"></canvas>
+      <button type="button" (click)="clearSignature()">Clear</button>
+    </div>
+    
     <button type="submit" [disabled]="pfeDepositForm.invalid">Submit PFE Deposit</button>
 
   </form>

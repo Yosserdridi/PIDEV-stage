@@ -27,6 +27,8 @@ public class InternshipPFE {
     private Date endDate;
     private String status;
     private String signedConvention;
+    private String signaturePath;
+
 
     @JsonBackReference
     @OneToOne
