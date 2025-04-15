@@ -1,0 +1,114 @@
+.create-form-container {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(42, 7, 241, 0.1);
+  text-align: center;
+}
+
+.create-form-container h2 {
+  margin-bottom: 30px;
+  color: #0086FB;
+}
+
+.create-form-container h3 {
+  font-size: 22px;
+  color: #ec0000e7;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #ca0000;
+  font-size: 16px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #00D3D6;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 211, 214, 0.5);
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.btn-secondary {
+  width: 60%;
+  padding: 10px;
+  background: #0086FB;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background: #7bb0ff;
+}
+
+/* Style for textareas */
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Style for dropdown select */
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+  background: white;
+  cursor: pointer;
+}
+
+.form-group select:focus {
+  border-color: #00D3D6;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 211, 214, 0.5);
+}
+
+/* Style for number inputs */
+.form-group input[type="number"] {
+  -moz-appearance: textfield; /* Prevents spinner on number inputs in Firefox */
+}
+
+.form-group input[readonly] {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}

@@ -1,0 +1,97 @@
+<div class="create-form-container">
+    <h2>Postulate for:<br><h3 class="subject-title">{{ subjectTitle }}</h3></h2>
+  
+    <form (ngSubmit)="onSubmit()" #postulationForm="ngForm">
+      <div class="form-group">
+        <label for="titrecandidature">Title</label>
+        <input
+          type="text"
+          id="titrecandidature"
+          name="titrecandidature"
+          class="form-control"
+          [(ngModel)]="newPostulation.titrecandidature"
+          required
+          #titrecandidature="ngModel"
+          [class.is-invalid]="titrecandidature.invalid && titrecandidature.touched"
+        />
+        <div *ngIf="titrecandidature.invalid && titrecandidature.touched" class="invalid-feedback">
+          Title is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="lettremotivation">Motivation Letter</label>
+        <textarea
+          id="lettremotivation"
+          name="lettremotivation"
+          class="form-control"
+          [(ngModel)]="newPostulation.lettremotivation"
+          required
+          #lettremotivation="ngModel"
+          [class.is-invalid]="lettremotivation.invalid && lettremotivation.touched"
+        ></textarea>
+        <div *ngIf="lettremotivation.invalid && lettremotivation.touched" class="invalid-feedback">
+          Motivation letter is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea id="comment" name="comment" class="form-control" [(ngModel)]="newPostulation.comment"></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="region">Region</label>
+        <select
+          id="region"
+          name="region"
+          class="form-control"
+          [(ngModel)]="newPostulation.region"
+          required
+          #region="ngModel"
+          [class.is-invalid]="region.invalid && region.touched"
+        >
+          <option *ngFor="let reg of regions" [value]="reg">{{ reg }}</option>
+        </select>
+        <div *ngIf="region.invalid && region.touched" class="invalid-feedback">
+          Region is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pdfUpload">Upload Your CV (PDF only)*</label>
+        <div class="file-upload-wrapper">
+          <input
+            type="file"
+            id="pdfUpload"
+            class="form-control"
+            accept=".pdf"
+            (change)="onFileSelected($event)"
+            [disabled]="isLoading"
+          />
+          <div *ngIf="selectedFile" class="file-info mt-2">
+            <div class="file-details">
+              <span class="file-name">{{ selectedFile.name }}</span>
+             
+            </div>
+            <button 
+              type="button" 
+              class="btn btn-sm btn-outline-danger"
+              (click)="selectedFile = null"
+              [disabled]="isLoading"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+        <small class="form-text text-muted">Max file size: 5MB (PDF only)</small>
+      </div>
+      
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+  
+      <div class="button-container">
+        <button type="submit" class="btn btn-secondary mb-3" [disabled]="!postulationForm.valid">Submit Postulation</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,46 @@
+<div *ngIf="offerToUpdate">
+  <form (ngSubmit)="onSubmit()">
+
+    <h1>Edit Internship Offer</h1>
+
+
+    <div>
+      <label for="title">Title</label>
+      <input type="text" id="title" [(ngModel)]="offerToUpdate.title" name="title" required />
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="offerToUpdate.description" name="description" required></textarea>
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="offerToUpdate.description" name="description" required></textarea>
+    </div>
+    <div>
+      <label for="location">Location</label>
+      <input type="text" id="location" [(ngModel)]="offerToUpdate.location" name="location" required />
+    </div>
+
+    <div>
+      <label for="duration">Duration</label>
+      <input type="number" id="duration" [(ngModel)]="offerToUpdate.duration" name="duration" required />
+    </div>
+
+    <div>
+      <label for="numberOfStudents">Number of Students</label>
+      <input type="number" id="numberOfStudents" [(ngModel)]="offerToUpdate.numberOfStudents" name="numberOfStudents" required />
+    </div>
+
+    <div>
+      <label for="requirements">Requirements</label>
+      <textarea id="requirements" [(ngModel)]="offerToUpdate.requirements" name="requirements" required></textarea>
+    </div>
+
+
+
+    <button type="submit" [disabled]="!offerToUpdate.title || !offerToUpdate.description || !companyEmail">
+      Update Offer
+    </button>
+  </form>
+
+ </div>

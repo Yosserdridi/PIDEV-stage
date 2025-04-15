@@ -1,0 +1,64 @@
+/* General container for the summary */
+.progress-summary {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 550px;  /* Increased the max-width to make the container larger */
+    margin: 60px auto;  /* Increased margin for more space around the container */
+   transition: all 0.3s ease;
+  }
+  
+  /* Add a hover effect for the whole container */
+  .progress-summary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Title styling */
+  .progress-summary h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 60px;
+    margin-top: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Make sure the chart doesn't overflow the container */
+  canvas {
+    width: 100% !important;
+    height: 230px;
+    margin-top: 15px;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+  }
+  /* Add some padding around the chart */
+  .chart-container {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for the 'Pending', 'Accepted', and 'Rejected' sections on the chart */
+  .chart-section {
+    font-weight: 700;
+    margin-top: 15px;
+    color: #555;
+    font-size: 18px;
+  }
+  
+  /* Optional: Add animation to make chart load smoother */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  .progress-summary {
+    animation: fadeIn 1s ease-out;
+  }
+  
+ 

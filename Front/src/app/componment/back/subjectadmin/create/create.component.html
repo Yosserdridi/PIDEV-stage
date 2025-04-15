@@ -1,0 +1,202 @@
+<div class="create-form-container">
+  <h2>Create New Internship Offer</h2>
+
+
+  <form (ngSubmit)="onSubmit()" #createForm="ngForm">
+   
+    <!-- Title -->
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="form-control"
+        [(ngModel)]="newOffer.title"
+        required
+        #title="ngModel"
+        [class.is-invalid]="title.invalid && title.touched"
+      />
+      <div *ngIf="title.invalid && title.touched" class="invalid-feedback">
+        Title is required.
+      </div>
+    </div>
+
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        class="form-control"
+        [(ngModel)]="newOffer.description"
+        required
+        #description="ngModel"
+        [class.is-invalid]="description.invalid && description.touched"
+      ></textarea>
+      <div *ngIf="description.invalid && description.touched" class="invalid-feedback">
+        Description is required.
+      </div>
+    </div>
+
+
+    <!-- Location -->
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        class="form-control"
+        [(ngModel)]="newOffer.location"
+        required
+        #location="ngModel"
+        [class.is-invalid]="location.invalid && location.touched"
+      />
+      <div *ngIf="location.invalid && location.touched" class="invalid-feedback">
+        Location is required.
+      </div>
+    </div>
+
+
+    <!-- Type of Internship -->
+    <div class="form-group">
+      <label for="typeInternship">Type of Internship</label>
+      <select
+        id="typeInternship"
+        name="typeInternship"
+        class="form-control"
+        [(ngModel)]="newOffer.typeInternship"
+        required
+        #typeInternship="ngModel"
+        [class.is-invalid]="typeInternship.invalid && typeInternship.touched"
+      >
+        <option *ngFor="let type of internshipTypes" [value]="type">{{ mappedTypeInternship(type) }}</option>
+      </select>
+      <div *ngIf="typeInternship.invalid && typeInternship.touched" class="invalid-feedback">
+        Type of internship is required.
+      </div>
+    </div>
+
+
+    <!-- Duration -->
+    <div class="form-group">
+      <label for="duration">Duration (months)</label>
+      <input
+        type="number"
+        id="duration"
+        name="duration"
+        class="form-control"
+        [(ngModel)]="newOffer.duration"
+        required
+        #duration="ngModel"
+        [class.is-invalid]="duration.invalid && duration.touched"
+      />
+      <div *ngIf="duration.invalid && duration.touched" class="invalid-feedback">
+        Duration is required.
+      </div>
+    </div>
+
+
+    <!-- Number of Students -->
+    <div class="form-group">
+      <label for="numberOfStudents">Number of Students</label>
+      <input
+        type="number"
+        id="numberOfStudents"
+        name="numberOfStudents"
+        class="form-control"
+        [(ngModel)]="newOffer.numberOfStudents"
+        required
+        #numberOfStudents="ngModel"
+        [class.is-invalid]="numberOfStudents.invalid && numberOfStudents.touched"
+      />
+      <div *ngIf="numberOfStudents.invalid && numberOfStudents.touched" class="invalid-feedback">
+        Number of students is required.
+      </div>
+    </div>
+
+
+    <!-- Requirements -->
+    <div class="form-group">
+      <label for="requirements">Requirements</label>
+      <textarea
+        id="requirements"
+        name="requirements"
+        class="form-control"
+        [(ngModel)]="newOffer.requirements"
+        required
+        #requirements="ngModel"
+        [class.is-invalid]="requirements.invalid && requirements.touched"
+      ></textarea>
+      <div *ngIf="requirements.invalid && requirements.touched" class="invalid-feedback">
+        Requirements are required.
+      </div>
+    </div>
+
+
+<div class="form-group">
+  <label for="companyname">Company Name</label>
+  <input
+    type="text"
+    id="companyname"
+    name="companyname"
+    class="form-control"
+    value="EY"  
+    required
+    disabled  
+  />
+  <div class="invalid-feedback">
+    Company name is required.
+  </div>
+</div>
+
+<!-- Company Email -->
+<div class="form-group">
+  <label for="companymail">Company Email</label>
+  <input
+    type="email"
+    id="companymail"
+    name="companymail"
+    class="form-control"
+    value="EY@gmail.com" 
+    required
+    disabled  
+    email
+  />
+ 
+    </div>
+
+
+    <!-- File Upload Section for Image -->
+    <div class="form-group">
+      <label for="image">Upload Image</label>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        class="form-control"
+        (change)="onFileSelected($event)"
+      />
+      <div *ngIf="selectedFile" class="mt-2">
+        <p>Selected file: {{ selectedFile.name }}</p>
+      </div>
+    </div>
+
+
+
+    
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-secondary mb-3" [disabled]="!createForm.valid">
+      Create Internship Offer
+    </button>
+  </form>
+</div>

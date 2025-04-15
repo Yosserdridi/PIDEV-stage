@@ -1,0 +1,219 @@
+/* Container Styling */
+.postulations-container {
+  background-color: #f8f9fa;
+  padding: 40px;
+  border-radius: 20px;
+  margin: 40px auto;
+  max-width: 1200px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Heading Styling */
+h2 {
+  text-align: center;
+  color: #b90000; /* Red for title as specified */
+  font-weight: 800; /* Extra bold */
+  font-family: 'Poppins', sans-serif; /* Modern, clean font */
+  margin-bottom: 20px;
+   text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+}
+
+
+h4 {
+  text-align: center;
+  color: #b90000; /* Red for title as specified */
+   font-family: 'Poppins', sans-serif; /* Modern, clean font */
+  margin-bottom: 60px;
+  font-weight: 800; /* Extra bold */
+     text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+}
+
+h4::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: #b90000; 
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+
+/* Filter Buttons */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Space between buttons */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  margin-bottom: 40px; /* Increase margin for better separation */
+}
+
+.filter-btn {
+  background-color: #ffffff;
+  padding: 5px 15px; /* Slightly larger padding for better button size */
+  font-size: 1.1rem;
+  color: #495057;
+  border-radius: 25px;
+  border: 2px solid #495057;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a cleaner look */
+}
+
+/* Hover effect for the buttons */
+.filter-btn:hover {
+  background-color: #495057;
+  color: white;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Active button styling */
+.filter-btn.active {
+  background-color: #495057;
+  color: white;
+  border-color: #495057;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for active state */
+}
+
+/* Postulation Card Styling */
+.postulation-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  margin-top: 50px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s;
+   max-width: 700px;
+  position: relative; /* Allows positioning of child elements */
+}
+
+.postulation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Styling */
+.postulation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postulation-header h3 {
+  font-size: 1.5rem;
+  color: #0086fb;
+  font-weight: 700;
+}
+
+.status-label {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.status-label .status-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+/* Postulation Body */
+.postulation-body {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: #495057;
+}
+
+.postulation-body p {
+  margin: 8px 0;
+}
+
+.postulation-body p strong {
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.pagination-controls button {
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #0086fb;
+  border: none;
+  border-radius: 8px;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.pagination-controls button:hover {
+  background-color: #0086fb;
+  transform: scale(1.05);
+}
+
+.pagination-controls button[disabled] {
+  background-color: #ddd;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pagination-controls span {
+  font-size: 1.2rem;
+  color: #0086fb;
+  margin: 0 12px;
+  font-weight: bold;
+}
+
+/* Style for the button without background */
+.btn-danger {
+  background-color: transparent; /* No background */
+  color: #b90000; /* Red text color */
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  border: none; /* No border */
+  font-weight: bold; /* Bold text */
+  margin-top: 10px;
+}
+
+/* Hover effect for the button */
+.btn-danger:hover {
+  background-color: #b90000; /* Red background on hover */
+  color: white; /* White text when hovered */
+  padding: 10px 20px; /* Padding for the button */
+}
+
+
+/* Style for the Summary image */
+.summary-img {
+  width: 80px; /* Adjust the size of the image */
+  height: auto;
+  cursor: pointer;
+   transition: transform 0.3s ease;
+}
+
+/* Hover effect for the image */
+.summary-img:hover {
+  transform: scale(1.1); /* Slightly enlarge the image when hovered */
+}
+
+/* Optional: Make sure the image is responsive */
+@media (max-width: 768px) {
+  .summary-img {
+    width: 40px; /* Adjust for smaller screens */
+  }
+}

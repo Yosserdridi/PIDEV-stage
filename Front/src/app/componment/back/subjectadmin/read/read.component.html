@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="flex-container">
+      <div class="main-content">
+        <div class="row">
+          <div class="col-md-12">
+            <input  type="text" (input)="filterSujets()" [(ngModel)]="searchTerm" placeholder="Search by requirements or title">
+          </div>
+          <div class="col-md-12">
+            <a     (click)="ajouterSujet()">
+              <img src="assets/images/add.png" alt="Add" class="icon" />
+            </a>
+
+
+
+
+            <div class="card">
+                 <h2>Subjects</h2>
+               <div class="card-body">
+                <div *ngIf="message" class="alert alert-success">{{ message }}</div>
+                <div *ngFor="let sujet of filteredSujets; let i = index" class="sujet-item">
+                  <h3>{{ sujet.title }}</h3>
+                  <p><strong>Description:</strong> {{ sujet.description }}</p>
+                  <p><strong>Duration:</strong> {{ sujet.duration }}</p>
+                  <p><strong>Location:</strong> {{ sujet.location }}</p>
+                  <p><strong>Contact:</strong> {{ contact }}</p>
+                  <p><strong>Company name:</strong> {{ companyName }}</p>
+                  <p><strong>Required number of students:</strong> {{ sujet.numberOfStudents }}</p>
+                  <p><strong>Requirements:</strong> {{ sujet.requirements }}</p>
+                  <p><strong>Subject type:</strong> {{ mappedTypeInternship(sujet.typeInternship) }}</p>
+
+
+                  <div  >
+                    <img
+                    *ngIf="sujet.imageUrl"
+                    [src]="sujet.imageUrl"
+                    alt="{{ sujet.title }}"
+                    class="img-fluid rounded shadow-sm"
+                    style="max-height: 80px; object-fit: cover;"
+                    onerror="this.src='assets/images/logo.png'"
+           />
+
+                  </div>
+
+
+                  
+                  <div class="button-group">
+                    <button class="btn btn-primary btn-sky-blue" (click)="afficherFormulaireModifier(sujet)">Edit</button>
+                    <button class="btn btn-danger" (click)="supprimerSujet(sujet.idsujet)">Delete</button>
+                    <button class="btn btn-secondary" (click)="displayPostulations(sujet.idsujet)">Show Postulations</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+  </div>
+</div>

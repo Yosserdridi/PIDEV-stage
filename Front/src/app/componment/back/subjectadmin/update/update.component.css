@@ -1,0 +1,128 @@
+/* Wrapper for the entire form */
+form {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(42, 7, 241, 0.1);
+  margin-top: 2cm;
+
+ }
+
+/* Form title */
+h1 {
+  margin-bottom: 30px;
+  color: #0086FB;
+  font-size: 28px;
+  text-align: center;
+}
+
+/* Label for the input fields */
+label {
+  font-size: 16px;
+  color: #ca0000;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: bold;
+}
+
+/* Styling for input fields */
+input[type="text"],
+input[type="email"],
+textarea,
+select,
+input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Styling for the textarea */
+textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Focus state for input fields */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #00D3D6;
+  box-shadow: 0 0 5px rgba(0, 211, 214, 0.5);
+}
+
+/* Button styles */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #0086FB;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #00D3D6;
+  transform: scale(1.05);
+}
+
+/* Back button */
+button[type="button"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button[type="button"]:hover {
+  background-color: #1976D2;
+}
+
+/* Disabled button */
+button[disabled] {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Add some space between form elements */
+div {
+  margin-bottom: 25px;
+}
+
+/* Error feedback styling */
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  form {
+      width: 100%;
+      padding: 20px;
+  }
+
+  h1 {
+      font-size: 22px;
+  }
+
+  button {
+      padding: 10px;
+      font-size: 16px;
+  }
+}

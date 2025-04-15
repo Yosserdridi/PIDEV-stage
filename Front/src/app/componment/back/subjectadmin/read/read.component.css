@@ -1,0 +1,234 @@
+/* Main container styling */
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2cm;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex container styling */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Content container styling */
+.content-container {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 90%; /* Increase width */
+  max-width: 1400px; /* Wider max width */
+}
+
+/* Card styling */
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card header styling */
+.card-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Sujet item styling */
+.sujet-item {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for sujet items */
+.sujet-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Button group styling */
+.button-group button {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
+/* General Button Styling */
+.btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+}
+
+/* Primary Button (Sky Blue) */
+.btn-sky-blue {
+  background-color: #0086FB;
+  color: white;
+}
+
+.btn-sky-blue:hover {
+  background-color: #0070D6;
+  transform: scale(1.05);
+}
+
+/* Danger Button */
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: scale(1.05);
+}
+
+/* Input styling */
+input[type="text"] {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  width: 300px;
+  transition: border-color 0.3s ease;
+}
+
+/* Input focus effect */
+input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Paragraph styling */
+p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Hover effect for input */
+input[type="text"]:hover {
+  border-color: #007bff;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    margin-top: 2cm;
+  }
+
+  .content-container {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  #statusFilter {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Title styling */
+h2 {
+  color: #0086FB;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h3 {
+  color: #cc0000;
+}
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Pagination button styling */
+.pagination-controls button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  background-color: #0086FB;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Pagination button hover effect */
+.pagination-controls button:hover {
+  background-color: #0070D6;
+  transform: scale(1.05);
+}
+
+/* Disabled button styling */
+.pagination-controls button[disabled] {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Pagination text (e.g., current page and total pages) */
+.pagination-controls span {
+  font-size: 16px;
+  padding: 10px;
+  color: #333;
+}
+
+/* Active page button styling */
+.pagination-controls button.active {
+  background-color: #00D3D6;
+  transform: scale(1.05);
+}
+
+ 
+.icon {
+  width: 50px;
+  height: 50px;
+    margin-left: 28cm;
+    margin-bottom: 10px;
+    cursor: pointer;
+ }

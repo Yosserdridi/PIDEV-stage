@@ -1,0 +1,31 @@
+<div class="login-container">
+    <h2>Log in  </h2>
+    <form >
+        <div>
+            <label for="loginEmail">ID :</label>
+            <input
+                type="text"
+                id="loginEmail"
+                name="loginEmail"
+             />
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+             />
+                <a [routerLink]="['/forgot']" class="forgot-password-link">
+              <strong> Forgotten your password?</strong>
+            </a>
+        </div>
+
+        <button type="submit">Login</button>
+         <div class="additional-links">
+            <a [routerLink]="['/register']" class="register-link">
+                Don’t have an account? <strong>Register</strong>
+              </a>
+        </div>
+    </form>
+</div>

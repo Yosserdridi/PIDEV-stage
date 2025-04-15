@@ -1,0 +1,41 @@
+<div class="postulations-container">
+  <h2>Postulations for Subject: <span class="subject-title">{{ subjectTitle }}</span></h2>
+
+  <!-- Filter Section -->
+  <div class="filter-container">
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter" [(ngModel)]="filterStatus" (change)="applyFilter()">
+      <option value="all">All</option>
+      <option value="0">Pending</option>
+      <option value="1">Accepted</option>
+      <option value="2">Rejected</option>
+    </select>
+  </div>
+
+  <div *ngIf="filteredPostulations.length > 0; else noPostulations">
+    <div class="postulation-card" *ngFor="let postulation of paginatedPostulations">
+      <p><strong>Title:</strong> {{ postulation.titrecandidature }}</p>
+      <p><strong>Student :</strong> {{ studentFName }} {{ studentLName }}</p>
+      <p><strong>Motivation Letter:</strong> {{ postulation.lettremotivation }}</p>
+      <p><strong>Region:</strong> {{ postulation.region }}</p>
+      <p><strong>Date:</strong> {{ postulation.postulationDate | date:'yyyy-MM-dd' }}</p>
+      <p><strong>Comment:</strong> {{ postulation.comment }}</p>
+      <p><strong>Status:</strong> {{ getStatusLabel(postulation.status) }}</p>
+
+      <!-- Only display buttons if status is 0 (Pending) -->
+      <button *ngIf="postulation.status === 0" class="btn btn-secondary mb-3" (click)="acceptPostulation(postulation.id)">Accept</button>
+      <button *ngIf="postulation.status === 0" class="btn btn-danger mb-3" (click)="rejectPostulation(postulation.id)">Reject</button>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls" *ngIf="totalPages > 1">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">◀</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">▶</button>
+    </div>
+  </div>
+
+  <ng-template #noPostulations>
+    <p>No postulations found for this subject.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,212 @@
+/* Main container styling */
+.postulations-container {
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  margin-top: 2cm;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+h2 {
+  color: #0086FB;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+   text-align: center;
+}
+
+/* Postulation card styling */
+.postulation-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for postulation cards */
+.postulation-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Strong text styling */
+strong {
+  color: #0086FB;
+}
+
+/* No postulations message */
+ng-template {
+  text-align: center;
+  font-size: 1.2em;
+  color: #888;
+  font-style: italic;
+}
+
+/* Button styling */
+button {
+  padding: 12px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+}
+
+/* Accept button styling */
+button.btn-secondary {
+  background-color: #0086FB;
+  color: white;
+}
+
+/* Hover effect for accept button */
+button.btn-secondary:hover {
+  background-color: #006bb3;
+  transform: translateY(-2px);
+}
+
+/* Reject button styling */
+button.btn-danger {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+/* Hover effect for reject button */
+button.btn-danger:hover {
+  background-color: #cc0000;
+  transform: translateY(-2px);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .postulations-container {
+    padding: 20px;
+    margin-top: 2cm;
+  }
+
+  .postulation-card {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+}
+
+/* Filter container styling */
+.filter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Label styling */
+.filter-container label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+  margin-right: 15px;
+  margin-bottom: 0;
+}
+
+p{
+  font-size: 16px;
+
+
+}
+
+/* Dropdown styling */
+#statusFilter {
+  padding: 12px 18px;  /* Adjust padding for a larger dropdown */
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: #fafafa;
+  color: #333;
+  cursor: pointer;
+  width: 200px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  margin-left: 1cm;
+}
+
+/* Hover and focus effects for the dropdown */
+#statusFilter:hover,
+#statusFilter:focus {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+  outline: none;
+}
+
+/* Adjust layout for small screens */
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  #statusFilter {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+
+
+
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Pagination button styling */
+.pagination-controls button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  background-color: #0086FB;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Pagination button hover effect */
+.pagination-controls button:hover {
+  background-color: #0070D6;
+  transform: scale(1.05);
+}
+
+/* Disabled button styling */
+.pagination-controls button[disabled] {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Pagination text (e.g., current page and total pages) */
+.pagination-controls span {
+  font-size: 16px;
+  padding: 10px;
+  color: #333;
+}
+
+/* Active page button styling */
+.pagination-controls button.active {
+  background-color: #00D3D6;
+  transform: scale(1.05);
+}
