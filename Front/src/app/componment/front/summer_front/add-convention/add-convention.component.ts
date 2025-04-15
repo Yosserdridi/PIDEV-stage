@@ -39,16 +39,24 @@ export class AddConventionComponent {
 
 
   addConvention():void {
-    this.conventionService.addInternshipConvention(this.conventionForm.value).subscribe(
-      (response) => {
-       // this.conventionId = response.id;  // Assuming 'id' is the returned journalId
-
-        this.router.navigate(['/valide_convention']); 
+    this.conventionService.addInternshipConvention(this.conventionForm.value).subscribe({
+      next: (response) => {
+        // ✅ Si tu veux utiliser l'ID plus tard :
+        // this.conventionId = response.id;
+    
+        this.router.navigate(['/valide_convention']);
       },
-      (error) => {
-        console.error("Error creating journal", error);
+      error: (error) => {
+        if (error.status === 409) {
+          console.error("Une convention validée pour ce type existe déjà.");
+          alert("Une convention validée pour ce type existe déjà.");
+        } else {
+          console.error("Erreur lors de la création de la convention :", error);
+          alert("Erreur inattendue lors de la création de la convention.");
+        }
       }
-    );
+    });
+    
   }
 
 

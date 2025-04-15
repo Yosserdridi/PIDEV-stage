@@ -2,20 +2,24 @@ package com.example.back.controller;
 
 
 import com.example.back.entities.InternshipConvention;
-import com.example.back.entities.Journal;
 import com.example.back.entities.Teacher;
 import com.example.back.repository.ConventionRepository;
 import com.example.back.repository.UserRepository;
 import com.example.back.services.ConventionService;
 import com.example.back.services.ConventionServiceImpl;
+import com.example.back.services.EmailSerrvice;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.TreeMap;
+
 
 @RestController
 @AllArgsConstructor
@@ -23,6 +27,8 @@ import java.util.Optional;
 public class ConventionController {
 
     UserRepository userRepository;
+    EmailSerrvice emailService;
+
 
     private final ConventionServiceImpl conventionServiceImpl;
     ConventionService conventionService;
@@ -135,6 +141,75 @@ public class ConventionController {
 
         return ResponseEntity.ok("Convention assigned to teacher successfully.");
     }
+
+
+    @GetMapping("/api/stats/conventions/validated/monthly")
+    public Map<String, Long> getValidatedConventionsByMonth() {
+        List<InternshipConvention> validatedConventions = conventionRepository.findByIsValidTrue();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("MM-yyyy");
+
+        return validatedConventions.stream()
+                .filter(c -> c.getStartDate() != null) // au cas où la date est nulle
+                .collect(Collectors.groupingBy(
+                        c -> formatter.format(c.getStartDate()),
+                        TreeMap::new, // trie par ordre croissant
+                        Collectors.counting()
+                ));
+    }
+
+    @GetMapping("/api/stats/conventions/invalid/monthly")
+    public Map<String, Long> getInvalidConventionsByMonth() {
+        // Récupérer les conventions invalidées (isValid = false)
+        List<InternshipConvention> invalidConventions = conventionRepository.findByIsValidFalse();
+
+        // Formater la date au format "MM-yyyy"
+        SimpleDateFormat formatter = new SimpleDateFormat("MM-yyyy");
+
+        return invalidConventions.stream()
+                .filter(c -> c.getStartDate() != null) // au cas où la date est nulle
+                .collect(Collectors.groupingBy(
+                        c -> formatter.format(c.getStartDate()),
+                        TreeMap::new, // trie par ordre croissant
+                        Collectors.counting() // compter les occurrences
+                ));
+    }
+
+
+    @PostMapping("/api/mail/{id}")
+    public ResponseEntity<String> validateInternshipConvention(@PathVariable Long id) {
+        try {
+            // Logique de récupération de la convention de stage depuis la base de données
+            InternshipConvention convention = conventionRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Convention non trouvée pour l'ID : " + id));
+
+            // Exemple d'envoi d'email
+            String emailRecipient = convention.getStudent().getEmail(); // L'email réel du stagiaire
+            String subject = "Validation de votre convention de stage";
+            String body = "Votre convention de stage a été validée avec succès.";
+
+            // Envoi de l'email
+            emailService.sendEmail(emailRecipient, subject, body);
+
+            return new ResponseEntity<>("L'email de validation a été envoyé.", HttpStatus.OK);
+        } catch (RuntimeException e) {
+            // Capturer les erreurs spécifiques
+            return new ResponseEntity<>("Erreur: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            // Capturer les autres erreurs générales
+            e.printStackTrace(); // Pour le debugging
+            return new ResponseEntity<>("Une erreur interne est survenue.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+
+
+
+
+
+
 
 
 

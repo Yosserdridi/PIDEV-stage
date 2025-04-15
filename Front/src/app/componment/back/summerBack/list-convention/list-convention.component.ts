@@ -38,34 +38,45 @@ export class ListConventionComponent implements OnInit {
     this.notFound = this.filteredConventions.length === 0;
   }
 
+  isLoading = false;  // variable pour gérer l'état de chargement
+
   toggleValidity(convention: Convention): void {
+    // Bascule la validité de la convention
+    this.isLoading = true; // Active le spinner
     this.conventionService.toggleConventionValidity(convention.id, !convention.isValid).subscribe(
       () => {
         convention.isValid = !convention.isValid;
-
-        const staticPhoneNumber = '+21629073477';
-        const message = `Votre convention a été ${convention.isValid ? 'validée' : 'refusée'}.`;
-
-        console.log('Preparing to send SMS:', message);
-
-        this.conventionService.sendSms(staticPhoneNumber, message).subscribe(
-          () => {
-            console.log('SMS sent successfully');
-            window.location.reload();
-          },
-          error => {
-            console.error('SMS sending failed:', error);
-            window.location.reload();
-          }
-        );
+        console.log('Convention updated:', convention.isValid ? 'validée' : 'refusée');
+  
+        // Validation de la convention (envoi de l'email)
+   
       },
       error => {
-        console.error('Convention update failed:', error);
+        console.error('Échec de la mise à jour de la convention:', error);
+        this.isLoading = false;  // Désactive le spinner
         window.location.reload();
       }
     );
   }
 
+    sendTestEmail(): void {
+      this.isLoading = true; // Show loading spinner
+  
+      this.conventionService.email(16) // You can pass any valid ID for testing purposes
+        .subscribe(
+          (response) => {
+            console.log('Test email sent successfully:', response);
+            this.isLoading = false; // Hide loading spinner
+          },
+          (error) => {
+            console.error('Error sending test email:', error);
+            this.isLoading = false; // Hide loading spinner
+          }
+        );
+    }
+    
+    
+  
   goToDetails(conventionId: number) {
     this.router.navigate(['/admin/conventionDetail', conventionId]);
   }

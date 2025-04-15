@@ -4,7 +4,9 @@ package com.example.back.services;
 import com.example.back.entities.*;
 import com.example.back.repository.*;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 
@@ -17,8 +19,36 @@ public class ConventionServiceImpl implements ConventionService {
     TaskRepository taskRepository;
     StudentRepository studentRepository;
 
-
     @Override
+    public InternshipConvention addInternshipConvention(InternshipConvention dto) {
+        // 🔥 Récupérer un étudiant statique avec ID = 1
+        Student student = studentRepository.findById(1)
+                .orElseThrow(() -> new RuntimeException("Student with ID 1 not found"));
+
+        // ✅ Vérifier si une convention du même type est déjà validée pour cet étudiant
+        boolean exists = conventionRepository.existsByStudentAndTypeInternshipAndIsValidTrue(student, dto.getTypeInternship());
+        if (exists) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Une convention validée pour ce type existe déjà");
+        }
+
+        // 🔹 Créer la convention et l'associer à ce Student
+        InternshipConvention convention = new InternshipConvention();
+        convention.setCompanyName(dto.getCompanyName());
+        convention.setStartDate(dto.getStartDate());
+        convention.setEndDate(dto.getEndDate());
+        convention.setCompanyAddress(dto.getCompanyAddress());
+        convention.setCompanyContact(dto.getCompanyContact());
+        convention.setTypeInternship(dto.getTypeInternship());
+        convention.setIsValid(dto.getIsValid());
+        convention.setStudent(student);  // 🔥 Associer l'étudiant
+
+        return conventionRepository.save(convention);
+    }
+
+
+
+
+    /*@Override
     public InternshipConvention addInternshipConvention(InternshipConvention dto) {
         // 🔥 Récupérer un étudiant statique avec ID = 1
         Student student = studentRepository.findById(1)
@@ -36,7 +66,7 @@ public class ConventionServiceImpl implements ConventionService {
         convention.setStudent(student);  // 🔥 Associer l'étudiant statique
 
         return conventionRepository.save(convention);
-    }
+    }*/
 
     //add_convention 2 version avec user
 
@@ -146,6 +176,11 @@ public class ConventionServiceImpl implements ConventionService {
 
         return responseList;
     }
+
+
+
+
+
 
 
 }

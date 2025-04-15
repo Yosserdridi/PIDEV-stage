@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, throwError, timeout } from 'rxjs';
 import { Convention } from 'src/model/convention';
 import { Task } from 'src/model/task';
 import { Entities } from 'src/model/entities';
+import { __param } from 'tslib';
 
 
 @Injectable({
@@ -60,9 +61,24 @@ getEntitiesByConventionId(conventionId: number): Observable<any> {
   return this.http.get<Entities>(`${this.url}/getALLConventionWithRelation/${conventionId}`);
 }
 
+getValidatedConventionsStatsByMonth(): Observable<{ [key: string]: number }> {
+  return this.http.get<{ [key: string]: number }>(`${this.url}/api/stats/conventions/validated/monthly`);
+}
+
+getInValidatedConventionsStatsByMonth(): Observable<{ [key: string]: number }> {
+  return this.http.get<{ [key: string]: number }>(`${this.url}/api/stats/conventions/invalid/monthly`);
+}
 
 
-
+email(id: number): Observable<any> {
+  return this.http.post(`${this.url}/api/mail/${id}`, {})
+    .pipe(
+      catchError(error => {
+        console.error('Error sending test email', error);
+        return throwError(error);
+      })
+    );
+}
 
 
 

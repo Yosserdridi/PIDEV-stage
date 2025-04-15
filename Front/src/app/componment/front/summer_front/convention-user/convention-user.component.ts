@@ -37,7 +37,7 @@ export class ConventionUserComponent {
   }
   
   goToDetails() {
-    this.router.navigate(['/convention/user/details']);
+    this.router.navigate(['/valide_convention']);
     }
 
 

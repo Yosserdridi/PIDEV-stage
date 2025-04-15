@@ -40,6 +40,9 @@ import { ConventionDetailUserComponent } from './componment/front/summer_front/c
 import { UserAllTasksComponent } from './componment/front/summer_front/user-all-tasks/user-all-tasks.component';
 import { CoventiondetailComponent } from './componment/back/summerBack/coventiondetail/coventiondetail.component';
 import { TasksConventionComponent } from './componment/back/summerBack/tasks-convention/tasks-convention.component';
+import { NgChartsModule } from 'ng2-charts';
+import { StatistiqueComponent } from './componment/back/summerBack/statistique/statistique.component';
+import { StatinvalidComponent } from './componment/back/summerBack/statinvalid/statinvalid.component';
 
 
 @NgModule({
@@ -80,6 +83,8 @@ import { TasksConventionComponent } from './componment/back/summerBack/tasks-con
     UserAllTasksComponent,
     CoventiondetailComponent,
     TasksConventionComponent,
+    StatistiqueComponent,
+    StatinvalidComponent,
     
     
     
@@ -91,6 +96,8 @@ import { TasksConventionComponent } from './componment/back/summerBack/tasks-con
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgChartsModule,
+    
 
   
     

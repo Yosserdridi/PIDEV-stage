@@ -1,6 +1,7 @@
 package com.example.back.repository;
 
 import com.example.back.entities.InternshipConvention;
+import com.example.back.entities.Student;
 import com.example.back.entities.TypeInternship;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,5 +17,11 @@ import java.util.Optional;
 public interface ConventionRepository extends JpaRepository<InternshipConvention,Long> {
 
     List<InternshipConvention> findAllByStudentId(Long studentId);
+    List<InternshipConvention> findByIsValidTrue();
+    List<InternshipConvention> findByIsValidFalse();
+    boolean existsByStudentAndTypeInternshipAndIsValidTrue(Student student, TypeInternship typeInternship);
+
+
+
 
 }

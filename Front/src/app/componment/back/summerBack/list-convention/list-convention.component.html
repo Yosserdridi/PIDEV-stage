@@ -2,9 +2,17 @@
   <h3>List of Conventions</h3>
 
   <!-- Advanced Search Form -->
-  <div>
+  <div class="form-group">
     <label for="companyName">Company Name:</label>
-    <input type="text" id="companyName" [(ngModel)]="searchCompanyName" (keyup)="searchConvention()" name="companyName" placeholder="Search by company name">
+    <input 
+      type="text" 
+      id="companyName" 
+      [(ngModel)]="searchCompanyName" 
+      (keyup)="searchConvention()" 
+      name="companyName" 
+      placeholder="Search by company name" 
+      class="form-control"
+    >
   </div>
 
   <!-- No Results Found Message -->
@@ -12,13 +20,18 @@
     No conventions found with the provided company name.
   </div>
 
+  <!-- Loading Spinner (for email sending) -->
+  <div *ngIf="isLoading" class="loading-spinner">
+    <p>Envoi de l'email en cours...</p>
+  </div>
+
   <!-- Conventions Table -->
-  <table>
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>ID</th>
         <th>Company Name</th>
-        <th>companyContact</th>
+        <th>Company Contact</th>
         <th>Start Date</th>
         <th>End Date</th>
         <th>Actions</th>
@@ -29,23 +42,22 @@
         <td>{{ convention.id }}</td>
         <td>{{ convention.companyName }}</td>
         <td>{{ convention.companyContact }}</td>
-        <td>{{ convention.startDate }}</td>
-        <td>{{ convention.endDate }}</td>
+        <td>{{ convention.startDate | date: 'shortDate' }}</td>
+        <td>{{ convention.endDate | date: 'shortDate' }}</td>
         <td>
-        
-          <button (click)="goToDetails(convention.id)">Détails</button>
-          <button (click)="deleteConvention(convention.id)">Delete</button>
-          <button
-          [ngStyle]="{'background-color': convention.isValid ? 'green' : 'red'}"
-          (click)="toggleValidity(convention)">
-          {{ convention.isValid ? 'Valid' : 'Not Valid' }}
-        </button>
+          <div class="btn-group">
+            <button class="btn btn-info" (click)="goToDetails(convention.id)">Détails</button>
+            <button class="btn btn-danger" (click)="deleteConvention(convention.id)">Delete</button>
+            <button 
+              class="btn" 
+              [ngStyle]="{'background-color': convention.isValid ? 'green' : 'red'}"
+              (click)="toggleValidity(convention)">
+              {{ convention.isValid ? 'Valid' : 'Not Valid' }}
+            </button>
+            <button (click)="sendTestEmail()">Send Test Email</button>
+
+          </div>
         </td>
-
-
-  
-
-     
       </tr>
     </tbody>
   </table>
