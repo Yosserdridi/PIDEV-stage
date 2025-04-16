@@ -46,10 +46,19 @@ import { ConventionDetailUserComponent } from './componment/front/summer_front/c
 import { UserAllTasksComponent } from './componment/front/summer_front/user-all-tasks/user-all-tasks.component';
 import { CoventiondetailComponent } from './componment/back/summerBack/coventiondetail/coventiondetail.component';
 import { TasksConventionComponent } from './componment/back/summerBack/tasks-convention/tasks-convention.component';
-import { NgChartsModule } from 'ng2-charts';
+
 import { StatistiqueComponent } from './componment/back/summerBack/statistique/statistique.component';
 import { StatinvalidComponent } from './componment/back/summerBack/statinvalid/statinvalid.component';
-import { NgxIntlTelInputComponent, NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { AddPostComponent } from './add-post/add-post.component';
+
+import { PostDetailsComponent } from './post-details/post-details.component';
+import { UpdatePostComponent } from './update-post/update-post.component';
+import { UpdatePostBackComponent } from './update-post-back/update-post-back.component';
+import { AddPostBackComponent } from './add-post-back/add-post-back.component';
+import { ListApprovedComponent } from './componment/back/list-approved/list-approved.component';
+import { ListRejectedComponent } from './componment/back/list-rejected/list-rejected.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ListArchivedComponent } from './componment/back/list-archived/list-archived.component';
 
 
 @NgModule({
@@ -98,6 +107,17 @@ import { NgxIntlTelInputComponent, NgxIntlTelInputModule } from 'ngx-intl-tel-in
     TasksConventionComponent,
     StatistiqueComponent,
     StatinvalidComponent,
+    AddPostComponent,
+  
+    PostDetailsComponent,
+        UpdatePostComponent,
+        UpdatePostBackComponent,
+        AddPostBackComponent,
+        ListApprovedComponent,
+        ListRejectedComponent,
+        ListArchivedComponent,
+   
+
     
     
     
@@ -112,17 +132,13 @@ import { NgxIntlTelInputComponent, NgxIntlTelInputModule } from 'ngx-intl-tel-in
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    NgChartsModule,
-    NgxIntlTelInputModule
-    
-    
+    NgxPaginationModule
 
-  
-    
-  
   ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

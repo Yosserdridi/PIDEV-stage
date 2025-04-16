@@ -1,0 +1,39 @@
+<div class="update-post-container">
+    <h2 class="update-post-title" style="font-weight: bold; background: linear-gradient(to right, #ff3737, #ff6969); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Update Post</h2>
+  
+    <!-- Form to update post details -->
+    <form (ngSubmit)="updatePost()">
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input
+          type="text"
+          id="subject"
+          [(ngModel)]="post.subject"
+          name="subject"
+          required
+          class="form-control"
+          placeholder="Enter post subject"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea
+          id="content"
+          [(ngModel)]="post.content"
+          name="content"
+          required
+          class="form-control"
+          rows="5"
+          placeholder="Write your content here"
+        ></textarea>
+      </div>
+  
+      <!-- Submit and Cancel Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary"style="background-color: #ff6969; margin: 0 5px;">Update Post</button>
+        <button type="button" (click)="cancelUpdate()" class="btn btn-secondary"style="background-color: #ff6969; margin: 0 5px;">Cancel</button>
+      </div>
+    </form>
+  </div>
+  
