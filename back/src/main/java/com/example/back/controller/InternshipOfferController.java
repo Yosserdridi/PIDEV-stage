@@ -121,4 +121,50 @@ public class InternshipOfferController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+    @PutMapping("/{id}/updateImage")
+    public ResponseEntity<Map<String, String>> updateImage(@PathVariable Long id, @RequestParam("file") MultipartFile file) {
+        try {
+            // Update the image for the internship offer
+            String imageUrl = internshipOfferService.updateImage(id, file);
+
+            // Return JSON response with image URL
+            Map<String, String> response = new HashMap<>();
+            response.put("imageUrl", imageUrl);
+
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Error updating image: " + e.getMessage());
+
+            return ResponseEntity.badRequest().body(errorResponse);
+        }
+    }
+    @DeleteMapping("/{id}/deleteImage")
+    public ResponseEntity<Map<String, String>> deleteOfferImage(@PathVariable Long id) {
+        Map<String, String> response = new HashMap<>();
+
+        // Get the internship offer with image
+        IntershipOffer offer = internshipOfferService.getInternshipOfferWithImage(id);
+
+        if (offer == null || offer.getImageUrl() == null) {
+            response.put("message", "No image found for this offer.");
+            return ResponseEntity.badRequest().body(response);
+        }
+
+        // Delete the image from the file system and update the DB
+        try {
+            internshipOfferService.deleteImage(id);
+            response.put("message", "Image deleted successfully.");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.put("error", "Error deleting image: " + e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }
+    }
+
+
+
+
 }

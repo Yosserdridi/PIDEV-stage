@@ -68,4 +68,11 @@ getImage(id: number): Observable<Blob> {
   }
 
 
+  // Delete image of an internship offer
+// Delete the image for an internship offer
+deleteImage(id: number): Observable<{ message: string }> {
+  return this.http.delete<{ message: string }>(`${this.baseUrl}/${id}/deleteImage`);
+}
+
+
 }

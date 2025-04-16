@@ -1,9 +1,8 @@
 <div class="create-form-container">
   <h2>Create New Internship Offer</h2>
 
-
   <form (ngSubmit)="onSubmit()" #createForm="ngForm">
-   
+
     <!-- Title -->
     <div class="form-group">
       <label for="title">Title</label>
@@ -22,7 +21,6 @@
       </div>
     </div>
 
-
     <!-- Description -->
     <div class="form-group">
       <label for="description">Description</label>
@@ -39,7 +37,6 @@
         Description is required.
       </div>
     </div>
-
 
     <!-- Location -->
     <div class="form-group">
@@ -59,7 +56,6 @@
       </div>
     </div>
 
-
     <!-- Type of Internship -->
     <div class="form-group">
       <label for="typeInternship">Type of Internship</label>
@@ -72,13 +68,14 @@
         #typeInternship="ngModel"
         [class.is-invalid]="typeInternship.invalid && typeInternship.touched"
       >
-        <option *ngFor="let type of internshipTypes" [value]="type">{{ mappedTypeInternship(type) }}</option>
+        <option *ngFor="let type of internshipTypes" [value]="type">
+          {{ mappedTypeInternship(type) }}
+        </option>
       </select>
       <div *ngIf="typeInternship.invalid && typeInternship.touched" class="invalid-feedback">
         Type of internship is required.
       </div>
     </div>
-
 
     <!-- Duration -->
     <div class="form-group">
@@ -98,7 +95,6 @@
       </div>
     </div>
 
-
     <!-- Number of Students -->
     <div class="form-group">
       <label for="numberOfStudents">Number of Students</label>
@@ -117,7 +113,6 @@
       </div>
     </div>
 
-
     <!-- Requirements -->
     <div class="form-group">
       <label for="requirements">Requirements</label>
@@ -135,39 +130,35 @@
       </div>
     </div>
 
-
-<div class="form-group">
-  <label for="companyname">Company Name</label>
-  <input
-    type="text"
-    id="companyname"
-    name="companyname"
-    class="form-control"
-    value="EY"  
-    required
-    disabled  
-  />
-  <div class="invalid-feedback">
-    Company name is required.
-  </div>
-</div>
-
-<!-- Company Email -->
-<div class="form-group">
-  <label for="companymail">Company Email</label>
-  <input
-    type="email"
-    id="companymail"
-    name="companymail"
-    class="form-control"
-    value="EY@gmail.com" 
-    required
-    disabled  
-    email
-  />
- 
+    <!-- Company Name (Disabled) -->
+    <div class="form-group">
+      <label for="companyname">Company Name</label>
+      <input
+        type="text"
+        id="companyname"
+        name="companyname"
+        class="form-control"
+        value="EY"
+        required
+        disabled
+      />
+      <div class="invalid-feedback">Company name is required.</div>
     </div>
 
+    <!-- Company Email (Disabled) -->
+    <div class="form-group">
+      <label for="companymail">Company Email</label>
+      <input
+        type="email"
+        id="companymail"
+        name="companymail"
+        class="form-control"
+        value="EY@gmail.com"
+        required
+        disabled
+        email
+      />
+    </div>
 
     <!-- File Upload Section for Image -->
     <div class="form-group">
@@ -181,22 +172,17 @@
       />
       <div *ngIf="selectedFile" class="mt-2">
         <p>Selected file: {{ selectedFile.name }}</p>
-      </div>
-    </div>
 
-
-
-    
 
     <!-- Error Message -->
     <div *ngIf="errorMessage" class="alert alert-danger">
       {{ errorMessage }}
     </div>
 
-
     <!-- Submit Button -->
     <button type="submit" class="btn btn-secondary mb-3" [disabled]="!createForm.valid">
       Create Internship Offer
     </button>
-  </form>
+      
+
 </div>

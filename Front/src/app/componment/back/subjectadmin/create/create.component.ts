@@ -91,5 +91,18 @@ export class CreateadminComponent implements AfterViewInit {
       console.error(this.errorMessage);
     }
   }
+
+
+  deleteImage(id: number): void {
+    this.internshipOfferService.deleteImage(id).subscribe({
+      next: (response: { message: string }) => {
+        console.log('Image deleted successfully:', response.message);
+      },
+      error: (error: any) => {
+        console.error('Error deleting image:', error);
+      }
+    });
+  }
+
 }
 

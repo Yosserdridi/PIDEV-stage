@@ -149,5 +149,52 @@ public class InternshipOfferService implements IInternshipOfferservice {
             }
         }
     }
+    public String updateImage(Long idsujet, MultipartFile file) {
+        // Find the offer by ID
+        IntershipOffer offer = internshipOfferRepository.findById(idsujet)
+                .orElseThrow(() -> new RuntimeException("Internship Offer not found"));
+
+        // If there's already an image, delete it from the file system
+        if (offer.getImageUrl() != null) {
+            deleteFile(offer.getImageUrl());
+        }
+
+        // Save the new image and update the offer
+        String newImageUrl = saveFile(file);
+        offer.setImageUrl(newImageUrl);
+        internshipOfferRepository.save(offer);
+
+        return newImageUrl;
+    }
+
+    public void deleteImage(Long idsujet) {
+        // Find the offer by ID
+        IntershipOffer offer = internshipOfferRepository.findById(idsujet)
+                .orElseThrow(() -> new RuntimeException("Internship Offer not found"));
+
+        // If there's an image, delete it from the file system
+        if (offer.getImageUrl() != null) {
+            deleteFile(offer.getImageUrl());
+            offer.setImageUrl(null);  // Remove the image URL from the offer
+            internshipOfferRepository.save(offer);  // Save the updated offer without the image
+        }
+    }
+
+    private void deleteFile(String imageUrl) {
+        try {
+            // Extract the file name from the URL
+            String fileName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
+
+            // Construct the path to the file
+            Path filePath = Paths.get(UPLOAD_DIR, fileName);
+
+            // Delete the file from the system
+            Files.delete(filePath);
+
+            System.out.println("File deleted: " + filePath);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to delete file", e);
+        }
+    }
 
 }
