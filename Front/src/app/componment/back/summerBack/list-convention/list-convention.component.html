@@ -29,8 +29,9 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>ID</th>
+  
         <th>Company Name</th>
+        <th>Company address </th>
         <th>Company Contact</th>
         <th>Start Date</th>
         <th>End Date</th>
@@ -39,23 +40,22 @@
     </thead>
     <tbody>
       <tr *ngFor="let convention of filteredConventions">
-        <td>{{ convention.id }}</td>
         <td>{{ convention.companyName }}</td>
+        <td>{{ convention.companyAddress }}</td>
         <td>{{ convention.companyContact }}</td>
         <td>{{ convention.startDate | date: 'shortDate' }}</td>
         <td>{{ convention.endDate | date: 'shortDate' }}</td>
         <td>
           <div class="btn-group">
-            <button class="btn btn-info" (click)="goToDetails(convention.id)">Détails</button>
-            <button class="btn btn-danger" (click)="deleteConvention(convention.id)">Delete</button>
+            <button class="custom-btn btn-details" (click)="goToDetails(convention.id)">Détails</button>
+            <button class="custom-btn btn-delete" (click)="deleteConvention(convention.id)">Delete</button>
             <button 
-              class="btn" 
-              [ngStyle]="{'background-color': convention.isValid ? 'green' : 'red'}"
+              class="custom-btn btn-validity" 
+              [ngStyle]="{'background-color': convention.isValid ? '#28a745' : '#dc3545'}"
               (click)="toggleValidity(convention)">
               {{ convention.isValid ? 'Valid' : 'Not Valid' }}
             </button>
-            <button (click)="sendTestEmail()">Send Test Email</button>
-
+            <button class="custom-btn btn-email" (click)="sendTestEmail()">Send Test Email</button>
           </div>
         </td>
       </tr>

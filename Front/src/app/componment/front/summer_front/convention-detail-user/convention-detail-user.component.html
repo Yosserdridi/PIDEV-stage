@@ -10,8 +10,10 @@
       
       <!-- Infos Stage -->
       <h2 class="card-title text-primary fw-bold mb-4">
-        <i class="bi bi-briefcase-fill me-2"></i> Stage : {{ details.summerInternship.title }}
+        <i class="bi bi-briefcase-fill me-2"></i> destails of Stage :
+
       </h2>
+      <p><strong>📝 title:</strong> {{ details.summerInternship.title }}</p>
       <p><strong>📝 Description:</strong> {{ details.summerInternship.description }}</p>
       <p><strong>⏳ Duration:</strong> {{ details.summerInternship.duration }} mois</p>
       
@@ -23,6 +25,14 @@
       </h4>
       <p><strong>📄 Report:</strong> {{ details.file.report }}</p>
       <p><strong>📜 Internship Certificate:</strong> {{ details.file.internship_Certifcate }}</p>
+
+      <hr class="my-4">
+      <h4 class="text-secondary fw-semibold mb-3">
+        <i class="bi bi-file-earmark-arrow-down-fill me-2"></i> Fichiers liés
+      </h4>
+      <p><strong>📄 title:</strong> {{ details.journal.title }}</p>
+      <p><strong>📄 remark :</strong> {{ details.journal.remark }}</p>
+
 
       <!-- Bouton -->
       <div class="mt-4 text-end">

@@ -1,121 +1,127 @@
 /* Container */
 .container {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+  max-width: 1300px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Search Box Styling */
+input[type="text"] {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 250px;
+  transition: border 0.3s ease;
+  margin-right: 10px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 1px solid #28a745; /* Green */
+}
+
+/* Generic Button Styling */
+button,
+.custom-btn {
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  min-width: 120px;
+  margin-right: 5px;
+}
+
+/* Hover effect for all buttons */
+button:hover,
+.custom-btn:hover {
+  filter: brightness(90%);
+}
+
+/* Specific button types */
+.btn-details {
+  background-color: #17a2b8; /* Info Blue */
+}
+
+.btn-delete {
+  background-color: #dc3545; /* Red */
+}
+
+.btn-email {
+  background-color: #6f42c1; /* Purple */
+}
+
+.btn-validity {
+  background-color: #28a745; /* Will be overridden by ngStyle */
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 15px;
+  color: #333;
+}
+
+th {
+  background-color: #28a745;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+tr:hover {
+  background-color: #e8f5e9; /* Light Green */
+}
+
+/* Error Message */
+.error-message {
+  color: #e74c3c;
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
   }
-  
-  /* Search Box Styling */
+
   input[type="text"] {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 250px;
-    transition: border 0.3s ease;
-    margin-right: 10px;
-  }
-  
-  input[type="text"]:focus {
-    outline: none;
-    border: 1px solid #28a745;  /* Green */
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #28a745;  /* Green */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #218838;  /* Darker green */
-  }
-  
-  /* Table Styling */
-  table {
     width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
+    margin-bottom: 15px;
   }
-  
-  th, td {
-    padding: 12px 20px;
-    text-align: left;
-    font-size: 15px;
-    color: #333; /* Dark Gray */
+
+  button,
+  .custom-btn {
+    width: 100%;
+    margin-bottom: 10px;
   }
-  
-  /* Header Styling */
-  th {
-    background-color: #28a745;  /* Green */
-    color: #fff;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  
-  /* Table rows */
-  tr:nth-child(even) {
-    background-color: #f4f4f4;
-  }
-  
-  tr:hover {
-    background-color: #e8f5e9;  /* Light Green */
-  }
-  
-  /* Buttons inside table */
-  button {
-    padding: 8px 15px;
-    background-color: #dc3545; /* Red */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+  table {
     font-size: 14px;
-    transition: background-color 0.3s ease;
   }
-  
-  button:hover {
-    background-color: #c82333; /* Darker Red */
+
+  th, td {
+    padding: 10px;
   }
-  
-  /* Error Message */
-  .error-message {
-    color: #e74c3c;  /* Red */
-    font-size: 16px;
-    margin-top: 20px;
-    text-align: center;
-    font-weight: 500;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .container {
-      padding: 15px;
-    }
-  
-    input[type="text"] {
-      width: 100%;
-      margin-bottom: 15px;
-    }
-  
-    button {
-      width: 100%;
-    }
-  
-    table {
-      font-size: 14px;
-    }
-  
-    th, td {
-      padding: 10px;
-    }
-  }
-  
+}

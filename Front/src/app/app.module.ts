@@ -43,6 +43,7 @@ import { TasksConventionComponent } from './componment/back/summerBack/tasks-con
 import { NgChartsModule } from 'ng2-charts';
 import { StatistiqueComponent } from './componment/back/summerBack/statistique/statistique.component';
 import { StatinvalidComponent } from './componment/back/summerBack/statinvalid/statinvalid.component';
+import { NgxIntlTelInputComponent, NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 
 @NgModule({
@@ -97,6 +98,8 @@ import { StatinvalidComponent } from './componment/back/summerBack/statinvalid/s
     ReactiveFormsModule,
     FormsModule,
     NgChartsModule,
+    NgxIntlTelInputModule
+    
     
 
   

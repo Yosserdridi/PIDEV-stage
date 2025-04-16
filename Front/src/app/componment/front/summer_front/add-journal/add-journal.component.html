@@ -58,10 +58,18 @@
             <div class="mb-3">
               <label for="title" class="font-weight-bold">Title</label>
               <input id="title" type="text" formControlName="title" class="form-control" />
+              
+              <!-- Error messages -->
               <div *ngIf="journalForm.get('title')?.invalid && journalForm.get('title')?.touched" class="text-danger">
-                <small>Title is required.</small>
+                <small *ngIf="journalForm.get('title')?.hasError('required')">
+                  Title is required.
+                </small>
+                <small *ngIf="journalForm.get('title')?.hasError('pattern')">
+                  Title contains invalid characters.
+                </small>
               </div>
             </div>
+            
           </div>
 
           <div class="col-md-4 text-center">

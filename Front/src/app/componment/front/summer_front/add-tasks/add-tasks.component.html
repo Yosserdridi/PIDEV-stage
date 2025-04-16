@@ -11,8 +11,26 @@
     </thead>
     <tbody>
       <tr *ngFor="let task of tasks; let i = index">
-        <td><input type="text" [(ngModel)]="task.description" placeholder="Description"></td>
-        <td><input type="date" [(ngModel)]="task.date"></td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="task.description"
+            name="description"
+            placeholder="Description"
+            [required]="true"
+            [pattern]="'^[a-zA-Z0-9\\sàéèùêôïç]+$'"
+            [maxlength]="100"
+            #description="ngModel"
+            class="form-control"
+          />
+          <!-- Messages d'erreur -->
+          <div *ngIf="description.invalid && description.touched" class="text-danger">
+            <small *ngIf="description.errors?.['required']">Description is required.</small>
+            <small *ngIf="description.errors?.['pattern']">Invalid characters in description.</small>
+            <small *ngIf="description.errors?.['maxlength']">Description cannot exceed 100 characters.</small>
+          </div>
+        </td>
+                <td><input type="date" [(ngModel)]="task.date"></td>
         <td> <button (click)="removeRow(i)">❌ </button>
           <button (click)="addRow()">➕ </button>
           <!-- You can add buttons or actions here if needed -->

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Entities } from 'src/model/entities';
 import { ConventionService } from 'src/services/convention.service';
+import { FilesService } from 'src/services/service_files/files.service';
 import { JournalService } from 'src/services/service_journal/journal.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class CoventiondetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private conventionService: ConventionService,
+    private fileService:FilesService,
     private journalService: JournalService,
     private router :Router
   ) {}
@@ -85,4 +87,19 @@ export class CoventiondetailComponent implements OnInit {
 
   goToDetails(conventionId: number) {
     this.router.navigate(['/admin/coventiontasks', conventionId]);}
+
+    downloadReport(fileName :string): void {
+      this.fileService.downloadReport(fileName).subscribe((blob) => {
+        const url =window.URL.createObjectURL(blob);
+        const a =document.createElement('a');
+  
+        a.href =url;
+        a.download =fileName;
+        a.click();
+        window.URL.revokeObjectURL(url)
+      })
+    }
 }
+
+
+

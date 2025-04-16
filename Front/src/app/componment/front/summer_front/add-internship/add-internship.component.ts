@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Summer } from 'src/model/summer';
 import { SummerService } from 'src/services/service_summer/summer.service';
@@ -31,8 +31,8 @@ export class AddInternshipComponent implements OnInit {
 
   {
         this.internshipForm= this.fb.group({
-          title: ['',Validators.required,],
-          description: ['',Validators.required,],
+          title: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\sàéèùêôïç]+$/)]],
+          description: ['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9\sàéèùêôïç]+$/),Validators.maxLength(20)]],
           duration: ['', Validators.required, ],
       
        

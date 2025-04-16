@@ -29,6 +29,9 @@
               "src/assets/css/bootstrap.css",
               "src/assets/css/font-awesome.min.css",
               "src/assets/css/style.css"
+
+
+
             ],
             "scripts": []
           },

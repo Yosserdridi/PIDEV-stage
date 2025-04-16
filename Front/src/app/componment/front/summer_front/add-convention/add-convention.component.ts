@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TypeInternship } from 'src/model/convention';
 import { ConventionService } from 'src/services/convention.service';
@@ -11,11 +11,12 @@ import { dateGreaterThan } from './data.validators';
   templateUrl: './add-convention.component.html',
   styleUrls: ['./add-convention.component.css']
 })
-export class AddConventionComponent {
+export class AddConventionComponent implements OnInit {
 
   conventionId !:number;
   conventionForm!:FormGroup;
   TypeInternship = TypeInternship;
+  today: string = '';
   
 
   constructor(
@@ -25,16 +26,35 @@ export class AddConventionComponent {
   ){
 
     this.conventionForm = this.fb.group({
-      companyName: ['', [Validators.required]],
-      companyAddress:['', [Validators.required]],
+      companyName: ['', [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z0-9\s]+$/)
+      ]],
+      companyAddress: ['', [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z0-9\s]+$/)
+      ]],
       companyContact: ['', [Validators.required, Validators.pattern('^[0-9]{8,15}$')]],
-      startDate: ['', [Validators.required]],
+      startDate: ['', [Validators.required,this.startDateNotInPastValidator()]],
       endDate: ['', [Validators.required, dateGreaterThan('startDate')]],
       typeInternship: ['', Validators.required] 
 
 
     })
 
+  }
+  ngOnInit(): void {
+    const now = new Date();
+    this.today = now.toISOString().split('T')[0];   }
+
+  startDateNotInPastValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const selected = new Date(control.value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Remove time part
+  
+      return selected >= today ? null : { pastDate: true };
+    };
   }
 
 

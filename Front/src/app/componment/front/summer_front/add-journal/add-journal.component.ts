@@ -45,7 +45,7 @@ export class AddJournalComponent implements OnInit {
   
     {
           this.journalForm= this.fb.group({
-            title: ['',Validators.required,],
+            title: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\sàéèùêôïç]+$/)]],
      
          
           })

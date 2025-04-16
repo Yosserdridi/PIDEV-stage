@@ -14,7 +14,7 @@
           <tbody>
             <tr *ngFor="let task of data.tasks">
               <td>{{ task.description }}</td>
-              <td>{{ task.date }}</td>
+              <td>{{ task.date | date: 'shortDate'}}</td>
             </tr>
           </tbody>
         </table>
