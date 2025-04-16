@@ -3,6 +3,7 @@ package com.example.back.service;
 import com.example.back.entities.Complaint;
 import com.example.back.entities.IntershipOffer;
 import com.example.back.entities.Response;
+import com.example.back.entities.StatusComplaint;
 import com.example.back.repository.ComplaintRep;
 import com.example.back.repository.ResponseRep;
 import jakarta.persistence.EntityNotFoundException;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -33,13 +36,15 @@ public class ResponseService implements IResponse {
 
         Complaint complaint = complaintRep.findById(response.getComplaint().getId())
                 .orElseThrow(() -> new EntityNotFoundException("Complaint not found with id: " + response.getComplaint().getId()));
-
+        complaint.setTypeStatus(StatusComplaint.Approved);
         // Associez la réponse à la plainte
         response.setComplaint(complaint);
 
         // Sauvegardez la réponse
         return responseRep.save(response);
     }
+
+
 
 
 
@@ -50,7 +55,19 @@ public class ResponseService implements IResponse {
 
     @Transactional
     public void deleteResponse(Long id) {
+
         responseRep.deleteById(id); // Assurez-vous que cette méthode est appelée
+    }
+
+    @Override
+    public Map<String, Long> getResponsesPerDay() {
+        List<Response> responses = responseRep.findAll();
+
+        return responses.stream()
+                .collect(Collectors.groupingBy(
+                        response -> response.getDateResponse().toString(),
+                        Collectors.counting()
+                ));
     }
 
     public List<Response> retrieveAllResponses() {

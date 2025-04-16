@@ -17,6 +17,7 @@ import { LoginAdminComponent } from './componment/back/login-admin/login-admin.c
 import { AdminComponent } from './componment/back/admin/admin.component';
 import { AddComplaintComponent } from './componment/front/complaints/add-complaint/add-complaint.component';
 import {ComplaintsComponent} from "./componment/front/complaints/complaints.component";
+import {CalendarComponent} from "./componment/back/calendar/calendar.component";
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'loginadmin', component: LoginAdminComponent},
   {path: 'admin', component: AdminComponent},
   { path: 'complaints', component: ComplaintsComponent },
+  { path:'stat', component:CalendarComponent},
 
   { path: 'add-complaint', component: AddComplaintComponent },
   { path: '', redirectTo: '/complaints', pathMatch: 'full' }

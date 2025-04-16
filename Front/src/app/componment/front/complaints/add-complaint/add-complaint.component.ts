@@ -10,37 +10,70 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-complaint.component.css']
 })
 export class AddComplaintComponent implements OnInit {
-onDelete(arg0: any) {
-throw new Error('Method not implemented.');
-}
-onEdit(_t99: any) {
-throw new Error('Method not implemented.');
-}
-  @ViewChild('complaintForm', { static: false }) complaintForm!: NgForm;
-  newComplaint: Complaint = new Complaint();
+  onDelete(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  onEdit(_t99: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  @ViewChild('complaintForm', {static: false}) complaintForm!: NgForm;
   errorMessage: string = '';
-complaints: any;
-  constructor(private complaintService: ComplaintService, private router: Router) {}
+  selectedFile: File | null = null;
+  complaints: any;
+  newComplaint: any = {
+    title: '',
+    content: '',
+    typeC: '',
+    typeStatus: '',
+    dateComplaint: '',
+    user_Id:[1]
+  };
 
-  ngOnInit(): void {}
+  constructor(private complaintService: ComplaintService, private router: Router) {
+  }
 
-  onSubmit(): void {
-    console.log('Formulaire valide:', this.complaintForm.value);
-    if (this.complaintForm && this.complaintForm.valid) {
-      
-      console.log('Envoi de la plainte:', this.newComplaint);
-      this.complaintService.addComplaint(this.newComplaint).subscribe(
-        (response) => {
-          console.log('Plainte ajoutée avec succès:', response);
-          this.router.navigate(['/complaints']);
-        },
-        (error) => {
-          this.errorMessage = 'Erreur lors de l\'envoi de la plainte. Veuillez réessayer.';
-          console.error('Erreur:', error);
-        }
-      );
-    } else {
-      console.log("Le formulaire est invalide !");
+  ngOnInit(): void {
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  onSubmit() {
+    if (!this.newComplaint.title || !this.newComplaint.content || !this.newComplaint.typeC ) {
+      this.errorMessage = 'Please fill all the required fields.';
+      return;
     }
+
+    const formData = new FormData();
+    formData.append('title', this.newComplaint.title);
+    formData.append('content', this.newComplaint.content);
+    formData.append('typeC', this.newComplaint.typeC);
+    formData.append('typeStatus', "Pending");
+
+    // ➜ Formatage correct de la date locale
+    const today = new Date();
+    const localDate = today.toLocaleDateString('fr-CA'); // Format YYYY-MM-DD
+    formData.append('dateComplaint', localDate);
+
+    formData.append("userId", this.newComplaint.user_Id);
+
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
+    }
+
+    this.complaintService.addComplaint(formData).subscribe({
+      next: (response) => {
+        console.log('Complaint added successfully', response);
+        alert('Complaint submitted successfully');
+        this.router.navigateByUrl("/complaints");
+      },
+      error: (error) => {
+        console.error('Error submitting complaint:', error);
+        this.errorMessage = 'Error submitting complaint. Please try again later.';
+      }
+    });
   }
 }

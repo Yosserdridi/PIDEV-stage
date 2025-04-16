@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Complaint } from 'src/app/models/complaint.model';
 
@@ -26,8 +26,12 @@ export class ComplaintService {
   }
 
   // Ajouter une nouvelle plainte
-  addComplaint(complaint: Complaint): Observable<Complaint> {
-    return this.http.post<Complaint>(`${this.baseUrl}/add-complaint`, complaint);
+  addComplaint(formData: FormData): Observable<any> {
+    return this.http.post(`${this.baseUrl}/add-complaint`, formData, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    });
   }
 
   // Supprimer une plainte par son ID
@@ -36,8 +40,8 @@ export class ComplaintService {
   }
 
   // Mettre à jour une plainte
-  updateComplaint(complaint: Complaint): Observable<Complaint> {
-    return this.http.put<Complaint>(`${this.baseUrl}/modify-complaint`, complaint);
+  updateComplaint(id:number, complaint: Complaint): Observable<Complaint> {
+    return this.http.put<Complaint>(`${this.baseUrl}/modify-complaint/${id}`, complaint);
   }
 
   // Récupérer les plaintes par type
@@ -49,4 +53,10 @@ export class ComplaintService {
   findByStatusC(statusC: string): Observable<Complaint[]> {
     return this.http.get<Complaint[]>(`${this.baseUrl}/findByStatusComplaint/${statusC}`);
   }
+    // ✅ Télécharger Excel
+    exportComplaintsToExcel(): Observable<Blob> {
+      return this.http.get(`${this.baseUrl}/export/excel`, {
+        responseType: 'blob' // car c’est un fichier
+      });
+    }
 }

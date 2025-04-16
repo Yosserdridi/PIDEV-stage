@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/response")
 @Tag(name = "Gestion Response")
@@ -26,6 +28,11 @@ public class ResponseController {
     @PostMapping("/add-response")
     public Response addResponse(@RequestBody Response r) {
         return responseService.addResponse(r); // Use 'responseService' here
+    }
+
+    @GetMapping("/responses-per-day")
+    public Map<String, Long> getResponsesPerDay() {
+        return responseService.getResponsesPerDay();
     }
 
 

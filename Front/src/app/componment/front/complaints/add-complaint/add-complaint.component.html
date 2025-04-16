@@ -1,66 +1,80 @@
-<div class="create-complaint-container">
-  <h2>Create New Complaint</h2>
-  <form (ngSubmit)="onSubmit()" #complaintForm="ngForm">
-      <!-- Champ pour le titre -->
+<div class="create-complaint-container" [ngClass]="{'form-valid': complaintForm.valid}">
+    <h2> 🎭 Create New Complaint</h2>
+    <form (ngSubmit)="onSubmit()" #complaintForm="ngForm">
+  
+      <!-- Titre -->
       <div class="form-group">
-          <label for="title">Title:</label>
-          <input type="text" id="title" [(ngModel)]="newComplaint.title" name="title" required>
-          <div *ngIf="complaintForm.submitted && complaintForm.controls['title'].errors" class="error-message">
-              Title is required.
-          </div>
+        <label for="title">Title:</label>
+        <input 
+          type="text" 
+          id="title" 
+          [(ngModel)]="newComplaint.title" 
+          name="title" 
+          required minlength="5"
+          #title="ngModel"
+          [ngClass]="{'invalid': title.invalid && (title.dirty || complaintForm.submitted)}"
+          placeholder="Enter at least 5 characters"
+        >
+        <div *ngIf="title.invalid && (title.dirty || complaintForm.submitted)" class="error-message">
+          <span *ngIf="title.errors?.['required']">Title is required.</span>
+          <span *ngIf="title.errors?.['minlength']">Title must be at least 5 characters long.</span>
+        </div>
       </div>
-
-      <!-- Champ pour le commentaire -->
+  
+      <!-- Content -->
       <div class="form-group">
-          <label for="content">Content:</label>
-          <textarea id="content" [(ngModel)]="newComplaint.content" name="content" required></textarea>
-          <div *ngIf="complaintForm.submitted && complaintForm.controls['content'].errors" class="error-message">
-              Content is required.
-          </div>
+        <label for="content">Content:</label>
+        <textarea 
+          id="content" 
+          [(ngModel)]="newComplaint.content" 
+          name="content" 
+          required minlength="5"
+          #content="ngModel"
+          [ngClass]="{'invalid': content.invalid && (content.dirty || complaintForm.submitted)}"
+          placeholder="Describe your complaint (at least 5 characters)"
+        ></textarea>
+        <div *ngIf="content.invalid && (content.dirty || complaintForm.submitted)" class="error-message">
+          <span *ngIf="content.errors?.['required']">Content is required.</span>
+          <span *ngIf="content.errors?.['minlength']">Content must be at least 5 characters long.</span>
+        </div>
       </div>
-
-      <!-- Champ pour le type de réclamation -->
+  
+      <!-- Type -->
       <div class="form-group">
-          <label for="typeC">Type:</label>
-          <select id="typeC" [(ngModel)]="newComplaint.typeC" name="typeC" required>
-              <option value="Modification">Modification</option>
-              <option value=" Cancellation">Cancellation</option>
-              <option value="Others">Others</option>
-          </select>
-          <div *ngIf="complaintForm.submitted && complaintForm.controls['typeC'].errors" class="error-message">
-              Type is required.
-          </div>
+        <label for="typeC">Type:</label>
+        <select 
+          id="typeC" 
+          [(ngModel)]="newComplaint.typeC" 
+          name="typeC" 
+          required
+          #typeC="ngModel"
+          [ngClass]="{'invalid': typeC.invalid && (typeC.dirty || complaintForm.submitted)}"
+        >
+          <option value="" disabled selected>Select a type</option>
+          <option value="Modification">Modification</option>
+          <option value="Cancellation">Cancellation</option>
+          <option value="Others">Others</option>
+        </select>
+        <div *ngIf="typeC.invalid && (typeC.dirty || complaintForm.submitted)" class="error-message">
+          Type is required.
+        </div>
       </div>
-
-      <!-- Champ pour le statut de la réclamation -->
+  
+      <!-- Upload Image -->
       <div class="form-group">
-          <label for="typeStatus">Status:</label>
-          <select id="typeStatus" [(ngModel)]="newComplaint.typeStatus" name="typeStatus" required>
-              <option value="Pending">Pending</option>
-              <option value="Approved">Approved</option>
-              <option value="Rejected">Rejected</option>
-          </select>
-          <div *ngIf="complaintForm.submitted && complaintForm.controls['typeStatus'].errors" class="error-message">
-              Status is required.
-          </div>
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" (change)="onFileSelected($event)">
       </div>
-
-      <!-- Champ pour la date de la réclamation -->
-      <div class="form-group">
-          <label for="dateComplaint">Date:</label>
-          <input type="date" id="dateComplaint" [(ngModel)]="newComplaint.dateComplaint" name="dateComplaint" required>
-          <div *ngIf="complaintForm.submitted && complaintForm.controls['dateComplaint'].errors" class="error-message">
-              Date is required.
-          </div>
-      </div>
-
+  
       <!-- Bouton de soumission -->
-      <button type="submit" class="btn btn-secondary mb-3" [disabled]="!complaintForm.valid">
+      <button type="submit" class="btn-submit" [disabled]="!complaintForm.valid">
         Submit Complaint
-    </button>
-      <!-- Affichage des messages d'erreur généraux -->
+      </button>
+  
+      <!-- Erreur générale -->
       <div *ngIf="errorMessage" class="error-message">
-          {{ errorMessage }}
+        {{ errorMessage }}
       </div>
-  </form>
+  
+    </form>
 </div>

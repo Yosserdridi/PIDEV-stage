@@ -23,7 +23,10 @@ import { LoginAdminComponent } from './componment/back/login-admin/login-admin.c
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { AddComplaintComponent } from './componment/front/complaints/add-complaint/add-complaint.component';
-import { ComplaintsComponent } from './componment/front/complaints/complaints.component'; 
+import { ComplaintsComponent } from './componment/front/complaints/complaints.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import { CalendarComponent } from './componment/back/calendar/calendar.component';
+import {FullCalendarModule} from "@fullcalendar/angular";
 
 @NgModule({
   declarations: [
@@ -47,6 +50,7 @@ import { ComplaintsComponent } from './componment/front/complaints/complaints.co
     AdminComponent,
     AddComplaintComponent,
     ComplaintsComponent,
+    CalendarComponent,
 
 
 
@@ -56,7 +60,9 @@ import { ComplaintsComponent } from './componment/front/complaints/complaints.co
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
+    FullCalendarModule
   ],
   exports: [AppRoutingModule],
   providers: [],

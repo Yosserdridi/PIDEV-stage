@@ -3,6 +3,7 @@ package com.example.back.service;
 import com.example.back.entities.Response;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IResponse {
     Response addResponse(Response response);
@@ -11,6 +12,8 @@ public interface IResponse {
 
 
     List<Response> retrieveAllResponses();
+
+    public Map<String, Long> getResponsesPerDay();
 
 
 

@@ -1,5 +1,6 @@
 package com.example.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,5 +26,6 @@ public class Response {
 
     @ManyToOne
     @JoinColumn(name = "complaint_id", nullable = false)
+    @JsonBackReference
     Complaint complaint;
 }

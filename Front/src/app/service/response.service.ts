@@ -17,7 +17,7 @@ export class ResponseService {
     return this.http.get<ResponseModel[]>(`${this.baseUrl}/retrieve-all`);
   }
 
-  
+
 
   // Add a new response
   addResponse(response: ResponseModel): Observable<ResponseModel> {
@@ -25,8 +25,8 @@ export class ResponseService {
   }
 
   // Update an existing response
-  updateResponse(response: ResponseModel): Observable<ResponseModel> {
-    return this.http.put<ResponseModel>(`${this.baseUrl}/modify-response/${response.id}`, response);
+  updateResponse(responseId: number, response: ResponseModel): Observable<ResponseModel> {
+    return this.http.put<ResponseModel>(`${this.baseUrl}/modify-response/${responseId}`, response);
   }
 
   // Delete a response by its ID
@@ -41,5 +41,9 @@ export class ResponseService {
 
   getApiUrl(): string {
     return this.baseUrl;
+  }
+  // Supprimer une plainte par son ID
+  deleteComplaint(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/remove-complaint/${id}`);
   }
 }

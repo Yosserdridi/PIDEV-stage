@@ -1,0 +1,57 @@
+* [33m04af32b8[m[33m ([m[1;36mHEAD -> [m[1;32mcomplaint[m[33m, [m[1;31morigin/complaint[m[33m)[m Initial commit
+* [33m95684cf9[m Initial commit or latest changes
+[31m|[m * [33m7e02a9e3[m[33m ([m[1;32mmaster[m[33m)[m api
+[31m|[m [32m|[m * [33m7ed0e976[m[33m ([m[1;31morigin/forum[m[33m)[m API
+[31m|[m [32m|[m * [33madd307a7[m bad words and enhancing
+[31m|[m [32m|[m * [33mc62f824b[m crud and reponse
+[31m|[m [32m|[m * [33mb8e79e9f[m Add Post and comment front
+[31m|[m [32m|[m * [33m57b1d303[m Add Post
+[31m|[m [32m|[m[31m/[m  
+[31m|[m[31m/[m[32m|[m   
+[31m|[m [32m|[m *   [33m1517e008[m[33m ([m[1;31morigin/PfeInternships[m[33m)[m Merge pull request #4 from Yosserdridi/master
+[31m|[m [32m|[m [34m|[m[32m\[m  
+[31m|[m [32m|[m [34m|[m[32m/[m  
+[31m|[m [32m|[m[32m/[m[34m|[m   
+[31m|[m * [34m|[m [33m6e040c83[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m signature
+[31m|[m * [34m|[m [33m2f0a2177[m notification
+[31m|[m [34m|[m[34m/[m  
+[31m|[m * [33mdba05746[m change
+[31m|[m * [33m02af71fb[m Filtering and Pagination
+[31m|[m * [33m0cb4225e[m  add card
+[31m|[m * [33me61639ce[m add pfe
+[31m|[m * [33ma0b42f60[m add pipline
+[31m|[m * [33m06486521[m add stage pfe and restitution front back
+[31m|[m * [33m59ad2dcf[m add and get all Internships front
+[31m|[m * [33md8244e96[m CRUD and assigned Back
+[31m|[m[31m/[m  
+[31m|[m * [33ma6228e7e[m[33m ([m[1;31morigin/Summer_internship[m[33m)[m dernier v
+[31m|[m * [33m8c441f67[m sénario complet
+[31m|[m * [33mc25840eb[m adel
+[31m|[m * [33me8673aea[m adel
+[31m|[m * [33m163b692b[m adel
+[31m|[m * [33m141a4590[m adel_crud
+[31m|[m * [33me5ab85af[m added adel
+[31m|[m[31m/[m  
+[31m|[m * [33m9eb3081a[m[33m ([m[1;31morigin/postulation[m[33m)[m changes
+[31m|[m * [33m7db819d4[m Daruis
+[31m|[m * [33m7ee0a3c1[m das
+[31m|[m * [33m325d7aab[m Acepter avancee
+[31m|[m * [33mc6a0c3e1[m accept and reject normal mode
+[31m|[m * [33m066bbaac[m List date creation + typeintership fixed
+[31m|[m * [33ma69b29f8[m CRUD + recherche + filtrage
+[31m|[m * [33mc30073b2[m Final
+[31m|[m * [33mac317884[m crud front and back
+[31m|[m * [33m42895ab5[m final
+[31m|[m * [33m9f0f5db9[m[33m ([m[1;31morigin/user[m[33m)[m Initial commit with backend and front directories
+[31m|[m * [33m2dc3c89b[m[33m ([m[1;31morigin/User[m[33m)[m dist
+[31m|[m * [33m13a485d4[m front and back
+[31m|[m * [33mc99d64d1[m Initial commit on User branch for backend
+[31m|[m * [33m46f83686[m[33m ([m[1;31morigin/soutenance[m[33m)[m  final part soutenance
+[31m|[m * [33m1f30398d[m Save work before updating Angular
+[31m|[m * [33m054f5098[m Save changes before Angular update
+[31m|[m * [33m2d34d4c5[m Votre message de commit
+[31m|[m[31m/[m  
+* [33m6d1ecdc0[m last version template
+* [33m9ddfca81[m last version template
+* [33m6d0be6b9[m adel
+* [33m88408e22[m[33m ([m[1;31morigin/complaints[m[33m)[m first

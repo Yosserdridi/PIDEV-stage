@@ -5,7 +5,8 @@ export class Complaint {
     dateComplaint: string;
     typeStatus: string;
     typeC: string;
-  
+    responses?:Response;
+    image?: File | string; //
     constructor() {
       this.title = '';
       this.content = '';
@@ -14,4 +15,3 @@ export class Complaint {
       this.typeC = '';
     }
   }
-  
