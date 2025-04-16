@@ -10,19 +10,33 @@ import { ConventionService } from 'src/services/convention.service';
 })
 export class ListConventionComponent implements OnInit {
 
-
   conventions: Convention[] = [];
   filteredConventions: Convention[] = [];
   notFound: boolean = false;
   searchCompanyName: string = '';
+  isLoading: boolean = false; // Pour le spinner
+  page: number = 1;
+  pageSize: number = 3;
 
-  constructor(private conventionService: ConventionService, private router:Router) {}
+  constructor(
+    private conventionService: ConventionService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.conventionService.getAllInternshipConventions().subscribe((data) => {
       this.conventions = data;
       this.filteredConventions = data;
     });
+  }
+
+  get paginatedConventions(): Convention[] {
+    const startIndex = (this.page - 1) * this.pageSize;
+    return this.filteredConventions.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredConventions.length / this.pageSize);
   }
 
   deleteConvention(id: number): void {
@@ -36,52 +50,39 @@ export class ListConventionComponent implements OnInit {
       convention.companyName.toLowerCase().includes(this.searchCompanyName.toLowerCase())
     );
     this.notFound = this.filteredConventions.length === 0;
+    this.page = 1; // Réinitialiser la pagination
   }
 
-  isLoading = false;  // variable pour gérer l'état de chargement
-
   toggleValidity(convention: Convention): void {
-    // Bascule la validité de la convention
-    this.isLoading = true; // Active le spinner
+    this.isLoading = true;
     this.conventionService.toggleConventionValidity(convention.id, !convention.isValid).subscribe(
       () => {
         convention.isValid = !convention.isValid;
+        this.isLoading = false;
         console.log('Convention updated:', convention.isValid ? 'validée' : 'refusée');
-  
-        // Validation de la convention (envoi de l'email)
-   
       },
-      error => {
+      (error) => {
         console.error('Échec de la mise à jour de la convention:', error);
-        this.isLoading = false;  // Désactive le spinner
-        window.location.reload();
+        this.isLoading = false;
       }
     );
   }
 
-    sendTestEmail(): void {
-      this.isLoading = true; // Show loading spinner
-  
-      this.conventionService.email(16) // You can pass any valid ID for testing purposes
-        .subscribe(
-          (response) => {
-            console.log('Test email sent successfully:', response);
-            this.isLoading = false; // Hide loading spinner
-          },
-          (error) => {
-            console.error('Error sending test email:', error);
-            this.isLoading = false; // Hide loading spinner
-          }
-        );
-    }
-    
-    
-  
-  goToDetails(conventionId: number) {
-    this.router.navigate(['/admin/conventionDetail', conventionId]);
+  sendTestEmail(): void {
+    this.isLoading = true;
+    this.conventionService.email(16).subscribe(
+      (response) => {
+        console.log('Test email sent successfully:', response);
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error sending test email:', error);
+        this.isLoading = false;
+      }
+    );
   }
 
-
-
-
+  goToDetails(conventionId: number): void {
+    this.router.navigate(['/admin/conventionDetail', conventionId]);
+  }
 }

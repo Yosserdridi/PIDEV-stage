@@ -1,8 +1,8 @@
 <div class="container">
   <h3>List of Conventions</h3>
 
-  <!-- Advanced Search Form -->
-  <div class="form-group">
+  <!-- Search Form -->
+  <div class="form-group mb-3">
     <label for="companyName">Company Name:</label>
     <input 
       type="text" 
@@ -15,23 +15,22 @@
     >
   </div>
 
-  <!-- No Results Found Message -->
+  <!-- No Results Message -->
   <div *ngIf="notFound" class="alert alert-warning">
     No conventions found with the provided company name.
   </div>
 
-  <!-- Loading Spinner (for email sending) -->
-  <div *ngIf="isLoading" class="loading-spinner">
-    <p>Envoi de l'email en cours...</p>
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="alert alert-info">
+    <p>Sending email, please wait...</p>
   </div>
 
   <!-- Conventions Table -->
   <table class="table table-striped">
     <thead>
       <tr>
-  
         <th>Company Name</th>
-        <th>Company address </th>
+        <th>Company Address</th>
         <th>Company Contact</th>
         <th>Start Date</th>
         <th>End Date</th>
@@ -39,7 +38,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let convention of filteredConventions">
+      <tr *ngFor="let convention of paginatedConventions">
         <td>{{ convention.companyName }}</td>
         <td>{{ convention.companyAddress }}</td>
         <td>{{ convention.companyContact }}</td>
@@ -50,7 +49,7 @@
             <button class="custom-btn btn-details" (click)="goToDetails(convention.id)">Détails</button>
             <button class="custom-btn btn-delete" (click)="deleteConvention(convention.id)">Delete</button>
             <button 
-              class="custom-btn btn-validity" 
+              class="custom-btn btn-validity"
               [ngStyle]="{'background-color': convention.isValid ? '#28a745' : '#dc3545'}"
               (click)="toggleValidity(convention)">
               {{ convention.isValid ? 'Valid' : 'Not Valid' }}
@@ -61,4 +60,24 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- Pagination -->
+  <nav *ngIf="totalPages > 1">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="page === 1">
+        <a class="page-link" (click)="page = page - 1">Previous</a>
+      </li>
+
+      <li 
+        class="page-item" 
+        *ngFor="let p of [].constructor(totalPages); let i = index"
+        [class.active]="page === i + 1">
+        <a class="page-link" (click)="page = i + 1">{{ i + 1 }}</a>
+      </li>
+
+      <li class="page-item" [class.disabled]="page === totalPages">
+        <a class="page-link" (click)="page = page + 1">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>
