@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,22 +6,5 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  showDropdown = false;
-
-  toggleDropdown(event: Event) {
-    event.preventDefault(); // Prevent page from jumping
-    this.showDropdown = !this.showDropdown;
-  }
-
-  constructor(private router: Router) {}
-
-
-  /*onNavigate(event: any) {
-    const selectedValue = event.target.value;
-    if (selectedValue === 'upload') {
-      this.router.navigate(['/upload']);
-    }
-  } 
-    */
 
 }

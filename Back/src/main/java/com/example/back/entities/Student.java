@@ -16,7 +16,6 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student extends User{
-
     private String registrationNumber;
     private String cv;
     private String branche;
@@ -25,9 +24,7 @@ public class Student extends User{
     @OneToMany(cascade = CascadeType.ALL, mappedBy="student")
     private Set<Postulation> postulations;
 
-
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="student")
     private Set<InternshipConvention> internshipConventions ;
-
 
 }

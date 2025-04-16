@@ -1,1 +1,127 @@
-<p>complaints-admin works!</p>
+<div class="complaints-container">
+  <h2 class="text-center mb-4"> 📝 All Complaints</h2>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <button class="btn btn-primary" (click)="showStatistics()">
+      <i class="fas fa-chart-bar"></i> Statistiques
+    </button>
+  </div>
+
+  <!-- Barre de recherche -->
+  <div class="search-bar mb-3"><p>🔍</p>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Filter by type or status"    
+      [(ngModel)]="searchTerm"
+      (input)="applyFilter()"
+    />
+    
+  </div>
+
+  <!-- Détail de la plainte sélectionnée -->
+  <div *ngIf="selectedComplaint" class="selected-complaint card mb-4">
+    <div class="card-body">
+      <img *ngIf="selectedComplaint.image"
+           [src]="'http://localhost:9091/stage/uploads/' + selectedComplaint.image"
+           class="card-img-top complaint-img"
+           alt="Complaint Image" />
+      <h4 class="card-title">{{ selectedComplaint.title }}</h4>
+      <p class="card-text"><strong>Content:</strong> {{ selectedComplaint.content }}</p>
+      <p><strong>Type:</strong> {{ selectedComplaint.typeC }}</p>
+      <p>
+        <strong>Status:</strong>
+        <span [ngClass]="{
+          'text-warning': selectedComplaint.typeStatus === 'Pending',
+          'text-success': selectedComplaint.typeStatus === 'Resolved',
+          'text-danger': selectedComplaint.typeStatus === 'Rejected'
+        }">
+          {{ selectedComplaint.typeStatus }}
+        </span>
+      </p>
+      <p><strong>Date:</strong> {{ selectedComplaint.dateComplaint | date:'yyyy-MM-dd' }}</p>
+
+      <div *ngIf="selectedComplaint.responses && selectedComplaint.responses.length > 0; else noResponse">
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="m-0"><strong>Response :</strong> {{ selectedComplaint.responses[0].response }}</p>
+          
+          <div>
+            <button class="btn btn-warning btn-sm me-2" (click)="openResponseForm(selectedComplaint, true)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteResponse(selectedComplaint.responses[0].id)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+            
+          </div>
+        </div>
+        <p class="text-muted"><strong>Date Response:</strong> {{ selectedComplaint.responses[0].dateResponse | date:'yyyy-MM-dd' }}</p>
+      </div>
+      <button class="btn btn-danger btn-sm" (click)="deleteComplaint(selectedComplaint.id)">
+
+        <i class="fas fa-trash-alt"></i>
+      </button>
+      <ng-template #noResponse>
+        <button class="btn btn-info btn-sm" (click)="openResponseForm(selectedComplaint, false)">Answer</button>
+      </ng-template>
+    </div>
+  </div>
+  <!-- Formulaire de réponse -->
+  <div *ngIf="showResponseForm" class="response-form mt-4">
+    <h4>Répondre à la plainte : {{ selectedComplaint?.title }}</h4>
+    <form (ngSubmit)="submitResponse()">
+      <div class="form-group">
+        <label for="responseText">Response</label>
+        <textarea
+          id="responseText"
+          class="form-control"
+          [(ngModel)]="responseText"
+          name="responseText"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">
+        <i class="fas fa-paper-plane"></i> Send
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="closeResponseForm()">
+        <i class="fas fa-times"></i> Cancel
+      </button>
+    </form>
+  </div>
+
+
+  <!-- Liste des plaintes sous forme de cartes -->
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let complaint of filteredComplaints | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+      <div class="card complaint-card" (click)="selectComplaint(complaint)">
+        <div class="card-body">
+          <img *ngIf="complaint.image"
+               [src]="'http://localhost:9091/stage/uploads/' + complaint.image"
+               class="card-img-top complaint-img"
+               alt="Complaint Image" />
+          <h5 class="card-title">{{ complaint.title }}</h5>
+          <p class="card-text">{{ complaint.content | slice:0:50 }}...</p>
+          <p class="card-text"><strong>Type:</strong> {{ complaint.typeC }}</p>
+          <p>
+            <strong>Status:</strong>
+            <span [ngClass]="{
+              'text-warning': complaint.typeStatus === 'Pending',
+              'text-success': complaint.typeStatus === 'Resolved',
+              'text-danger': complaint.typeStatus === 'Rejected'
+            }">
+              {{ complaint.typeStatus }}
+            </span>
+          </p>
+          <p class="card-text"><strong>Date:</strong> {{ complaint.dateComplaint | date:'yyyy-MM-dd' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

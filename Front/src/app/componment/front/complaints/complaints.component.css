@@ -1,0 +1,153 @@
+/*
+.complaints-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 3cm;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h2 {
+  color: #0086FB;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.complaints-list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #0086FB;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+button {
+  padding: 8px 12px;
+  margin-right: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  border: none;
+}
+
+button.btn-warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+button.btn-warning:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+}
+
+button.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.btn-danger:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.search-bar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+.search-bar input {
+  width: 50%; /* Ajuste la largeur selon tes préférences */
+}
+.complaints-list .card {
+  height: 100%; /* Hauteur uniforme */
+  display: flex;
+  flex-direction: column;
+}
+
+.complaints-list .card-img-top {
+  height: 200px; /* Taille fixe pour les images */
+  object-fit: cover; /* Assure un bon ajustement */
+}
+
+.complaints-list .card-body {
+  flex-grow: 1; /* Permet au contenu de s'étirer */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.complaints-list .card-body p {
+  flex-grow: 1;
+}
+
+/* Ajustement du footer pour les boutons */
+.complaints-list .card-footer {
+  background: none;
+  border-top: none;
+  padding-top: 0;
+}
+
+
+.search-bar input {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.status-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Couleurs spécifiques par statut */
+.status-pending {
+  color: #ff9800; /* Orange */
+  border: 1px solid #ff9800;
+}
+
+.status-resolved {
+  color: #4caf50; /* Vert */
+  border: 1px solid #4caf50;
+}
+
+.status-rejected {
+  color: #f44336; /* Rouge */
+  border: 1px solid #f44336;
+}
+

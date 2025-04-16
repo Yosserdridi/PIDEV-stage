@@ -1,7 +1,6 @@
 package com.example.back.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,8 +23,6 @@ public class Task {
 
     private Date date;
 
-
-    @JsonBackReference
     @ManyToOne
     Journal journal;
 }

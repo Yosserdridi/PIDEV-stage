@@ -1,7 +1,6 @@
 package com.example.back.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,32 +25,18 @@ public class InternshipPFE {
     private Date startDate;
     private Date endDate;
     private String status;
-    private String signedConvention;
-    private String signaturePath;
 
-
-    @JsonBackReference
     @OneToOne
     InternshipConvention internshipConvention;
+
+    @ManyToOne
+    Teacher teacher;
+
+   
 
     @OneToOne
     private Restitution restitution;
 
     @OneToOne
-    private Files report;
-
-    @OneToOne
     private Soutenance soutenance;
-
-
-
-
-/*
-    @JsonBackReference
-    @ManyToOne
-    Teacher teacher ;
-*/
-
-
-
 }
