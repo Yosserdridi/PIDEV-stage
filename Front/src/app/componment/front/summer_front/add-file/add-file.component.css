@@ -1,0 +1,64 @@
+/* Style du conteneur */
+.container {
+    display: flex;
+    flex-direction: column;  /* Ensure the content is displayed vertically */
+    justify-content: flex-start;  /* Align items to the top */
+    align-items: center;  /* Keep it centered horizontally */
+    min-height: 100vh;
+}
+
+/* Style de la carte */
+.card {
+    max-width: 450px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+}
+
+/* Style du titre */
+.card h5 {
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+}
+
+/* Style des labels */
+.form-label {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Style des champs input */
+.input-group input[type="file"] {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+/* Effet au survol */
+.input-group input[type="file"]:hover {
+    border-color: #007bff;
+}
+
+/* Style des messages de texte */
+small.text-muted {
+    font-size: 13px;
+    color: #777;
+}
+
+/* Style du bouton */
+button[type="submit"] {
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Effet au survol du bouton */
+button[type="submit"]:hover {
+    background: #0056b3;
+    transform: scale(1.02);
+}

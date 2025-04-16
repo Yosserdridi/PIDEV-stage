@@ -1,0 +1,37 @@
+/* Conteneur pour les conventions - prend toute la largeur disponible */
+.convention-container {
+    width: 100%;
+    margin-bottom: 20px;  /* Ajoute de l'espace entre les lignes */
+  }
+  
+  /* Conteneur pour les statistiques */
+  .stat-container {
+    display: flex;
+    justify-content: space-between;  /* Espacement entre les composants */
+    gap: 20px;  /* Espacement entre les composants */
+  }
+  
+  app-list-convention {
+    width: 100%;  /* Le composant Convention prend toute la largeur */
+    height: 400px;  /* Ajuste la hauteur de Convention selon le besoin */
+  }
+  
+  app-statistique, app-statinvalid {
+    flex: 1;  /* Chaque composant prend la même largeur */
+    max-width: 48%;  /* Limite la largeur des statistiques pour ne pas se chevaucher */
+    height: 400px;  /* Ajuste la hauteur des graphiques */
+  }
+  
+  /* Responsive : pour les petits écrans */
+  @media (max-width: 768px) {
+    .stat-container {
+      flex-direction: column;  /* Les composants s'affichent l'un sous l'autre */
+      align-items: center;  /* Centre les composants */
+    }
+  
+    app-statistique, app-statinvalid {
+      max-width: 90%;  /* Augmente la largeur des composants sur les petits écrans */
+      height: auto;  /* Ajuste la hauteur des composants pour une meilleure lisibilité */
+    }
+  }
+  

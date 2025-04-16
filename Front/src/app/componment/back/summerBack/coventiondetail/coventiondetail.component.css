@@ -1,0 +1,70 @@
+/* Styles généraux pour les cards */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* Boutons dans les cards */
+  button.btn-success, button.btn-danger, button.btn-info, button.btn-primary, button.btn-secondary {
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  button.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  button.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  button.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+  }
+  
+  button.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  button.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  /* Formulaire de mise à jour du Journal */
+  input.form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  input.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+  }
+  .file-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .file-line p {
+    margin: 0;
+    flex: 1; /* permet au texte de prendre l’espace disponible */
+  }
+  
+  

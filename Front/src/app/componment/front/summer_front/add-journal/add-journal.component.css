@@ -1,0 +1,111 @@
+/* styles.css */
+
+/* Container styling */
+.container {
+    max-width: 960px;
+    margin-top: 3rem;
+  }
+  
+  /* Header styles */
+  h2, h3 {
+    font-weight: 600;
+  }
+  
+  .text-primary {
+    color: #007bff !important;
+  }
+  
+  .text-success {
+    color: #28a745 !important;
+  }
+  
+  .text-info {
+    color: #17a2b8 !important;
+  }
+  
+  /* Form styling */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-control {
+    font-size: 1rem;
+    border-radius: 0.25rem;
+  }
+  
+  .font-weight-bold {
+    font-weight: 700;
+  }
+  
+  /* Validation error message */
+  .text-danger {
+    color: #dc3545;
+  }
+  
+  /* Button styling */
+  .btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+  }
+  
+  .btn-secondary {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+  
+  .btn {
+    border-radius: 0.25rem;
+  }
+  
+  /* Button position styling */
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Margin spacing */
+  .mt-4 {
+    margin-top: 1.5rem !important;
+  }
+  
+  .mt-5 {
+    margin-top: 3rem !important;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem !important;
+  }
+  
+  /* General paragraph styling */
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Personnalisation du tableau */
+.table th, .table td {
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  .table-bordered {
+    border: 1px solid #1077de;
+  }
+  
+  
+  /* Responsive Layout */
+  @media (max-width: 768px) {
+    .container {
+      margin-top: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .btn-lg {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+    
+  }
+  

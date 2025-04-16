@@ -25,7 +25,6 @@
               <li class="nav-item">
                 <a class="nav-link" routerLink="/postulations">POSTULATIONS</a>
               </li>
-        
               <li class="nav-item dropdown" (mouseenter)="showDropdown = true" (mouseleave)="showDropdown = false">
                 <a class="nav-link dropdown-toggle" href="#" (click)="toggleDropdown($event)">PFE_INTERNSHIPS</a>
                 
@@ -35,14 +34,21 @@
                   <li><a class="dropdown-item" routerLink="/pfe">PFE</a></li>
                 </ul>
               </li>
-              
-              
-        
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/summer">SUMMER_INTERNSHIPS</a>
+              <li class="nav-item dropdown" (mouseenter)="showDropdown = true" (mouseleave)="showDropdown = false">
+                <a class="nav-link dropdown-toggle" href="#" (click)="toggleDropdown($event)">SUMMER_Internship</a>
+                
+                <ul class="dropdown-menu" *ngIf="showDropdown">
+            
+                  <li><a class="dropdown-item" routerLink="/add_convention">convention</a></li>
+                  <li><a class="dropdown-item" routerLink="/user_convention">detail_conevntion</a></li>
+
+                </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link" routerLink="/forum">FORUM</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/complaints">COMPLAINTS</a>
               </li>
             </ul>
           </div>
@@ -56,6 +62,5 @@
         
         </div>
     </nav>
-
     <router-outlet></router-outlet>
   </header>

@@ -1,0 +1,15 @@
+<div class="container">
+    <h2>internership details></h2>
+  
+    <div *ngIf="internship">
+      <p><strong>ID :</strong> {{ internship.id }}</p>
+      <p><strong>Titre :</strong> {{ internship.title }}</p>
+      <p><strong>Description :</strong> {{ internship.description }}</p>
+      <p><strong>Durée :</strong> {{ internship.duration }}</p>
+    </div>
+  
+    <button class="btn btn-primary" routerLink="/admin">Retour</button>
+  </div>
+
+
+  

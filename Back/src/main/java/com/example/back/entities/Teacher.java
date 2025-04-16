@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,6 +26,8 @@ public class Teacher extends User{
 
     //@JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL)
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="teacher")
     private Set<InternshipPFE> internshipPFEs;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -32,4 +35,13 @@ public class Teacher extends User{
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Soutenance> soutenances;
+
+
+    @OneToMany(mappedBy = "assignedTeacher")
+    private List<InternshipConvention> assignedConventions;
+
+
+
+
+
 }

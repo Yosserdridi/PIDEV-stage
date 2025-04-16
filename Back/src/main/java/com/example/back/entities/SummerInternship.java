@@ -1,10 +1,8 @@
 package com.example.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
@@ -24,18 +22,18 @@ public class SummerInternship {
 
     private int duration;
 
-    private Date startDate;
-
-    private Date endDate;
-
-    private String stauts;
 
 
+    private String statuts;
 
-
-    @OneToOne
+   // @Getter(AccessLevel.NONE)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     private InternshipConvention internshipConvention;
 
-    @OneToOne
-    Journal journal;
+
+   // @Getter(AccessLevel.NONE)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Files files;
 }

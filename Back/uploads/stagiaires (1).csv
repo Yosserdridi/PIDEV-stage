@@ -1,0 +1,806 @@
+id_stagiaire,nom,prenom,formation,module,score,status,heures_etudiees,taux_completion,test_intermediaire,test_final,presences,absences,taux_assiduite,interactions,niveau_initial,taux_reussite_projet,nombre_projets_realises,motivation,certification_obtenue
+1,Dupont,Jean,Développement Web,HTML & CSS,85,Validé,10,100,80,90,20,2,90.0,15,Débutant,95,3,Élevé,Oui
+2,Martin,Sophie,Développement Web,JavaScript,70,En cours,8,75,60,80,18,4,82.0,10,Intermédiaire,80,2,Moyen,Non
+3,Leroy,Paul,Développement Web,React.js,55,Non validé,5,40,50,60,12,8,60.0,5,Débutant,50,1,Faible,Non
+4,Bernard,Claire,Data Science,Python,90,Validé,12,100,85,95,22,0,100.0,20,Avancé,98,4,Élevé,Oui
+5,Moreau,Louis,Data Science,SQL,65,En cours,7,60,55,70,17,5,77.0,8,Intermédiaire,75,2,Moyen,Non
+6,Robert,Marie,Cloud Computing,JavaScript,93,Validé,9,87,85,100,14,3,82.35,16,Avancé,52,4,Élevé,Oui
+7,Fournier,Jean,Développement Web,Python,71,Validé,11,58,47,71,12,4,75.0,9,Intermédiaire,41,1,Moyen,Non
+8,Fournier,Claire,Développement Web,JavaScript,75,Validé,20,77,68,88,18,3,85.71,19,Débutant,88,3,Faible,Oui
+9,Dupont,Paul,Intelligence Artificielle,React.js,91,Validé,7,86,67,51,19,5,79.17,16,Avancé,49,1,Élevé,Non
+10,Robert,Claire,Développement Web,AWS,97,Validé,5,62,71,88,15,4,78.95,24,Débutant,59,5,Faible,Oui
+11,Garcia,Jean,Data Science,JavaScript,52,En cours,12,78,55,73,16,3,84.21,5,Intermédiaire,46,1,Faible,Non
+12,Bernard,Jean,Développement Web,React.js,50,En cours,6,44,40,89,19,3,86.36,5,Intermédiaire,95,2,Moyen,Oui
+13,Dupont,Claire,Développement Web,Python,54,En cours,15,64,76,71,13,1,92.86,12,Intermédiaire,45,1,Faible,Oui
+14,Fournier,Jean,Développement Web,React.js,88,Validé,9,41,48,55,22,3,88.0,5,Avancé,78,1,Élevé,Oui
+15,Bernard,Claire,Data Science,SQL,90,Validé,12,33,62,62,21,4,84.0,22,Débutant,54,4,Moyen,Non
+16,Moreau,Hugo,Développement Web,SQL,83,Validé,7,36,83,88,16,4,80.0,10,Intermédiaire,79,1,Élevé,Oui
+17,Leroy,Jean,Data Science,AWS,67,En cours,12,56,89,95,23,0,100.0,10,Avancé,78,5,Moyen,Oui
+18,Robert,Emma,Cybersécurité,Machine Learning,55,En cours,6,87,65,86,10,0,100.0,12,Intermédiaire,59,1,Faible,Non
+19,Garcia,Louis,Cloud Computing,AWS,70,Validé,15,38,57,63,23,1,95.83,22,Débutant,41,3,Élevé,Non
+20,Dupont,Emma,Cloud Computing,HTML & CSS,86,Validé,18,98,65,50,25,3,89.29,24,Intermédiaire,98,5,Moyen,Oui
+21,Leroy,Louis,Intelligence Artificielle,React.js,53,En cours,20,92,82,63,12,4,75.0,15,Avancé,59,3,Faible,Oui
+22,Mercier,Jean,Intelligence Artificielle,JavaScript,85,Validé,20,94,48,91,22,1,95.65,15,Débutant,91,3,Élevé,Non
+23,Fournier,Marie,Intelligence Artificielle,Sécurité Réseau,40,Non validé,17,79,62,70,19,1,95.0,13,Débutant,76,3,Faible,Non
+24,Mercier,Jean,Cloud Computing,React.js,59,En cours,13,39,60,69,12,2,85.71,15,Avancé,74,1,Élevé,Non
+25,Dupont,Jean,Cybersécurité,AWS,68,En cours,5,100,87,81,17,0,100.0,15,Débutant,88,4,Faible,Oui
+26,Bernard,Claire,Développement Web,AWS,76,Validé,15,36,61,70,12,1,92.31,25,Intermédiaire,65,3,Élevé,Oui
+27,Mercier,Sophie,Cybersécurité,React.js,61,En cours,5,84,78,51,25,5,83.33,16,Intermédiaire,66,1,Moyen,Non
+28,Dupont,Thomas,Développement Web,SQL,61,En cours,13,34,72,79,12,0,100.0,23,Débutant,46,3,Faible,Non
+29,Bernard,Thomas,Intelligence Artificielle,SQL,45,Non validé,6,69,50,65,12,1,92.31,16,Débutant,88,4,Faible,Non
+30,Garcia,Sophie,Intelligence Artificielle,Machine Learning,84,Validé,13,88,60,100,11,1,91.67,22,Avancé,88,3,Moyen,Non
+31,Dupont,Louis,Développement Web,SQL,55,En cours,11,35,72,74,25,4,86.21,9,Intermédiaire,97,2,Moyen,Oui
+32,Fournier,Sophie,Développement Web,HTML & CSS,48,Non validé,13,96,50,51,18,4,81.82,21,Débutant,84,4,Moyen,Oui
+33,Garcia,Marie,Intelligence Artificielle,React.js,96,Validé,12,98,70,81,12,2,85.71,16,Avancé,73,3,Élevé,Oui
+34,Leroy,Emma,Développement Web,React.js,41,Non validé,12,74,53,64,11,1,91.67,20,Avancé,51,1,Moyen,Non
+35,Bernard,Emma,Développement Web,Python,96,Validé,15,79,58,88,11,0,100.0,14,Débutant,40,4,Moyen,Non
+36,Moreau,Emma,Cybersécurité,Sécurité Réseau,52,En cours,12,76,68,75,25,5,83.33,20,Intermédiaire,89,1,Élevé,Oui
+37,Moreau,Hugo,Intelligence Artificielle,Python,67,En cours,18,51,41,63,25,3,89.29,12,Débutant,62,5,Faible,Non
+38,Martin,Thomas,Cloud Computing,AWS,42,Non validé,20,31,48,72,23,0,100.0,13,Avancé,77,1,Faible,Non
+39,Moreau,Louis,Data Science,Machine Learning,40,Non validé,14,36,71,64,10,2,83.33,17,Débutant,90,5,Élevé,Oui
+40,Dupont,Hugo,Développement Web,Python,51,En cours,8,93,69,75,18,4,81.82,5,Avancé,97,1,Faible,Oui
+41,Garcia,Emma,Cloud Computing,Python,51,En cours,20,98,50,97,17,5,77.27,12,Intermédiaire,74,3,Moyen,Non
+42,Leroy,Marie,Intelligence Artificielle,Python,43,Non validé,15,87,55,60,14,1,93.33,18,Avancé,94,1,Moyen,Non
+43,Garcia,Paul,Data Science,Machine Learning,73,Validé,12,43,52,99,17,1,94.44,18,Intermédiaire,87,4,Faible,Oui
+44,Mercier,Paul,Data Science,Machine Learning,82,Validé,15,63,87,67,24,2,92.31,23,Avancé,68,3,Élevé,Oui
+45,Robert,Paul,Cybersécurité,AWS,83,Validé,11,67,64,88,12,4,75.0,17,Débutant,52,2,Faible,Oui
+46,Fournier,Sophie,Data Science,Sécurité Réseau,71,Validé,14,66,70,54,25,1,96.15,9,Débutant,86,5,Élevé,Oui
+47,Robert,Sophie,Data Science,JavaScript,44,Non validé,20,99,49,54,17,5,77.27,22,Débutant,51,4,Élevé,Non
+48,Dupont,Paul,Cybersécurité,SQL,76,Validé,6,67,75,74,25,3,89.29,14,Avancé,65,3,Moyen,Oui
+49,Leroy,Thomas,Data Science,HTML & CSS,60,En cours,6,84,86,58,10,3,76.92,10,Avancé,97,5,Élevé,Non
+50,Fournier,Hugo,Développement Web,Python,86,Validé,7,31,43,96,22,5,81.48,10,Avancé,63,5,Moyen,Oui
+51,Lopez,Marie,Développement Web,JavaScript,57,En cours,18,50,48,72,25,3,89.29,19,Intermédiaire,42,3,Faible,Non
+52,Moreau,Paul,Développement Web,Python,44,Non validé,12,56,46,98,13,2,86.67,9,Avancé,56,2,Faible,Non
+53,Martin,Claire,Data Science,Python,69,En cours,19,72,84,74,18,5,78.26,7,Intermédiaire,52,1,Moyen,Non
+54,Leroy,Thomas,Intelligence Artificielle,HTML & CSS,83,Validé,9,97,82,54,12,3,80.0,25,Intermédiaire,80,1,Faible,Oui
+55,Leroy,Paul,Intelligence Artificielle,JavaScript,41,Non validé,18,60,56,58,24,3,88.89,9,Avancé,40,3,Faible,Oui
+56,Moreau,Paul,Développement Web,Sécurité Réseau,90,Validé,14,59,68,94,13,3,81.25,17,Intermédiaire,64,4,Moyen,Oui
+57,Bernard,Louis,Développement Web,Python,49,Non validé,5,61,81,51,25,4,86.21,23,Débutant,64,4,Faible,Non
+58,Lopez,Claire,Data Science,React.js,45,Non validé,6,91,51,74,10,1,90.91,19,Avancé,82,3,Élevé,Non
+59,Bernard,Camille,Data Science,React.js,48,Non validé,13,50,43,80,22,4,84.62,13,Avancé,49,1,Moyen,Oui
+60,Bernard,Claire,Data Science,React.js,46,Non validé,6,54,72,97,12,0,100.0,22,Intermédiaire,92,1,Moyen,Oui
+61,Mercier,Thomas,Data Science,AWS,71,Validé,20,48,56,83,15,0,100.0,13,Avancé,48,4,Moyen,Non
+62,Martin,Jean,Data Science,JavaScript,71,Validé,9,40,66,99,14,3,82.35,18,Débutant,65,1,Moyen,Oui
+63,Robert,Jean,Intelligence Artificielle,React.js,52,En cours,17,44,83,57,18,3,85.71,23,Débutant,68,1,Faible,Oui
+64,Lopez,Camille,Développement Web,SQL,89,Validé,14,32,43,83,11,0,100.0,25,Avancé,77,3,Moyen,Oui
+65,Mercier,Jean,Cybersécurité,Python,64,En cours,20,41,65,54,12,0,100.0,6,Débutant,49,5,Faible,Oui
+66,Robert,Marie,Data Science,Python,77,Validé,9,36,57,94,17,3,85.0,12,Intermédiaire,66,2,Élevé,Non
+67,Garcia,Claire,Data Science,JavaScript,63,En cours,18,48,69,64,13,1,92.86,21,Avancé,47,3,Faible,Oui
+68,Garcia,Marie,Cloud Computing,HTML & CSS,83,Validé,19,90,72,79,14,4,77.78,6,Débutant,59,5,Faible,Oui
+69,Mercier,Emma,Data Science,Sécurité Réseau,78,Validé,19,81,62,62,17,1,94.44,24,Débutant,65,2,Faible,Oui
+70,Garcia,Marie,Cybersécurité,JavaScript,52,En cours,14,69,62,66,14,5,73.68,18,Avancé,42,1,Faible,Non
+71,Garcia,Hugo,Cloud Computing,Python,53,En cours,12,63,51,72,13,4,76.47,8,Débutant,74,4,Moyen,Oui
+72,Dupont,Hugo,Data Science,React.js,49,Non validé,19,74,90,51,11,1,91.67,22,Intermédiaire,73,2,Faible,Non
+73,Garcia,Emma,Data Science,Python,83,Validé,17,61,51,58,25,1,96.15,12,Avancé,53,4,Faible,Non
+74,Martin,Thomas,Cloud Computing,SQL,40,Non validé,11,72,79,92,11,4,73.33,11,Débutant,41,3,Moyen,Non
+75,Moreau,Claire,Cloud Computing,Machine Learning,41,Non validé,10,62,53,98,10,1,90.91,24,Débutant,54,5,Élevé,Non
+76,Moreau,Paul,Cloud Computing,Sécurité Réseau,48,Non validé,16,44,86,81,12,3,80.0,19,Débutant,59,5,Faible,Non
+77,Lopez,Camille,Cybersécurité,React.js,92,Validé,16,42,74,76,10,0,100.0,13,Avancé,64,3,Moyen,Non
+78,Garcia,Louis,Cybersécurité,HTML & CSS,41,Non validé,20,84,50,88,20,5,80.0,22,Avancé,53,1,Moyen,Non
+79,Bernard,Jean,Intelligence Artificielle,JavaScript,64,En cours,18,80,47,75,11,3,78.57,20,Débutant,62,4,Moyen,Non
+80,Bernard,Thomas,Cybersécurité,AWS,74,Validé,16,86,86,88,18,4,81.82,13,Intermédiaire,91,4,Moyen,Non
+81,Leroy,Paul,Cloud Computing,JavaScript,69,En cours,18,63,43,78,15,5,75.0,23,Intermédiaire,97,1,Élevé,Non
+82,Leroy,Camille,Développement Web,AWS,58,En cours,20,85,55,50,24,2,92.31,19,Avancé,43,3,Faible,Oui
+83,Moreau,Paul,Cloud Computing,SQL,71,Validé,13,78,81,80,19,0,100.0,25,Débutant,46,4,Élevé,Oui
+84,Robert,Emma,Cybersécurité,Machine Learning,98,Validé,20,77,52,95,24,4,85.71,13,Intermédiaire,86,5,Faible,Non
+85,Leroy,Marie,Cloud Computing,SQL,79,Validé,9,61,53,99,22,4,84.62,9,Intermédiaire,70,3,Faible,Oui
+86,Lopez,Emma,Cloud Computing,Python,53,En cours,17,84,71,69,25,1,96.15,18,Débutant,63,1,Moyen,Oui
+87,Dupont,Claire,Développement Web,Python,93,Validé,15,81,66,74,23,1,95.83,12,Avancé,41,4,Faible,Oui
+88,Robert,Louis,Développement Web,React.js,78,Validé,19,53,72,94,23,2,92.0,6,Débutant,99,1,Faible,Non
+89,Lopez,Thomas,Cloud Computing,HTML & CSS,91,Validé,16,70,70,64,24,5,82.76,19,Avancé,46,1,Moyen,Oui
+90,Garcia,Claire,Cloud Computing,Sécurité Réseau,78,Validé,13,43,51,84,16,1,94.12,6,Débutant,70,3,Élevé,Non
+91,Martin,Claire,Data Science,Sécurité Réseau,90,Validé,7,62,53,93,17,0,100.0,23,Avancé,44,5,Moyen,Non
+92,Bernard,Marie,Data Science,React.js,59,En cours,13,41,78,90,21,3,87.5,7,Avancé,90,4,Faible,Oui
+93,Robert,Claire,Développement Web,Machine Learning,50,En cours,16,77,75,81,25,2,92.59,16,Intermédiaire,57,1,Élevé,Oui
+94,Dupont,Jean,Data Science,AWS,58,En cours,11,53,73,61,17,1,94.44,9,Avancé,45,4,Élevé,Oui
+95,Mercier,Marie,Développement Web,HTML & CSS,98,Validé,9,74,88,65,16,0,100.0,23,Débutant,94,5,Moyen,Non
+96,Mercier,Hugo,Développement Web,SQL,46,Non validé,8,36,57,55,10,3,76.92,20,Débutant,50,3,Faible,Oui
+97,Leroy,Paul,Data Science,React.js,64,En cours,8,66,84,72,19,2,90.48,25,Débutant,42,1,Faible,Non
+98,Robert,Thomas,Cloud Computing,AWS,94,Validé,20,88,53,82,18,5,78.26,5,Intermédiaire,56,1,Élevé,Non
+99,Robert,Paul,Data Science,Python,40,Non validé,9,82,76,83,19,4,82.61,22,Intermédiaire,50,1,Élevé,Oui
+100,Garcia,Louis,Intelligence Artificielle,Sécurité Réseau,63,En cours,12,94,64,65,25,4,86.21,20,Avancé,63,4,Moyen,Non
+101,Fournier,Claire,Cybersécurité,HTML & CSS,70,Validé,13,87,52,74,17,5,77.27,12,Débutant,67,4,Moyen,Oui
+102,Robert,Louis,Développement Web,React.js,51,En cours,19,79,74,88,25,3,89.29,13,Débutant,54,3,Faible,Non
+103,Moreau,Claire,Data Science,AWS,78,Validé,7,98,56,57,14,1,93.33,6,Avancé,49,4,Faible,Oui
+104,Moreau,Paul,Intelligence Artificielle,SQL,63,En cours,13,56,55,69,25,3,89.29,13,Avancé,54,4,Faible,Non
+105,Garcia,Louis,Data Science,Python,63,En cours,10,45,76,73,20,4,83.33,17,Avancé,61,1,Élevé,Non
+106,Leroy,Camille,Cloud Computing,SQL,40,Non validé,8,41,51,67,10,4,71.43,19,Intermédiaire,64,5,Faible,Non
+107,Robert,Jean,Data Science,AWS,91,Validé,18,85,70,51,19,3,86.36,13,Débutant,91,2,Élevé,Non
+108,Bernard,Emma,Data Science,HTML & CSS,85,Validé,20,37,45,75,24,5,82.76,21,Avancé,89,4,Élevé,Non
+109,Moreau,Louis,Cybersécurité,SQL,52,En cours,14,37,47,61,18,2,90.0,14,Débutant,93,2,Faible,Oui
+110,Mercier,Louis,Cloud Computing,Python,88,Validé,15,100,46,88,13,4,76.47,7,Intermédiaire,68,4,Faible,Oui
+111,Leroy,Thomas,Intelligence Artificielle,AWS,93,Validé,10,56,73,72,11,5,68.75,19,Débutant,72,2,Faible,Oui
+112,Mercier,Camille,Intelligence Artificielle,Sécurité Réseau,74,Validé,5,95,51,60,19,5,79.17,6,Intermédiaire,67,5,Faible,Non
+113,Lopez,Claire,Intelligence Artificielle,Python,75,Validé,12,67,72,69,13,2,86.67,17,Intermédiaire,50,3,Élevé,Non
+114,Mercier,Claire,Intelligence Artificielle,AWS,50,En cours,12,64,51,76,14,4,77.78,15,Avancé,63,1,Moyen,Oui
+115,Martin,Jean,Data Science,HTML & CSS,73,Validé,9,79,75,69,15,4,78.95,15,Avancé,85,2,Élevé,Non
+116,Lopez,Claire,Cloud Computing,Machine Learning,68,En cours,20,58,66,93,17,5,77.27,10,Débutant,100,1,Moyen,Oui
+117,Dupont,Louis,Développement Web,Sécurité Réseau,73,Validé,18,31,76,75,24,2,92.31,11,Débutant,100,5,Faible,Oui
+118,Moreau,Paul,Cybersécurité,JavaScript,78,Validé,10,69,65,84,20,3,86.96,15,Avancé,61,2,Faible,Non
+119,Moreau,Hugo,Data Science,AWS,59,En cours,8,100,61,96,19,3,86.36,21,Débutant,71,1,Faible,Oui
+120,Robert,Claire,Cybersécurité,JavaScript,88,Validé,20,51,86,56,24,3,88.89,24,Intermédiaire,93,1,Faible,Non
+121,Dupont,Jean,Développement Web,SQL,73,Validé,19,31,44,64,12,3,80.0,16,Intermédiaire,71,5,Faible,Oui
+122,Leroy,Claire,Data Science,SQL,96,Validé,19,49,87,56,11,0,100.0,15,Avancé,68,4,Faible,Non
+123,Robert,Hugo,Développement Web,SQL,67,En cours,13,62,53,95,12,2,85.71,11,Intermédiaire,84,2,Moyen,Oui
+124,Fournier,Louis,Data Science,AWS,44,Non validé,10,96,78,56,25,1,96.15,16,Débutant,54,5,Moyen,Oui
+125,Mercier,Emma,Cloud Computing,AWS,47,Non validé,17,99,47,69,18,0,100.0,12,Débutant,61,1,Élevé,Oui
+126,Leroy,Thomas,Data Science,Sécurité Réseau,85,Validé,7,75,80,68,14,2,87.5,9,Intermédiaire,53,2,Faible,Non
+127,Garcia,Thomas,Développement Web,React.js,40,Non validé,16,42,45,67,19,5,79.17,12,Avancé,62,2,Faible,Oui
+128,Robert,Thomas,Cloud Computing,Python,62,En cours,5,31,85,78,19,3,86.36,14,Débutant,40,4,Moyen,Non
+129,Robert,Thomas,Cybersécurité,JavaScript,75,Validé,5,59,84,86,11,0,100.0,11,Avancé,69,4,Moyen,Oui
+130,Lopez,Thomas,Cloud Computing,React.js,72,Validé,16,49,57,93,11,4,73.33,18,Débutant,40,1,Moyen,Oui
+131,Garcia,Thomas,Intelligence Artificielle,AWS,73,Validé,20,98,81,74,10,5,66.67,9,Avancé,42,1,Élevé,Oui
+132,Dupont,Camille,Cloud Computing,AWS,51,En cours,6,40,72,78,19,5,79.17,15,Intermédiaire,42,4,Faible,Non
+133,Lopez,Emma,Intelligence Artificielle,JavaScript,64,En cours,10,31,41,83,13,2,86.67,20,Intermédiaire,88,3,Moyen,Oui
+134,Robert,Emma,Développement Web,JavaScript,48,Non validé,16,60,40,78,24,1,96.0,7,Débutant,49,3,Moyen,Non
+135,Bernard,Jean,Cloud Computing,AWS,91,Validé,7,92,66,54,25,0,100.0,10,Avancé,65,4,Moyen,Non
+136,Martin,Emma,Intelligence Artificielle,Machine Learning,61,En cours,11,43,83,80,21,2,91.3,16,Débutant,47,4,Faible,Oui
+137,Garcia,Emma,Intelligence Artificielle,Python,60,En cours,7,93,50,95,19,1,95.0,18,Intermédiaire,88,4,Faible,Oui
+138,Mercier,Louis,Développement Web,AWS,95,Validé,10,70,83,88,19,3,86.36,24,Avancé,90,1,Élevé,Oui
+139,Fournier,Hugo,Data Science,React.js,97,Validé,19,67,84,83,14,2,87.5,11,Avancé,55,2,Faible,Oui
+140,Mercier,Paul,Data Science,Python,82,Validé,12,92,88,90,23,1,95.83,21,Débutant,45,5,Moyen,Oui
+141,Leroy,Claire,Cybersécurité,SQL,79,Validé,16,60,82,54,19,2,90.48,12,Avancé,90,1,Faible,Non
+142,Leroy,Marie,Intelligence Artificielle,Python,85,Validé,15,61,89,89,14,3,82.35,19,Avancé,79,4,Élevé,Non
+143,Leroy,Sophie,Cybersécurité,HTML & CSS,54,En cours,15,99,47,65,22,0,100.0,17,Avancé,88,1,Moyen,Non
+144,Lopez,Camille,Cloud Computing,React.js,88,Validé,15,79,90,58,19,4,82.61,23,Débutant,68,5,Faible,Non
+145,Fournier,Emma,Développement Web,Sécurité Réseau,85,Validé,15,84,55,95,12,4,75.0,17,Avancé,99,2,Moyen,Oui
+146,Dupont,Thomas,Data Science,HTML & CSS,95,Validé,9,82,44,97,12,1,92.31,23,Intermédiaire,67,4,Faible,Non
+147,Dupont,Thomas,Data Science,Machine Learning,75,Validé,18,74,63,73,22,3,88.0,22,Avancé,54,4,Élevé,Non
+148,Dupont,Jean,Cybersécurité,Sécurité Réseau,53,En cours,14,43,89,70,22,1,95.65,25,Intermédiaire,99,4,Élevé,Oui
+149,Dupont,Jean,Cloud Computing,JavaScript,69,En cours,12,72,66,80,13,1,92.86,23,Débutant,85,2,Élevé,Non
+150,Martin,Camille,Développement Web,Sécurité Réseau,69,En cours,14,49,74,50,22,2,91.67,9,Avancé,94,5,Élevé,Non
+151,Fournier,Paul,Cloud Computing,Machine Learning,64,En cours,19,53,67,83,15,3,83.33,23,Intermédiaire,60,3,Élevé,Non
+152,Lopez,Hugo,Cloud Computing,Python,84,Validé,10,36,85,88,21,0,100.0,19,Débutant,96,5,Élevé,Non
+153,Garcia,Louis,Cloud Computing,HTML & CSS,85,Validé,11,49,41,56,25,2,92.59,20,Avancé,92,4,Faible,Non
+154,Leroy,Thomas,Intelligence Artificielle,HTML & CSS,71,Validé,19,30,55,76,19,1,95.0,10,Débutant,92,5,Élevé,Non
+155,Leroy,Marie,Intelligence Artificielle,JavaScript,43,Non validé,14,53,44,50,12,5,70.59,22,Avancé,65,4,Faible,Oui
+156,Lopez,Thomas,Data Science,JavaScript,77,Validé,11,69,55,58,18,4,81.82,18,Débutant,89,2,Élevé,Non
+157,Leroy,Marie,Cloud Computing,React.js,66,En cours,18,96,78,84,10,2,83.33,15,Intermédiaire,91,5,Élevé,Oui
+158,Leroy,Thomas,Intelligence Artificielle,HTML & CSS,98,Validé,17,36,54,52,15,5,75.0,10,Avancé,93,3,Faible,Oui
+159,Bernard,Marie,Data Science,Python,55,En cours,16,48,90,77,19,5,79.17,5,Avancé,72,3,Élevé,Non
+160,Moreau,Sophie,Développement Web,JavaScript,41,Non validé,11,57,45,97,25,3,89.29,5,Avancé,93,3,Faible,Non
+161,Bernard,Thomas,Data Science,Sécurité Réseau,47,Non validé,18,54,65,76,12,4,75.0,24,Avancé,42,3,Faible,Non
+162,Garcia,Thomas,Data Science,React.js,82,Validé,6,34,48,97,22,2,91.67,7,Avancé,62,3,Élevé,Non
+163,Robert,Thomas,Data Science,SQL,46,Non validé,15,93,62,98,19,5,79.17,15,Avancé,88,5,Élevé,Oui
+164,Lopez,Thomas,Cybersécurité,React.js,66,En cours,13,51,62,87,23,1,95.83,21,Débutant,40,4,Faible,Non
+165,Martin,Emma,Cybersécurité,HTML & CSS,54,En cours,20,53,40,95,15,4,78.95,21,Avancé,42,5,Moyen,Oui
+166,Moreau,Camille,Intelligence Artificielle,Sécurité Réseau,55,En cours,20,77,83,98,18,0,100.0,12,Intermédiaire,96,3,Faible,Oui
+167,Bernard,Paul,Cybersécurité,Python,100,Validé,12,65,50,55,18,2,90.0,12,Intermédiaire,80,4,Faible,Non
+168,Moreau,Paul,Data Science,AWS,64,En cours,16,70,40,97,15,2,88.24,11,Avancé,93,2,Élevé,Non
+169,Mercier,Paul,Data Science,Python,85,Validé,13,89,86,51,16,0,100.0,11,Débutant,98,2,Élevé,Non
+170,Fournier,Thomas,Data Science,Machine Learning,94,Validé,17,71,71,99,14,3,82.35,9,Intermédiaire,74,2,Moyen,Non
+171,Dupont,Jean,Cybersécurité,AWS,70,Validé,16,84,55,68,11,2,84.62,19,Avancé,81,4,Élevé,Oui
+172,Leroy,Hugo,Cybersécurité,Python,82,Validé,20,97,42,76,18,4,81.82,14,Intermédiaire,69,5,Élevé,Non
+173,Fournier,Hugo,Intelligence Artificielle,JavaScript,63,En cours,20,38,77,55,24,0,100.0,19,Avancé,51,4,Faible,Oui
+174,Moreau,Marie,Cybersécurité,AWS,94,Validé,20,57,41,74,23,1,95.83,16,Intermédiaire,77,3,Élevé,Oui
+175,Dupont,Camille,Développement Web,Python,72,Validé,14,68,60,96,14,5,73.68,18,Débutant,58,5,Élevé,Oui
+176,Leroy,Sophie,Développement Web,SQL,50,En cours,20,66,67,97,16,1,94.12,16,Débutant,98,4,Moyen,Non
+177,Leroy,Jean,Développement Web,Python,49,Non validé,7,92,90,61,20,1,95.24,20,Intermédiaire,60,5,Moyen,Oui
+178,Fournier,Marie,Cloud Computing,SQL,65,En cours,19,50,63,64,24,5,82.76,14,Débutant,51,4,Faible,Oui
+179,Leroy,Louis,Data Science,Sécurité Réseau,85,Validé,6,49,74,58,18,4,81.82,5,Débutant,53,1,Élevé,Oui
+180,Martin,Camille,Intelligence Artificielle,JavaScript,79,Validé,14,79,62,80,14,3,82.35,11,Intermédiaire,68,1,Élevé,Oui
+181,Martin,Jean,Cloud Computing,AWS,58,En cours,13,63,61,99,21,1,95.45,11,Intermédiaire,92,1,Moyen,Oui
+182,Leroy,Thomas,Cloud Computing,JavaScript,79,Validé,16,68,89,80,24,4,85.71,9,Débutant,99,3,Faible,Oui
+183,Mercier,Jean,Data Science,JavaScript,71,Validé,5,92,74,78,14,1,93.33,7,Intermédiaire,68,2,Élevé,Non
+184,Mercier,Louis,Intelligence Artificielle,AWS,94,Validé,16,99,60,60,11,3,78.57,11,Débutant,67,3,Moyen,Non
+185,Mercier,Sophie,Développement Web,AWS,94,Validé,12,68,51,50,20,3,86.96,16,Débutant,66,1,Faible,Oui
+186,Moreau,Marie,Développement Web,Sécurité Réseau,81,Validé,10,55,64,72,11,2,84.62,15,Débutant,44,1,Faible,Oui
+187,Leroy,Claire,Développement Web,HTML & CSS,76,Validé,19,93,46,98,10,2,83.33,7,Intermédiaire,51,2,Faible,Oui
+188,Fournier,Jean,Cybersécurité,Machine Learning,50,En cours,15,42,53,57,25,3,89.29,24,Avancé,83,1,Élevé,Non
+189,Moreau,Sophie,Cloud Computing,Machine Learning,76,Validé,13,100,82,98,22,5,81.48,9,Avancé,84,5,Faible,Oui
+190,Dupont,Paul,Développement Web,HTML & CSS,77,Validé,13,41,90,69,20,0,100.0,5,Avancé,91,1,Moyen,Oui
+191,Martin,Louis,Intelligence Artificielle,Sécurité Réseau,82,Validé,11,61,50,93,21,2,91.3,14,Avancé,85,1,Moyen,Oui
+192,Mercier,Claire,Développement Web,SQL,55,En cours,20,97,53,90,12,3,80.0,25,Débutant,70,3,Faible,Oui
+193,Martin,Paul,Cybersécurité,React.js,55,En cours,5,76,83,97,23,2,92.0,11,Avancé,71,4,Faible,Oui
+194,Robert,Louis,Data Science,React.js,84,Validé,17,78,47,54,14,4,77.78,20,Avancé,98,3,Faible,Oui
+195,Garcia,Hugo,Cybersécurité,Sécurité Réseau,74,Validé,19,68,90,97,24,1,96.0,15,Avancé,46,5,Faible,Oui
+196,Moreau,Camille,Cloud Computing,Sécurité Réseau,94,Validé,20,31,88,94,15,2,88.24,15,Intermédiaire,49,2,Moyen,Non
+197,Dupont,Thomas,Développement Web,HTML & CSS,56,En cours,16,97,87,59,13,0,100.0,14,Avancé,41,3,Faible,Non
+198,Robert,Marie,Développement Web,Sécurité Réseau,49,Non validé,14,49,42,81,13,3,81.25,9,Avancé,79,2,Élevé,Non
+199,Dupont,Paul,Cloud Computing,JavaScript,52,En cours,6,64,46,61,19,4,82.61,5,Débutant,87,1,Faible,Oui
+200,Fournier,Louis,Cloud Computing,Machine Learning,73,Validé,7,90,46,62,10,5,66.67,8,Avancé,78,4,Élevé,Oui
+201,Bernard,Marie,Cybersécurité,HTML & CSS,66,En cours,16,81,86,65,13,3,81.25,12,Débutant,43,4,Moyen,Oui
+202,Garcia,Marie,Cloud Computing,SQL,63,En cours,18,72,80,95,12,4,75.0,19,Avancé,90,3,Moyen,Non
+203,Dupont,Louis,Cloud Computing,AWS,93,Validé,8,100,63,82,11,0,100.0,15,Intermédiaire,83,3,Moyen,Non
+204,Moreau,Sophie,Cybersécurité,HTML & CSS,80,Validé,16,59,51,86,23,4,85.19,18,Intermédiaire,50,1,Élevé,Oui
+205,Mercier,Louis,Cloud Computing,Machine Learning,59,En cours,10,79,58,66,23,0,100.0,10,Avancé,87,2,Élevé,Oui
+206,Bernard,Marie,Cloud Computing,Machine Learning,77,Validé,17,84,90,92,24,4,85.71,14,Avancé,72,3,Faible,Oui
+207,Moreau,Sophie,Data Science,AWS,100,Validé,15,84,84,70,11,2,84.62,16,Débutant,81,1,Faible,Non
+208,Fournier,Jean,Cloud Computing,Python,85,Validé,18,89,58,69,19,0,100.0,11,Débutant,78,1,Faible,Non
+209,Martin,Paul,Cloud Computing,JavaScript,97,Validé,13,94,72,86,24,3,88.89,13,Avancé,53,2,Faible,Oui
+210,Lopez,Jean,Cybersécurité,JavaScript,50,En cours,16,57,64,90,14,2,87.5,9,Intermédiaire,64,5,Faible,Oui
+211,Leroy,Sophie,Développement Web,Sécurité Réseau,80,Validé,5,65,66,80,24,1,96.0,5,Intermédiaire,88,3,Élevé,Oui
+212,Moreau,Sophie,Cybersécurité,Sécurité Réseau,82,Validé,11,36,46,64,17,3,85.0,8,Débutant,85,3,Élevé,Non
+213,Martin,Louis,Développement Web,JavaScript,55,En cours,18,50,80,59,17,3,85.0,8,Intermédiaire,95,4,Faible,Non
+214,Mercier,Jean,Intelligence Artificielle,Sécurité Réseau,47,Non validé,5,33,65,53,16,0,100.0,8,Intermédiaire,57,5,Moyen,Non
+215,Robert,Louis,Développement Web,Machine Learning,55,En cours,5,41,72,54,13,3,81.25,22,Intermédiaire,67,1,Élevé,Non
+216,Bernard,Claire,Data Science,SQL,43,Non validé,10,89,45,91,15,1,93.75,15,Intermédiaire,65,5,Faible,Oui
+217,Garcia,Sophie,Intelligence Artificielle,JavaScript,67,En cours,6,45,87,85,11,2,84.62,5,Avancé,97,5,Moyen,Non
+218,Bernard,Camille,Développement Web,Sécurité Réseau,100,Validé,13,44,51,64,20,1,95.24,18,Avancé,53,2,Moyen,Oui
+219,Robert,Sophie,Cloud Computing,React.js,43,Non validé,13,76,83,72,24,1,96.0,16,Avancé,84,5,Faible,Non
+220,Garcia,Paul,Développement Web,Python,92,Validé,15,64,73,75,15,3,83.33,20,Débutant,68,2,Élevé,Non
+221,Dupont,Sophie,Développement Web,React.js,68,En cours,20,86,44,65,23,4,85.19,6,Intermédiaire,79,4,Élevé,Non
+222,Garcia,Claire,Développement Web,React.js,83,Validé,7,46,52,98,10,2,83.33,5,Intermédiaire,77,5,Faible,Non
+223,Leroy,Camille,Intelligence Artificielle,Python,40,Non validé,11,86,50,98,25,1,96.15,25,Intermédiaire,48,1,Faible,Oui
+224,Dupont,Jean,Développement Web,JavaScript,60,En cours,9,56,55,58,18,4,81.82,11,Avancé,83,5,Faible,Oui
+225,Fournier,Thomas,Cloud Computing,Python,75,Validé,18,53,80,98,16,3,84.21,12,Avancé,42,5,Faible,Oui
+226,Bernard,Paul,Intelligence Artificielle,Machine Learning,71,Validé,11,53,50,65,17,1,94.44,23,Avancé,59,3,Faible,Non
+227,Martin,Marie,Data Science,JavaScript,52,En cours,10,62,71,59,16,1,94.12,7,Intermédiaire,49,5,Faible,Oui
+228,Leroy,Marie,Développement Web,Machine Learning,83,Validé,6,99,51,89,21,2,91.3,5,Intermédiaire,40,2,Faible,Oui
+229,Martin,Claire,Cloud Computing,JavaScript,59,En cours,14,90,86,67,23,3,88.46,8,Débutant,47,2,Moyen,Non
+230,Moreau,Hugo,Cloud Computing,React.js,51,En cours,6,32,85,82,11,2,84.62,14,Intermédiaire,78,2,Moyen,Non
+231,Dupont,Jean,Data Science,React.js,93,Validé,6,95,51,90,23,3,88.46,16,Intermédiaire,62,5,Élevé,Non
+232,Leroy,Paul,Développement Web,HTML & CSS,81,Validé,9,73,76,74,24,0,100.0,13,Débutant,95,2,Faible,Non
+233,Dupont,Thomas,Intelligence Artificielle,JavaScript,51,En cours,13,87,50,73,15,5,75.0,7,Avancé,46,2,Faible,Oui
+234,Bernard,Sophie,Développement Web,Python,62,En cours,13,90,47,77,22,3,88.0,12,Débutant,42,1,Faible,Non
+235,Mercier,Camille,Intelligence Artificielle,Python,76,Validé,14,43,73,82,16,4,80.0,5,Avancé,60,5,Élevé,Oui
+236,Moreau,Thomas,Data Science,HTML & CSS,98,Validé,6,60,63,73,16,3,84.21,7,Débutant,77,4,Moyen,Oui
+237,Garcia,Jean,Cloud Computing,Python,74,Validé,19,45,59,81,20,2,90.91,5,Avancé,90,2,Moyen,Oui
+238,Dupont,Claire,Cybersécurité,React.js,46,Non validé,19,71,74,61,15,1,93.75,19,Débutant,70,4,Moyen,Oui
+239,Robert,Thomas,Intelligence Artificielle,Sécurité Réseau,78,Validé,20,85,86,57,18,0,100.0,16,Débutant,78,4,Élevé,Oui
+240,Bernard,Hugo,Cybersécurité,Machine Learning,89,Validé,12,66,43,53,16,2,88.89,16,Avancé,69,3,Élevé,Non
+241,Robert,Camille,Développement Web,React.js,96,Validé,9,58,67,62,18,3,85.71,10,Intermédiaire,67,2,Moyen,Oui
+242,Dupont,Camille,Développement Web,Sécurité Réseau,80,Validé,13,71,72,74,21,3,87.5,18,Avancé,58,2,Élevé,Oui
+243,Robert,Louis,Cybersécurité,HTML & CSS,43,Non validé,18,49,89,69,25,1,96.15,9,Intermédiaire,67,4,Moyen,Non
+244,Bernard,Hugo,Cloud Computing,HTML & CSS,80,Validé,11,99,85,61,19,0,100.0,25,Débutant,78,4,Faible,Oui
+245,Martin,Emma,Cloud Computing,Sécurité Réseau,57,En cours,7,31,40,99,10,0,100.0,25,Intermédiaire,68,5,Moyen,Non
+246,Robert,Thomas,Intelligence Artificielle,Python,50,En cours,13,71,42,59,20,2,90.91,9,Avancé,51,2,Élevé,Non
+247,Robert,Paul,Intelligence Artificielle,Python,62,En cours,11,92,55,54,21,1,95.45,17,Intermédiaire,64,3,Moyen,Non
+248,Martin,Paul,Développement Web,HTML & CSS,84,Validé,20,71,59,54,18,0,100.0,20,Débutant,41,2,Élevé,Non
+249,Mercier,Thomas,Cybersécurité,Sécurité Réseau,60,En cours,18,37,77,68,23,3,88.46,17,Intermédiaire,87,5,Élevé,Oui
+250,Leroy,Sophie,Cloud Computing,SQL,85,Validé,10,97,80,54,18,0,100.0,10,Débutant,79,2,Faible,Non
+251,Garcia,Jean,Cloud Computing,Python,94,Validé,11,61,58,51,17,1,94.44,7,Avancé,68,5,Élevé,Oui
+252,Martin,Emma,Cybersécurité,React.js,65,En cours,20,79,62,79,13,1,92.86,18,Débutant,63,2,Faible,Non
+253,Lopez,Emma,Développement Web,Python,89,Validé,7,39,86,63,14,2,87.5,14,Intermédiaire,89,1,Faible,Non
+254,Bernard,Jean,Intelligence Artificielle,JavaScript,62,En cours,16,89,40,73,14,2,87.5,7,Avancé,87,3,Élevé,Oui
+255,Lopez,Jean,Cybersécurité,Machine Learning,94,Validé,19,55,53,81,18,2,90.0,19,Avancé,94,1,Élevé,Oui
+256,Martin,Jean,Data Science,HTML & CSS,64,En cours,14,61,40,85,16,4,80.0,18,Débutant,97,5,Élevé,Oui
+257,Bernard,Marie,Cloud Computing,Sécurité Réseau,43,Non validé,5,87,86,54,18,0,100.0,21,Avancé,52,5,Élevé,Non
+258,Leroy,Hugo,Cybersécurité,SQL,78,Validé,15,42,68,85,17,5,77.27,21,Avancé,92,4,Élevé,Non
+259,Mercier,Marie,Intelligence Artificielle,Python,100,Validé,9,63,74,63,15,0,100.0,12,Débutant,49,4,Moyen,Oui
+260,Robert,Thomas,Intelligence Artificielle,Python,46,Non validé,17,52,64,72,23,5,82.14,18,Avancé,51,5,Élevé,Non
+261,Moreau,Thomas,Cybersécurité,SQL,48,Non validé,8,64,45,86,22,3,88.0,22,Débutant,42,2,Faible,Oui
+262,Garcia,Camille,Développement Web,React.js,80,Validé,14,91,90,55,13,0,100.0,8,Intermédiaire,81,5,Moyen,Oui
+263,Fournier,Camille,Intelligence Artificielle,Machine Learning,89,Validé,11,97,76,61,13,0,100.0,25,Débutant,81,5,Moyen,Oui
+264,Robert,Marie,Data Science,HTML & CSS,59,En cours,14,44,81,67,20,3,86.96,5,Débutant,41,4,Moyen,Oui
+265,Leroy,Paul,Cybersécurité,JavaScript,93,Validé,5,41,66,77,24,2,92.31,15,Débutant,51,2,Élevé,Non
+266,Robert,Jean,Développement Web,HTML & CSS,83,Validé,18,50,74,85,23,3,88.46,8,Intermédiaire,55,4,Moyen,Non
+267,Mercier,Emma,Cybersécurité,AWS,73,Validé,10,62,90,68,12,4,75.0,14,Intermédiaire,70,5,Élevé,Oui
+268,Fournier,Jean,Intelligence Artificielle,Sécurité Réseau,100,Validé,16,61,79,52,14,2,87.5,19,Avancé,74,2,Moyen,Non
+269,Robert,Hugo,Intelligence Artificielle,Machine Learning,44,Non validé,13,58,79,56,12,3,80.0,6,Intermédiaire,72,5,Élevé,Non
+270,Lopez,Jean,Développement Web,AWS,40,Non validé,15,54,48,61,19,4,82.61,16,Débutant,86,2,Élevé,Non
+271,Dupont,Louis,Data Science,React.js,100,Validé,10,52,55,52,12,2,85.71,9,Débutant,86,3,Faible,Non
+272,Dupont,Hugo,Cybersécurité,AWS,86,Validé,17,51,47,62,18,0,100.0,18,Débutant,97,2,Moyen,Oui
+273,Robert,Jean,Développement Web,AWS,64,En cours,14,30,55,90,22,2,91.67,18,Intermédiaire,53,1,Moyen,Oui
+274,Leroy,Emma,Développement Web,Machine Learning,46,Non validé,7,83,67,91,15,4,78.95,5,Avancé,46,1,Moyen,Oui
+275,Bernard,Claire,Cybersécurité,Machine Learning,57,En cours,13,57,50,72,19,0,100.0,24,Intermédiaire,64,1,Faible,Non
+276,Bernard,Hugo,Cybersécurité,Python,61,En cours,15,42,90,70,18,1,94.74,9,Débutant,56,1,Faible,Oui
+277,Lopez,Hugo,Développement Web,JavaScript,53,En cours,16,68,59,96,13,1,92.86,17,Intermédiaire,53,2,Élevé,Oui
+278,Leroy,Hugo,Data Science,Sécurité Réseau,53,En cours,10,84,89,84,22,2,91.67,8,Avancé,93,1,Moyen,Non
+279,Garcia,Louis,Intelligence Artificielle,Python,77,Validé,7,39,74,89,20,0,100.0,6,Avancé,90,1,Élevé,Oui
+280,Martin,Marie,Data Science,SQL,52,En cours,19,73,75,77,17,4,80.95,15,Intermédiaire,76,4,Moyen,Oui
+281,Bernard,Hugo,Intelligence Artificielle,Sécurité Réseau,76,Validé,10,82,50,52,11,2,84.62,5,Avancé,45,2,Faible,Non
+282,Garcia,Hugo,Cybersécurité,Machine Learning,56,En cours,17,48,40,56,20,4,83.33,16,Intermédiaire,75,4,Élevé,Oui
+283,Moreau,Louis,Cybersécurité,Python,82,Validé,12,68,47,86,24,5,82.76,8,Débutant,80,3,Faible,Non
+284,Robert,Emma,Cloud Computing,Machine Learning,67,En cours,18,44,68,83,16,3,84.21,19,Intermédiaire,65,2,Élevé,Non
+285,Leroy,Jean,Développement Web,Machine Learning,45,Non validé,16,90,82,52,23,0,100.0,18,Débutant,48,2,Moyen,Oui
+286,Fournier,Jean,Intelligence Artificielle,Sécurité Réseau,85,Validé,7,62,84,98,18,3,85.71,22,Débutant,71,2,Faible,Oui
+287,Dupont,Marie,Développement Web,SQL,63,En cours,18,64,46,99,25,5,83.33,12,Intermédiaire,62,4,Moyen,Non
+288,Bernard,Paul,Développement Web,HTML & CSS,100,Validé,7,87,65,77,13,5,72.22,5,Avancé,58,5,Moyen,Oui
+289,Bernard,Emma,Développement Web,SQL,67,En cours,6,44,68,61,15,0,100.0,21,Intermédiaire,58,4,Moyen,Oui
+290,Dupont,Marie,Cloud Computing,AWS,58,En cours,19,75,64,53,18,3,85.71,22,Avancé,99,4,Faible,Non
+291,Dupont,Camille,Cybersécurité,SQL,74,Validé,8,86,87,78,15,2,88.24,18,Avancé,65,2,Faible,Oui
+292,Fournier,Paul,Intelligence Artificielle,HTML & CSS,42,Non validé,9,78,72,57,11,0,100.0,20,Débutant,91,3,Moyen,Non
+293,Leroy,Claire,Cybersécurité,AWS,53,En cours,18,51,47,74,12,5,70.59,11,Intermédiaire,82,2,Élevé,Oui
+294,Garcia,Camille,Cybersécurité,HTML & CSS,54,En cours,6,87,52,90,14,5,73.68,23,Avancé,40,4,Moyen,Oui
+295,Fournier,Louis,Cybersécurité,React.js,75,Validé,10,36,42,55,15,2,88.24,21,Débutant,85,5,Élevé,Oui
+296,Martin,Claire,Cybersécurité,SQL,40,Non validé,5,47,63,81,25,3,89.29,18,Intermédiaire,46,5,Élevé,Oui
+297,Dupont,Camille,Cybersécurité,HTML & CSS,48,Non validé,20,65,48,85,15,0,100.0,5,Avancé,87,3,Élevé,Non
+298,Bernard,Marie,Cybersécurité,Machine Learning,65,En cours,6,62,86,73,11,4,73.33,6,Intermédiaire,73,3,Moyen,Oui
+299,Fournier,Hugo,Cloud Computing,React.js,62,En cours,13,86,89,88,20,4,83.33,12,Avancé,54,5,Élevé,Non
+300,Lopez,Thomas,Data Science,Sécurité Réseau,46,Non validé,18,75,62,62,24,5,82.76,23,Intermédiaire,61,2,Faible,Oui
+301,Robert,Jean,Intelligence Artificielle,React.js,75,Validé,17,93,58,68,11,3,78.57,15,Intermédiaire,51,4,Élevé,Oui
+302,Mercier,Marie,Développement Web,React.js,61,En cours,7,96,41,62,22,3,88.0,14,Intermédiaire,49,3,Faible,Oui
+303,Leroy,Thomas,Intelligence Artificielle,Sécurité Réseau,41,Non validé,16,90,70,87,25,4,86.21,7,Intermédiaire,95,4,Moyen,Non
+304,Martin,Sophie,Cloud Computing,SQL,51,En cours,9,73,74,58,21,1,95.45,12,Avancé,98,3,Élevé,Non
+305,Leroy,Louis,Intelligence Artificielle,Python,97,Validé,9,53,89,80,19,2,90.48,17,Intermédiaire,80,4,Faible,Oui
+306,Dupont,Sophie,Intelligence Artificielle,React.js,75,Validé,7,70,45,100,20,0,100.0,9,Intermédiaire,82,4,Élevé,Oui
+307,Mercier,Marie,Cloud Computing,AWS,69,En cours,6,97,64,85,19,0,100.0,10,Avancé,58,4,Faible,Non
+308,Dupont,Louis,Data Science,SQL,85,Validé,11,34,48,99,21,3,87.5,15,Débutant,74,3,Faible,Oui
+309,Mercier,Emma,Data Science,AWS,56,En cours,13,48,54,59,22,1,95.65,18,Avancé,72,3,Faible,Oui
+310,Bernard,Paul,Data Science,Sécurité Réseau,53,En cours,6,74,74,68,25,1,96.15,19,Avancé,100,1,Faible,Oui
+311,Lopez,Jean,Data Science,React.js,99,Validé,16,44,56,82,24,2,92.31,6,Débutant,76,3,Faible,Non
+312,Dupont,Claire,Intelligence Artificielle,JavaScript,62,En cours,19,86,67,92,20,0,100.0,8,Intermédiaire,45,2,Faible,Non
+313,Dupont,Claire,Cloud Computing,Sécurité Réseau,51,En cours,10,64,83,74,24,2,92.31,19,Avancé,40,3,Moyen,Non
+314,Fournier,Paul,Développement Web,React.js,68,En cours,5,62,65,80,25,4,86.21,16,Débutant,41,3,Moyen,Non
+315,Mercier,Marie,Data Science,HTML & CSS,94,Validé,20,57,87,66,12,3,80.0,13,Débutant,97,5,Faible,Oui
+316,Fournier,Hugo,Data Science,HTML & CSS,79,Validé,13,31,80,53,11,3,78.57,8,Avancé,57,1,Moyen,Oui
+317,Robert,Paul,Cybersécurité,AWS,82,Validé,14,93,77,83,19,3,86.36,25,Intermédiaire,66,5,Faible,Oui
+318,Lopez,Camille,Cybersécurité,JavaScript,96,Validé,15,38,69,76,15,0,100.0,22,Avancé,77,2,Élevé,Oui
+319,Moreau,Paul,Data Science,AWS,77,Validé,9,41,43,93,21,2,91.3,17,Intermédiaire,81,2,Faible,Oui
+320,Fournier,Louis,Cloud Computing,AWS,47,Non validé,6,56,56,85,23,4,85.19,22,Débutant,43,2,Élevé,Non
+321,Garcia,Paul,Cloud Computing,Machine Learning,72,Validé,19,77,75,90,11,1,91.67,24,Débutant,59,3,Moyen,Non
+322,Leroy,Paul,Développement Web,Python,88,Validé,14,75,47,88,18,0,100.0,7,Intermédiaire,58,3,Faible,Non
+323,Lopez,Sophie,Cybersécurité,JavaScript,63,En cours,12,50,80,65,22,4,84.62,23,Débutant,53,4,Moyen,Non
+324,Lopez,Marie,Développement Web,Sécurité Réseau,96,Validé,9,80,85,66,17,2,89.47,14,Avancé,85,1,Moyen,Oui
+325,Martin,Camille,Data Science,Sécurité Réseau,54,En cours,16,59,79,69,25,4,86.21,6,Avancé,74,5,Moyen,Oui
+326,Mercier,Sophie,Data Science,JavaScript,90,Validé,13,53,42,62,20,5,80.0,23,Avancé,72,2,Moyen,Oui
+327,Lopez,Marie,Cloud Computing,JavaScript,72,Validé,5,89,67,55,13,5,72.22,25,Avancé,92,4,Faible,Oui
+328,Mercier,Emma,Cloud Computing,Python,100,Validé,9,100,49,90,18,3,85.71,5,Avancé,47,1,Moyen,Non
+329,Robert,Hugo,Data Science,HTML & CSS,91,Validé,7,76,80,56,10,3,76.92,15,Intermédiaire,51,1,Moyen,Oui
+330,Fournier,Emma,Data Science,JavaScript,59,En cours,17,66,86,66,14,1,93.33,8,Intermédiaire,48,1,Faible,Oui
+331,Robert,Hugo,Data Science,Sécurité Réseau,76,Validé,13,62,69,84,21,0,100.0,8,Débutant,58,2,Faible,Oui
+332,Lopez,Camille,Développement Web,Python,44,Non validé,11,77,60,79,11,2,84.62,15,Intermédiaire,49,4,Faible,Non
+333,Mercier,Hugo,Cloud Computing,JavaScript,96,Validé,18,85,60,74,12,0,100.0,8,Avancé,98,1,Élevé,Oui
+334,Bernard,Camille,Data Science,Python,61,En cours,8,41,83,99,16,5,76.19,11,Avancé,97,2,Faible,Non
+335,Robert,Camille,Intelligence Artificielle,HTML & CSS,55,En cours,20,37,75,90,12,0,100.0,19,Intermédiaire,40,1,Élevé,Oui
+336,Leroy,Hugo,Cloud Computing,React.js,52,En cours,11,41,86,58,24,1,96.0,14,Intermédiaire,67,3,Moyen,Oui
+337,Dupont,Jean,Data Science,SQL,63,En cours,17,94,44,77,25,3,89.29,15,Intermédiaire,47,1,Moyen,Non
+338,Bernard,Paul,Cybersécurité,Machine Learning,40,Non validé,10,68,87,89,10,3,76.92,21,Intermédiaire,48,5,Élevé,Non
+339,Mercier,Louis,Cloud Computing,SQL,46,Non validé,18,97,67,51,25,0,100.0,6,Débutant,72,3,Faible,Oui
+340,Leroy,Sophie,Intelligence Artificielle,HTML & CSS,92,Validé,17,31,58,50,17,2,89.47,14,Avancé,98,1,Élevé,Oui
+341,Leroy,Jean,Cybersécurité,Python,41,Non validé,14,55,58,96,18,1,94.74,17,Intermédiaire,64,4,Moyen,Oui
+342,Robert,Thomas,Intelligence Artificielle,AWS,59,En cours,20,64,77,67,13,3,81.25,17,Avancé,49,5,Moyen,Non
+343,Lopez,Sophie,Data Science,HTML & CSS,47,Non validé,13,58,41,55,20,4,83.33,18,Intermédiaire,99,2,Élevé,Non
+344,Mercier,Thomas,Cloud Computing,JavaScript,81,Validé,20,74,70,98,15,2,88.24,9,Avancé,95,3,Moyen,Non
+345,Leroy,Claire,Data Science,SQL,48,Non validé,6,44,58,64,10,4,71.43,14,Avancé,69,5,Faible,Oui
+346,Garcia,Paul,Data Science,Python,100,Validé,14,45,74,57,21,5,80.77,14,Avancé,66,3,Faible,Non
+347,Robert,Camille,Cloud Computing,Python,73,Validé,19,30,81,87,12,0,100.0,13,Intermédiaire,100,2,Élevé,Non
+348,Martin,Louis,Cloud Computing,React.js,71,Validé,18,85,41,84,25,2,92.59,21,Intermédiaire,55,3,Élevé,Non
+349,Robert,Claire,Développement Web,HTML & CSS,43,Non validé,19,96,73,68,15,4,78.95,7,Débutant,45,4,Faible,Non
+350,Leroy,Jean,Cloud Computing,Python,76,Validé,13,73,89,82,17,0,100.0,24,Avancé,66,4,Moyen,Oui
+351,Garcia,Hugo,Intelligence Artificielle,AWS,54,En cours,13,76,81,74,12,3,80.0,14,Avancé,72,4,Moyen,Non
+352,Dupont,Sophie,Intelligence Artificielle,AWS,50,En cours,8,32,68,72,16,1,94.12,21,Intermédiaire,53,3,Faible,Oui
+353,Bernard,Camille,Cybersécurité,Python,90,Validé,18,70,85,54,23,5,82.14,16,Débutant,94,4,Élevé,Oui
+354,Garcia,Thomas,Intelligence Artificielle,Machine Learning,81,Validé,13,63,50,76,23,1,95.83,18,Débutant,55,3,Moyen,Oui
+355,Martin,Jean,Cybersécurité,React.js,86,Validé,9,80,44,55,21,2,91.3,22,Intermédiaire,89,5,Élevé,Non
+356,Mercier,Camille,Développement Web,React.js,45,Non validé,11,92,62,90,23,0,100.0,25,Débutant,73,2,Faible,Non
+357,Bernard,Sophie,Intelligence Artificielle,Machine Learning,70,Validé,18,76,57,98,19,2,90.48,23,Débutant,56,4,Faible,Non
+358,Bernard,Thomas,Cybersécurité,SQL,73,Validé,18,45,69,72,19,5,79.17,9,Débutant,96,2,Moyen,Oui
+359,Lopez,Emma,Data Science,Python,43,Non validé,14,63,88,73,19,5,79.17,25,Avancé,89,4,Moyen,Oui
+360,Bernard,Claire,Intelligence Artificielle,React.js,58,En cours,12,66,83,98,25,3,89.29,5,Débutant,96,5,Faible,Non
+361,Dupont,Jean,Intelligence Artificielle,SQL,41,Non validé,11,99,58,70,14,3,82.35,10,Intermédiaire,70,2,Moyen,Non
+362,Moreau,Paul,Cloud Computing,AWS,91,Validé,17,44,88,96,22,4,84.62,8,Débutant,73,4,Élevé,Oui
+363,Bernard,Hugo,Développement Web,SQL,69,En cours,10,55,40,67,24,3,88.89,7,Intermédiaire,92,2,Élevé,Oui
+364,Robert,Sophie,Intelligence Artificielle,SQL,80,Validé,19,80,47,67,11,4,73.33,16,Intermédiaire,55,1,Élevé,Oui
+365,Mercier,Thomas,Cybersécurité,React.js,89,Validé,10,62,56,95,18,4,81.82,19,Débutant,88,2,Moyen,Oui
+366,Fournier,Sophie,Cybersécurité,AWS,99,Validé,9,76,80,96,19,0,100.0,20,Avancé,98,4,Faible,Oui
+367,Fournier,Camille,Cybersécurité,Sécurité Réseau,42,Non validé,16,73,55,82,22,0,100.0,11,Intermédiaire,83,4,Moyen,Oui
+368,Garcia,Louis,Développement Web,React.js,48,Non validé,14,67,56,91,10,1,90.91,15,Débutant,64,3,Élevé,Non
+369,Dupont,Louis,Développement Web,Sécurité Réseau,54,En cours,9,57,83,65,25,2,92.59,24,Débutant,92,4,Élevé,Non
+370,Lopez,Camille,Cybersécurité,Machine Learning,83,Validé,8,72,40,58,13,3,81.25,7,Débutant,100,4,Élevé,Oui
+371,Moreau,Hugo,Développement Web,JavaScript,71,Validé,18,95,87,88,24,5,82.76,21,Intermédiaire,79,1,Élevé,Oui
+372,Garcia,Louis,Data Science,Sécurité Réseau,90,Validé,17,99,54,78,24,5,82.76,18,Intermédiaire,63,5,Moyen,Non
+373,Garcia,Sophie,Data Science,SQL,88,Validé,5,81,74,95,12,5,70.59,6,Débutant,60,3,Élevé,Non
+374,Garcia,Jean,Data Science,JavaScript,77,Validé,8,65,84,88,12,3,80.0,10,Avancé,40,4,Élevé,Oui
+375,Bernard,Hugo,Cloud Computing,React.js,99,Validé,7,65,57,94,21,4,84.0,19,Débutant,49,1,Faible,Non
+376,Garcia,Louis,Cybersécurité,HTML & CSS,47,Non validé,10,72,45,65,18,2,90.0,8,Intermédiaire,56,5,Faible,Non
+377,Robert,Paul,Développement Web,Sécurité Réseau,40,Non validé,20,69,68,86,13,2,86.67,13,Débutant,92,4,Faible,Non
+378,Dupont,Jean,Data Science,Python,88,Validé,18,45,71,89,16,5,76.19,9,Débutant,69,5,Élevé,Non
+379,Martin,Thomas,Data Science,AWS,95,Validé,17,98,73,70,16,2,88.89,5,Débutant,71,5,Moyen,Non
+380,Dupont,Emma,Data Science,Python,54,En cours,17,42,86,69,14,0,100.0,19,Avancé,89,5,Élevé,Oui
+381,Mercier,Camille,Développement Web,React.js,43,Non validé,8,35,47,88,19,0,100.0,20,Débutant,81,2,Élevé,Oui
+382,Robert,Emma,Développement Web,JavaScript,64,En cours,8,74,82,58,19,4,82.61,19,Avancé,79,4,Moyen,Oui
+383,Fournier,Thomas,Cybersécurité,JavaScript,56,En cours,16,63,81,82,17,3,85.0,19,Avancé,46,1,Moyen,Oui
+384,Fournier,Camille,Intelligence Artificielle,HTML & CSS,56,En cours,18,99,80,55,10,4,71.43,8,Débutant,94,5,Élevé,Oui
+385,Garcia,Sophie,Cybersécurité,JavaScript,95,Validé,13,73,62,86,16,1,94.12,12,Intermédiaire,86,5,Faible,Non
+386,Moreau,Sophie,Intelligence Artificielle,JavaScript,70,Validé,7,41,65,71,19,5,79.17,17,Avancé,56,2,Moyen,Oui
+387,Bernard,Emma,Data Science,SQL,71,Validé,16,67,66,52,18,1,94.74,7,Intermédiaire,79,2,Moyen,Oui
+388,Moreau,Emma,Intelligence Artificielle,Sécurité Réseau,64,En cours,12,66,89,76,14,4,77.78,10,Avancé,84,2,Moyen,Oui
+389,Leroy,Paul,Intelligence Artificielle,HTML & CSS,61,En cours,5,85,76,59,20,2,90.91,14,Intermédiaire,70,2,Élevé,Oui
+390,Fournier,Emma,Intelligence Artificielle,SQL,100,Validé,13,66,42,86,21,4,84.0,17,Intermédiaire,99,3,Moyen,Oui
+391,Lopez,Hugo,Cloud Computing,JavaScript,84,Validé,20,45,48,67,24,3,88.89,13,Intermédiaire,53,1,Faible,Oui
+392,Leroy,Louis,Développement Web,HTML & CSS,88,Validé,16,50,83,86,16,0,100.0,16,Avancé,68,2,Moyen,Oui
+393,Robert,Hugo,Cloud Computing,Machine Learning,92,Validé,17,44,82,88,13,5,72.22,15,Intermédiaire,90,1,Élevé,Non
+394,Leroy,Hugo,Intelligence Artificielle,HTML & CSS,76,Validé,19,68,88,82,11,2,84.62,15,Intermédiaire,45,2,Moyen,Non
+395,Fournier,Emma,Cybersécurité,SQL,44,Non validé,14,84,71,99,16,1,94.12,16,Débutant,41,5,Faible,Non
+396,Lopez,Claire,Data Science,Machine Learning,90,Validé,5,60,81,62,22,3,88.0,25,Débutant,41,2,Faible,Oui
+397,Moreau,Louis,Cybersécurité,SQL,68,En cours,6,32,79,100,16,4,80.0,14,Avancé,90,5,Moyen,Oui
+398,Dupont,Sophie,Intelligence Artificielle,Machine Learning,48,Non validé,9,55,67,91,22,2,91.67,18,Débutant,48,3,Faible,Non
+399,Mercier,Marie,Data Science,Python,97,Validé,7,77,68,92,12,0,100.0,11,Intermédiaire,53,2,Moyen,Non
+400,Bernard,Paul,Intelligence Artificielle,React.js,83,Validé,6,70,50,52,14,0,100.0,13,Avancé,77,4,Élevé,Oui
+401,Leroy,Thomas,Cybersécurité,HTML & CSS,89,Validé,15,66,59,79,18,0,100.0,17,Avancé,56,2,Moyen,Non
+402,Moreau,Jean,Développement Web,Machine Learning,96,Validé,13,82,51,53,14,0,100.0,11,Intermédiaire,45,5,Élevé,Oui
+403,Martin,Paul,Cybersécurité,SQL,64,En cours,16,68,74,56,17,0,100.0,17,Avancé,64,2,Moyen,Oui
+404,Dupont,Paul,Intelligence Artificielle,HTML & CSS,86,Validé,17,33,60,73,15,0,100.0,10,Débutant,95,4,Élevé,Non
+405,Lopez,Thomas,Intelligence Artificielle,Python,60,En cours,17,81,66,89,17,0,100.0,22,Intermédiaire,47,1,Faible,Oui
+406,Moreau,Louis,Cybersécurité,SQL,77,Validé,12,36,42,77,25,3,89.29,8,Avancé,66,4,Élevé,Non
+407,Bernard,Louis,Développement Web,Python,87,Validé,15,99,83,52,13,2,86.67,7,Avancé,52,5,Faible,Non
+408,Garcia,Thomas,Développement Web,SQL,97,Validé,6,69,81,66,20,4,83.33,23,Intermédiaire,84,4,Moyen,Oui
+409,Mercier,Hugo,Data Science,Machine Learning,72,Validé,12,61,71,64,17,2,89.47,14,Avancé,40,1,Moyen,Oui
+410,Garcia,Thomas,Cloud Computing,Python,88,Validé,18,59,71,95,19,5,79.17,9,Débutant,44,4,Faible,Oui
+411,Mercier,Camille,Intelligence Artificielle,Python,47,Non validé,16,65,66,70,16,4,80.0,12,Avancé,50,5,Élevé,Non
+412,Dupont,Marie,Cybersécurité,Python,97,Validé,20,40,77,71,20,2,90.91,9,Intermédiaire,72,2,Élevé,Non
+413,Bernard,Paul,Data Science,AWS,66,En cours,13,88,52,82,16,2,88.89,8,Intermédiaire,51,1,Faible,Non
+414,Moreau,Sophie,Data Science,SQL,100,Validé,17,45,85,95,25,5,83.33,24,Débutant,82,2,Élevé,Oui
+415,Martin,Thomas,Cybersécurité,HTML & CSS,55,En cours,19,33,78,71,13,0,100.0,5,Débutant,76,3,Élevé,Oui
+416,Garcia,Claire,Intelligence Artificielle,SQL,47,Non validé,8,40,52,88,13,0,100.0,16,Intermédiaire,43,3,Moyen,Non
+417,Mercier,Thomas,Data Science,HTML & CSS,96,Validé,11,75,57,53,16,3,84.21,19,Intermédiaire,90,5,Moyen,Oui
+418,Moreau,Camille,Cybersécurité,AWS,62,En cours,11,33,85,81,16,3,84.21,22,Débutant,54,3,Élevé,Oui
+419,Fournier,Jean,Intelligence Artificielle,AWS,83,Validé,14,46,43,88,11,2,84.62,12,Débutant,81,1,Faible,Oui
+420,Mercier,Sophie,Cloud Computing,React.js,48,Non validé,20,44,69,94,20,5,80.0,25,Débutant,90,4,Moyen,Oui
+421,Bernard,Thomas,Cybersécurité,JavaScript,47,Non validé,16,65,48,79,17,3,85.0,9,Débutant,58,1,Faible,Oui
+422,Garcia,Louis,Intelligence Artificielle,Machine Learning,83,Validé,9,57,81,70,18,2,90.0,15,Avancé,97,1,Moyen,Oui
+423,Mercier,Louis,Développement Web,AWS,79,Validé,17,35,56,76,12,2,85.71,12,Avancé,67,2,Élevé,Non
+424,Leroy,Jean,Cloud Computing,HTML & CSS,100,Validé,9,45,70,74,16,5,76.19,23,Avancé,40,1,Faible,Oui
+425,Dupont,Paul,Développement Web,Python,87,Validé,5,41,51,54,25,3,89.29,14,Intermédiaire,42,1,Moyen,Non
+426,Leroy,Emma,Développement Web,SQL,45,Non validé,16,73,75,84,12,2,85.71,22,Débutant,61,2,Faible,Oui
+427,Lopez,Paul,Intelligence Artificielle,JavaScript,67,En cours,20,46,59,55,18,4,81.82,6,Avancé,84,2,Élevé,Oui
+428,Fournier,Paul,Développement Web,Machine Learning,69,En cours,13,78,57,57,15,5,75.0,22,Avancé,44,5,Faible,Oui
+429,Moreau,Camille,Data Science,Sécurité Réseau,54,En cours,12,92,83,69,23,5,82.14,5,Avancé,96,4,Faible,Non
+430,Garcia,Sophie,Développement Web,Sécurité Réseau,99,Validé,17,47,57,65,20,3,86.96,13,Débutant,63,5,Élevé,Oui
+431,Mercier,Jean,Intelligence Artificielle,JavaScript,42,Non validé,12,38,46,97,24,0,100.0,18,Intermédiaire,73,1,Élevé,Non
+432,Martin,Jean,Développement Web,AWS,75,Validé,12,79,77,66,24,0,100.0,15,Avancé,95,4,Moyen,Non
+433,Lopez,Hugo,Développement Web,React.js,72,Validé,16,42,90,69,16,5,76.19,7,Débutant,94,3,Faible,Non
+434,Lopez,Camille,Développement Web,SQL,62,En cours,10,71,88,75,21,1,95.45,7,Débutant,67,4,Moyen,Non
+435,Martin,Marie,Cybersécurité,Python,84,Validé,16,38,50,99,15,2,88.24,12,Intermédiaire,64,3,Élevé,Non
+436,Moreau,Paul,Data Science,React.js,49,Non validé,17,67,70,69,16,0,100.0,11,Avancé,59,4,Faible,Non
+437,Garcia,Claire,Intelligence Artificielle,React.js,50,En cours,16,74,41,72,21,2,91.3,23,Débutant,55,1,Moyen,Oui
+438,Lopez,Emma,Intelligence Artificielle,Sécurité Réseau,68,En cours,14,75,67,76,23,1,95.83,20,Avancé,94,1,Moyen,Non
+439,Robert,Camille,Intelligence Artificielle,Python,57,En cours,17,58,74,51,17,2,89.47,19,Débutant,85,3,Moyen,Oui
+440,Garcia,Thomas,Cybersécurité,SQL,74,Validé,11,45,42,86,22,0,100.0,20,Avancé,60,2,Moyen,Oui
+441,Garcia,Thomas,Data Science,Machine Learning,80,Validé,16,48,49,91,15,2,88.24,21,Avancé,85,4,Élevé,Non
+442,Moreau,Paul,Cloud Computing,React.js,96,Validé,14,95,83,79,12,1,92.31,20,Avancé,79,4,Moyen,Non
+443,Mercier,Camille,Cybersécurité,Python,76,Validé,16,87,80,94,23,3,88.46,22,Débutant,44,3,Élevé,Non
+444,Garcia,Marie,Intelligence Artificielle,React.js,46,Non validé,14,61,90,86,16,2,88.89,8,Débutant,90,1,Faible,Non
+445,Moreau,Camille,Cloud Computing,JavaScript,68,En cours,5,94,56,80,17,2,89.47,21,Intermédiaire,62,5,Faible,Non
+446,Bernard,Claire,Intelligence Artificielle,SQL,48,Non validé,10,40,67,56,19,4,82.61,21,Débutant,60,2,Faible,Non
+447,Moreau,Emma,Cloud Computing,SQL,45,Non validé,5,85,69,93,25,0,100.0,14,Débutant,74,1,Faible,Oui
+448,Martin,Thomas,Intelligence Artificielle,JavaScript,53,En cours,17,55,64,94,17,3,85.0,22,Avancé,58,2,Moyen,Oui
+449,Garcia,Jean,Intelligence Artificielle,Python,44,Non validé,5,33,60,63,14,4,77.78,22,Débutant,71,3,Moyen,Non
+450,Robert,Jean,Cybersécurité,JavaScript,47,Non validé,5,52,60,56,23,0,100.0,21,Avancé,93,3,Élevé,Non
+451,Robert,Emma,Cloud Computing,SQL,75,Validé,7,61,86,99,17,3,85.0,19,Avancé,91,1,Faible,Non
+452,Fournier,Sophie,Cybersécurité,AWS,92,Validé,11,73,59,59,15,1,93.75,23,Intermédiaire,94,5,Faible,Non
+453,Mercier,Thomas,Cloud Computing,Python,75,Validé,12,73,68,76,25,5,83.33,23,Débutant,46,1,Moyen,Oui
+454,Mercier,Louis,Data Science,AWS,89,Validé,13,42,48,59,18,1,94.74,19,Intermédiaire,49,2,Faible,Oui
+455,Garcia,Marie,Cybersécurité,HTML & CSS,92,Validé,15,45,60,78,19,1,95.0,20,Intermédiaire,90,5,Moyen,Oui
+456,Moreau,Claire,Développement Web,AWS,66,En cours,7,41,50,62,11,5,68.75,19,Intermédiaire,63,5,Faible,Non
+457,Robert,Claire,Intelligence Artificielle,Python,86,Validé,18,61,81,81,12,5,70.59,23,Intermédiaire,44,3,Élevé,Non
+458,Leroy,Marie,Développement Web,Machine Learning,52,En cours,13,83,83,75,23,4,85.19,20,Débutant,76,1,Élevé,Oui
+459,Fournier,Sophie,Intelligence Artificielle,Python,96,Validé,8,38,83,80,16,4,80.0,17,Avancé,68,2,Élevé,Non
+460,Garcia,Emma,Cybersécurité,HTML & CSS,46,Non validé,6,40,64,82,16,4,80.0,20,Avancé,68,1,Faible,Oui
+461,Mercier,Marie,Data Science,Python,46,Non validé,17,33,55,63,18,4,81.82,14,Intermédiaire,42,1,Faible,Non
+462,Moreau,Emma,Data Science,JavaScript,63,En cours,5,43,61,55,11,4,73.33,11,Débutant,90,4,Moyen,Non
+463,Robert,Thomas,Développement Web,HTML & CSS,73,Validé,19,53,48,65,21,3,87.5,25,Intermédiaire,96,4,Faible,Oui
+464,Bernard,Sophie,Intelligence Artificielle,Sécurité Réseau,75,Validé,5,48,89,86,12,1,92.31,14,Intermédiaire,91,3,Élevé,Oui
+465,Fournier,Hugo,Data Science,Python,55,En cours,16,58,80,85,21,2,91.3,18,Avancé,42,4,Moyen,Non
+466,Dupont,Camille,Développement Web,JavaScript,46,Non validé,5,85,58,55,25,1,96.15,14,Débutant,75,5,Moyen,Non
+467,Dupont,Sophie,Développement Web,HTML & CSS,99,Validé,7,72,81,69,10,0,100.0,7,Débutant,83,2,Moyen,Non
+468,Martin,Emma,Cybersécurité,Sécurité Réseau,60,En cours,20,72,61,96,10,0,100.0,10,Avancé,65,3,Faible,Non
+469,Dupont,Emma,Cloud Computing,JavaScript,87,Validé,6,46,78,95,20,5,80.0,6,Débutant,65,5,Faible,Non
+470,Martin,Sophie,Développement Web,AWS,43,Non validé,9,97,72,82,23,5,82.14,14,Intermédiaire,90,5,Élevé,Non
+471,Lopez,Claire,Intelligence Artificielle,SQL,61,En cours,9,75,55,93,16,2,88.89,23,Débutant,70,3,Faible,Oui
+472,Bernard,Emma,Cloud Computing,Sécurité Réseau,47,Non validé,19,85,80,83,10,4,71.43,19,Avancé,75,2,Faible,Non
+473,Martin,Louis,Data Science,React.js,63,En cours,17,67,59,62,21,2,91.3,11,Débutant,52,4,Faible,Oui
+474,Martin,Jean,Intelligence Artificielle,React.js,89,Validé,11,62,80,79,15,1,93.75,22,Avancé,65,5,Faible,Non
+475,Robert,Jean,Cloud Computing,Sécurité Réseau,73,Validé,12,31,56,93,19,4,82.61,12,Intermédiaire,95,1,Moyen,Non
+476,Lopez,Camille,Intelligence Artificielle,SQL,96,Validé,6,83,76,90,23,0,100.0,25,Débutant,47,3,Élevé,Oui
+477,Lopez,Camille,Intelligence Artificielle,AWS,91,Validé,8,95,48,64,15,2,88.24,24,Intermédiaire,92,1,Moyen,Oui
+478,Dupont,Louis,Cybersécurité,Python,94,Validé,13,84,62,94,16,3,84.21,15,Débutant,83,3,Élevé,Oui
+479,Leroy,Sophie,Intelligence Artificielle,JavaScript,58,En cours,14,63,48,84,22,2,91.67,24,Débutant,87,2,Faible,Oui
+480,Leroy,Paul,Data Science,JavaScript,50,En cours,14,77,83,96,21,4,84.0,12,Intermédiaire,69,5,Faible,Oui
+481,Moreau,Marie,Data Science,Python,89,Validé,5,48,42,54,17,2,89.47,16,Avancé,87,2,Moyen,Non
+482,Moreau,Claire,Intelligence Artificielle,JavaScript,48,Non validé,18,75,77,64,16,0,100.0,13,Intermédiaire,79,4,Élevé,Oui
+483,Garcia,Hugo,Data Science,SQL,55,En cours,5,99,55,69,23,4,85.19,18,Débutant,83,2,Moyen,Oui
+484,Dupont,Paul,Cloud Computing,React.js,53,En cours,17,48,46,67,23,1,95.83,21,Intermédiaire,47,4,Élevé,Oui
+485,Robert,Marie,Intelligence Artificielle,AWS,75,Validé,6,68,88,71,19,0,100.0,11,Débutant,58,4,Faible,Oui
+486,Bernard,Paul,Cloud Computing,Sécurité Réseau,72,Validé,14,86,60,66,19,3,86.36,12,Débutant,64,3,Moyen,Non
+487,Lopez,Emma,Cloud Computing,React.js,77,Validé,19,37,70,93,16,4,80.0,15,Avancé,64,3,Faible,Oui
+488,Martin,Claire,Cloud Computing,SQL,43,Non validé,20,69,87,88,14,4,77.78,19,Intermédiaire,66,2,Faible,Oui
+489,Lopez,Sophie,Développement Web,Sécurité Réseau,84,Validé,11,40,88,55,16,4,80.0,5,Débutant,92,5,Moyen,Oui
+490,Dupont,Jean,Cloud Computing,SQL,52,En cours,8,78,67,71,14,3,82.35,5,Avancé,58,5,Moyen,Oui
+491,Robert,Hugo,Data Science,HTML & CSS,85,Validé,9,100,52,56,18,2,90.0,10,Avancé,41,2,Faible,Non
+492,Fournier,Jean,Cloud Computing,SQL,52,En cours,11,65,71,68,11,2,84.62,19,Avancé,51,4,Élevé,Non
+493,Martin,Paul,Intelligence Artificielle,Sécurité Réseau,74,Validé,17,61,65,71,23,0,100.0,7,Intermédiaire,59,3,Moyen,Non
+494,Dupont,Paul,Développement Web,Python,73,Validé,9,77,81,81,21,0,100.0,21,Avancé,54,2,Moyen,Non
+495,Garcia,Marie,Intelligence Artificielle,React.js,62,En cours,9,66,83,51,11,4,73.33,20,Débutant,85,5,Faible,Non
+496,Mercier,Sophie,Cybersécurité,Machine Learning,55,En cours,19,45,48,70,25,0,100.0,13,Intermédiaire,52,3,Élevé,Oui
+497,Lopez,Hugo,Cloud Computing,Python,88,Validé,10,78,86,79,12,1,92.31,23,Débutant,99,5,Moyen,Non
+498,Robert,Emma,Développement Web,Machine Learning,54,En cours,8,94,76,68,16,4,80.0,14,Intermédiaire,46,1,Élevé,Non
+499,Lopez,Claire,Intelligence Artificielle,SQL,85,Validé,12,70,65,82,21,4,84.0,14,Intermédiaire,99,5,Moyen,Non
+500,Mercier,Camille,Cloud Computing,SQL,91,Validé,13,59,70,54,20,4,83.33,25,Avancé,54,2,Moyen,Oui
+501,Mercier,Sophie,Intelligence Artificielle,SQL,66,En cours,13,52,71,89,25,2,92.59,9,Débutant,58,2,Faible,Non
+502,Martin,Louis,Développement Web,JavaScript,90,Validé,20,95,74,87,25,2,92.59,19,Débutant,92,2,Moyen,Non
+503,Martin,Louis,Cloud Computing,React.js,86,Validé,19,69,54,63,15,5,75.0,10,Débutant,73,5,Moyen,Oui
+504,Leroy,Hugo,Data Science,React.js,88,Validé,19,91,47,54,25,4,86.21,11,Intermédiaire,94,2,Élevé,Oui
+505,Leroy,Claire,Cloud Computing,React.js,68,En cours,16,56,85,91,19,1,95.0,24,Avancé,88,5,Élevé,Oui
+506,Fournier,Claire,Développement Web,React.js,83,Validé,14,61,65,70,11,4,73.33,11,Débutant,47,5,Élevé,Oui
+507,Leroy,Louis,Cybersécurité,SQL,43,Non validé,19,73,87,69,24,4,85.71,15,Intermédiaire,87,4,Moyen,Oui
+508,Robert,Hugo,Intelligence Artificielle,JavaScript,40,Non validé,5,55,58,54,14,5,73.68,25,Intermédiaire,83,4,Élevé,Non
+509,Lopez,Marie,Cloud Computing,AWS,52,En cours,8,51,56,93,16,2,88.89,7,Débutant,96,2,Moyen,Oui
+510,Lopez,Sophie,Intelligence Artificielle,Python,82,Validé,11,44,80,77,16,3,84.21,14,Débutant,60,4,Moyen,Non
+511,Robert,Claire,Cloud Computing,AWS,88,Validé,10,59,74,93,19,0,100.0,22,Débutant,90,5,Moyen,Oui
+512,Martin,Sophie,Intelligence Artificielle,HTML & CSS,75,Validé,19,96,53,71,12,3,80.0,12,Avancé,99,5,Faible,Oui
+513,Martin,Marie,Cybersécurité,SQL,75,Validé,11,51,82,95,19,0,100.0,9,Débutant,54,3,Moyen,Oui
+514,Lopez,Sophie,Développement Web,SQL,92,Validé,17,96,49,91,14,2,87.5,23,Débutant,100,4,Faible,Oui
+515,Garcia,Thomas,Data Science,Python,59,En cours,7,89,78,69,22,3,88.0,25,Avancé,98,5,Faible,Non
+516,Moreau,Claire,Cloud Computing,HTML & CSS,55,En cours,19,65,85,90,14,5,73.68,20,Avancé,87,5,Moyen,Non
+517,Robert,Hugo,Data Science,Machine Learning,94,Validé,15,76,48,91,25,0,100.0,8,Intermédiaire,80,3,Élevé,Non
+518,Robert,Marie,Développement Web,HTML & CSS,90,Validé,15,41,52,63,22,4,84.62,15,Débutant,86,5,Moyen,Non
+519,Martin,Thomas,Data Science,Sécurité Réseau,68,En cours,14,35,78,54,19,5,79.17,15,Intermédiaire,67,3,Moyen,Oui
+520,Bernard,Louis,Data Science,React.js,85,Validé,11,35,52,93,10,4,71.43,13,Intermédiaire,73,4,Faible,Non
+521,Martin,Camille,Développement Web,React.js,92,Validé,17,85,78,59,11,5,68.75,6,Débutant,66,5,Faible,Non
+522,Fournier,Claire,Cybersécurité,React.js,94,Validé,20,71,90,60,11,5,68.75,14,Intermédiaire,70,1,Faible,Oui
+523,Leroy,Sophie,Cybersécurité,SQL,86,Validé,6,90,45,80,23,2,92.0,10,Intermédiaire,81,5,Élevé,Oui
+524,Fournier,Hugo,Intelligence Artificielle,Machine Learning,75,Validé,15,67,58,56,19,3,86.36,7,Avancé,54,2,Moyen,Oui
+525,Bernard,Emma,Cybersécurité,Python,43,Non validé,18,89,65,89,16,2,88.89,7,Intermédiaire,66,5,Moyen,Non
+526,Mercier,Paul,Cloud Computing,SQL,48,Non validé,15,83,73,63,25,0,100.0,21,Avancé,80,5,Faible,Oui
+527,Garcia,Jean,Cybersécurité,HTML & CSS,66,En cours,15,91,59,93,20,1,95.24,5,Avancé,60,2,Élevé,Oui
+528,Martin,Emma,Intelligence Artificielle,SQL,97,Validé,13,83,44,68,19,4,82.61,5,Avancé,74,2,Moyen,Oui
+529,Dupont,Thomas,Développement Web,JavaScript,99,Validé,16,94,43,53,13,1,92.86,12,Débutant,48,5,Élevé,Oui
+530,Martin,Paul,Développement Web,SQL,89,Validé,7,84,46,50,21,0,100.0,14,Débutant,75,5,Élevé,Non
+531,Mercier,Claire,Développement Web,Machine Learning,41,Non validé,16,87,76,62,24,3,88.89,15,Débutant,72,5,Faible,Oui
+532,Moreau,Marie,Cybersécurité,Machine Learning,43,Non validé,8,83,52,95,11,1,91.67,16,Avancé,98,1,Faible,Oui
+533,Lopez,Jean,Cloud Computing,React.js,71,Validé,5,77,53,100,16,0,100.0,9,Intermédiaire,87,2,Moyen,Oui
+534,Bernard,Paul,Développement Web,Python,94,Validé,8,40,79,78,14,3,82.35,18,Intermédiaire,70,2,Moyen,Non
+535,Moreau,Sophie,Data Science,AWS,92,Validé,17,88,54,57,15,0,100.0,23,Intermédiaire,69,1,Élevé,Non
+536,Moreau,Paul,Cloud Computing,AWS,47,Non validé,20,45,77,65,18,4,81.82,6,Avancé,41,5,Élevé,Non
+537,Robert,Louis,Cybersécurité,SQL,73,Validé,13,43,56,86,24,0,100.0,14,Avancé,76,1,Élevé,Oui
+538,Bernard,Thomas,Intelligence Artificielle,Machine Learning,65,En cours,7,70,74,95,12,5,70.59,8,Avancé,41,4,Faible,Oui
+539,Robert,Camille,Intelligence Artificielle,HTML & CSS,88,Validé,17,67,65,56,17,1,94.44,19,Débutant,85,1,Faible,Oui
+540,Lopez,Camille,Data Science,SQL,98,Validé,8,91,73,62,21,2,91.3,15,Avancé,96,2,Faible,Non
+541,Fournier,Camille,Développement Web,AWS,69,En cours,15,81,53,76,15,1,93.75,13,Intermédiaire,70,1,Élevé,Oui
+542,Leroy,Sophie,Data Science,Sécurité Réseau,67,En cours,9,93,45,87,19,3,86.36,15,Intermédiaire,55,4,Faible,Oui
+543,Dupont,Louis,Data Science,HTML & CSS,46,Non validé,5,40,73,70,22,1,95.65,11,Avancé,66,3,Élevé,Oui
+544,Lopez,Paul,Data Science,JavaScript,81,Validé,10,90,75,96,22,1,95.65,18,Débutant,86,4,Faible,Oui
+545,Moreau,Hugo,Cybersécurité,SQL,45,Non validé,8,30,75,91,23,1,95.83,22,Intermédiaire,66,3,Élevé,Non
+546,Dupont,Thomas,Cybersécurité,Machine Learning,68,En cours,11,38,73,50,11,0,100.0,23,Débutant,82,4,Moyen,Non
+547,Robert,Claire,Cloud Computing,AWS,80,Validé,10,77,78,54,25,1,96.15,9,Avancé,75,3,Élevé,Non
+548,Dupont,Thomas,Intelligence Artificielle,Python,80,Validé,17,51,45,96,18,0,100.0,9,Intermédiaire,75,1,Moyen,Non
+549,Robert,Thomas,Intelligence Artificielle,JavaScript,89,Validé,18,85,45,77,11,2,84.62,24,Débutant,81,2,Moyen,Non
+550,Dupont,Louis,Data Science,Machine Learning,56,En cours,18,70,58,85,21,0,100.0,22,Avancé,57,2,Faible,Non
+551,Garcia,Hugo,Cybersécurité,JavaScript,97,Validé,13,85,58,96,12,5,70.59,18,Avancé,98,3,Élevé,Oui
+552,Leroy,Claire,Cloud Computing,AWS,63,En cours,7,78,84,63,13,3,81.25,8,Avancé,49,3,Élevé,Oui
+553,Fournier,Sophie,Développement Web,SQL,83,Validé,5,96,73,69,20,2,90.91,20,Avancé,44,3,Élevé,Oui
+554,Robert,Jean,Cloud Computing,React.js,74,Validé,14,88,50,52,10,1,90.91,24,Intermédiaire,91,3,Élevé,Oui
+555,Fournier,Marie,Intelligence Artificielle,React.js,41,Non validé,19,78,59,80,24,5,82.76,8,Débutant,61,5,Faible,Non
+556,Dupont,Hugo,Développement Web,Sécurité Réseau,49,Non validé,12,87,59,58,19,4,82.61,13,Intermédiaire,40,5,Moyen,Oui
+557,Dupont,Jean,Cloud Computing,JavaScript,98,Validé,16,45,74,71,12,1,92.31,13,Débutant,93,5,Faible,Oui
+558,Fournier,Sophie,Data Science,Sécurité Réseau,86,Validé,8,66,44,76,24,3,88.89,6,Avancé,42,3,Moyen,Oui
+559,Leroy,Jean,Développement Web,JavaScript,58,En cours,14,98,59,89,22,0,100.0,8,Débutant,73,3,Moyen,Non
+560,Mercier,Hugo,Cloud Computing,React.js,79,Validé,19,91,77,70,10,4,71.43,10,Avancé,59,5,Élevé,Oui
+561,Dupont,Claire,Data Science,Machine Learning,84,Validé,16,36,75,51,12,3,80.0,24,Débutant,89,4,Faible,Oui
+562,Robert,Thomas,Data Science,AWS,62,En cours,16,53,50,78,23,4,85.19,5,Intermédiaire,74,5,Faible,Non
+563,Moreau,Thomas,Développement Web,HTML & CSS,65,En cours,12,56,57,59,22,1,95.65,22,Débutant,42,2,Moyen,Non
+564,Robert,Thomas,Data Science,SQL,61,En cours,18,76,46,81,10,5,66.67,17,Débutant,96,5,Moyen,Oui
+565,Mercier,Marie,Cybersécurité,AWS,49,Non validé,15,93,75,79,22,4,84.62,13,Débutant,62,2,Faible,Oui
+566,Leroy,Claire,Data Science,Python,78,Validé,12,98,77,55,20,1,95.24,18,Débutant,86,4,Faible,Oui
+567,Leroy,Hugo,Data Science,JavaScript,67,En cours,20,59,88,59,11,0,100.0,12,Avancé,81,1,Faible,Oui
+568,Dupont,Louis,Cybersécurité,SQL,71,Validé,7,55,71,83,24,0,100.0,9,Intermédiaire,59,5,Faible,Oui
+569,Bernard,Louis,Cloud Computing,HTML & CSS,42,Non validé,13,46,88,89,18,5,78.26,25,Intermédiaire,52,4,Moyen,Oui
+570,Garcia,Hugo,Cybersécurité,AWS,68,En cours,17,85,87,81,22,1,95.65,12,Intermédiaire,54,3,Moyen,Non
+571,Robert,Louis,Développement Web,SQL,67,En cours,6,54,89,56,10,2,83.33,11,Débutant,88,2,Élevé,Oui
+572,Bernard,Camille,Cybersécurité,JavaScript,73,Validé,18,30,64,52,23,1,95.83,22,Intermédiaire,71,4,Moyen,Non
+573,Moreau,Paul,Cloud Computing,SQL,99,Validé,9,72,52,53,11,3,78.57,15,Intermédiaire,56,2,Faible,Oui
+574,Moreau,Emma,Développement Web,Python,47,Non validé,18,80,48,95,21,4,84.0,8,Intermédiaire,98,5,Faible,Oui
+575,Garcia,Jean,Intelligence Artificielle,AWS,92,Validé,20,63,85,51,17,1,94.44,11,Débutant,81,3,Faible,Oui
+576,Mercier,Hugo,Cybersécurité,Machine Learning,96,Validé,8,100,76,94,20,2,90.91,19,Avancé,42,1,Élevé,Oui
+577,Dupont,Sophie,Intelligence Artificielle,Python,74,Validé,16,41,49,60,11,5,68.75,9,Intermédiaire,84,2,Élevé,Non
+578,Dupont,Camille,Intelligence Artificielle,JavaScript,66,En cours,7,81,85,54,21,2,91.3,9,Débutant,86,2,Élevé,Non
+579,Martin,Camille,Développement Web,JavaScript,61,En cours,18,30,79,74,16,1,94.12,14,Intermédiaire,89,5,Élevé,Oui
+580,Garcia,Thomas,Data Science,Sécurité Réseau,55,En cours,16,60,68,62,23,3,88.46,18,Intermédiaire,74,4,Moyen,Oui
+581,Lopez,Paul,Développement Web,Python,77,Validé,12,40,71,56,21,3,87.5,17,Intermédiaire,73,3,Élevé,Non
+582,Mercier,Claire,Cloud Computing,Machine Learning,83,Validé,8,96,63,84,25,5,83.33,23,Débutant,79,3,Faible,Oui
+583,Lopez,Claire,Intelligence Artificielle,Machine Learning,59,En cours,19,33,87,90,12,2,85.71,20,Débutant,48,1,Élevé,Oui
+584,Moreau,Emma,Cloud Computing,HTML & CSS,56,En cours,12,42,55,79,13,4,76.47,10,Débutant,87,5,Faible,Oui
+585,Fournier,Louis,Développement Web,Python,61,En cours,18,65,65,76,15,2,88.24,11,Avancé,64,5,Élevé,Non
+586,Dupont,Jean,Cloud Computing,JavaScript,89,Validé,10,79,79,57,22,3,88.0,25,Intermédiaire,96,3,Élevé,Oui
+587,Dupont,Louis,Cloud Computing,AWS,43,Non validé,11,41,53,94,24,2,92.31,16,Intermédiaire,73,4,Faible,Non
+588,Bernard,Emma,Développement Web,Python,59,En cours,15,49,50,78,20,4,83.33,15,Débutant,96,4,Moyen,Oui
+589,Bernard,Thomas,Développement Web,HTML & CSS,60,En cours,19,46,90,53,24,4,85.71,9,Intermédiaire,93,1,Moyen,Oui
+590,Mercier,Sophie,Data Science,Machine Learning,76,Validé,18,53,78,66,11,2,84.62,22,Avancé,59,5,Élevé,Non
+591,Robert,Paul,Data Science,SQL,53,En cours,20,42,41,93,13,3,81.25,22,Débutant,58,2,Élevé,Oui
+592,Leroy,Paul,Intelligence Artificielle,Sécurité Réseau,63,En cours,14,35,68,90,22,0,100.0,15,Intermédiaire,85,2,Moyen,Non
+593,Robert,Claire,Cybersécurité,JavaScript,78,Validé,11,73,56,91,25,3,89.29,5,Débutant,98,3,Élevé,Oui
+594,Robert,Paul,Data Science,Machine Learning,56,En cours,6,100,53,58,25,2,92.59,25,Avancé,68,2,Moyen,Oui
+595,Robert,Paul,Data Science,Sécurité Réseau,48,Non validé,11,94,48,70,10,2,83.33,7,Intermédiaire,52,5,Moyen,Oui
+596,Moreau,Jean,Développement Web,JavaScript,53,En cours,17,67,65,54,18,2,90.0,20,Intermédiaire,53,5,Moyen,Non
+597,Dupont,Hugo,Cybersécurité,AWS,99,Validé,19,40,89,60,19,4,82.61,13,Avancé,100,2,Faible,Oui
+598,Leroy,Emma,Data Science,React.js,77,Validé,12,54,53,67,11,5,68.75,15,Débutant,51,5,Élevé,Oui
+599,Lopez,Louis,Cloud Computing,SQL,97,Validé,10,30,80,97,18,3,85.71,21,Avancé,41,3,Élevé,Oui
+600,Robert,Paul,Développement Web,SQL,40,Non validé,15,36,55,84,25,0,100.0,15,Avancé,92,3,Faible,Non
+601,Fournier,Marie,Cloud Computing,SQL,94,Validé,20,77,51,50,14,4,77.78,13,Débutant,70,2,Élevé,Oui
+602,Lopez,Jean,Data Science,SQL,40,Non validé,11,64,68,80,13,3,81.25,16,Avancé,84,5,Élevé,Non
+603,Dupont,Jean,Data Science,JavaScript,77,Validé,11,95,61,82,17,2,89.47,10,Intermédiaire,92,2,Élevé,Oui
+604,Garcia,Jean,Intelligence Artificielle,Machine Learning,79,Validé,8,69,79,84,19,0,100.0,21,Avancé,99,2,Faible,Oui
+605,Dupont,Thomas,Cybersécurité,Sécurité Réseau,91,Validé,9,97,59,98,14,3,82.35,24,Intermédiaire,63,3,Élevé,Oui
+606,Moreau,Jean,Développement Web,HTML & CSS,76,Validé,17,78,51,80,19,1,95.0,17,Intermédiaire,50,5,Élevé,Non
+607,Fournier,Paul,Intelligence Artificielle,React.js,50,En cours,15,65,85,82,11,4,73.33,23,Intermédiaire,45,3,Moyen,Oui
+608,Lopez,Claire,Cloud Computing,HTML & CSS,67,En cours,13,75,71,97,14,1,93.33,7,Avancé,99,4,Moyen,Non
+609,Lopez,Paul,Data Science,Machine Learning,99,Validé,14,97,57,97,21,2,91.3,7,Avancé,50,4,Élevé,Non
+610,Lopez,Louis,Cybersécurité,SQL,68,En cours,11,34,86,77,24,3,88.89,6,Avancé,41,3,Élevé,Oui
+611,Bernard,Claire,Data Science,SQL,63,En cours,6,87,58,69,20,0,100.0,5,Avancé,88,1,Moyen,Non
+612,Fournier,Camille,Intelligence Artificielle,SQL,54,En cours,16,36,84,50,10,2,83.33,17,Débutant,91,5,Moyen,Oui
+613,Mercier,Louis,Intelligence Artificielle,Machine Learning,99,Validé,6,65,69,63,17,1,94.44,20,Intermédiaire,73,3,Faible,Oui
+614,Garcia,Paul,Data Science,JavaScript,92,Validé,16,61,54,72,25,4,86.21,16,Débutant,83,5,Faible,Non
+615,Fournier,Emma,Data Science,SQL,45,Non validé,15,74,89,90,19,1,95.0,16,Avancé,48,1,Moyen,Non
+616,Martin,Hugo,Cybersécurité,Python,97,Validé,7,41,46,92,16,3,84.21,23,Débutant,92,4,Faible,Non
+617,Moreau,Camille,Intelligence Artificielle,HTML & CSS,97,Validé,6,97,75,92,17,3,85.0,21,Intermédiaire,78,1,Moyen,Non
+618,Mercier,Hugo,Développement Web,JavaScript,66,En cours,19,37,87,59,16,4,80.0,21,Avancé,78,1,Moyen,Oui
+619,Bernard,Claire,Développement Web,Python,85,Validé,8,100,48,59,15,1,93.75,13,Débutant,100,1,Moyen,Non
+620,Dupont,Thomas,Data Science,Machine Learning,58,En cours,20,87,67,90,20,5,80.0,12,Débutant,83,4,Faible,Non
+621,Garcia,Paul,Développement Web,Python,57,En cours,6,54,48,57,25,3,89.29,16,Avancé,40,3,Faible,Oui
+622,Martin,Camille,Développement Web,React.js,86,Validé,14,55,73,94,16,1,94.12,22,Intermédiaire,88,5,Élevé,Non
+623,Fournier,Paul,Développement Web,Sécurité Réseau,80,Validé,11,70,80,51,12,5,70.59,16,Débutant,69,4,Élevé,Oui
+624,Robert,Camille,Développement Web,HTML & CSS,80,Validé,17,63,85,74,23,2,92.0,25,Intermédiaire,79,4,Élevé,Oui
+625,Mercier,Marie,Cloud Computing,Machine Learning,95,Validé,17,90,54,98,11,2,84.62,20,Intermédiaire,52,1,Moyen,Oui
+626,Mercier,Paul,Cybersécurité,AWS,91,Validé,10,30,71,94,10,3,76.92,14,Intermédiaire,53,1,Élevé,Oui
+627,Mercier,Sophie,Cybersécurité,SQL,54,En cours,5,41,77,60,14,4,77.78,10,Avancé,91,3,Faible,Non
+628,Martin,Thomas,Intelligence Artificielle,JavaScript,41,Non validé,9,37,77,73,17,0,100.0,23,Avancé,94,2,Élevé,Oui
+629,Robert,Marie,Développement Web,React.js,70,Validé,15,34,56,63,10,3,76.92,11,Intermédiaire,62,4,Élevé,Oui
+630,Martin,Claire,Intelligence Artificielle,HTML & CSS,99,Validé,19,85,79,71,22,3,88.0,5,Avancé,68,3,Faible,Non
+631,Bernard,Emma,Cloud Computing,JavaScript,69,En cours,7,94,79,54,12,1,92.31,14,Intermédiaire,67,2,Élevé,Non
+632,Dupont,Jean,Développement Web,JavaScript,65,En cours,15,41,69,77,19,3,86.36,24,Intermédiaire,45,3,Faible,Oui
+633,Martin,Paul,Cloud Computing,React.js,75,Validé,14,52,83,58,21,4,84.0,20,Débutant,55,4,Élevé,Oui
+634,Fournier,Camille,Cybersécurité,Sécurité Réseau,58,En cours,10,62,88,79,18,2,90.0,14,Avancé,72,4,Élevé,Non
+635,Bernard,Thomas,Développement Web,Sécurité Réseau,69,En cours,6,81,49,97,10,4,71.43,14,Débutant,62,5,Moyen,Non
+636,Moreau,Claire,Cybersécurité,Python,88,Validé,6,46,66,54,20,1,95.24,9,Intermédiaire,46,1,Faible,Non
+637,Mercier,Louis,Cloud Computing,AWS,58,En cours,13,79,83,70,11,1,91.67,6,Débutant,84,2,Faible,Oui
+638,Lopez,Jean,Cybersécurité,HTML & CSS,76,Validé,5,58,52,71,17,2,89.47,22,Avancé,40,4,Faible,Non
+639,Robert,Emma,Développement Web,AWS,89,Validé,17,80,68,95,17,1,94.44,22,Intermédiaire,94,3,Faible,Oui
+640,Martin,Jean,Cloud Computing,HTML & CSS,51,En cours,7,68,48,92,14,2,87.5,13,Avancé,71,2,Moyen,Oui
+641,Bernard,Louis,Cloud Computing,Python,65,En cours,16,57,61,78,24,3,88.89,22,Débutant,96,2,Faible,Non
+642,Leroy,Camille,Intelligence Artificielle,Python,84,Validé,20,34,41,70,23,1,95.83,13,Intermédiaire,81,4,Faible,Non
+643,Martin,Jean,Intelligence Artificielle,HTML & CSS,59,En cours,7,98,89,88,12,2,85.71,19,Avancé,71,3,Élevé,Non
+644,Dupont,Marie,Cybersécurité,Machine Learning,81,Validé,6,40,75,66,13,5,72.22,7,Débutant,95,4,Faible,Oui
+645,Martin,Louis,Intelligence Artificielle,SQL,63,En cours,6,38,63,69,12,1,92.31,14,Intermédiaire,49,1,Élevé,Oui
+646,Fournier,Hugo,Intelligence Artificielle,AWS,76,Validé,12,93,45,72,18,3,85.71,5,Avancé,77,1,Élevé,Non
+647,Dupont,Sophie,Intelligence Artificielle,AWS,85,Validé,6,86,45,87,19,3,86.36,20,Avancé,77,5,Faible,Oui
+648,Leroy,Emma,Développement Web,Machine Learning,64,En cours,8,98,41,94,13,0,100.0,15,Intermédiaire,72,1,Faible,Non
+649,Robert,Jean,Intelligence Artificielle,AWS,100,Validé,15,69,76,85,22,1,95.65,19,Débutant,90,5,Élevé,Non
+650,Dupont,Paul,Cloud Computing,HTML & CSS,42,Non validé,13,46,76,69,24,1,96.0,18,Intermédiaire,74,5,Faible,Oui
+651,Lopez,Marie,Intelligence Artificielle,SQL,41,Non validé,13,43,79,94,14,0,100.0,19,Intermédiaire,81,2,Moyen,Non
+652,Martin,Sophie,Data Science,SQL,49,Non validé,10,98,87,63,11,2,84.62,6,Avancé,50,3,Faible,Non
+653,Martin,Thomas,Développement Web,React.js,54,En cours,11,34,73,80,23,0,100.0,7,Débutant,59,1,Faible,Oui
+654,Moreau,Thomas,Cloud Computing,Sécurité Réseau,81,Validé,18,64,68,90,19,5,79.17,15,Débutant,71,3,Moyen,Non
+655,Martin,Sophie,Développement Web,HTML & CSS,43,Non validé,6,76,49,97,18,2,90.0,15,Intermédiaire,61,5,Moyen,Non
+656,Moreau,Jean,Cybersécurité,Python,53,En cours,6,83,82,88,10,5,66.67,13,Avancé,41,3,Moyen,Oui
+657,Leroy,Camille,Cybersécurité,Sécurité Réseau,68,En cours,18,87,47,83,24,5,82.76,23,Débutant,43,4,Moyen,Oui
+658,Garcia,Thomas,Data Science,Machine Learning,60,En cours,17,59,78,86,17,5,77.27,21,Intermédiaire,62,3,Élevé,Oui
+659,Moreau,Thomas,Cybersécurité,Sécurité Réseau,91,Validé,16,73,82,77,16,1,94.12,11,Intermédiaire,96,4,Élevé,Non
+660,Moreau,Claire,Développement Web,JavaScript,71,Validé,13,44,64,55,22,5,81.48,11,Intermédiaire,45,1,Moyen,Non
+661,Robert,Sophie,Data Science,Machine Learning,82,Validé,19,86,58,54,19,5,79.17,25,Avancé,60,2,Moyen,Non
+662,Mercier,Emma,Data Science,Machine Learning,49,Non validé,18,74,81,89,15,5,75.0,7,Débutant,58,5,Faible,Oui
+663,Lopez,Hugo,Intelligence Artificielle,HTML & CSS,51,En cours,15,74,52,51,11,4,73.33,15,Avancé,59,1,Élevé,Oui
+664,Bernard,Marie,Cloud Computing,React.js,80,Validé,7,96,73,87,20,0,100.0,5,Intermédiaire,97,3,Élevé,Non
+665,Fournier,Louis,Intelligence Artificielle,Python,72,Validé,10,71,85,94,16,4,80.0,7,Débutant,53,4,Faible,Non
+666,Garcia,Paul,Data Science,HTML & CSS,85,Validé,17,82,76,86,20,3,86.96,19,Intermédiaire,65,5,Élevé,Non
+667,Dupont,Marie,Intelligence Artificielle,Machine Learning,43,Non validé,16,41,73,97,22,5,81.48,5,Intermédiaire,70,5,Faible,Oui
+668,Martin,Thomas,Développement Web,SQL,52,En cours,8,65,75,64,16,3,84.21,17,Intermédiaire,99,4,Moyen,Non
+669,Moreau,Paul,Développement Web,React.js,91,Validé,17,53,89,54,13,1,92.86,17,Avancé,64,4,Faible,Non
+670,Moreau,Jean,Développement Web,HTML & CSS,59,En cours,20,66,64,75,25,0,100.0,17,Débutant,65,5,Faible,Non
+671,Robert,Jean,Data Science,SQL,67,En cours,19,47,52,75,14,1,93.33,7,Intermédiaire,74,2,Élevé,Non
+672,Martin,Paul,Intelligence Artificielle,JavaScript,75,Validé,11,52,67,51,23,2,92.0,22,Avancé,49,2,Moyen,Oui
+673,Dupont,Paul,Cloud Computing,JavaScript,95,Validé,9,41,70,85,14,1,93.33,18,Avancé,100,2,Élevé,Non
+674,Fournier,Claire,Cybersécurité,SQL,67,En cours,12,60,59,80,24,1,96.0,25,Avancé,92,4,Élevé,Oui
+675,Lopez,Camille,Intelligence Artificielle,JavaScript,76,Validé,16,63,89,82,12,0,100.0,11,Intermédiaire,80,3,Élevé,Oui
+676,Dupont,Marie,Data Science,AWS,88,Validé,7,82,64,67,10,2,83.33,22,Avancé,56,5,Élevé,Oui
+677,Robert,Hugo,Intelligence Artificielle,HTML & CSS,99,Validé,16,41,61,84,23,1,95.83,10,Intermédiaire,87,4,Moyen,Oui
+678,Fournier,Jean,Data Science,AWS,57,En cours,14,36,69,91,20,3,86.96,22,Intermédiaire,60,2,Élevé,Oui
+679,Garcia,Louis,Développement Web,Machine Learning,87,Validé,17,47,60,52,14,3,82.35,23,Avancé,47,2,Moyen,Non
+680,Moreau,Thomas,Intelligence Artificielle,HTML & CSS,56,En cours,17,88,63,82,17,1,94.44,25,Avancé,86,4,Moyen,Non
+681,Bernard,Marie,Développement Web,React.js,60,En cours,17,39,70,70,10,5,66.67,5,Avancé,73,1,Moyen,Non
+682,Garcia,Camille,Intelligence Artificielle,React.js,71,Validé,14,60,45,56,10,0,100.0,14,Débutant,47,3,Moyen,Oui
+683,Moreau,Sophie,Intelligence Artificielle,JavaScript,68,En cours,19,73,44,83,17,4,80.95,8,Intermédiaire,92,1,Moyen,Oui
+684,Dupont,Marie,Data Science,HTML & CSS,49,Non validé,16,49,47,95,21,0,100.0,16,Intermédiaire,65,4,Élevé,Non
+685,Garcia,Claire,Cybersécurité,AWS,89,Validé,19,94,57,77,14,5,73.68,12,Débutant,87,2,Moyen,Oui
+686,Lopez,Hugo,Cloud Computing,JavaScript,85,Validé,19,46,49,86,22,1,95.65,23,Intermédiaire,61,2,Moyen,Non
+687,Garcia,Thomas,Data Science,Python,43,Non validé,19,35,88,80,24,0,100.0,13,Avancé,76,5,Élevé,Non
+688,Robert,Claire,Intelligence Artificielle,Machine Learning,90,Validé,18,63,83,98,21,5,80.77,20,Débutant,93,5,Moyen,Non
+689,Fournier,Emma,Développement Web,AWS,79,Validé,11,64,67,53,21,4,84.0,6,Débutant,64,2,Élevé,Oui
+690,Leroy,Marie,Intelligence Artificielle,AWS,65,En cours,6,45,58,64,15,4,78.95,20,Intermédiaire,61,1,Faible,Oui
+691,Dupont,Thomas,Intelligence Artificielle,SQL,80,Validé,9,37,71,90,16,5,76.19,14,Intermédiaire,86,4,Élevé,Oui
+692,Martin,Hugo,Data Science,Sécurité Réseau,77,Validé,19,47,84,84,14,0,100.0,13,Débutant,51,2,Élevé,Oui
+693,Leroy,Camille,Data Science,Machine Learning,57,En cours,18,63,77,76,25,2,92.59,12,Avancé,61,2,Faible,Non
+694,Garcia,Claire,Cloud Computing,React.js,68,En cours,6,96,82,68,21,4,84.0,10,Intermédiaire,66,4,Faible,Oui
+695,Fournier,Thomas,Intelligence Artificielle,SQL,94,Validé,10,68,83,51,12,3,80.0,18,Avancé,96,2,Élevé,Non
+696,Lopez,Louis,Data Science,JavaScript,43,Non validé,10,47,81,63,18,1,94.74,7,Débutant,96,5,Moyen,Oui
+697,Fournier,Camille,Cybersécurité,React.js,88,Validé,14,87,82,50,12,5,70.59,6,Avancé,47,2,Moyen,Oui
+698,Bernard,Marie,Cybersécurité,HTML & CSS,79,Validé,12,59,58,82,18,4,81.82,13,Avancé,62,2,Élevé,Non
+699,Fournier,Thomas,Cybersécurité,JavaScript,85,Validé,14,87,82,83,19,3,86.36,11,Débutant,98,3,Élevé,Oui
+700,Dupont,Sophie,Data Science,Sécurité Réseau,74,Validé,17,100,85,50,13,1,92.86,23,Intermédiaire,87,4,Moyen,Non
+701,Dupont,Louis,Cloud Computing,Sécurité Réseau,58,En cours,18,46,53,97,23,1,95.83,6,Avancé,100,5,Élevé,Non
+702,Robert,Hugo,Développement Web,Machine Learning,65,En cours,20,41,42,73,17,3,85.0,17,Intermédiaire,89,1,Élevé,Oui
+703,Leroy,Hugo,Développement Web,SQL,74,Validé,6,90,55,96,24,1,96.0,14,Avancé,100,1,Faible,Oui
+704,Garcia,Paul,Data Science,React.js,79,Validé,20,70,46,52,21,1,95.45,19,Débutant,80,5,Élevé,Non
+705,Garcia,Louis,Cloud Computing,React.js,67,En cours,6,87,70,51,20,4,83.33,13,Intermédiaire,80,3,Faible,Oui
+706,Martin,Louis,Cloud Computing,Sécurité Réseau,80,Validé,18,33,68,58,12,1,92.31,19,Intermédiaire,78,4,Faible,Non
+707,Lopez,Marie,Intelligence Artificielle,AWS,69,En cours,9,65,57,79,21,5,80.77,12,Intermédiaire,82,2,Élevé,Non
+708,Bernard,Louis,Développement Web,Sécurité Réseau,55,En cours,7,49,59,66,13,0,100.0,25,Avancé,83,4,Faible,Non
+709,Lopez,Louis,Cybersécurité,AWS,52,En cours,9,40,76,98,24,2,92.31,18,Intermédiaire,91,2,Moyen,Non
+710,Dupont,Emma,Cloud Computing,Machine Learning,95,Validé,18,62,67,75,25,4,86.21,5,Avancé,97,3,Faible,Non
+711,Moreau,Emma,Développement Web,Python,85,Validé,11,96,72,63,13,2,86.67,8,Intermédiaire,56,3,Faible,Oui
+712,Lopez,Thomas,Data Science,Python,67,En cours,18,37,68,100,10,3,76.92,9,Avancé,87,1,Moyen,Oui
+713,Fournier,Sophie,Data Science,Machine Learning,53,En cours,17,72,85,74,11,5,68.75,25,Intermédiaire,95,5,Faible,Non
+714,Martin,Jean,Cybersécurité,Machine Learning,97,Validé,14,31,57,51,22,5,81.48,13,Avancé,77,3,Moyen,Oui
+715,Dupont,Sophie,Data Science,Machine Learning,72,Validé,17,46,90,64,21,3,87.5,24,Débutant,66,1,Moyen,Oui
+716,Martin,Thomas,Cybersécurité,React.js,68,En cours,16,83,69,89,10,4,71.43,14,Intermédiaire,82,4,Moyen,Oui
+717,Fournier,Emma,Cloud Computing,HTML & CSS,47,Non validé,7,63,83,71,24,0,100.0,12,Débutant,55,2,Moyen,Non
+718,Lopez,Claire,Cloud Computing,JavaScript,98,Validé,9,30,45,81,11,3,78.57,12,Intermédiaire,81,3,Faible,Non
+719,Bernard,Louis,Cloud Computing,React.js,71,Validé,20,75,78,73,23,3,88.46,20,Débutant,92,2,Moyen,Oui
+720,Martin,Claire,Cybersécurité,AWS,99,Validé,20,50,55,98,16,1,94.12,19,Intermédiaire,76,3,Élevé,Oui
+721,Garcia,Claire,Intelligence Artificielle,SQL,90,Validé,13,42,46,98,12,0,100.0,22,Débutant,40,3,Faible,Non
+722,Robert,Sophie,Data Science,Python,55,En cours,14,52,87,74,10,5,66.67,13,Avancé,55,5,Élevé,Non
+723,Fournier,Sophie,Développement Web,Python,85,Validé,8,95,58,62,18,3,85.71,21,Débutant,79,5,Faible,Oui
+724,Dupont,Emma,Cloud Computing,Python,46,Non validé,16,59,59,90,23,3,88.46,9,Intermédiaire,97,3,Faible,Non
+725,Mercier,Camille,Développement Web,JavaScript,45,Non validé,17,66,78,88,13,3,81.25,13,Avancé,96,5,Faible,Non
+726,Leroy,Thomas,Intelligence Artificielle,SQL,94,Validé,10,53,89,54,18,5,78.26,11,Avancé,45,3,Élevé,Oui
+727,Martin,Emma,Cybersécurité,HTML & CSS,40,Non validé,12,45,81,70,18,0,100.0,20,Intermédiaire,80,4,Faible,Oui
+728,Garcia,Emma,Cybersécurité,Sécurité Réseau,52,En cours,6,88,46,63,12,3,80.0,5,Intermédiaire,52,3,Moyen,Oui
+729,Bernard,Marie,Data Science,AWS,65,En cours,13,93,45,72,13,2,86.67,14,Débutant,90,5,Faible,Non
+730,Garcia,Louis,Développement Web,React.js,65,En cours,10,88,84,88,21,4,84.0,15,Intermédiaire,96,4,Faible,Non
+731,Moreau,Paul,Cloud Computing,Sécurité Réseau,69,En cours,10,37,49,91,17,2,89.47,13,Intermédiaire,69,4,Élevé,Oui
+732,Dupont,Claire,Cloud Computing,Python,99,Validé,5,33,45,72,23,4,85.19,19,Débutant,40,4,Moyen,Oui
+733,Dupont,Sophie,Intelligence Artificielle,Python,44,Non validé,10,72,75,75,19,3,86.36,8,Avancé,98,1,Élevé,Non
+734,Mercier,Jean,Intelligence Artificielle,SQL,87,Validé,17,37,65,57,20,1,95.24,9,Intermédiaire,65,3,Moyen,Non
+735,Lopez,Paul,Cybersécurité,SQL,55,En cours,18,42,66,83,10,1,90.91,10,Débutant,100,1,Faible,Non
+736,Leroy,Louis,Data Science,Python,72,Validé,12,75,58,81,16,5,76.19,9,Avancé,53,4,Moyen,Non
+737,Dupont,Jean,Data Science,JavaScript,72,Validé,19,35,66,59,16,5,76.19,25,Avancé,99,1,Élevé,Oui
+738,Fournier,Sophie,Intelligence Artificielle,Sécurité Réseau,99,Validé,18,85,40,72,19,4,82.61,21,Débutant,61,1,Moyen,Oui
+739,Garcia,Sophie,Intelligence Artificielle,Sécurité Réseau,93,Validé,13,63,43,67,11,2,84.62,16,Avancé,66,3,Faible,Oui
+740,Garcia,Paul,Cybersécurité,AWS,44,Non validé,13,75,51,80,10,3,76.92,11,Avancé,54,2,Faible,Oui
+741,Fournier,Sophie,Cloud Computing,HTML & CSS,72,Validé,11,52,48,75,20,1,95.24,24,Intermédiaire,73,2,Élevé,Oui
+742,Leroy,Sophie,Développement Web,Sécurité Réseau,88,Validé,8,61,46,94,24,2,92.31,21,Débutant,85,5,Faible,Oui
+743,Lopez,Sophie,Développement Web,SQL,87,Validé,8,58,50,58,12,4,75.0,16,Intermédiaire,48,2,Moyen,Non
+744,Robert,Claire,Intelligence Artificielle,SQL,52,En cours,17,82,51,90,25,2,92.59,7,Intermédiaire,40,3,Moyen,Oui
+745,Martin,Hugo,Intelligence Artificielle,Sécurité Réseau,47,Non validé,6,36,76,70,24,0,100.0,11,Débutant,97,3,Faible,Non
+746,Leroy,Marie,Data Science,HTML & CSS,78,Validé,12,100,87,67,16,4,80.0,8,Débutant,78,2,Élevé,Non
+747,Fournier,Claire,Cloud Computing,Sécurité Réseau,56,En cours,18,81,45,84,10,2,83.33,25,Débutant,76,1,Faible,Oui
+748,Dupont,Marie,Développement Web,Python,82,Validé,7,85,54,79,15,2,88.24,6,Débutant,88,5,Élevé,Oui
+749,Leroy,Paul,Data Science,JavaScript,71,Validé,9,46,48,90,10,4,71.43,5,Avancé,84,2,Faible,Oui
+750,Bernard,Paul,Cybersécurité,JavaScript,94,Validé,7,43,40,96,17,0,100.0,23,Avancé,50,4,Élevé,Non
+751,Garcia,Camille,Intelligence Artificielle,HTML & CSS,84,Validé,18,37,44,88,14,5,73.68,11,Débutant,93,3,Moyen,Oui
+752,Fournier,Thomas,Cloud Computing,Sécurité Réseau,43,Non validé,17,32,80,97,22,1,95.65,21,Débutant,59,2,Élevé,Non
+753,Fournier,Marie,Développement Web,JavaScript,52,En cours,13,45,42,57,17,0,100.0,24,Intermédiaire,69,2,Élevé,Oui
+754,Garcia,Louis,Cloud Computing,HTML & CSS,95,Validé,11,70,78,73,24,1,96.0,20,Débutant,99,5,Faible,Non
+755,Garcia,Thomas,Cybersécurité,AWS,55,En cours,9,70,51,77,23,1,95.83,10,Débutant,50,2,Faible,Oui
+756,Leroy,Thomas,Data Science,Machine Learning,49,Non validé,13,48,86,70,12,0,100.0,15,Débutant,57,2,Élevé,Non
+757,Lopez,Paul,Cloud Computing,Python,50,En cours,9,34,60,67,25,5,83.33,23,Avancé,69,1,Élevé,Oui
+758,Fournier,Hugo,Cloud Computing,SQL,85,Validé,7,58,44,97,20,1,95.24,21,Intermédiaire,93,5,Moyen,Oui
+759,Moreau,Jean,Intelligence Artificielle,AWS,99,Validé,5,99,44,65,25,5,83.33,20,Débutant,87,1,Faible,Oui
+760,Martin,Claire,Cloud Computing,SQL,44,Non validé,10,62,64,84,18,3,85.71,25,Avancé,49,3,Faible,Oui
+761,Garcia,Hugo,Data Science,HTML & CSS,87,Validé,11,80,68,97,24,2,92.31,14,Intermédiaire,88,3,Élevé,Non
+762,Leroy,Louis,Cybersécurité,Machine Learning,65,En cours,19,65,61,79,20,2,90.91,10,Avancé,90,2,Faible,Oui
+763,Garcia,Thomas,Cybersécurité,Machine Learning,60,En cours,18,62,73,75,11,5,68.75,18,Avancé,64,5,Moyen,Oui
+764,Mercier,Emma,Cybersécurité,AWS,64,En cours,12,84,85,57,24,4,85.71,10,Intermédiaire,55,1,Élevé,Non
+765,Leroy,Sophie,Développement Web,HTML & CSS,54,En cours,6,77,80,53,24,2,92.31,16,Intermédiaire,40,4,Moyen,Oui
+766,Robert,Hugo,Cybersécurité,AWS,59,En cours,19,79,50,51,17,0,100.0,25,Avancé,40,5,Élevé,Non
+767,Lopez,Louis,Développement Web,Sécurité Réseau,81,Validé,18,83,65,55,20,2,90.91,12,Intermédiaire,83,3,Moyen,Non
+768,Robert,Camille,Cloud Computing,AWS,68,En cours,13,87,89,97,21,2,91.3,5,Intermédiaire,57,1,Élevé,Oui
+769,Moreau,Claire,Cybersécurité,HTML & CSS,54,En cours,18,72,59,89,19,5,79.17,24,Avancé,69,2,Élevé,Oui
+770,Robert,Emma,Cybersécurité,SQL,89,Validé,6,73,75,57,19,5,79.17,17,Avancé,65,2,Élevé,Non
+771,Robert,Hugo,Développement Web,Python,66,En cours,7,43,49,80,12,1,92.31,15,Intermédiaire,79,5,Moyen,Oui
+772,Robert,Emma,Cloud Computing,JavaScript,47,Non validé,15,52,57,53,23,3,88.46,21,Débutant,47,3,Moyen,Non
+773,Moreau,Claire,Cloud Computing,Machine Learning,88,Validé,18,52,68,59,20,3,86.96,11,Débutant,85,4,Moyen,Oui
+774,Dupont,Sophie,Data Science,JavaScript,71,Validé,16,81,54,80,12,3,80.0,24,Avancé,98,1,Élevé,Oui
+775,Garcia,Marie,Cybersécurité,HTML & CSS,41,Non validé,8,69,56,91,10,0,100.0,5,Avancé,98,2,Faible,Oui
+776,Dupont,Claire,Cybersécurité,Machine Learning,91,Validé,16,54,45,54,19,0,100.0,11,Avancé,86,3,Faible,Oui
+777,Dupont,Louis,Intelligence Artificielle,SQL,99,Validé,5,96,78,94,11,2,84.62,24,Intermédiaire,67,1,Élevé,Non
+778,Lopez,Sophie,Data Science,React.js,42,Non validé,15,55,62,83,16,0,100.0,9,Débutant,85,2,Faible,Oui
+779,Fournier,Thomas,Data Science,Sécurité Réseau,49,Non validé,12,87,57,52,20,3,86.96,19,Intermédiaire,43,4,Moyen,Non
+780,Lopez,Jean,Développement Web,AWS,83,Validé,16,94,73,84,12,2,85.71,15,Débutant,45,2,Élevé,Oui
+781,Bernard,Claire,Intelligence Artificielle,SQL,96,Validé,10,57,88,70,23,5,82.14,5,Intermédiaire,99,5,Élevé,Non
+782,Mercier,Jean,Intelligence Artificielle,SQL,56,En cours,7,68,67,91,19,3,86.36,14,Intermédiaire,67,1,Élevé,Non
+783,Robert,Jean,Data Science,Machine Learning,46,Non validé,20,54,46,79,14,2,87.5,18,Intermédiaire,69,1,Faible,Non
+784,Leroy,Marie,Cybersécurité,Python,44,Non validé,14,45,80,83,21,4,84.0,10,Débutant,83,5,Moyen,Non
+785,Garcia,Emma,Intelligence Artificielle,AWS,68,En cours,18,96,42,76,18,4,81.82,16,Avancé,74,3,Faible,Oui
+786,Dupont,Claire,Développement Web,SQL,99,Validé,15,39,46,61,21,1,95.45,24,Débutant,71,1,Élevé,Oui
+787,Moreau,Hugo,Intelligence Artificielle,Python,57,En cours,7,55,70,52,18,1,94.74,12,Débutant,50,3,Élevé,Non
+788,Leroy,Jean,Cybersécurité,Python,40,Non validé,17,77,73,78,19,1,95.0,20,Avancé,63,3,Élevé,Non
+789,Moreau,Thomas,Cybersécurité,SQL,60,En cours,6,43,41,98,23,3,88.46,15,Intermédiaire,62,2,Faible,Non
+790,Mercier,Thomas,Data Science,Python,91,Validé,11,50,59,79,25,1,96.15,12,Avancé,68,2,Moyen,Non
+791,Moreau,Marie,Développement Web,HTML & CSS,63,En cours,15,89,84,84,10,2,83.33,7,Débutant,74,4,Faible,Non
+792,Robert,Camille,Cloud Computing,Machine Learning,61,En cours,10,59,71,55,16,2,88.89,18,Avancé,57,4,Élevé,Non
+793,Leroy,Louis,Développement Web,AWS,98,Validé,17,50,46,97,11,3,78.57,25,Intermédiaire,68,4,Élevé,Oui
+794,Dupont,Sophie,Cybersécurité,Sécurité Réseau,93,Validé,12,78,67,57,23,4,85.19,18,Intermédiaire,84,4,Élevé,Non
+795,Leroy,Thomas,Cybersécurité,Python,75,Validé,5,41,41,60,21,2,91.3,9,Débutant,94,1,Faible,Oui
+796,Lopez,Thomas,Intelligence Artificielle,JavaScript,92,Validé,11,92,63,100,14,4,77.78,11,Avancé,55,2,Moyen,Oui
+797,Bernard,Jean,Cybersécurité,JavaScript,83,Validé,9,65,75,97,18,5,78.26,12,Intermédiaire,88,4,Élevé,Non
+798,Robert,Thomas,Développement Web,Machine Learning,96,Validé,19,59,78,79,13,5,72.22,10,Avancé,63,3,Faible,Non
+799,Fournier,Marie,Développement Web,React.js,100,Validé,10,79,67,97,16,1,94.12,20,Intermédiaire,88,3,Moyen,Non
+800,Dupont,Emma,Développement Web,AWS,92,Validé,17,54,72,60,13,3,81.25,18,Débutant,65,1,Faible,Non
+801,Martin,Jean,Intelligence Artificielle,JavaScript,87,Validé,12,50,52,98,11,2,84.62,22,Débutant,81,2,Élevé,Non
+802,Leroy,Paul,Cybersécurité,React.js,73,Validé,13,92,75,85,25,3,89.29,12,Avancé,100,3,Moyen,Non
+803,Leroy,Hugo,Intelligence Artificielle,Sécurité Réseau,61,En cours,9,95,61,94,24,3,88.89,23,Débutant,70,1,Moyen,Non
+804,Moreau,Paul,Développement Web,Sécurité Réseau,46,Non validé,18,62,57,76,24,0,100.0,17,Avancé,97,4,Élevé,Oui
+805,Martin,Claire,Cloud Computing,HTML & CSS,84,Validé,7,52,84,76,12,3,80.0,8,Intermédiaire,91,4,Moyen,Non

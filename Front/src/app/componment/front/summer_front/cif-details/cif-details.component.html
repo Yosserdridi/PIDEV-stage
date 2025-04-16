@@ -1,0 +1,63 @@
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<div *ngIf="entities" class="container mt-4">
+  <div class="row">
+    
+    <!-- Internship Details -->
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-header bg-primary text-white">Internship Details</div>
+        <div class="card-body">
+          <p><strong>Title:</strong> {{ entities.summerInternship.title }}</p>
+          <p><strong>Description:</strong> {{ entities.summerInternship.description }}</p>
+          <p><strong>Duration:</strong> {{ entities.summerInternship.duration }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Internship Convention -->
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-header bg-secondary text-white">Internship Convention</div>
+        <div class="card-body">
+          <p><strong>Company Name:</strong> {{ entities.internshipConvention.companyName }}</p>
+          <p><strong>Company Address:</strong> {{ entities.internshipConvention.companyAddress }}</p>
+          <p><strong>Company Contact:</strong> {{ entities.internshipConvention.companyContact }}</p>
+          <p><strong>Start Date:</strong> {{ entities.internshipConvention.startDate }}</p>
+          <p><strong>End Date:</strong> {{ entities.internshipConvention.endDate }}</p>
+          <p><strong>Is Valid:</strong> {{ entities.internshipConvention.isValid }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Documents -->
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-header bg-secondary text-white">Documents</div>
+        <div class="card-body">
+          <p><strong>Report:</strong> {{ entities.file.report }}</p>
+          <p><strong>Internship Certificate:</strong> {{ entities.file.internship_Certifcate }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Journal Details -->
+    <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header bg-success text-white">Journal Details</div>
+          <div class="card-body">
+            <p><strong>Journal:</strong> {{ entities.journal.title }}</p>
+            <div class="mt-3 text-center">
+              <button class="btn btn-dark" (click)="navigateToTasks(entities.journal.id)">View Tasks</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <!-- Tasks -->
+
+  </div>
