@@ -60,6 +60,7 @@ export class ListConventionComponent implements OnInit {
         convention.isValid = !convention.isValid;
         this.isLoading = false;
         console.log('Convention updated:', convention.isValid ? 'validée' : 'refusée');
+        this.ngOnInit();
       },
       (error) => {
         console.error('Échec de la mise à jour de la convention:', error);
@@ -68,9 +69,9 @@ export class ListConventionComponent implements OnInit {
     );
   }
 
-  sendTestEmail(): void {
+  sendTestEmail(conevntionId :number): void {
     this.isLoading = true;
-    this.conventionService.email(16).subscribe(
+    this.conventionService.email(conevntionId).subscribe(
       (response) => {
         console.log('Test email sent successfully:', response);
         this.isLoading = false;

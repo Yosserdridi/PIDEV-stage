@@ -2,6 +2,7 @@ package com.example.back.services;
 
 
 import com.example.back.entities.*;
+import com.example.back.reopsitory.StudentRepository;
 import com.example.back.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class ConventionServiceImpl implements ConventionService {
     @Override
     public InternshipConvention addInternshipConvention(InternshipConvention dto) {
         // 🔥 Récupérer un étudiant statique avec ID = 1
-        Student student = studentRepository.findById(1)
+        Student student = studentRepository.findById(1L)
                 .orElseThrow(() -> new RuntimeException("Student with ID 1 not found"));
 
         // ✅ Vérifier si une convention du même type est déjà validée pour cet étudiant

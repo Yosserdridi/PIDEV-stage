@@ -25,9 +25,8 @@ public class Teacher extends User{
     private Set<Journal> journals;
 
     //@JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL)
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="teacher")
+
+   @OneToMany(cascade = CascadeType.ALL)
     private Set<InternshipPFE> internshipPFEs;
 
     @OneToMany(cascade = CascadeType.ALL)

@@ -44,7 +44,6 @@ public class InternshipConvention {
     private  SummerInternship summerInternship;
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "internshipConvention")
-    @JsonIgnore
     @JsonManagedReference
     private InternshipPFE internshipPFE;
 

@@ -54,7 +54,7 @@
               (click)="toggleValidity(convention)">
               {{ convention.isValid ? 'Valid' : 'Not Valid' }}
             </button>
-            <button class="custom-btn btn-email" (click)="sendTestEmail()">Send Test Email</button>
+            <button class="custom-btn btn-email" (click)="sendTestEmail(convention.id)">Send Test Email</button>
           </div>
         </td>
       </tr>

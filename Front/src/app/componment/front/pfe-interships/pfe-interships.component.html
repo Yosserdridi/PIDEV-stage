@@ -15,8 +15,6 @@
     <p>Type: {{ internship.typeInternship }}</p>
     <p>Start Date: {{ internship.startDate | date: 'yyyy-MM-dd' }}</p>
     <p>End Date: {{ internship.endDate | date: 'yyyy-MM-dd' }}</p>
-    
-
     <button (click)="generatePDF()">Generate PDF</button>
     <div *ngIf="internship.internshipPFE">
       <h4>Internship PFE</h4>
