@@ -26,6 +26,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @RestController
 @AllArgsConstructor
@@ -123,15 +134,6 @@ public class FileController {
 
         return ResponseEntity.ok(response);
     }
-
-
-
-
-
-
-
-
-
     @GetMapping("getAllFiles")
     public ResponseEntity<List<Files>> getAllFiles() {
         return ResponseEntity.ok((fileServiceimpl.getAllFiles()));
@@ -169,16 +171,27 @@ public class FileController {
         }
     }
 
+    private static final String UPLOAD_DIR = "C:/Users/amalk/Desktop/Yoser/PIDEV-stage/Back/uploads";
+    // Définition du répertoire où les fichiers sont stockés.
 
+    @GetMapping("/uploads/{fileName:.+}")
+    public ResponseEntity<Resource> getFile(@PathVariable String fileName) throws IOException {
+        Path filePath = Paths.get(UPLOAD_DIR).resolve(fileName);
+        Resource resource = new UrlResource(filePath.toUri());
+        // Crée un objet Resource qui représente le fichier à partir du chemin.
 
-
-
-
-
-
-
-
+        if (resource.exists() && resource.isReadable()) {
+            return ResponseEntity.ok()
+                    .header("Content-Type", "image/jpeg")  // Change en fonction du type
+                    .header("Content-Disposition", "inline; filename=\"" + resource.getFilename() + "\"")
+                    .body(resource);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
+
+
 
 
 

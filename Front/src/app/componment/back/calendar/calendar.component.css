@@ -1,0 +1,41 @@
+.full-calendar {
+  max-width: 500px; /* Réduire la largeur */
+  height: 350px; /* Fixer une hauteur */
+  overflow: hidden; /* Empêcher l'agrandissement */
+}
+
+.fc-view-harness {
+  max-height: 300px !important; /* Limiter la hauteur de l'affichage */
+  overflow-y: auto !important; /* Activer le défilement si besoin */
+}
+
+.fc-scroller {
+  max-height: 250px !important; /* Réduire encore plus la hauteur */
+  overflow: hidden !important; /* Supprimer le débordement */
+}
+
+.fc-daygrid-body {
+  height: 200px !important; /* Limiter l'espace pour les jours */
+}
+
+.fc-toolbar {
+  padding: 5px 0 !important; /* Réduire l'espace autour de la barre d'outils */
+}
+
+.fc-daygrid-day-number {
+  font-size: 0.7rem !important; /* Réduire la taille des numéros de jour */
+}
+.calendar-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  font-weight: bold;
+}
+
+.btn-outline-primary {
+  border-radius: 20px;
+}
+

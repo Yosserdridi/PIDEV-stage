@@ -8,7 +8,6 @@ import { PostulationsComponent } from './componment/front/postulations/postulati
 import { PfeIntershipsComponent } from './componment/front/pfe-interships/pfe-interships.component';
 import { SummerIntershipsComponent } from './componment/front/summer-interships/summer-interships.component';
 import { ForumComponent } from './componment/front/forum/forum.component';
-import { ComplaintsComponent } from './componment/front/complaints/complaints.component';
 import { LoginComponent } from './componment/front/login/login.component';
 import { NavbarComponent } from './componment/front/navbar/navbar.component';
 import { AdminComponent } from './componment/back/admin/admin.component';
@@ -60,6 +59,13 @@ import { ListRejectedComponent } from './componment/back/list-rejected/list-reje
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ListArchivedComponent } from './componment/back/list-archived/list-archived.component';
 
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import { AddComplaintComponent } from './componment/front/complaints/add-complaint/add-complaint.component';
+import { ComplaintsComponent } from './componment/front/complaints/complaints.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import { CalendarComponent } from './componment/back/calendar/calendar.component';
+import {FullCalendarModule} from "@fullcalendar/angular";
 
 @NgModule({
   declarations: [
@@ -70,7 +76,6 @@ import { ListArchivedComponent } from './componment/back/list-archived/list-arch
     PfeIntershipsComponent,
     SummerIntershipsComponent,
     ForumComponent,
-    ComplaintsComponent,
     LoginComponent,
     NavbarComponent,
     NabradminComponent,
@@ -116,11 +121,12 @@ import { ListArchivedComponent } from './componment/back/list-archived/list-arch
         ListApprovedComponent,
         ListRejectedComponent,
         ListArchivedComponent,
-   
+    AddComplaintComponent,
+    ComplaintsComponent,
+    CalendarComponent
 
-    
-    
-    
+
+
 
   ],
   imports: [
@@ -135,7 +141,10 @@ import { ListArchivedComponent } from './componment/back/list-archived/list-arch
     NgChartsModule,
     NgxPaginationModule
 
+    NgxPaginationModule,
+    FullCalendarModule
   ],
+  exports: [AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

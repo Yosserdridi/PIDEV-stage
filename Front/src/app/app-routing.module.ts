@@ -1,11 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './componment/front/home/home.component';
-import { ComplaintsComponent } from './componment/front/complaints/complaints.component';
-import { ForumComponent } from './componment/front/forum/forum.component';
-import { PfeIntershipsComponent } from './componment/front/pfe-interships/pfe-interships.component';
 import { PostulationsComponent } from './componment/front/postulations/postulations.component';
-import { SubjectsComponent } from './componment/front/subjects/subjects.component';
 import { SummerIntershipsComponent } from './componment/front/summer-interships/summer-interships.component';
 import { LoginComponent } from './componment/front/login/login.component';
 import { ComplaintsAdminComponent } from './componment/back/complaints-admin/complaints-admin.component';
@@ -45,12 +41,13 @@ import { ListRejectedComponent } from './componment/back/list-rejected/list-reje
 import { ListArchivedComponent } from './componment/back/list-archived/list-archived.component';
 
 
+import { AddComplaintComponent } from './componment/front/complaints/add-complaint/add-complaint.component';
+import {ComplaintsComponent} from "./componment/front/complaints/complaints.component";
+import {CalendarComponent} from "./componment/back/calendar/calendar.component";
 
 
 const routes: Routes = [
-
   { path: 'home', component: HomeComponent },
-  { path: 'complaints', component: ComplaintsComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'postulations', component: PostulationsComponent },
   { path: 'subjects', component: SubjectsComponent },
@@ -113,7 +110,11 @@ const routes: Routes = [
   {path: 'list-approved', component:ListApprovedComponent },
   {path: 'list-rejected', component:ListRejectedComponent },
   {path: 'list-archived', component:ListArchivedComponent },
+  { path: 'complaints', component: ComplaintsComponent },
+  { path:'stat', component:CalendarComponent},
 
+  { path: 'add-complaint', component: AddComplaintComponent },
+  { path: '', redirectTo: '/complaints', pathMatch: 'full' }
 ];
 
 
