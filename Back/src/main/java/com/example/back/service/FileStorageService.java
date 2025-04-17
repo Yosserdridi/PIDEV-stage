@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Service
 public class FileStorageService {
-    private static final String UPLOAD_DIR = "C:/Users/yosse_yqbk87k/Desktop/projet/uploads";
+    private static final String UPLOAD_DIR = "C:/Users/amalk/Desktop/Yoser/PIDEV-stage/Back/uploads";
 
     public String storeFile(MultipartFile file) throws IOException {
         if (file.isEmpty()) {

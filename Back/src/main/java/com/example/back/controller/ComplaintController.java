@@ -89,9 +89,9 @@ public class ComplaintController {
        complaint.setDateComplaint(dateComplaint);
        complaint.setTypeStatus(typeStatus);
        complaint.setTypeC(typeC);
-       //User defaultuser = new User();
-      // defaultuser.setId(1L);
-      // complaint.setUser(defaultuser);
+       User defaultuser = new User();
+       defaultuser.setId(1L);
+       complaint.setUser(defaultuser);
 
        if (image != null && !image.isEmpty()) {
            try {
