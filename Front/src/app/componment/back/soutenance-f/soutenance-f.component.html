@@ -1,0 +1,88 @@
+<div class="admin-container">
+  <h2>Liste des Soutenances</h2>
+
+  <!-- Tableau des soutenances -->
+  <table *ngIf="soutenances.length > 0; else noSoutenance">
+    <thead>
+      <tr>
+        <th>Nom Étudiant</th>
+        <th>Branche</th>
+        <th>Grade</th>
+        <th>Note</th>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Salle</th>
+        <th>Bloc</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let soutenance of paginatedSoutenances">
+        <td>{{ soutenance.studentFirstName }} {{ soutenance.studentLastName }}</td>
+        <td>{{ soutenance.branche }}</td>
+        <td>{{ soutenance.grade }}</td>
+        <td>{{ soutenance.note }}</td>
+        <td>{{ soutenance.dateSoutenance | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ soutenance.hourSoutenance }}</td>
+        <td>{{ soutenance.salleNumber }}</td>
+        <td>{{ soutenance.bloc }}</td>
+        <td>
+          <button class="btn btn-modify" (click)="openModifyModal(soutenance)">
+            ✏️ Modifier
+          </button>
+          <button class="btn btn-danger" (click)="onDelete(soutenance.soutenanceId)">
+            🗑️ Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Message si aucune soutenance n'est ajoutée -->
+  <ng-template #noSoutenance>
+    <p class="no-soutenance">No soutenance</p>
+  </ng-template>
+
+  <!-- Pagination -->
+  <mat-paginator *ngIf="totalElements > 0"
+    [length]="totalElements"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    (page)="onPageChange($event)"
+    [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
+
+<!-- Custom Modal -->
+<div class="custom-modal-overlay" *ngIf="isModalOpen">
+  <div class="custom-modal">
+    <div class="modal-header">
+      <h5 class="modal-title">✏️ Modifier Soutenance</h5>
+      <button class="close-button" (click)="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <label>Date :</label>
+        <input type="date" [(ngModel)]="selectedSoutenance.dateSoutenance" name="modifyDate" class="form-control"/>
+
+        <label>Heure :</label>
+        <input type="time" [(ngModel)]="selectedSoutenance.hourSoutenance" name="modifyHour" class="form-control"/>
+
+        <label>Bloc :</label>
+        <select [(ngModel)]="selectedSoutenance.bloc" name="modifyBloc" class="form-select">
+          <option *ngFor="let bloc of ['A', 'B', 'C', 'D', 'E']">{{ bloc }}</option>
+        </select>
+
+        <label>Salle :</label>
+        <select [(ngModel)]="selectedSoutenance.salleNumber" name="modifySalle" class="form-select">
+          <option *ngFor="let salle of salle_number">{{ salle }}</option>
+        </select>
+      </form>
+      <div class="text-danger mt-2" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" (click)="updateSoutenance()">✅ Enregistrer</button>
+      <button class="btn btn-secondary" (click)="closeModal()">❌ Annuler</button>
+    </div>
+  </div>
+</div>

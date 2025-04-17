@@ -1,0 +1,188 @@
+<div class="container">
+  <div *ngIf="isMainPage" class="main-page">
+    <header>
+      <h1>📅 Gestion des Soutenances</h1>
+      <nav class="button-group">
+        <button class="btn btn-primary" (click)="navigateToAdd()">➕ Planifier une Soutenance</button>
+        <button class="btn btn-secondary" (click)="navigateToShow()">📋 Voir Toutes les Soutenances</button>
+      </nav>
+    </header>
+    <section class="calendar-container" *ngIf="calendarOptions">
+      <full-calendar [options]="calendarOptions"></full-calendar>
+    </section>
+  </div>
+
+  <div *ngIf="isAddPage" class="add-soutenance">
+    <header>
+      <h2>📝 Planification d'une Soutenance</h2>
+    </header>
+    <button class="btn btn-info" (click)="toggleCalendar()">
+      {{ showCalendar ? '🙈 Masquer le Calendrier' : '📅 Afficher le Calendrier' }}
+    </button>
+    <section class="calendar-section" *ngIf="showCalendar && dateSelectCalendarOptions">
+      <full-calendar [options]="dateSelectCalendarOptions"></full-calendar>
+    </section>
+    <form class="soutenance-form">
+      <label for="student-select">👨‍🎓 Étudiant à assigner :</label>
+      <select id="student-select" [(ngModel)]="selectedStudentId" (change)="onStudentChange()" name="selectedStudentId">
+        <option value="" disabled selected>-- Choisissez un étudiant --</option>
+        <option *ngFor="let student of validatedStudents" [value]="student.studentId">
+          {{ student.studentFirstName }} {{ student.studentLastName }} (Note: {{ student.note }})
+        </option>
+      </select>
+
+      <div class="student-details" *ngIf="selectedStudentDetails">
+        👤 <strong>Étudiant sélectionné:</strong>
+        {{ selectedStudentDetails.studentFirstName }} {{ selectedStudentDetails.studentLastName }},
+        Note: {{ selectedStudentDetails.note }}
+      </div>
+
+      <label for="date-soutenance">📅 Date de Soutenance :</label>
+      <input id="date-soutenance" type="date" [(ngModel)]="newSoutenance.dateSoutenace" name="dateSoutenace" [min]="minDate" />
+
+      <label for="time-soutenance">⏰ Heure :</label>
+      <select id="time-soutenance" [(ngModel)]="newSoutenance.hourSoutence" name="hourSoutence" required>
+        <option value="" disabled selected>-- Choisissez une heure --</option>
+        <option *ngFor="let time of availableHours" [value]="time">{{ time }}</option>
+      </select>
+
+      <label for="bloc-select">🏢 Bloc :</label>
+      <select id="bloc-select" [(ngModel)]="newSoutenance.bloc" name="bloc">
+        <option value="" disabled selected>-- Choisissez un bloc --</option>
+        <option *ngFor="let bloc of ['A', 'B', 'C', 'D', 'E']">{{ bloc }}</option>
+      </select>
+
+      <label for="salle-select">🚪 Salle :</label>
+      <select id="salle-select" [(ngModel)]="newSoutenance.salleNumber" name="salleNumber">
+        <option value="" disabled selected>-- Choisissez une salle --</option>
+        <option *ngFor="let salle of salle_number">{{ salle }}</option>
+      </select>
+
+      <div class="error-message" *ngIf="errorMessage">
+        ⚠️ {{ errorMessage }}
+      </div>
+
+      <div class="action-buttons">
+        <button type="button" class="btn btn-success" (click)="scheduleSoutenance()">🚀 Planifier</button>
+        <button type="button" class="btn btn-warning" (click)="navigateToMain()">🔙 Retour</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="isListPage" class="list-soutenance">
+    <header>
+      <h2>📚 Liste Complète des Soutenances</h2>
+    </header>
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th>👨‍🎓 Étudiant</th>
+          <th>📘 Branche</th>
+          <th>🎖️ Grade</th>
+          <th>📝 Note</th>
+          <th>📅 Date</th>
+          <th>⏰ Heure</th>
+          <th>🚪 Salle</th>
+          <th>🏢 Bloc</th>
+          <th>👥 Jury</th>
+          <th>⚙️ Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of soutenances">
+          <td>{{ s.studentFirstName }} {{ s.studentLastName }}</td>
+          <td>{{ s.branche }}</td>
+          <td>{{ s.grade }}</td>
+          <td>{{ s.note }}</td>
+          <td>{{ s.dateSoutenance | date:'dd/MM/yyyy' }}</td>
+          <td>{{ s.hourSoutenance }}</td>
+          <td>{{ s.salleNumber }}</td>
+          <td>{{ s.bloc }}</td>
+          <td>
+            <div *ngIf="s.juryMembers?.length; else noJury">
+              <ul class="jury-list">
+                <li *ngFor="let member of s.juryMembers">{{ member }}</li>
+              </ul>
+            </div>
+            <ng-template #noJury>—</ng-template>
+          </td>
+          <td>
+            <button class="btn btn-modify" (click)="openModifyModal(s)">✏️ Modifier</button>
+            <button class="btn btn-danger" (click)="confirmDelete(s.soutenanceId)">🗑️ Supprimer</button>          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="soutenances.length === 0" class="no-data">
+      😐 Aucune soutenance planifiée pour l'instant.
+    </div>
+
+    <button class="btn btn-warning back-button" (click)="navigateToMain()">🔙 Retour à l'accueil</button>
+  </div>
+</div>
+
+<!-- Modal de modification -->
+<div class="custom-modal-overlay" *ngIf="isModalOpen">
+  <div class="custom-modal">
+    <div class="modal-header">
+      <h5 class="modal-title">✏️ Modifier Soutenance</h5>
+      <button class="close-button" (click)="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <label>Date :</label>
+        <input type="date" [(ngModel)]="selectedSoutenance.dateSoutenance" name="modifyDate" class="form-control" [min]="minDate" />
+
+        <label>Heure :</label>
+        <select [(ngModel)]="selectedSoutenance.hourSoutenance" name="modifyHour" class="form-select" required>
+          <option *ngFor="let time of availableHours" [value]="time">{{ time }}</option>
+        </select>
+
+        <label>Bloc :</label>
+        <select [(ngModel)]="selectedSoutenance.bloc" name="modifyBloc" class="form-select">
+          <option *ngFor="let bloc of ['A', 'B', 'C', 'D', 'E']">{{ bloc }}</option>
+        </select>
+
+        <label>Salle :</label>
+        <select [(ngModel)]="selectedSoutenance.salleNumber" name="modifySalle" class="form-select">
+          <option *ngFor="let salle of salle_number">{{ salle }}</option>
+        </select>
+
+        <div *ngIf="selectedSoutenance.juryMembers?.length">
+          <label>👥 Membres du Jury :</label>
+          <ul class="list-group mt-2 mb-2">
+            <li *ngFor="let member of selectedSoutenance.juryMembers" class="list-group-item">
+              {{ member }}
+            </li>
+          </ul>
+        </div>
+      </form>
+      <div class="text-danger mt-2" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" (click)="updateSoutenance()">✅ Enregistrer</button>
+      <button class="btn btn-secondary" (click)="closeModal()">❌ Annuler</button>
+    </div>
+  </div>
+</div>
+
+<div class="custom-loading-overlay" *ngIf="isLoading">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Chargement...</span>
+  </div>
+  <p>Veuillez patienter, traitement en cours...</p>
+</div>
+
+<div class="custom-toast" *ngIf="showToast" [ngClass]="toastType">
+  {{ toastMessage }}
+</div>
+
+<div class="confirm-overlay" *ngIf="showConfirmDelete">
+  <div class="confirm-modal">
+    <p>❗ Voulez-vous vraiment supprimer cette soutenance ?</p>
+    <div class="confirm-buttons">
+      <button class="btn btn-danger" (click)="proceedDelete()">Oui, Supprimer</button>
+      <button class="btn btn-secondary" (click)="cancelDelete()">Annuler</button>
+    </div>
+  </div>
+</div>

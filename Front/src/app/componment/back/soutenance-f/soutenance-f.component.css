@@ -1,0 +1,251 @@
+/* 🎨 General Styles */
+.admin-container {
+  padding: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 🏷️ Title */
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* 📜 Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 🔝 Table Header */
+thead {
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: white;
+  text-transform: uppercase;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+
+th {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* 🏛️ Table Rows */
+tbody tr:hover {
+  background: #f4f4f4;
+  transition: background 0.3s ease;
+}
+
+/* 🔘 Buttons */
+button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* ✅ Update Button */
+.btn-modify {
+  background: linear-gradient(90deg, #28a745, #218838);
+  color: white;
+}
+
+.btn-modify:hover {
+  background: linear-gradient(90deg, #218838, #1e7e34);
+}
+
+/* ❌ Delete Button */
+.btn-danger {
+  background: linear-gradient(90deg, #dc3545, #c82333);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(90deg, #c82333, #bd2130);
+}
+
+/* ⚠️ No Soutenance Message */
+.no-soutenance {
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+/* 📍 Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background: linear-gradient(90deg, #0056b3, #004085);
+}
+
+.pagination button.active {
+  background: #004085;
+  font-weight: bold;
+}
+
+/* 📌 Custom Modal Styling */
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.custom-modal {
+  background: white;
+  width: 450px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* 🔘 Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: white;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.modal-header .close-button {
+  background: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+}
+
+.modal-header .close-button:hover {
+  background: #ddd;
+}
+
+/* 📝 Modal Body */
+.modal-body {
+  padding: 20px;
+}
+
+.modal-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-body label {
+  font-weight: 600;
+  color: #555;
+}
+
+.modal-body input,
+.modal-body select {
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-body input:focus,
+.modal-body select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* ✅ Modal Footer */
+.modal-footer {
+  background: #f4f7fb;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-footer .btn {
+  min-width: 130px;
+}
+
+/* ✅ Save Button */
+.modal-footer .btn-success {
+  background: linear-gradient(90deg, #28a745, #218838);
+  color: white;
+}
+
+.modal-footer .btn-success:hover {
+  background: linear-gradient(90deg, #218838, #1e7e34);
+}
+
+/* ❌ Cancel Button */
+.modal-footer .btn-secondary {
+  background: linear-gradient(90deg, #777, #999);
+  color: white;
+}
+
+.modal-footer .btn-secondary:hover {
+  background: linear-gradient(90deg, #666, #888);
+}
+
+/* 🎬 Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
