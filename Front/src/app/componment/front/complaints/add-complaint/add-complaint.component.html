@@ -1,0 +1,85 @@
+<div class="create-complaint-container" [ngClass]="{'form-valid': complaintForm.valid}">
+    <h2> 🎭 Create New Complaint</h2>
+    <form (ngSubmit)="onSubmit()" #complaintForm="ngForm">
+ 
+      <!-- Titre -->
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          [(ngModel)]="newComplaint.title"
+          name="title"
+          required minlength="5"
+          #title="ngModel"
+          [ngClass]="{'invalid': title.invalid && (title.dirty || complaintForm.submitted)}"
+          placeholder="Enter at least 5 characters"
+        >
+        <div *ngIf="title.invalid && (title.dirty || complaintForm.submitted)" class="error-message">
+          <span *ngIf="title.errors?.['required']">Title is required.</span>
+          <span *ngIf="title.errors?.['minlength']">Title must be at least 5 characters long.</span>
+        </div>
+      </div>
+ 
+      <!-- Content -->
+      <div class="form-group">
+        <label for="content">Content:</label>
+        <textarea
+          id="content"
+          [(ngModel)]="newComplaint.content"
+          name="content"
+          required minlength="5"
+          #content="ngModel"
+          [ngClass]="{'invalid': content.invalid && (content.dirty || complaintForm.submitted)}"
+          placeholder="Describe your complaint (at least 5 characters)"
+        ></textarea>
+        <div *ngIf="content.invalid && (content.dirty || complaintForm.submitted)" class="error-message">
+          <span *ngIf="content.errors?.['required']">Content is required.</span>
+          <span *ngIf="content.errors?.['minlength']">Content must be at least 5 characters long.</span>
+        </div>
+      </div>
+ 
+      <!-- Type -->
+      <div class="form-group">
+        <label for="typeC">Type:</label>
+        <select
+          id="typeC"
+          [(ngModel)]="newComplaint.typeC"
+          name="typeC"
+          required
+          #typeC="ngModel"
+          [ngClass]="{'invalid': typeC.invalid && (typeC.dirty || complaintForm.submitted)}"
+        >
+          <option value="" disabled selected>Select a type</option>
+          <option value="Modification">Modification</option>
+          <option value="Cancellation">Cancellation</option>
+          <option value="Others">Others</option>
+        </select>
+        <div *ngIf="typeC.invalid && (typeC.dirty || complaintForm.submitted)" class="error-message">
+          Type is required.
+        </div>
+      </div>
+ 
+      <!-- Upload Image -->
+      <div class="form-group">
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" (change)="onFileSelected($event)">
+      </div>
+ 
+      <!-- Bouton de soumission -->
+      <button type="submit" class="btn-submit" [disabled]="!complaintForm.valid">
+        Submit Complaint
+      </button>
+ 
+      <!-- Erreur générale -->
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+ 
+    </form>
+</div>
+
+
+
+
+

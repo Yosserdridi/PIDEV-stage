@@ -27,7 +27,7 @@ import { StudentAdminComponent } from './componment/back/student-admin/student-a
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeacherAdminComponent } from './componment/back/teacher-admin/teacher-admin.component';
 import { GetTeacherAdminComponent } from './componment/back/get-teacher-admin/get-teacher-admin.component';
-import { CalendarComponent } from './calendar/calendar.component';
+// import { CalendarComponent } from './calendar/calendar.component'; // Removed as the module is missing
 import { ListConventionComponent } from './componment/back/summerBack/list-convention/list-convention.component';
 import { AddConventionComponent } from './componment/front/summer_front/add-convention/add-convention.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -59,6 +59,14 @@ import { ListApprovedComponent } from './componment/back/list-approved/list-appr
 import { ListRejectedComponent } from './componment/back/list-rejected/list-rejected.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ListArchivedComponent } from './componment/back/list-archived/list-archived.component';
+import { AddComplaintComponent } from './componment/front/complaints/add-complaint/add-complaint.component';
+import {FullCalendarModule} from "@fullcalendar/angular";
+import {QRCodeModule} from "angularx-qrcode";
+
+import { CalendarComponent } from './componment/back/calendar/calendar.component';
+
+
+
 
 
 @NgModule({
@@ -87,7 +95,7 @@ import { ListArchivedComponent } from './componment/back/list-archived/list-arch
     StudentAdminComponent,
     TeacherAdminComponent,
     GetTeacherAdminComponent,
-    CalendarComponent,
+   // CalendarComponent,
     ListConventionComponent,
     AddConventionComponent,
     AddInternshipComponent,
@@ -108,6 +116,16 @@ import { ListArchivedComponent } from './componment/back/list-archived/list-arch
     StatistiqueComponent,
     StatinvalidComponent,
     AddPostComponent,
+    AddComplaintComponent,
+    ComplaintsComponent,
+    CalendarComponent,
+
+
+
+
+
+
+
   
     PostDetailsComponent,
         UpdatePostComponent,
@@ -133,13 +151,21 @@ import { ListArchivedComponent } from './componment/back/list-archived/list-arch
     ReactiveFormsModule,
     FormsModule,
     NgChartsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    QRCodeModule,
+    FullCalendarModule
+
+
+
+
 
   ],
+  exports: [AppRoutingModule], //YOSSER
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] 
 })
 export class AppModule { 
   
 }
+

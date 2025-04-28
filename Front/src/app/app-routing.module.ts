@@ -43,7 +43,9 @@ import { AddPostBackComponent } from './add-post-back/add-post-back.component';
 import { ListApprovedComponent } from './componment/back/list-approved/list-approved.component';
 import { ListRejectedComponent } from './componment/back/list-rejected/list-rejected.component';
 import { ListArchivedComponent } from './componment/back/list-archived/list-archived.component';
-
+import { AddComplaintComponent } from './componment/front/complaints/add-complaint/add-complaint.component';
+import {CalendarComponent} from "./componment/back/calendar/calendar.component";
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
@@ -113,7 +115,12 @@ const routes: Routes = [
   {path: 'list-approved', component:ListApprovedComponent },
   {path: 'list-rejected', component:ListRejectedComponent },
   {path: 'list-archived', component:ListArchivedComponent },
+  { path: 'complaints', component: ComplaintsComponent },
+  { path:'stat', component:CalendarComponent},
 
+
+  { path: 'add-complaint', component: AddComplaintComponent },
+  { path: '', redirectTo: '/complaints', pathMatch: 'full' }
 ];
 
 
@@ -121,8 +128,13 @@ const routes: Routes = [
 
 
 
+
+
+
+
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes) ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
