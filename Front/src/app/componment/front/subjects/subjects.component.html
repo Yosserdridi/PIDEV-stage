@@ -1,1 +1,58 @@
-<p>subjects works!</p>
+<div class="postulation-card">
+    <h2 class="ff">Subjects</h2>
+    <div class="search-container">
+      <div class="col-md-12 text-center">
+        <input type="text" [(ngModel)]="searchTerm" (input)="filterSujets()" placeholder="Search by title or company name" class="search-input">
+      </div>
+    </div>
+    <div class="card-body">
+      <div *ngIf="message" class="alert alert-success">{{ message }}</div>
+  
+      <div class="row">
+        <div *ngFor="let sujet of pagedSujets; let i = index" class="col-md-4 sujet-item">
+          <div class="sujet-card">
+            <!-- Image Display -->
+            <div *ngIf="sujet.imageUrl" class="text-center mb-3">
+              <img [src]="sujet.imageUrl" alt="Image for {{ sujet.title }}" class="img-fluid rounded shadow-sm" style="max-height: 200px; object-fit: cover;" />
+            </div>
+            <button class="btn btn-transparent mb-3" (click)="openModal(i)">
+              <img src="assets/images/das.png" alt="See More" class="see-more-img">
+            </button>
+            <h4><span class="label">Company:</span> {{ companyName }}</h4> <!-- Display fetched company name -->
+            <h4><span class="label">Email:</span> {{ companyEmail }}</h4> <!-- Display fetched company email -->
+            <h4><span class="label">Title:</span> {{ sujet.title }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Pagination Controls -->
+    <div class="pagination-controls" *ngIf="totalPages > 1">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">◀ </button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages"> ▶</button>
+    </div>
+  </div>
+  
+  <!-- Modal for detailed view -->
+  <div class="modal" *ngIf="selectedSujet" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close" (click)="closeModal()">×</span>
+      <h2>{{ selectedSujet.title }}</h2>
+      <p><span class="modal-label">Company name:</span> {{ companyName }}</p> <!-- Display company name -->
+      <p><span class="modal-label">Company email:</span> {{ companyEmail }}</p> <!-- Display company email -->
+      <p><span class="modal-label">Contact:</span> {{ contact }}</p>
+      <p><span class="modal-label">Description:</span> {{ selectedSujet.description }}</p>
+      <p><span class="modal-label">Requirements:</span> {{ selectedSujet.requirements }}</p>
+      <p><span class="modal-label">Subject type:</span> {{ mappedTypeInternship(selectedSujet.typeInternship) }}</p>
+      <p><span class="modal-label">Duration:</span> {{ selectedSujet.duration }}</p>
+      <p><span class="modal-label">Location:</span> {{ selectedSujet.location }}</p>
+      <p><span class="modal-label">Required number of students:</span> {{ selectedSujet.numberOfStudents }}</p>
+      <div *ngIf="selectedSujet.imageUrl" class="text-center mb-3">
+        <img [src]="selectedSujet.imageUrl" alt="Image for {{ selectedSujet.title }}"
+             class="img-fluid rounded shadow-sm" style="max-height: 200px; object-fit: cover;"  />
+      </div>
+      <button class="btn btn-primary btn-sky-blue" (click)="postulate(selectedSujet.idsujet)">Postulate</button>
+    </div>
+  </div>
+  

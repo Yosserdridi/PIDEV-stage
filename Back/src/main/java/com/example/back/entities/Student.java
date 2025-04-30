@@ -22,7 +22,7 @@ public class Student extends User{
     private String branche;
     private String grade;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="student")
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Postulation> postulations;
 
 

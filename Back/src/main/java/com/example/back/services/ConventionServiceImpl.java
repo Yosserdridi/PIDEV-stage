@@ -2,7 +2,7 @@ package com.example.back.services;
 
 
 import com.example.back.entities.*;
-import com.example.back.reopsitory.StudentRepository;
+import com.example.back.repository.StudentRepository;
 import com.example.back.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

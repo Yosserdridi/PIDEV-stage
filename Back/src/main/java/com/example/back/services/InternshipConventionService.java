@@ -5,7 +5,7 @@ import com.example.back.entities.InternshipConvention;
 import com.example.back.entities.Student;
 import com.example.back.entities.TypeInternship;
 import com.example.back.reopsitory.InternshipConventionRepository;
-import com.example.back.reopsitory.StudentRepository;
+import com.example.back.repository.StudentRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

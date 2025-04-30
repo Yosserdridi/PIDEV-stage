@@ -1,0 +1,184 @@
+/* Create Form Container */
+.create-form-container {
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .create-form-container:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Title Styling */
+  .create-form-container h2 {
+    color: #b90000;
+     font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding-bottom: 10px;
+    line-height: 1.2;
+  }
+  
+  .create-form-container h2::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: #b90000;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+  
+  .subject-title {
+    color: #000b6d;
+     font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  /* Form Group */
+  .form-group {
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  
+  /* Form Labels */
+  label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #0086fb; /* Blue as specified */
+    font-weight: 600; /* Bold */
+  }
+  
+  /* Form Controls (Inputs, Textarea, Select) */
+  .form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  }
+  
+  .form-control.is-invalid {
+    border-color: #dc3545;
+  }
+  
+  /* Textarea Specific */
+  .form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  /* Select Specific */
+  .form-group select {
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%23007bff"><polygon points="0,0 12,0 6,12"/></svg>') no-repeat right 15px center;
+    background-color: #ffffff;
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+  }
+  
+  .form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Invalid Feedback */
+  .invalid-feedback {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  /* Alert Message */
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Button Container and Button */
+  .button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .btn-secondary {
+    width: auto;
+    padding: 12px 40px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+  }
+  
+  .btn-secondary:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .create-form-container {
+      margin: 40px auto;
+      padding: 20px;
+    }
+  
+    .create-form-container h2 {
+      font-size: 2rem;
+    }
+  
+    .subject-title {
+      font-size: 1.5rem;
+    }
+  
+    .form-control {
+      padding: 10px;
+    }
+  
+    .btn-secondary {
+      padding: 10px 30px;
+      font-size: 1.1rem;
+    }
+  }

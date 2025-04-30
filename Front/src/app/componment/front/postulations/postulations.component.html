@@ -1,1 +1,69 @@
-<p>postulations works!</p>
+<div class="postulations-container">
+    <a routerLink="/summary">
+      <img src="assets/images/chart.png" alt="Summary" class="summary-img">
+    </a>
+  
+   <h2>My Postulations  </h2>
+    <h4 > {{ studentFName }} {{ studentLName }}</h4>
+  
+  
+    <!-- Status filter buttons -->
+    <div class="filter-buttons">
+      <button class="filter-btn" (click)="filterByStatus('')" [class.active]="selectedStatus === ''">All</button>
+      <button class="filter-btn" (click)="filterByStatus('0')" [class.active]="selectedStatus === '0'">Pending</button>
+      <button class="filter-btn" (click)="filterByStatus('1')" [class.active]="selectedStatus === '1'">Accepted</button>
+      <button class="filter-btn" (click)="filterByStatus('2')" [class.active]="selectedStatus === '2'">Rejected</button>
+    </div>
+  
+    <div *ngIf="filteredPostulations.length > 0; else noPostulations">
+      <div class="postulation-card" *ngFor="let postulation of pagedPostulations">
+        <div class="postulation-header">
+          <h3>{{ postulation.titrecandidature }}</h3>
+          <span class="status-label" [ngClass]="getStatusClass(postulation.status)">
+            <img [src]="getStatusImage(postulation.status)" alt="Status" class="status-image">
+          </span>
+        </div>
+        
+        
+        <div class="postulation-body">
+          <p><strong>Motivation Letter:</strong> {{ postulation.lettremotivation }}</p>
+          <p><strong>Region:</strong> {{ postulation.region }}</p>
+          <p><strong>Date:</strong> {{ postulation.postulationDate | date:'yyyy-MM-dd' }}</p>
+          <p><strong>Comment:</strong> {{ postulation.comment }}</p>
+        </div>
+  
+  
+        <div class="pdf-buttons">
+          <button *ngIf="!pdfUrls[postulation.id]" (click)="loadPdf(postulation.id)" class="btn btn-info mb-2">
+            Preview PDF
+          </button>
+          <button *ngIf="pdfUrls[postulation.id]" (click)="closePdf(postulation.id)" class="btn btn-warning mb-2">
+            Close PDF
+          </button>
+        </div>
+        
+        
+        <!-- PDF Frame -->
+        <iframe *ngIf="pdfUrls[postulation.id]" [src]="pdfUrls[postulation.id]" width="100%" height="500px"></iframe>
+        <!-- Delete Button (Visible only if status is 0) -->
+        <button *ngIf="postulation.status === 0" class="btn btn-danger" (click)="deletePostulation(postulation.id)">
+          Delete
+        </button>
+        
+  
+  
+      </div>
+    </div>
+  
+    <ng-template #noPostulations>
+      <p>No postulations found for this status.</p>
+    </ng-template>
+  
+    <!-- Pagination Controls -->
+    <div class="pagination-controls" *ngIf="totalPages > 1">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">◀</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">▶</button>
+    </div>
+  </div>
+  

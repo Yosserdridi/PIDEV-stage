@@ -1,10 +1,13 @@
 package com.example.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Date;
 
 @Entity
 @Getter
@@ -15,14 +18,24 @@ public class Postulation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Boolean status ;
-    private int PostulationDate ;
+    private int status ;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date postulationDate ;
     private String comment;
-    @ManyToOne
-    IntershipOffer intershipOffer ;
-    @ManyToOne
-    Student student ;
+    private String titrecandidature;
+    private String region;
+    private String lettremotivation;
+    private String pdfUrl;
 
+
+    @ManyToOne
+    @JoinColumn(name = "idsujet")
+    @JsonIgnore
+    private IntershipOffer intershipOffer;
+
+
+
+    private Long studentid;
 
 
 }

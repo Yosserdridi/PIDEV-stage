@@ -11,8 +11,7 @@ import { LoginComponent } from './componment/front/login/login.component';
 import { ComplaintsAdminComponent } from './componment/back/complaints-admin/complaints-admin.component';
 import { ForumAdminComponent } from './componment/back/forum-admin/forum-admin.component';
 import { PfeAdminComponent } from './componment/back/pfe-admin/pfe-admin.component';
-import { PostulationAdminComponent } from './componment/back/postulation-admin/postulation-admin.component';
-import { SubjectsAdminComponent } from './componment/back/subjects-admin/subjects-admin.component';
+import { AllPostulationsComponent } from './componment/back/postulation-admin/allpostulation.component';
 import { SummerAdminComponent } from './componment/back/summer-admin/summer-admin.component';
 import { LoginAdminComponent } from './componment/back/login-admin/login-admin.component';
 import { AdminComponent } from './componment/back/admin/admin.component';
@@ -47,6 +46,13 @@ import { AddComplaintComponent } from './componment/front/complaints/add-complai
 import {CalendarComponent} from "./componment/back/calendar/calendar.component";
 import { FullCalendarModule } from '@fullcalendar/angular';
 
+import { ReadadminComponent } from './componment/back/subjectadmin/read/read.component';
+import { CreateadminComponent } from './componment/back/subjectadmin/create/create.component';
+import { UpdateadminComponent } from './componment/back/subjectadmin/update/update.component';
+import { PostulationsSpComponent } from './componment/back/subjectadmin/postulations/postulations.component';
+import { AddPComponent } from './componment/front/postulations/add/add.component';
+import { SummaryComponent } from './componment/front/postulations/summary/summary.component';
+
 
 
 const routes: Routes = [
@@ -61,8 +67,6 @@ const routes: Routes = [
   { path: 'complaintsadmin', component: ComplaintsAdminComponent },
   { path: 'forumadmin', component: ForumAdminComponent},
   { path: 'pfeadmin', component: PfeAdminComponent},
-  { path: 'postulationsadmin', component: PostulationAdminComponent},
-  { path: 'subjectsadmin', component: SubjectsAdminComponent},
   { path: 'summeradmin', component: SummerAdminComponent},
   { path: 'loginadmin', component: LoginAdminComponent},
   { path: 'admin', component: AdminComponent},
@@ -78,8 +82,6 @@ const routes: Routes = [
   { path: 'teacher/:id', component: GetTeacherAdminComponent },
   {path: 'forumadmin', component: ForumAdminComponent},
   {path: 'pfeadmin', component: PfeAdminComponent},
-  {path: 'postulationsadmin', component: PostulationAdminComponent},
-  {path: 'subjectsadmin', component: SubjectsAdminComponent},
   {path: 'summeradmin', component: SummerAdminComponent},
   {path: 'loginadmin', component: LoginAdminComponent},
   {path: 'admin', component: AdminComponent},
@@ -120,7 +122,19 @@ const routes: Routes = [
 
 
   { path: 'add-complaint', component: AddComplaintComponent },
-  { path: '', redirectTo: '/complaints', pathMatch: 'full' }
+  {path: 'admin', component: AdminComponent},
+
+  
+  { path: 'adminsujetread', component: ReadadminComponent },
+  {path: 'adminsujetcreate', component: CreateadminComponent},
+  {path: 'adminsujetedit/:id', component: UpdateadminComponent},
+  { path: 'postulationbysujet/:idsujet', component: PostulationsSpComponent },
+  {path: 'postulationsadmin', component: AllPostulationsComponent},
+    {path: 'summary', component: SummaryComponent},
+
+  {path: 'create/postulation/:idsujet', component: AddPComponent},
+
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 

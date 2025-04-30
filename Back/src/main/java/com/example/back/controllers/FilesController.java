@@ -17,7 +17,7 @@ import java.nio.file.Paths;
 
 @RestController
 @RequestMapping("/uploads")
-public class FileController {
+public class FilesController {
     private static final String UPLOAD_DIR = "C:/Users/MSI/Desktop/integ/PIDEV-stage/uploads";
     // Définition du répertoire où les fichiers sont stockés.
 

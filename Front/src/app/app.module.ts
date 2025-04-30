@@ -13,9 +13,9 @@ import { LoginComponent } from './componment/front/login/login.component';
 import { NavbarComponent } from './componment/front/navbar/navbar.component';
 import { AdminComponent } from './componment/back/admin/admin.component';
 import { NabradminComponent } from './componment/back/nabradmin/nabradmin.component';
-import { SubjectsAdminComponent } from './componment/back/subjects-admin/subjects-admin.component';
+
 import { PfeAdminComponent } from './componment/back/pfe-admin/pfe-admin.component';
-import { PostulationAdminComponent } from './componment/back/postulation-admin/postulation-admin.component';
+import { AllPostulationsComponent } from './componment/back/postulation-admin/allpostulation.component';
 import { SummerAdminComponent } from './componment/back/summer-admin/summer-admin.component';
 import { ForumAdminComponent } from './componment/back/forum-admin/forum-admin.component';
 import { ComplaintsAdminComponent } from './componment/back/complaints-admin/complaints-admin.component';
@@ -50,7 +50,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { StatistiqueComponent } from './componment/back/summerBack/statistique/statistique.component';
 import { StatinvalidComponent } from './componment/back/summerBack/statinvalid/statinvalid.component';
 import { AddPostComponent } from './add-post/add-post.component';
-
+import { PostulationsSpComponent } from './componment/back/subjectadmin/postulations/postulations.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { UpdatePostComponent } from './update-post/update-post.component';
 import { UpdatePostBackComponent } from './update-post-back/update-post-back.component';
@@ -62,8 +62,12 @@ import { ListArchivedComponent } from './componment/back/list-archived/list-arch
 import { AddComplaintComponent } from './componment/front/complaints/add-complaint/add-complaint.component';
 import {FullCalendarModule} from "@fullcalendar/angular";
 import {QRCodeModule} from "angularx-qrcode";
-
 import { CalendarComponent } from './componment/back/calendar/calendar.component';
+import { CreateadminComponent } from './componment/back/subjectadmin/create/create.component';
+import { ReadadminComponent } from './componment/back/subjectadmin/read/read.component';
+import { UpdateadminComponent } from './componment/back/subjectadmin/update/update.component';
+import { AddPComponent } from './componment/front/postulations/add/add.component';
+import { SummaryComponent } from './componment/front/postulations/summary/summary.component';
 
 
 
@@ -73,6 +77,7 @@ import { CalendarComponent } from './componment/back/calendar/calendar.component
   declarations: [
     AppComponent,
     HomeComponent,
+    PostulationsSpComponent,
     SubjectsComponent,
     PostulationsComponent,
     PfeIntershipsComponent,
@@ -82,8 +87,8 @@ import { CalendarComponent } from './componment/back/calendar/calendar.component
     LoginComponent,
     NavbarComponent,
     NabradminComponent,
-    SubjectsAdminComponent,
-    PostulationAdminComponent,
+
+    AllPostulationsComponent,
     PfeAdminComponent,
     SummerAdminComponent,
     ForumAdminComponent,
@@ -134,6 +139,13 @@ import { CalendarComponent } from './componment/back/calendar/calendar.component
         ListApprovedComponent,
         ListRejectedComponent,
         ListArchivedComponent,
+        CreateadminComponent,
+        
+        ReadadminComponent,
+        UpdateadminComponent,
+        AddPComponent,
+        SummaryComponent,
+      
    
 
     

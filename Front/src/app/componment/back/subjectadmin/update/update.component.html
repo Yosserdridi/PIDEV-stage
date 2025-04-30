@@ -1,0 +1,148 @@
+<div *ngIf="offerToUpdate" class="container mt-4 p-4 shadow rounded bg-white">
+    <form (ngSubmit)="onSubmit()" #updateForm="ngForm">
+      <h3 class="mb-4">Edit Internship Offer</h3>
+  
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          class="form-control"
+          [(ngModel)]="offerToUpdate.title"
+          required
+          #title="ngModel"
+          [ngClass]="{'is-invalid': title.invalid && title.touched}"
+        />
+        <div *ngIf="title.invalid && title.touched" class="invalid-feedback">
+          Title is required.
+        </div>
+      </div>
+  
+      <!-- Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          class="form-control"
+          rows="3"
+          [(ngModel)]="offerToUpdate.description"
+          required
+          #description="ngModel"
+          [ngClass]="{'is-invalid': description.invalid && description.touched}"
+        ></textarea>
+        <div *ngIf="description.invalid && description.touched" class="invalid-feedback">
+          Description is required.
+        </div>
+      </div>
+  
+      <!-- Location -->
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          class="form-control"
+          [(ngModel)]="offerToUpdate.location"
+          required
+          #location="ngModel"
+          [ngClass]="{'is-invalid': location.invalid && location.touched}"
+        />
+        <div *ngIf="location.invalid && location.touched" class="invalid-feedback">
+          Location is required.
+        </div>
+      </div>
+  
+      <!-- Duration -->
+      <div class="mb-3">
+        <label for="duration" class="form-label">Duration (Months)</label>
+        <input
+          type="number"
+          id="duration"
+          name="duration"
+          class="form-control"
+          [(ngModel)]="offerToUpdate.duration"
+          required
+          #duration="ngModel"
+          [ngClass]="{'is-invalid': duration.invalid && duration.touched}"
+        />
+        <div *ngIf="duration.invalid && duration.touched" class="invalid-feedback">
+          Duration is required.
+        </div>
+      </div>
+  
+      <!-- Number of Students -->
+      <div class="mb-3">
+        <label for="numberOfStudents" class="form-label">Number of Students</label>
+        <input
+          type="number"
+          id="numberOfStudents"
+          name="numberOfStudents"
+          class="form-control"
+          [(ngModel)]="offerToUpdate.numberOfStudents"
+          required
+          #numberOfStudents="ngModel"
+          [ngClass]="{'is-invalid': numberOfStudents.invalid && numberOfStudents.touched}"
+        />
+        <div *ngIf="numberOfStudents.invalid && numberOfStudents.touched" class="invalid-feedback">
+          Number of students is required.
+        </div>
+      </div>
+  
+      <!-- Requirements -->
+      <div class="mb-3">
+        <label for="requirements" class="form-label">Requirements</label>
+        <textarea
+          id="requirements"
+          name="requirements"
+          class="form-control"
+          rows="3"
+          [(ngModel)]="offerToUpdate.requirements"
+          required
+          #requirements="ngModel"
+          [ngClass]="{'is-invalid': requirements.invalid && requirements.touched}"
+        ></textarea>
+        <div *ngIf="requirements.invalid && requirements.touched" class="invalid-feedback">
+          Requirements are required.
+        </div>
+      </div>
+  
+      <!-- Current Image Display and Delete -->
+      <div *ngIf="imageUrl" class="mb-3">
+        <label class="form-label">Current Image:</label>
+        <div class="d-flex align-items-center mb-2">
+          <img
+            [src]="imageUrl"
+            alt="Internship Image"
+            class="img-thumbnail me-3"
+            style="max-width: 200px; max-height: 200px;"
+          />
+          <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteImage()">
+            Delete Image
+          </button>
+        </div>
+      </div>
+  
+      <!-- Upload New Image -->
+      <div class="mb-3">
+        <label for="newImage" class="form-label">Upload New Image</label>
+        <input
+          type="file"
+          id="newImage"
+          name="newImage"
+          class="form-control"
+          accept="image/*"
+          (change)="onImageChange($event)"
+        />
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" [disabled]="!updateForm.valid">
+        Update Offer
+      </button>
+    </form>
+  </div>
+  
